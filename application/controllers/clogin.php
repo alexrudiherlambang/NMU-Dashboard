@@ -25,7 +25,7 @@ class clogin extends CI_Controller {
 			$cek_password = $this->mlogin->cek_password($username);
 			foreach ($cek_password as $key) {
 				# code...
-				if ($key->username == $username && $key->password == $password && $key->tlok == "CONSOLE") {
+				if ($key->username == $username && $key->password == $password && $key->tlok == "") {
 					# code...
 					$data_session = array(
 						'id'		=> $key->id,

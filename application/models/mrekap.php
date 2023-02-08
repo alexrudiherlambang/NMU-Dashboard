@@ -6,9 +6,14 @@ class mrekap extends ci_model {
       parent::__construct();
    }
 
-    // untuk menampilkan semua rekap
-    function mshow_all_rekap($tglawal,$tglakhir,$nama) {
-      return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_ke1`('".$tglawal."','".$tglawal."','".$nama."');")->result();
+   // untuk menampilkan semua rekap
+   function mshow_all_rekap($tglawal,$tglakhir,$nama,$lokasi) {
+      return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_ke1`('".$tglawal."','".$tglawal."','".$nama."','".$lokasi."');")->result();
+   }
+
+   // untuk menampilkan semua rekap
+   function mshow_all_rekap2($tglawal,$tglakhir,$nama,$lokasi) {
+      return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_ke2`('".$tglawal."','".$tglawal."','".$nama."','".$lokasi."');")->result();
    }
 
    // SELECT BERDASARKAN ID USER

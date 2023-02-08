@@ -97,7 +97,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo $tglawal;?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -120,7 +120,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo date('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo $tglakhir;?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -135,31 +135,7 @@
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
                                     <div class="card-body py-4">
-                                        <!--begin::Table-->
-                                        <table class="table align-middle table-row-dashed fs-6 gy-5">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th class="w-10px pe-5">No</th>
-                                                    <th class="min-w-125px">Uraian</th>
-                                                    <th class="text-end min-w-100px">Realisasi yang Lalu</th>
-                                                    <th class="text-end min-w-100px">Revenue Bulan Ini</th>
-                                                    <th class="text-end min-w-100px">Potensial Revenue</th>
-                                                    <th class="text-end min-w-100px">Total Revenue</th>
-
-                                                    <!-- <th class="text-end min-w-100px">Actions</th> -->
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody class="text-gray-600 fw-semibold">
-                                            
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
+                                        
                                     </div>
                                     <!--end::Card body-->
                                 </div>

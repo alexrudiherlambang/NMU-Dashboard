@@ -10,7 +10,7 @@ class cuser extends CI_Controller {
    }
 
    function index() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "CONSOLE") {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
       //untuk set notifikasi
@@ -40,7 +40,7 @@ class cuser extends CI_Controller {
 	 }
 
    function clihat_user() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "CONSOLE") {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
           redirect("clogin");
       }
         $id_user = $this->uri->segment(4);

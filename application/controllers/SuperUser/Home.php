@@ -12,7 +12,7 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "CONSOLE") {
+		if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
 			redirect("clogin");
 		}
 		// $rekanan = $this->mhome->select_rekanan();

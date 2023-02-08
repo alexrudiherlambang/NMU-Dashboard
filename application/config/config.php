@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://10.88.10.84/NMUkontrak/';
-$config['base_url'] = 'http://localhost/NMUDashboard/';
+$config['base_url'] = 'http://localhost/NMU-Dashboard/';
 
 /*
 |--------------------------------------------------------------------------
