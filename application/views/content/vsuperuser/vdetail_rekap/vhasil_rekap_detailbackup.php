@@ -143,7 +143,7 @@
                                             <thead>
                                                 <!--begin::Table row-->
                                                 <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <!-- <th class="w-10px pe-5">No</th> -->
+                                                    <th class="w-10px pe-5">No</th>
                                                     <th class="min-w-125px">Uraian</th>
                                                     <th class="text-end min-w-100px">Realisasi yang Lalu</th>
                                                     <th class="text-end min-w-100px">Revenue Bulan Ini</th>
@@ -160,12 +160,11 @@
                                             <!--begin::Table body-->
                                             <tbody class="text-gray-600 fw-semibold">
                                                 <?php
-                                                $no=1;
                                                 foreach ($rekap2 as $rekap) :
                                                 ?>
                                                 <tr>
                                                 <?php if ($rekap->flag == "0"): ?>
-                                                    <!-- <td><button class="btn-detail">+</button></td> -->
+                                                    <td><button class="btn-detail">+</button></td>
                                                     <td><b><?php echo $rekap->ket ?></b></td>
                                                     <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldolalu, 0, ',', '.')?></b></td>
                                                     <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldosaatini, 0, ',', '.')?></b></td>
@@ -176,25 +175,11 @@
                                                     <!-- <td><?php echo $rekap->jnstrans ?></td> -->
                                                 <?php endif; ?>
                                                 </tr>
-                                                <tr>
-                                                <?php if ($rekap->flag == "1"): ?>
-                                                    <!-- <td></td> -->
-                                                    <td><?php echo $rekap->ket ?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldolalu, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldosaatini, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldosampai, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->jmlpotensi, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_jmltarget, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
-                                                    <!-- <td><?php echo $rekap->jnstrans ?></td> -->
-                                                    <?php $no++; ?>
-                                                <?php endif; ?>
-                                                </tr>
-                                               <?php endforeach; ?>
-                                               <!-- <?php
+                                                <?php
                                                 $no=1;
                                                 foreach($bpjs as $data):
                                                 ?>
+                                                
                                                 <tr  class="detail-row" id="dtl_tbl">
                                                 <?php if ($rekap->flag == "0"): ?>
                                                     <td><?php echo $no;?></td>
@@ -205,11 +190,15 @@
                                                     <td class="text-end min-w-100px"><?php echo number_format($data['jmlpotensi'], 0, ',', '.')?></td>
                                                     <td class="text-end min-w-100px"><?php echo number_format($data['r_jmltarget'], 0, ',', '.')?></td>
                                                     <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
-                                                    
+                                                    <!-- <td><?php echo $rekap->jnstrans ?></td> -->
                                                 <?php endif; 
                                                 $no++;?>
+                                                
                                                 </tr>
-                                               <?php endforeach; ?> -->
+                                               
+                                               <?php endforeach; ?>
+                                               <?php endforeach; ?>
+                                               
                                             </tbody>
                                             <!--end::Table body-->
                                         </table>

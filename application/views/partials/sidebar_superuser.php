@@ -343,7 +343,7 @@
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title">Rekap All</span>
+                                        <span class="menu-title">Pendapatan BPJS / NON-BPJS</span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
@@ -356,7 +356,7 @@
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title">Detail Rekap</span>
+                                        <span class="menu-title">Pendapatan Per-Segmen</span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
@@ -368,7 +368,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="../../demo1/dist/apps/invoices/create.html">
+                            <a class="menu-link" href="<?php echo site_url('SuperUser/cbiaya') ?>">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

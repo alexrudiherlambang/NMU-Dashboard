@@ -137,7 +137,7 @@
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
                                     <div class="card-body border-0 pt-10">
-                                        <canvas id="myChart" width="300" height="80"></canvas><br>
+                                        <!-- <canvas id="myChart" width="300" height="80"></canvas><br> -->
                                         <!--begin::Table-->
                                         <table class="table align-middle table-row-dashed fs-6 gy-5">
                                             <!--begin::Table head-->

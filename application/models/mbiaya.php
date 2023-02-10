@@ -1,19 +1,15 @@
 <?php
 
-class mrekap extends ci_model {
+class mbiaya extends ci_model {
 
    public function __construct() {
       parent::__construct();
    }
 
    // untuk menampilkan semua rekap
-   function mshow_all_rekap($tglawal,$tglakhir,$nama,$lokasi) {
-      return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_ke1`('".$tglawal."','".$tglawal."','".$nama."','".$lokasi."');")->result();
-   }
-
-   // untuk menampilkan semua rekap
-   function mshow_all_rekap2($tglawal,$tglakhir,$nama,$lokasi) {
-      return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_ke4`('".$tglawal."','".$tglawal."','".$nama."','".$lokasi."');")->result();
+   function mshow_all_biaya($tglawal,$tglakhir,$nama,$lokasi) {
+      // return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_biaya1`('".$tglawal."','".$tglawal."','".$nama."','".$lokasi."');")->result();
+      return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_biaya1`('".$tglawal."','".$tglawal."','ROBI','".$lokasi."');")->result();
    }
 
    //INSERT DATA USER

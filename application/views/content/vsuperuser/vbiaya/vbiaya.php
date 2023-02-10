@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Detail Data Rekap Pendapatan</h1>
+										Data Biaya Pengeluaran</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -62,21 +62,20 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/cdetail_rekap/pendapatan_detail" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/cbiaya/biaya" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <select class="form-control form-control-solid select2" name="lokasi">
-                                                            <option selected="selected">-</option>
-                                                            <option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
-                                                            <option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
-                                                            <option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
-                                                            <option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
-                                                            <option <?php if ($lokasi == "RSMU") echo "selected"; ?>>RSMU</option>
-                                                            <option <?php if ($lokasi == "URJ") echo "selected"; ?>>URJ</option>
+                                                        <select class="form-control form-control-solid select2" name="lokasi" >
+                                                            <option value="">K.P</option>
+                                                            <option>RSG</option>
+                                                            <option>RST</option>
+                                                            <option>RSP</option>
+                                                            <option>RSMU</option>
+                                                            <option>URJ</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -98,14 +97,14 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo $tglawal;?>" readonly/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
                                                 </div>
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5" id="tgl_akhir">
+                                                    <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Tgl Akhir</div>
                                                     </div>
                                                     <!--end::Col-->
@@ -121,7 +120,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo $tglakhir;?>" readonly/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo date('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -130,27 +129,26 @@
                                                     <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
                                                 </center>
                                             </form>
-                                            </center>
-                                        </div>
+                                        </center></div>
                                         <!--begin::Card title-->
                                     </div>
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
-                                    <div class="card-body border-0 pt-10">
+                                    <div class="card-body py-4">
                                         <!--begin::Table-->
                                         <table class="table align-middle table-row-dashed fs-6 gy-5">
                                             <!--begin::Table head-->
                                             <thead>
                                                 <!--begin::Table row-->
                                                 <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <!-- <th class="w-10px pe-5">No</th> -->
+                                                    <th class="w-10px pe-5">No</th>
+                                                    <th class="min-w-125px">Tanggal</th>
                                                     <th class="min-w-125px">Uraian</th>
                                                     <th class="text-end min-w-100px">Realisasi yang Lalu</th>
                                                     <th class="text-end min-w-100px">Revenue Bulan Ini</th>
+                                                    <th class="text-end min-w-100px">Potensial Revenue1</th>
+                                                    <th class="text-end min-w-100px">Potensial Revenue2</th>
                                                     <th class="text-end min-w-100px">Total Revenue</th>
-                                                    <th class="text-end min-w-100px">Potensial Revenue</th>
-                                                    <th class="text-end min-w-100px">Target Revenue</th>
-                                                    <th class="text-end min-w-100px">Prosentase</th>
 
                                                     <!-- <th class="text-end min-w-100px">Actions</th> -->
                                                 </tr>
@@ -159,57 +157,7 @@
                                             <!--end::Table head-->
                                             <!--begin::Table body-->
                                             <tbody class="text-gray-600 fw-semibold">
-                                                <?php
-                                                $no=1;
-                                                foreach ($rekap2 as $rekap) :
-                                                ?>
-                                                <tr>
-                                                <?php if ($rekap->flag == "0"): ?>
-                                                    <!-- <td><button class="btn-detail">+</button></td> -->
-                                                    <td><b><?php echo $rekap->ket ?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldolalu, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldosaatini, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldosampai, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->jmlpotensi, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_jmltarget, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</b></td>
-                                                    <!-- <td><?php echo $rekap->jnstrans ?></td> -->
-                                                <?php endif; ?>
-                                                </tr>
-                                                <tr>
-                                                <?php if ($rekap->flag == "1"): ?>
-                                                    <!-- <td></td> -->
-                                                    <td><?php echo $rekap->ket ?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldolalu, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldosaatini, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldosampai, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->jmlpotensi, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_jmltarget, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
-                                                    <!-- <td><?php echo $rekap->jnstrans ?></td> -->
-                                                    <?php $no++; ?>
-                                                <?php endif; ?>
-                                                </tr>
-                                               <?php endforeach; ?>
-                                               <!-- <?php
-                                                $no=1;
-                                                foreach($bpjs as $data):
-                                                ?>
-                                                <tr  class="detail-row" id="dtl_tbl">
-                                                <?php if ($rekap->flag == "0"): ?>
-                                                    <td><?php echo $no;?></td>
-                                                    <td><?php echo $data['lokasi'];?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($data['r_saldolalu'], 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($data['r_saldosaatini'], 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($data['r_saldosampai'], 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($data['jmlpotensi'], 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($data['r_jmltarget'], 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
-                                                    
-                                                <?php endif; 
-                                                $no++;?>
-                                                </tr>
-                                               <?php endforeach; ?> -->
+                                            
                                             </tbody>
                                             <!--end::Table body-->
                                         </table>
@@ -270,29 +218,11 @@
             </div>
         </div>
     </div>
+
     <?php
         $this->load->view('partials/script');
     ?>
-     <script>
-    $(document).ready(function(){
-        $('#dtl_tbl').each(function(){
-            $(this).hide()
-        })
-    });
-    </script>
-    <script>
-    $(document).ready(function(){
-    $('.btn-detail').click(function(){
-        $(this).closest('tr').next('.detail-row').toggle();
-        if($(this).text() == '+'){
-        $(this).text('-');
-        } else {
-        $(this).text('+');
-        }
-    });
-    });
-    </script>
-    
+	
 </body>
 <!--end::Body-->
 
