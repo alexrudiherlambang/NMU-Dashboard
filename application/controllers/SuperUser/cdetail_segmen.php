@@ -1,10 +1,10 @@
 <?php
 
-class cbiaya extends CI_Controller {
+class cdetail_segmen extends CI_Controller {
 
    function __construct() {
       parent::__construct();
-      $this->load->model('mbiaya');
+      $this->load->model('msegmen');
       
    }
 
@@ -12,10 +12,10 @@ class cbiaya extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vbiaya/vbiaya');
+      $this->load->view('content/vsuperuser/vdetail_segmen/vdetail_segmen');
    }
 
-   function biaya() {
+   function pendapatan_detail() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
@@ -23,19 +23,17 @@ class cbiaya extends CI_Controller {
       $tglakhir = $this->input->post('tglakhir');
       $nama = $this->session->userdata("nama");
       $lokasi = $this->input->post('lokasi');
-      $data['biaya'] = $this->mbiaya->mshow_all_biaya($tglawal,$tglakhir,$nama,$lokasi);
-      
+      $data['rekap2'] = $this->msegmen->mshow_all_detailsegmen($tglawal,$tglakhir,$nama,$lokasi);
       $data['lokasi'] = $lokasi;
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
-      $this->load->view('content/vsuperuser/vbiaya/vhasil_biaya',$data);
+      $this->load->view('content/vsuperuser/vdetail_segmen/vhasil_segmen_detail',$data);
    }
 
-   function grafik_biaya() {
+   function grafik_detail_segmen() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      
-      $this->load->view('content/vsuperuser/vbiaya/vgrafik_biaya');
+      $this->load->view('content/vsuperuser/vdetail_segmen/vgrafik_detail_segmen');
    }   
 }

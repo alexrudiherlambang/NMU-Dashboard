@@ -1,6 +1,6 @@
 <?php
 
-class cdetail_rekap extends CI_Controller {
+class cTT extends CI_Controller {
 
    function __construct() {
       parent::__construct();
@@ -12,10 +12,10 @@ class cdetail_rekap extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vdetail_rekap/vdetail_rekap');
+      $this->load->view('content/vsuperuser/vTT/vTT');
    }
 
-   function pendapatan_detail() {
+   function pendapatan() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
@@ -23,23 +23,30 @@ class cdetail_rekap extends CI_Controller {
       $tglakhir = $this->input->post('tglakhir');
       $nama = $this->session->userdata("nama");
       $lokasi = $this->input->post('lokasi');
-      $data['rekap2'] = $this->mrekap->mshow_all_rekap2($tglawal,$tglakhir,$nama,$lokasi);
+      $data['rekap'] = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama,$lokasi);
+      // $rekap = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama,$lokasi);
+      // foreach ($rekap as $r) {
+      //    $data 	= array(
+      //       'ket'			      => $r->ket,
+      //       'r_saldolalu'	   => $r->r_saldolalu,
+      //       'r_saldosaatini'	=> $r->r_saldosaatini,
+      //    );
+      //    print_r ($data);
+      //    die;
+
+      // $this->Pasienmodel->tambahdata($data);
+      // }
+
       $data['lokasi'] = $lokasi;
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
-      $this->load->view('content/vsuperuser/vdetail_rekap/vhasil_rekap_detail',$data);
+      $this->load->view('content/vsuperuser/vrekap/vhasil_rekap',$data);
    }
 
-   function grafik_pendapatan() {
+   function grafik_TT() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $tglawal = $this->input->post('tglawal');
-      $tglakhir = $this->input->post('tglakhir');
-      $nama = $this->session->userdata("nama");
-      $data['rekap'] = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama);
-      $data['tglawal'] = $tglawal;
-      $data['tglakhir'] = $tglakhir;
-      $this->load->view('content/vsuperuser/vdetail_rekap/vgrafik_rekap',$data);
+      $this->load->view('content/vsuperuser/vTT/vgrafik_TT');
    }   
 }

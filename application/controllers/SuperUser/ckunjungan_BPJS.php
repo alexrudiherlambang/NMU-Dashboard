@@ -1,6 +1,6 @@
 <?php
 
-class crekap extends CI_Controller {
+class ckunjungan_BPJS extends CI_Controller {
 
    function __construct() {
       parent::__construct();
@@ -12,7 +12,7 @@ class crekap extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vrekap/vrekap');
+      $this->load->view('content/vsuperuser/vkunjungan_BPJS/vkunjungan_BPJS');
    }
 
    function pendapatan() {
@@ -43,12 +43,11 @@ class crekap extends CI_Controller {
       $this->load->view('content/vsuperuser/vrekap/vhasil_rekap',$data);
    }
 
-   function grafik_pendapatan() {
+   function grafik_kunjungan_bpjs() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      // $data['rekap'] = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama);
       
-      $this->load->view('content/vsuperuser/vrekap/vgrafik_rekap');
+      $this->load->view('content/vsuperuser/vkunjungan_bpjs/vgrafik_kunjungan_bpjs');
    }   
 }

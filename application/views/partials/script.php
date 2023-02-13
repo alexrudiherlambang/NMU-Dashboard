@@ -30,6 +30,7 @@
 	<script src="<?php echo base_url(); ?>assets/js/custom/utilities/modals/create-app.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/custom/utilities/modals/new-target.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/custom/utilities/modals/users-search.js"></script>
+	
 	<!--end::Custom Javascript-->
 	<!--end::Javascript-->
 	

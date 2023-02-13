@@ -69,7 +69,7 @@
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <select class="form-control form-control-solid select2" name="lokasi">
+                                                        <select class="form-select form-select-solid select2" name="lokasi">
                                                             <option selected="selected">-</option>
                                                             <option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
                                                             <option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
@@ -146,8 +146,8 @@
                                                 <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                                     <th class="w-10px pe-5">No</th>
                                                     <th class="min-w-125px">Uraian</th>
-                                                    <th class="text-end min-w-100px">Realisasi yang Lalu</th>
-                                                    <th class="text-end min-w-100px">Revenue Bulan Ini</th>
+                                                    <th class="text-end min-w-200px">Realisasi yang Lalu</th>
+                                                    <th class="text-end min-w-150px">Revenue Bulan Ini</th>
                                                     <th class="text-end min-w-100px">Total Revenue</th>
                                                     <th class="text-end min-w-100px">Potensial Revenue</th>
                                                     <th class="text-end min-w-100px">Target Revenue</th>

@@ -77,6 +77,7 @@ $db['default'] = array(
 	'dsn'	=> '',
 	// 'hostname' => 'localhost',
 	'hostname' => '10.88.20.10',  // nmu Dashboard
+	// 'hostname' => 'localhost',  // localalex
 	'port'     => '3306',
 	'username' => 'alex',
 	'password' => '1',

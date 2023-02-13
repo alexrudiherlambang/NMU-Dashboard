@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Data Rekap Pendapatan</h1>
+										Data Hari Perawatan</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -59,18 +59,18 @@
                                 <!--begin::Card-->
                                 <div class="card">
                                     <!--begin::Card header-->
-                                    <div class="card-header border-0 pt-10">
+                                    <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
-                                        <div class="card-title">
+                                        <div class="card-title"><center>
                                             <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
-                                                <div class="row mb-8">
+                                                <div class="row mb-4">
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-4">
+                                                    <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
-                                                    <div class="col-xl-8 fv-row">
-                                                        <select class="form-control form-control-solid select2" name="jenis" >
-                                                            <option selected="selected">-</option>
+                                                    <div class="col-xl-5 fv-row">
+                                                        <select class="form-select form-select-solid select2" name="lokasi" >
+                                                            <option value="">K.P</option>
                                                             <option>RSG</option>
                                                             <option>RST</option>
                                                             <option>RSP</option>
@@ -79,14 +79,14 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="row mb-8">
+                                                <div class="row mb-4">
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-4">
+                                                    <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Tgl Awal</div>
                                                     </div>
                                                     <!--end::Col-->
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-8 fv-row">
+                                                    <div class="col-xl-5 fv-row">
                                                         <div class="position-relative d-flex align-items-center">
                                                             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                                             <span class="svg-icon position-absolute ms-4 mb-1 svg-icon-2">
@@ -97,19 +97,19 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo $tglawal;?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
                                                 </div>
-                                                <div class="row mb-8">
+                                                <div class="row mb-4">
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-4">
+                                                    <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Tgl Akhir</div>
                                                     </div>
                                                     <!--end::Col-->
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-8 fv-row">
+                                                    <div class="col-xl-5 fv-row">
                                                         <div class="position-relative d-flex align-items-center">
                                                             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                                             <span class="svg-icon position-absolute ms-4 mb-1 svg-icon-2">
@@ -120,7 +120,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo $tglakhir;?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo date('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -129,13 +129,140 @@
                                                     <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
                                                 </center>
                                             </form>
-                                        </div>
+                                        </center></div>
                                         <!--begin::Card title-->
                                     </div>
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
                                     <div class="card-body py-4">
-                                        
+                                        <!--begin::Table-->
+                                        <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                            <!--begin::Table head-->
+                                            <thead>
+                                                <!--begin::Table row-->
+                                                <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">HAPER yang Lalu</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">HAPER Bulan Ini</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total HAPER s/d saat ini</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial HAPER</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total HAPER</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target HAPER</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody class="text-gray-600 fw-semibold">
+                                                <tr>
+                                                    <td class="w-10px pe-5"><b>1</b></td>
+                                                    <td class="min-w-125px"><b>PRESIDENCE SUITE</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5"><b>2</b></td>
+                                                    <td class="min-w-125px"><b>VVIP</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5"><b>3</b></td>
+                                                    <td class="min-w-125px"><b>VIP</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5"><b>4</b></td>
+                                                    <td class="min-w-125px"><b>KELAS I</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5"><b>5</b></td>
+                                                    <td class="min-w-125px"><b>KELAS II</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5"><b>6</b></td>
+                                                    <td class="min-w-125px"><b>KELAS III</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5"><b>7</b></td>
+                                                    <td class="min-w-125px"><b>ICU/ICCU/HCU/PICU/NICU</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5"><b>8</b></td>
+                                                    <td class="min-w-125px"><b>KAMAR OPERASI</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr style="background-color: #6f53ab;">
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL HAPER RI</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <div style="text-align:left">Ket :<br>
+                                        <i>Potensial HAPER = Pasien RJ atau RI yang sudah close bill</i><br>
+                                        <i>Estimasi Total HAPER = Penjumlahan total HAPER saat ini dengan potensial HAPER</i><br>
+                                        <i>Prosentase = Total HAPER / Target HAPER</i><br></div>
+                                        <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->
                                 </div>

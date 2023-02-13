@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Detail Data Rekap Pendapatan</h1>
+										Grafik Kunjungan Per-Segmen</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -59,35 +59,34 @@
                                 <!--begin::Card-->
                                 <div class="card">
                                     <!--begin::Card header-->
-                                    <div class="card-body border-0 pt-10">
+                                    <div class="card-header border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/cdetail_rekap/pendapatan_detail" enctype="multipart/form-data">
-                                                <div class="row mb-4">
+                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
+                                                <div class="row mb-5">
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5">
+                                                    <div class="col-xl-4">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
-                                                    <div class="col-xl-5 fv-row">
-                                                        <select class="form-control form-control-solid select2" name="lokasi">
-                                                            <option selected="selected">-</option>
-                                                            <option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
-                                                            <option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
-                                                            <option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
-                                                            <option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
-                                                            <option <?php if ($lokasi == "RSMU") echo "selected"; ?>>RSMU</option>
-                                                            <option <?php if ($lokasi == "URJ") echo "selected"; ?>>URJ</option>
+                                                    <div class="col-xl-8 fv-row">
+                                                        <select class="form-select form-select-solid select2" name="lokasi" >
+                                                            <option value="">K.P</option>
+                                                            <option>RSG</option>
+                                                            <option>RST</option>
+                                                            <option>RSP</option>
+                                                            <option>RSMU</option>
+                                                            <option>URJ</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="row mb-4">
+                                                <div class="row mb-5">
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5">
+                                                    <div class="col-xl-4">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Tgl Awal</div>
                                                     </div>
                                                     <!--end::Col-->
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5 fv-row">
+                                                    <div class="col-xl-8 fv-row">
                                                         <div class="position-relative d-flex align-items-center">
                                                             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                                             <span class="svg-icon position-absolute ms-4 mb-1 svg-icon-2">
@@ -98,19 +97,19 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo $tglawal;?>" readonly/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
                                                 </div>
-                                                <div class="row mb-4">
+                                                <div class="row mb-5">
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5" id="tgl_akhir">
+                                                    <div class="col-xl-4">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Tgl Akhir</div>
                                                     </div>
                                                     <!--end::Col-->
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5 fv-row">
+                                                    <div class="col-xl-8 fv-row">
                                                         <div class="position-relative d-flex align-items-center">
                                                             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                                             <span class="svg-icon position-absolute ms-4 mb-1 svg-icon-2">
@@ -121,87 +120,43 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo $tglakhir;?>" readonly/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo date('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
                                                 </div>
-                                                <center>
-                                                    <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
-                                                </center>
+                                                <div class="row mb-5">
+                                                <!--begin::Col-->
+                                                <div class="col-xl-4">
+                                                    <div class="fs-6 fw-semibold mt-2 mb-3">Jenis Report</div>
+                                                </div>
+                                                    <div class="col-xl-8 fv-row">
+                                                        <select class="form-select form-select-solid select2" name="jenis" >
+                                                            <option>Pendapatan BPJS</option>
+                                                            <option>Pendapatan NON BPJS</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-12">
+                                                    <div class="col-xl-4">
+                                                        <button type="submit" name="submit" class="btn btn-sm btn-success">Tampilkan</button>
+                                                    </div>
+                                                </div>
                                             </form>
-                                            </center>
-                                        </div>
+                                        </center></div>
                                         <!--begin::Card title-->
+                                        <div class="card-toolbar">
+                                            <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                                            <!-- <canvas id="pieChart" width="500" height="250"></canvas><br> -->
+                                            <div id="chart_pendapatan_bpjs" style="width: 600px; height: 400px;"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
-                                    <div class="card-body border-0 pt-10">
+                                    <div class="card-body py-4">
                                         <!--begin::Table-->
-                                        <table class="table align-middle table-row-dashed fs-6 gy-5">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th class="w-10px pe-5">No</th>
-                                                    <th class="min-w-125px">Uraian</th>
-                                                    <th class="text-end min-w-100px">Realisasi yang Lalu</th>
-                                                    <th class="text-end min-w-100px">Revenue Bulan Ini</th>
-                                                    <th class="text-end min-w-100px">Total Revenue</th>
-                                                    <th class="text-end min-w-100px">Potensial Revenue</th>
-                                                    <th class="text-end min-w-100px">Target Revenue</th>
-                                                    <th class="text-end min-w-100px">Prosentase</th>
-
-                                                    <!-- <th class="text-end min-w-100px">Actions</th> -->
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody class="text-gray-600 fw-semibold">
-                                                <?php
-                                                foreach ($rekap2 as $rekap) :
-                                                ?>
-                                                <tr>
-                                                <?php if ($rekap->flag == "0"): ?>
-                                                    <td><button class="btn-detail">+</button></td>
-                                                    <td><b><?php echo $rekap->ket ?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldolalu, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldosaatini, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldosampai, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->jmlpotensi, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_jmltarget, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</b></td>
-                                                    <!-- <td><?php echo $rekap->jnstrans ?></td> -->
-                                                <?php endif; ?>
-                                                </tr>
-                                                <?php
-                                                $no=1;
-                                                foreach($bpjs as $data):
-                                                ?>
-                                                
-                                                <tr  class="detail-row" id="dtl_tbl">
-                                                <?php if ($rekap->flag == "0"): ?>
-                                                    <td><?php echo $no;?></td>
-                                                    <td><?php echo $data['lokasi'];?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($data['r_saldolalu'], 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($data['r_saldosaatini'], 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($data['r_saldosampai'], 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($data['jmlpotensi'], 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($data['r_jmltarget'], 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
-                                                    <!-- <td><?php echo $rekap->jnstrans ?></td> -->
-                                                <?php endif; 
-                                                $no++;?>
-                                                
-                                                </tr>
-                                               
-                                               <?php endforeach; ?>
-                                               <?php endforeach; ?>
-                                               
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
+                                            <canvas id="myChart" width="300" height="80"></canvas><br>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->
@@ -259,29 +214,81 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+            datasets: [{
+                label: 'Total Revenue',
+                data: [12, 19, 3, 5, 2, 3, 20, 10, 20, 13, 12, 11],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 3
+            }]
+        },
+        options: {
+        scales: {
+            xAxes: [{
+            gridLines: {
+                display: false
+            }
+            }],
+            yAxes: [{
+            gridLines: {
+                display: false
+            }
+            }]
+        },
+        legend: {
+            position: 'bottom'
+        }
+        }
+    });
+    // Menambahkan data baru
+    myChart.data.datasets[0].data.push(10);
+    myChart.update();
+    myChart.data.datasets.push({
+    label: 'Target Revenue',
+    data: [10, 11, 12, 11, 10, 9, 12, 10, 11, 13, 12, 11],
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 3
+    });
+    myChart.update();
+    </script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+    var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
+        ['BPJS',     11],
+        ['Eat',      2],
+        ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7]
+    ]);
+
+    var options = {
+        title: '',
+        is3D: true
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
+    chart.draw(data, options);
+    }
+    </script>
+
     <?php
         $this->load->view('partials/script');
     ?>
-     <script>
-    $(document).ready(function(){
-        $('#dtl_tbl').each(function(){
-            $(this).hide()
-        })
-    });
-    </script>
-    <script>
-    $(document).ready(function(){
-    $('.btn-detail').click(function(){
-        $(this).closest('tr').next('.detail-row').toggle();
-        if($(this).text() == '+'){
-        $(this).text('-');
-        } else {
-        $(this).text('+');
-        }
-    });
-    });
-    </script>
-    
+	
 </body>
 <!--end::Body-->
 

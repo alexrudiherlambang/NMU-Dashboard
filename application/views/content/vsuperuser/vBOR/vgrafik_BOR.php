@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Data Rekap Pendapatan</h1>
+										Grafik Bed Occupation Rate</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -59,16 +59,16 @@
                                 <!--begin::Card-->
                                 <div class="card">
                                     <!--begin::Card header-->
-                                    <div class="card-body border-0 pt-10">
+                                    <div class="card-header border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
                                             <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
-                                                <div class="row mb-4">
+                                                <div class="row mb-5">
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5">
+                                                    <div class="col-xl-4">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
-                                                    <div class="col-xl-5 fv-row">
+                                                    <div class="col-xl-8 fv-row">
                                                         <select class="form-select form-select-solid select2" name="lokasi" >
                                                             <option value="">K.P</option>
                                                             <option>RSG</option>
@@ -79,14 +79,14 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="row mb-4">
+                                                <div class="row mb-5">
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5">
+                                                    <div class="col-xl-4">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Tgl Awal</div>
                                                     </div>
                                                     <!--end::Col-->
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5 fv-row">
+                                                    <div class="col-xl-8 fv-row">
                                                         <div class="position-relative d-flex align-items-center">
                                                             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                                             <span class="svg-icon position-absolute ms-4 mb-1 svg-icon-2">
@@ -102,14 +102,14 @@
                                                     </div>
                                                     <!--begin::Col-->
                                                 </div>
-                                                <div class="row mb-4">
+                                                <div class="row mb-5">
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5">
+                                                    <div class="col-xl-4">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Tgl Akhir</div>
                                                     </div>
                                                     <!--end::Col-->
                                                     <!--begin::Col-->
-                                                    <div class="col-xl-5 fv-row">
+                                                    <div class="col-xl-8 fv-row">
                                                         <div class="position-relative d-flex align-items-center">
                                                             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                                             <span class="svg-icon position-absolute ms-4 mb-1 svg-icon-2">
@@ -125,100 +125,38 @@
                                                     </div>
                                                     <!--begin::Col-->
                                                 </div>
-                                                <center>
-                                                    <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
-                                                </center>
+                                                <div class="row mb-5">
+                                                <!--begin::Col-->
+                                                <div class="col-xl-4">
+                                                    <div class="fs-6 fw-semibold mt-2 mb-3">Jenis Report</div>
+                                                </div>
+                                                    <div class="col-xl-8 fv-row">
+                                                        <select class="form-select form-select-solid select2" name="jenis" >
+                                                            <option>Pendapatan BPJS</option>
+                                                            <option>Pendapatan NON BPJS</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-12">
+                                                    <div class="col-xl-4">
+                                                        <button type="submit" name="submit" class="btn btn-sm btn-success">Tampilkan</button>
+                                                    </div>
+                                                </div>
                                             </form>
                                         </center></div>
                                         <!--begin::Card title-->
+                                        <div class="card-toolbar">
+                                            <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                                            <!-- <canvas id="pieChart" width="500" height="250"></canvas><br> -->
+                                            <div id="chart_pendapatan_bpjs" style="width: 600px; height: 400px;"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
                                     <div class="card-body py-4">
-                                        <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
                                         <!--begin::Table-->
-                                        <table class="table align-middle table-row-dashed fs-6 gy-5">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue yang Lalu</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue Bulan Ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Revenue</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Revenue</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Revenue</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Revenue</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody class="text-gray-600 fw-semibold">
-                                                <tr>
-                                                    <td class="w-10px pe-5">1</td>
-                                                    <td class="min-w-125px">BPJS</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">2</td>
-                                                    <td class="min-w-125px">NON BPJS</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">3</td>
-                                                    <td class="min-w-125px">USAHA LAIN</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">4</td>
-                                                    <td class="min-w-125px">DILUAR USAHA</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr style="background-color: #6f53ab;">
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <div style="text-align:left">Ket :<br>
-                                        <i>Potensial Revenue = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
-                                        <i>Estimasi Total Revenue = Penjumlahan total revenue saat ini dengan potensial revenue</i><br>
-                                        <i>Prosentase = Total Revenue / Target Revenue</i><br></div>
+                                            <canvas id="myChart" width="300" height="80"></canvas><br>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->
@@ -276,6 +214,76 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+            datasets: [{
+                label: 'Total Revenue',
+                data: [12, 19, 3, 5, 2, 3, 20, 10, 20, 13, 12, 11],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 3
+            }]
+        },
+        options: {
+        scales: {
+            xAxes: [{
+            gridLines: {
+                display: false
+            }
+            }],
+            yAxes: [{
+            gridLines: {
+                display: false
+            }
+            }]
+        },
+        legend: {
+            position: 'bottom'
+        }
+        }
+    });
+    // Menambahkan data baru
+    myChart.data.datasets[0].data.push(10);
+    myChart.update();
+    myChart.data.datasets.push({
+    label: 'Target Revenue',
+    data: [10, 11, 12, 11, 10, 9, 12, 10, 11, 13, 12, 11],
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 3
+    });
+    myChart.update();
+    </script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+    var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
+        ['BPJS',     11],
+        ['Eat',      2],
+        ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7]
+    ]);
+
+    var options = {
+        title: '',
+        is3D: true
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
+    chart.draw(data, options);
+    }
+    </script>
 
     <?php
         $this->load->view('partials/script');

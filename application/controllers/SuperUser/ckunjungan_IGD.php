@@ -1,6 +1,6 @@
 <?php
 
-class crekap extends CI_Controller {
+class ckunjungan_IGD extends CI_Controller {
 
    function __construct() {
       parent::__construct();
@@ -12,7 +12,7 @@ class crekap extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vrekap/vrekap');
+      $this->load->view('content/vsuperuser/vkunjungan_IGD/vkunjungan_IGD');
    }
 
    function pendapatan() {
@@ -47,8 +47,12 @@ class crekap extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      // $data['rekap'] = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama);
-      
-      $this->load->view('content/vsuperuser/vrekap/vgrafik_rekap');
+      $tglawal = $this->input->post('tglawal');
+      $tglakhir = $this->input->post('tglakhir');
+      $nama = $this->session->userdata("nama");
+      $data['rekap'] = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama);
+      $data['tglawal'] = $tglawal;
+      $data['tglakhir'] = $tglakhir;
+      $this->load->view('content/vsuperuser/vrekap/vgrafik_rekap',$data);
    }   
 }

@@ -1,10 +1,10 @@
 <?php
 
-class crekap extends CI_Controller {
+class claba_rugi extends CI_Controller {
 
    function __construct() {
       parent::__construct();
-      $this->load->model('mrekap');
+      $this->load->model('mlaba_rugi');
       
    }
 
@@ -12,7 +12,7 @@ class crekap extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vrekap/vrekap');
+      $this->load->view('content/vsuperuser/vlaba_rugi/vlaba_rugi');
    }
 
    function pendapatan() {
@@ -23,7 +23,7 @@ class crekap extends CI_Controller {
       $tglakhir = $this->input->post('tglakhir');
       $nama = $this->session->userdata("nama");
       $lokasi = $this->input->post('lokasi');
-      $data['rekap'] = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama,$lokasi);
+      $data['rekap'] = $this->mlaba_rugi->mshow_all_laba_rugi($tglawal,$tglakhir,$nama,$lokasi);
       // $rekap = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama,$lokasi);
       // foreach ($rekap as $r) {
       //    $data 	= array(
@@ -43,12 +43,10 @@ class crekap extends CI_Controller {
       $this->load->view('content/vsuperuser/vrekap/vhasil_rekap',$data);
    }
 
-   function grafik_pendapatan() {
+   function grafik_laba_rugi() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      // $data['rekap'] = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama);
-      
-      $this->load->view('content/vsuperuser/vrekap/vgrafik_rekap');
+      $this->load->view('content/vsuperuser/vlaba_rugi/vgrafik_laba_rugi');
    }   
 }

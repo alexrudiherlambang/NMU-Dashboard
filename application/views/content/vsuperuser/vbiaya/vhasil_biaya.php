@@ -69,7 +69,7 @@
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <select class="form-control form-control-solid select2" name="lokasi">
+                                                        <select class="form-select form-select-solid select2" name="lokasi">
                                                             <option selected="selected">-</option>
                                                             <option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
                                                             <option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
@@ -145,15 +145,13 @@
                                                 <!--begin::Table row-->
                                                 <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                                     <!-- <th class="w-10px pe-5">No</th> -->
-                                                    <th class="min-w-125px">Tanggal</th>
-                                                    <th class="min-w-125px">Unit</th>
-                                                    <th class="min-w-125px">Uraian</th>
+                                                    <th class="min-w-125px">Keterangan</th>
                                                     <th class="text-end min-w-100px">Realisasi yang Lalu</th>
                                                     <th class="text-end min-w-100px">Revenue Bulan Ini</th>
-                                                    <th class="text-end min-w-100px">Potensial Revenue1</th>
-                                                    <th class="text-end min-w-100px">Potensial Revenue2</th>
                                                     <th class="text-end min-w-100px">Total Revenue</th>
-
+                                                    <th class="text-end min-w-100px">Potensial Revenue</th>
+                                                    <th class="text-end min-w-100px">Target Revenue</th>
+                                                    <th class="text-end min-w-100px">Prosentase</th>
                                                     <!-- <th class="text-end min-w-100px">Actions</th> -->
                                                 </tr>
                                                 <!--end::Table row-->
@@ -167,15 +165,13 @@
                                             foreach ($biaya as $biaya) :
                                                ?>
                                                <tr>
-                                                    <td><b><?php echo $biaya->tanggal ?></b></td>
-                                                    <td><b><?php echo $biaya->lokasi ?></b></td>
                                                     <td><b><?php echo $biaya->ket ?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldolalu, 0, ',', '.')?></b></td>
-                                                    <!-- <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldosaatini, 0, ',', '.')?></b></td> -->
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldosampai, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldopotensi1, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldopotensi1, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->jmltarget, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->r_saldolalu, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->r_saldosaatini, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->r_saldosampai, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->jmlpotensi, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->r_jmltarget, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php $prosentase=$biaya->jmlprosen*100; echo $prosentase;?>%</b></td>
                                                </tr>
                                                <?php
                                                $no++;

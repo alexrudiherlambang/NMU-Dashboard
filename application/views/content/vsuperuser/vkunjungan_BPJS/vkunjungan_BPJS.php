@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Detail Data Rekap Pendapatan</h1>
+										Data Kunjungan BPJS & NON BPJS</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -62,14 +62,14 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/cdetail_rekap/pendapatan_detail" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <select class="form-control form-control-solid select2" name="lokasi" >
+                                                        <select class="form-select form-select-solid select2" name="lokasi" >
                                                             <option value="">K.P</option>
                                                             <option>RSG</option>
                                                             <option>RST</option>
@@ -140,25 +140,62 @@
                                             <!--begin::Table head-->
                                             <thead>
                                                 <!--begin::Table row-->
-                                                <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th class="w-10px pe-5">No</th>
-                                                    <th class="min-w-125px">Uraian</th>
-                                                    <th class="text-end min-w-100px">Realisasi yang Lalu</th>
-                                                    <th class="text-end min-w-100px">Revenue Bulan Ini</th>
-                                                    <th class="text-end min-w-100px">Potensial Revenue</th>
-                                                    <th class="text-end min-w-100px">Total Revenue</th>
-
-                                                    <!-- <th class="text-end min-w-100px">Actions</th> -->
+                                                <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Bulan Ini</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Kunjungan</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
                                                 </tr>
                                                 <!--end::Table row-->
                                             </thead>
                                             <!--end::Table head-->
                                             <!--begin::Table body-->
                                             <tbody class="text-gray-600 fw-semibold">
-                                            
+                                            <tr>
+                                                    <td class="w-10px pe-5">1</td>
+                                                    <td class="min-w-125px">BPJS</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5">2</td>
+                                                    <td class="min-w-125px">NON BPJS</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                </tr>
+                                                <tr style="background-color: #6f53ab;">
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
                                             </tbody>
                                             <!--end::Table body-->
                                         </table>
+                                        <div style="text-align:left">Ket :<br>
+                                        <i>Potensial Kunjungan = Pasien RJ atau RI yang sudah close bill</i><br>
+                                        <i>Estimasi Total Kunjungan = Penjumlahan total kunjungan saat ini dengan potensial kunjungan</i><br>
+                                        <i>Prosentase = Total Kunjungan / Target Kunjungan</i><br></div>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->
