@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Grafik Rekap Beban</h1>
+										Grafik Rekap Pendapatan BPJS / Non BPJS</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -136,8 +136,9 @@
 																</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="jenis" >
-																			<option>Pendapatan BPJS</option>
-																			<option>Pendapatan NON BPJS</option>
+																			<?php foreach ($jenis as $jenis):?>
+																			<option><?php echo $jenis->ket?></option>
+																			<?php endforeach ?>
 																		</select>
 																	</div>
 																</div>
@@ -301,7 +302,9 @@
         width: 340,
         height: 300,
         is3D: true,
-        responsive: true
+        responsive: true,
+		legend: { position: 'none' },
+		pieSliceText: 'percentage'
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));

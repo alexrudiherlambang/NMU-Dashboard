@@ -139,7 +139,8 @@
                                     <div class="card-body border-0 pt-10">
                                         <!-- <canvas id="myChart" width="300" height="80"></canvas><br> -->
                                         <!--begin::Table-->
-                                        <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                        <div class="table-responsive">
+                                            <table class="table align-middle gs-0 gy-4">
                                             <!--begin::Table head-->
                                             <thead>
                                                 <!--begin::Table row-->
@@ -179,7 +180,8 @@
                                             ?>
                                             </tbody>
                                             <!--end::Table body-->
-                                        </table>
+                                            </table>
+                                        </div>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->

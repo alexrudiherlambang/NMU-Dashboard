@@ -137,157 +137,159 @@
                                     <div class="card-body py-4">
                                         <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
                                         <!--begin::Table-->
-                                        <table class="table align-middle table-row-dashed fs-6 gy-5">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban yang Lalu</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban Bulan Ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Beban</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Beban</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Beban</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Beban</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody class="text-gray-600 fw-semibold">
-                                                <tr>
-                                                    <td class="w-10px pe-5"><b>1</b></td>
-                                                    <td class="min-w-125px"><b>Beban Pegawai</b></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>Beban Gaji Non-IJD</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>Beban Gaji IJD</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><b>2</b></td>
-                                                    <td class="min-w-125px"><b>Beban Material</b></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>Beban Material Obat</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>Beban Material Non-Obat</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><b>3</b></td>
-                                                    <td class="min-w-125px"><b>Beban Kontrak</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><b>4</b></td>
-                                                    <td class="min-w-125px"><b>Beban Administrasi & Umum</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><b>5</b></td>
-                                                    <td class="min-w-125px"><b>Beban Depresiasi</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                </tr>
-                                                <tr style="background-color: #6f53ab;">
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="min-w-150px"><b>TOTAL BEBAN USAHA</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><b>6</b></td>
-                                                    <td class="min-w-125px"><b>Beban Luar Usaha</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                </tr>
-                                                <tr style="background-color: #6f53ab;">
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL BEBAN</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
+                                        <div class="table-responsive">
+                                            <table class="table align-middle gs-0 gy-4">
+                                                <!--begin::Table head-->
+                                                <thead>
+                                                    <!--begin::Table row-->
+                                                    <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban yang Lalu</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban Bulan Ini</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Beban</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Beban</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Beban</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Beban</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
+                                                    </tr>
+                                                    <!--end::Table row-->
+                                                </thead>
+                                                <!--end::Table head-->
+                                                <!--begin::Table body-->
+                                                <tbody class="text-gray-600 fw-semibold">
+                                                    <tr>
+                                                        <td class="w-10px pe-5"><b>1</b></td>
+                                                        <td class="min-w-125px"><b>Beban Pegawai</b></td>
+                                                        <td class="text-end min-w-100px"></td>
+                                                        <td class="text-end min-w-100px"></td>
+                                                        <td class="text-end min-w-100px"></td>
+                                                        <td class="text-end min-w-100px"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-10px pe-5"><i>-</i></td>
+                                                        <td class="min-w-125px"><i>Beban Gaji Non-IJD</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-10px pe-5"><i>-</i></td>
+                                                        <td class="min-w-125px"><i>Beban Gaji IJD</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-10px pe-5"><b>2</b></td>
+                                                        <td class="min-w-125px"><b>Beban Material</b></td>
+                                                        <td class="text-end min-w-100px"></td>
+                                                        <td class="text-end min-w-100px"></td>
+                                                        <td class="text-end min-w-100px"></td>
+                                                        <td class="text-end min-w-100px"></td>
+                                                        <td class="text-end min-w-100px"></td>
+                                                        <td class="text-end min-w-100px"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-10px pe-5"><i>-</i></td>
+                                                        <td class="min-w-125px"><i>Beban Material Obat</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-10px pe-5"><i>-</i></td>
+                                                        <td class="min-w-125px"><i>Beban Material Non-Obat</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-10px pe-5"><b>3</b></td>
+                                                        <td class="min-w-125px"><b>Beban Kontrak</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-10px pe-5"><b>4</b></td>
+                                                        <td class="min-w-125px"><b>Beban Administrasi & Umum</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-10px pe-5"><b>5</b></td>
+                                                        <td class="min-w-125px"><b>Beban Depresiasi</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                    <tr style="background-color: #6f53ab;">
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="min-w-150px"><b>TOTAL BEBAN USAHA</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-10px pe-5"><b>6</b></td>
+                                                        <td class="min-w-125px"><b>Beban Luar Usaha</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                        <td class="text-end min-w-100px"><i>0</i></td>
+                                                        <td class="text-end min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                    <tr style="background-color: #6f53ab;">
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL BEBAN</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                </tbody>
+                                                <!--end::Table body-->
+                                            </table>
+                                        </div>
                                         <div style="text-align:left">Ket :<br>
                                         <i>Potensial Beban = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
                                         <i>Estimasi Total Beban = Penjumlahan total beban saat ini dengan potensial beban</i><br>

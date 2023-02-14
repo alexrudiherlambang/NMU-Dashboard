@@ -23,20 +23,10 @@ class crekap extends CI_Controller {
       $tglakhir = $this->input->post('tglakhir');
       $nama = $this->session->userdata("nama");
       $lokasi = $this->input->post('lokasi');
-      $data['rekap'] = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama,$lokasi);
-      // $rekap = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama,$lokasi);
-      // foreach ($rekap as $r) {
-      //    $data 	= array(
-      //       'ket'			      => $r->ket,
-      //       'r_saldolalu'	   => $r->r_saldolalu,
-      //       'r_saldosaatini'	=> $r->r_saldosaatini,
-      //    );
-      //    print_r ($data);
-      //    die;
-
-      // $this->Pasienmodel->tambahdata($data);
-      // }
-
+      
+      //eksekusi prosedure & Call Tabel Container
+      $data['rekap'] = $this->mrekap->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);    
+      
       $data['lokasi'] = $lokasi;
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
@@ -47,8 +37,23 @@ class crekap extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      // $data['rekap'] = $this->mrekap->mshow_all_rekap($tglawal,$tglakhir,$nama);
+      $nama = $this->session->userdata("nama");
+      $data['jenis'] = $this->mrekap->mshow_all_jenis($nama);   
+      $this->load->view('content/vsuperuser/vrekap/vgrafik_rekap',$data);
+   }
+   
+   function grafik_hasil_pendapatan() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $tglawal = $this->input->post('tglawal');
+      $tglakhir = $this->input->post('tglakhir');
+      $lokasi = $this->input->post('lokasi');
+      $jenis = $this->input->post('jenis');
       
-      $this->load->view('content/vsuperuser/vrekap/vgrafik_rekap');
-   }   
+      $data['grafik'] = $this->mrekap->mshow_all_jenis($nama);
+      print_r ($data);
+      die;
+      $this->load->view('content/vsuperuser/vrekap/vgrafik_hasil_rekap',$data);
+   }
 }

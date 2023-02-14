@@ -137,7 +137,8 @@
                                     <div class="card-body py-4">
                                         <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
                                         <!--begin::Table-->
-                                        <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                        <div class="table-responsive">
+                                            <table class="table align-middle gs-0 gy-4">
                                             <!--begin::Table head-->
                                             <thead>
                                                 <!--begin::Table row-->
@@ -224,7 +225,8 @@
                                                 </tr>
                                             </tbody>
                                             <!--end::Table body-->
-                                        </table>
+                                            </table>
+                                        </div>
                                         <div style="text-align:left">Ket :<br>
                                         <i>Potensial Realisasi = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
                                         <i>Estimasi Total Realisasi = Penjumlahan total realisasi saat ini dengan potensial realisasi</i><br>
