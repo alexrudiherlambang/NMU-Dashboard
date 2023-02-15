@@ -4,7 +4,7 @@ class cdetail_revenue extends CI_Controller {
 
    function __construct() {
       parent::__construct();
-      $this->load->model('mrekap');
+      $this->load->model('mdetail_revenue');
       
    }
 
@@ -23,7 +23,7 @@ class cdetail_revenue extends CI_Controller {
       $tglakhir = $this->input->post('tglakhir');
       $nama = $this->session->userdata("nama");
       $lokasi = $this->input->post('lokasi');
-      $data['rekap2'] = $this->mrekap->mshow_all_rekap2($tglawal,$tglakhir,$nama,$lokasi);
+      $data['rekap'] = $this->mdetail_revenue->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);
       $data['lokasi'] = $lokasi;
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;

@@ -176,8 +176,8 @@
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</b></td>
                                                     <?php endif; ?>
-                                                    </tr>
-                                                    <tr>
+                                                </tr>
+                                                <tr>
                                                     <?php if ($rekap->flag == "0"): ?>
                                                         <td><?php echo $no ?></td>
                                                         <td><?php echo $rekap->ket ?></td>

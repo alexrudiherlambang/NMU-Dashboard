@@ -65,7 +65,7 @@
 												<!--begin::Card-->
 												<div class="card card-md-stretch me-xl-3 mb-md-0 mb-6">
 													<!--begin::Body-->
-													<div class="card-body p-10 p-lg-15">
+													<div class="card-body">
 															<form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/grafik_hasil_pendapatan" enctype="multipart/form-data">
 																<div class="row mb-5">
 																	<!--begin::Col-->
@@ -159,7 +159,7 @@
 												<!--begin::Card-->
 												<div class="card card-md-stretch">
 													<!--begin::Body-->
-													<div class="card-body pp-10 p-lg-15">
+													<div class="card-body">
 														<!--begin::Header-->
 														<div class="d-flex flex-stack">
 															<div id="chart_pendapatan_bpjs"></div>
@@ -176,7 +176,7 @@
 										<!--begin::Products Documentations-->
 										<div class="card mb-1">
 											<!--begin::Card body-->
-											<div class="card-body p-10 p-lg-15">
+											<div class="card-body">
 											<canvas id="myChart" width="300" height="100"></canvas><br>
 											</div>
 											<!--end::Card body-->
@@ -246,7 +246,7 @@
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
             datasets: [{
                 label: 'Total Revenue',
-                data: [12, 19, 3, 5, 2, 3, 20, 10, 20, 13, 12, 11],
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 3
@@ -276,7 +276,7 @@
     myChart.update();
     myChart.data.datasets.push({
     label: 'Target Revenue',
-    data: [10, 11, 12, 11, 10, 9, 12, 10, 11, 13, 12, 11],
+    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     backgroundColor: 'rgba(54, 162, 235, 0.2)',
     borderColor: 'rgba(54, 162, 235, 1)',
     borderWidth: 3
@@ -291,11 +291,7 @@
 
     function drawChart() {
     var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
-        ['BPJS',     11],
-        ['Eat',      2],
-        ['Commute',  2],
-        ['Watch TV', 2],
-        ['Sleep',    7]
+        ['Tanggal',     1]
     ]);
 
     var options = {

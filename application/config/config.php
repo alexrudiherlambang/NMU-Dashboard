@@ -23,9 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-// $config['base_url'] = 'http://10.88.10.84/NMUkontrak/';
+$config['base_url'] = 'http://10.88.10.19/NMU-Dashboard/';
 // $config['base_url'] = 'http://localhost/NMU-Dashboard/';
-$config['base_url'] = 'http://10.88.255.138/NMU-Dashboard/';
+// $config['base_url'] = 'http://10.88.255.138/NMU-Dashboard/';
 
 /*
 |--------------------------------------------------------------------------
