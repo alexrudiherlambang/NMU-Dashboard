@@ -159,15 +159,20 @@
 											<div class="col-md-6">
 												<!--begin::Card-->
 												<div class="card card-md-stretch">
-													<!--begin::Body-->
-													<div class="card-body">
-														<!--begin::Header-->
-														<div class="d-flex flex-stack">
-															<div id="chart_pendapatan_bpjs"></div>
-														</div>
-														<!--end::Header-->
+													<div class="table-responsive">
+														<table class="table align-middle gs-0 gy-4"> 
+															<tbody class="text-gray-600 fw-semibold">
+																<tr>
+																	<td class="text-end min-w-50px"></td>
+																	<td>
+																		<div class="d-flex flex-stack">
+																			<div id="chart_pendapatan_bpjs"></div>
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
 													</div>
-													<!--end::Body-->
 												</div>
 												<!--end::Card-->
 											</div>
@@ -177,8 +182,18 @@
 										<!--begin::Products Documentations-->
 										<div class="card mb-1">
 											<!--begin::Card body-->
-											<div class="card-body">
-											<canvas id="myChart" width="300" height="100"></canvas><br>
+											<div class="table-responsive">
+												<table class="table align-middle gs-0 gy-4"> 
+													<tbody class="text-gray-600 fw-semibold">
+														<tr>
+															<td>
+															<div class="card-body">
+																<b>(Dalam Juta)</b><br><br>
+																<canvas id="myChart" width="750" height="200"></canvas><br>
+															</div>
+														</tr>
+													</tbody>
+												</table>
 											</div>
 											<!--end::Card body-->
 										</div>
@@ -267,7 +282,7 @@
 			ticks: {
 				// Menentukan format currency
 				callback: function(value, index, values) {
-					return 'Rp ' + value.toLocaleString('id-ID');
+					return value.toLocaleString('id-ID');
 				}
 			}
             }]
@@ -283,7 +298,7 @@
                     if (label) {
                         label += ': ';
                     }
-                    label += 'Rp ' + tooltipItem.yLabel.toLocaleString('id-ID');
+                    label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
                     return label;
                 }
             }
@@ -311,7 +326,7 @@
     function drawChart() {
     var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
 		<?php foreach ($pie as $pie) :?>
-		['<?php echo date('d-m-Y', strtotime($pie->tanggal)); ?>',<?php echo $pie->total_rsaldosampai; ?>],
+		['<?php echo date('d-M', strtotime($pie->tanggal)); ?>',<?php echo number_format($pie->total_rsaldosampai/1000000, 0, ',', '.'); ?>],
 		<?php endforeach;?>
     ]);
 

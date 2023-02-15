@@ -102,7 +102,7 @@
                                                     </div>
                                                     <!--begin::Col-->
                                                 </div>
-                                                <div class="row mb-4">
+                                                <div class="row mb-8">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Tgl Akhir</div>
@@ -126,7 +126,7 @@
                                                     <!--begin::Col-->
                                                 </div>
                                                 <center>
-                                                    <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
+                                                    <button type="submit" name="submit" class="btn btn-sm btn-success">Tampilkan</button>
                                                 </center>
                                             </form>
                                         </center></div>
@@ -142,7 +142,7 @@
                                                     <!--begin::Table head-->
                                                     <thead>
                                                         <!--begin::Table row-->
-                                                        <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                        <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                                             <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
                                                             <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
                                                             <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue yang Lalu</th>
@@ -202,7 +202,7 @@
                                                             <td class="text-end min-w-100px">0</td>
                                                             <td class="text-end min-w-100px">0</td>
                                                         </tr>
-                                                        <tr style="background-color: #6f53ab;">
+                                                        <tr style="background-color: #000080;">
                                                             <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL</b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>

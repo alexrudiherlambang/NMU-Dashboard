@@ -51,7 +51,84 @@
 							<!--end::Toolbar container-->
 						</div>
 						<!--end::Toolbar-->
-                        
+						<!--begin::Modal-->
+                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Data User</h4>
+                                </div>
+                                <div class="modal-body">
+                                <form action="<?php echo base_url("owner/datauser/tambah") ?>" method="post" class="form-horizontal form-label-left">
+                                    <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">ID User</label>
+                                    <div class="col-md-2 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" id="id_user_isi" name="id_user_isi" value="<?php echo $kode ?>" readonly="readonly" required="required">
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama <span class="required">*</span></label>
+                                    <div class="col-md-4 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" id="nama_isi" name="nama_isi" placeholder="Nama Lengkap" required="required">
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Jenis Kelamin <span class="required">*</span></label>
+                                    <div class="col-md-4 col-sm-9 col-xs-12">
+                                        <select class="form-control" id="jenis_kelamin_isi" name="jenis_kelamin_isi" required="required">
+                                        <option>--Pilih--</option>
+                                        <option>Laki - laki</option>
+                                        <option>Perempuan</option>
+                                        </select>
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Alamat <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-9 col-xs-12">
+                                        <textarea class="form-control" rows="3" id="alamat_isi" name="alamat_isi" placeholder="Alamat Lengkap" required="required"></textarea>
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Jabatan <span class="required">*</span></label>
+                                    <div class="col-md-4 col-sm-9 col-xs-12">
+                                        <select class="form-control" id="jabatan_isi" name="jabatan_isi" required="required">
+                                        <option>--Pilih--</option>
+                                        <option>Kasir</option>
+                                        <option>Admin</option>
+                                        </select>
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Username <span class="required">*</span></label>
+                                    <div class="col-md-4 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" id="username_isi" name="username_isi" placeholder="Username" required="required">
+                                        <p id="pesan"></p>
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Password <span class="required">*</span></label>
+                                    <div class="col-md-4 col-sm-9 col-xs-12">
+                                        <input type="password" class="form-control" id="password_isi" name="password_isi" placeholder="Password" required="required">
+                                    </div>
+                                    </div>
+                                    <div class="ln_solid"></div>
+                                    <div class="form-group">
+                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="reset" class="btn btn-primary">Reset</button>
+                                        <button type="submit" id="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!--end::Modal-->
 						<!--begin::Content-->
 						<div id="kt_app_content" class="app-content flex-column-fluid">
                             <!--begin::Content container-->
@@ -102,7 +179,7 @@
                                                     </div>
                                                     <!--begin::Col-->
                                                 </div>
-                                                <div class="row mb-4">
+                                                <div class="row mb-8">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Tgl Akhir</div>
@@ -126,7 +203,7 @@
                                                     <!--begin::Col-->
                                                 </div>
                                                 <center>
-                                                    <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
+                                                    <button type="submit" name="submit" class="btn btn-sm btn-success">Tampilkan</button>
                                                 </center>
                                             </form>
                                             </center>
@@ -136,68 +213,78 @@
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
                                     <div class="card-body border-0 pt-10">
-                                        <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
                                         <!--begin::Table-->
                                         <div class="table-responsive">
-                                            <table class="table align-middle gs-0 gy-4">
-                                                <!--begin::Table head-->
-                                                <thead>
-                                                    <!--begin::Table row-->
-                                                    <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue yang Lalu</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue Bulan Ini</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Revenue s/d Saat Ini</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Revenue</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Revenue</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Revenue</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
+                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/export_xls">
+                                                <button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
+                                                <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
+                                                <table class="table align-middle gs-0 gy-4">
+                                                    <!--begin::Table head-->
+                                                    <thead>
+                                                        <!--begin::Table row-->
+                                                        <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">
+                                                                All<input type="checkbox" id="CheckAll">
+                                                            </th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue yang Lalu</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue Bulan Ini</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Revenue s/d Saat Ini</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Revenue</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Revenue</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Revenue</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
+                                                        </tr>
+                                                        <!--end::Table row-->
+                                                    </thead>
+                                                    <!--end::Table head-->
+                                                    <!--begin::Table body-->
+                                                    <tbody class="text-gray-600 fw-semibold">
+                                                    <?php
+                                                    $no = 1;
+                                                    $status = "OK";
+                                                    foreach ($rekap as $rekap) :
+                                                    ?>
+                                                    <tr style="background-color: #000080;">
+                                                        <?php if ($rekap->flag == "1"): ?>
+                                                            <td style="color: #ffffff; vertical-align: middle;"></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;"></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;"><b><?php echo $rekap->ket ?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</b></td>
+                                                        <?php endif; ?>
                                                     </tr>
-                                                    <!--end::Table row-->
-                                                </thead>
-                                                <!--end::Table head-->
-                                                <!--begin::Table body-->
-                                                <tbody class="text-gray-600 fw-semibold">
-                                                <?php
-                                                $no = 1;
-                                                $status = "OK";
-                                                foreach ($rekap as $rekap) :
-                                                ?>
-                                                <tr style="background-color: #6f53ab;">
-                                                    <?php if ($rekap->flag == "1"): ?>
-                                                        <td style="color: #ffffff; vertical-align: middle;"></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;"><b><?php echo $rekap->ket ?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</b></td>
-                                                    <?php endif; ?>
-                                                </tr>
-                                                <tr>
-                                                    <?php if ($rekap->flag == "0"): ?>
-                                                        <td><?php echo $no ?></td>
-                                                        <td><?php echo $rekap->ket ?></td>
-                                                        <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></td>
-                                                        <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></td>
-                                                        <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></td>
-                                                        <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></td>
-                                                        <td class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
-                                                        <td class="text-end min-w-100px"><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></td>
-                                                        <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
-                                                        <!-- <td><?php echo $rekap->jnstrans ?></td> -->
-                                                    <?php endif; ?>
-                                                </tr>
-                                                <?php
-                                                $no++;
-                                                endforeach;
-                                                ?>
-                                                </tbody>
-                                                <!--end::Table body-->
-                                            </table>
+                                                    <tr>
+                                                        <?php if ($rekap->flag == "0"): ?>
+                                                            <td>
+                                                                <input type="checkbox" id="Check" value="<?php echo $rekap->ket ?>" name="pilihan[]">
+                                                            </td>
+                                                            <td><?php echo $no ?></td>
+                                                            <td><?php echo $rekap->ket ?></td>
+                                                            <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td class="text-end min-w-100px"><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-end min-w-100px"><?php $prosentase=$rekap->rsaldosampai/$rekap->jmltarget; echo number_format($prosentase, 0, ',', '.');?>%</td>
+                                                            <!-- <td><?php echo $rekap->jnstrans ?></td> -->
+                                                        <?php endif; ?>
+                                                    </tr>
+                                                    <?php
+                                                    $no++;
+                                                    endforeach;
+                                                    ?>
+                                                    </tbody>
+                                                    <!--end::Table body-->
+                                                </table>
+                                            </form>
                                         </div>
                                         <div style="text-align:left">Ket :<br>
                                         <i>Potensial Revenue = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
@@ -275,6 +362,14 @@
         alert("Tanggal tidak valid. Silakan masukkan tanggal yang tidak melebihi tanggal sekarang.");
         inputTanggal.value = "";
         }
+    });
+    </script>
+    <script>
+    document.querySelector("#CheckAll").addEventListener("change", function(){
+        let checkboxes = document.querySelectorAll("#Check");
+        checkboxes.forEach(function(checkbox){
+        checkbox.checked = this.checked;
+        }, this);
     });
     </script>
     <?php

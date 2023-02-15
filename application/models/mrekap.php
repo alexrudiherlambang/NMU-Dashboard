@@ -25,7 +25,7 @@ class mrekap extends ci_model {
    function mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
       if ($lokasi == ''){
          $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1('$tglawal', '$tglakhir', '$nama', '$lokasi')");
-         $this->db->select('periode,lokasi,tanggal,ket,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->select('tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
          $this->db->from('test.ra_dashdb_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
@@ -43,6 +43,14 @@ class mrekap extends ci_model {
          $this->db->group_by('tanggal');
          return $this->db->get();
       }
+   }
+   // untuk menampilkan detail
+   function mshow_all_detail($nama, $ket) {
+         $this->db->select('lokasi,tanggal,ket,rsaldolalu,rsaldosaatini,rsaldosampai,rsaldopotensi1,jmltarget,statuse');
+         $this->db->from('test.ra_dashdb_'.$nama);
+         $this->db->where('ket', $ket);
+         $this->db->group_by('tanggal');
+         return $this->db->get()->result();
    }
 }
 ?>

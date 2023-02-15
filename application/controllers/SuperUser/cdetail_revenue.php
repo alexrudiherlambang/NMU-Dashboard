@@ -52,10 +52,10 @@ class cdetail_revenue extends CI_Controller {
       
       foreach ($grafik->result() as $b){
          $hasiltanggal[] = array (
-            $tanggal_baru = date('d m Y', strtotime($b->tanggal)),
+            $tanggal_baru = date('d-M', strtotime($b->tanggal)),
          );
-         $hasilrevenue[] = $b->total_rsaldosampai;
-         $hasiltarget[] = $b->total_jmltarget;
+         $hasilrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+         $hasiltarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
          $pie[] = $b;
       }
       $jenis2 = $this->mdetail_revenue->mshow_all_jenis($nama);   
@@ -72,5 +72,62 @@ class cdetail_revenue extends CI_Controller {
          'jenis2'       => $jenis2,
       );
       $this->load->view('content/vsuperuser/vdetail_revenue/vgrafik_hasil_detail_revenue',$data);
+   }
+   function export_xls() {
+      $nama = $this->session->userdata("nama");
+      $pilihan = $this->input->post('pilihan');
+      
+      $this->load->helper('exportexcel');
+      $namaFile = "Rekap Pendapatan Per-Revenue Stream.xls";
+      $judul = "Rekap Pendapatan Per-Revenue Stream";
+      $tablehead = 0;
+      $tablebody = 1;
+      $nourut = 1;
+      //penulisan header
+      header("Pragma: public");
+      header("Expires: 0");
+      header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+      header("Content-Type: application/force-download");
+      header("Content-Type: application/octet-stream");
+      header("Content-Type: application/download");
+      header("Content-Disposition: attachment;filename=" . $namaFile . "");
+      header("Content-Transfer-Encoding: binary ");
+  
+      xlsBOF();
+  
+      $kolomhead = 0;
+      xlsWriteLabel($tablehead, $kolomhead++, "No");
+      xlsWriteLabel($tablehead, $kolomhead++, "Unit");
+      xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
+      xlsWriteLabel($tablehead, $kolomhead++, "Uraian");
+      xlsWriteLabel($tablehead, $kolomhead++, "Revenue Yang Lalu");
+      xlsWriteLabel($tablehead, $kolomhead++, "Revenue Bulan Ini");
+      xlsWriteLabel($tablehead, $kolomhead++, "Total Revenue s/d Saat Ini");
+      xlsWriteLabel($tablehead, $kolomhead++, "Potensial Revenue");
+      xlsWriteLabel($tablehead, $kolomhead++, "Target Revenue");
+
+      foreach ($pilihan as $p) {
+         $ket = $p;
+         foreach ($this->mdetail_revenue->mshow_all_detail($nama, $ket) as $data) {
+            $kolombody = 0;
+
+            //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+            xlsWriteNumber($tablebody, $kolombody++, $nourut);
+            xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+            xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
+            xlsWriteLabel($tablebody, $kolombody++, $data->kelspesimen);
+            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
+            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
+            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);
+            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi1);
+            xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
+         
+               $tablebody++;
+            $nourut++;
+         }
+      }
+  
+      xlsEOF();
+      exit();
    }
 }

@@ -137,60 +137,70 @@
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
                                     <div class="card-body border-0 pt-10">
-                                        <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
                                         <!--begin::Table-->
                                         <div class="table-responsive">
-                                            <table class="table align-middle gs-0 gy-4">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue yang Lalu</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue Bulan Ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Revenue</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Revenue</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Revenue</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Revenue</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody class="text-gray-600 fw-semibold">
-                                                <?php
-                                                foreach ($rekap as $rekap) :
-                                                ?>
-                                                <tr style="background-color: #6f53ab;">
-                                                    <?php if ($rekap->flag == "1"): ?>
-                                                        <td style="color: #ffffff; vertical-align: middle;"><b><?php echo $rekap->ket ?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</b></td>
-                                                    <?php endif; ?>
-                                                </tr>
-                                                <tr>
-                                                    <?php if ($rekap->flag == "0"): ?>
-                                                        <td><?php echo $rekap->ket ?></td>
-                                                        <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></td>
-                                                        <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></td>
-                                                        <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></td>
-                                                        <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></td>
-                                                        <td class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
-                                                        <td class="text-end min-w-100px"><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></td>
-                                                        <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
-                                                        <!-- <td><?php echo $rekap->jnstrans ?></td> -->
-                                                    <?php endif; ?>
-                                                </tr>
-                                               <?php endforeach; ?>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                            </table>
+                                        <form method="post" action="<?php echo site_url(); ?>SuperUser/cdetail_revenue/export_xls">
+                                            <button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
+                                            <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
+                                                <table class="table align-middle gs-0 gy-4">
+                                                <!--begin::Table head-->
+                                                <thead>
+                                                    <!--begin::Table row-->
+                                                    <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">
+                                                            All<input type="checkbox" id="CheckAll">
+                                                        </th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue yang Lalu</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue Bulan Ini</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Revenue</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Revenue</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Revenue</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Revenue</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
+                                                    </tr>
+                                                    <!--end::Table row-->
+                                                </thead>
+                                                <!--end::Table head-->
+                                                <!--begin::Table body-->
+                                                <tbody class="text-gray-600 fw-semibold">
+                                                    <?php
+                                                    foreach ($rekap as $rekap) :
+                                                    ?>
+                                                    <tr style="background-color: #000080;">
+                                                        <?php if ($rekap->flag == "1"): ?>
+                                                            <td style="color: #ffffff; vertical-align: middle;"><b></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;"><b><?php echo $rekap->ket ?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</b></td>
+                                                        <?php endif; ?>
+                                                    </tr>
+                                                    <tr>
+                                                        <?php if ($rekap->flag == "0"): ?>
+                                                            <td>
+                                                                <input type="checkbox" id="Check" value="<?php echo $rekap->ket ?>" name="pilihan[]">
+                                                            </td>
+                                                            <td><?php echo $rekap->ket ?></td>
+                                                            <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td class="text-end min-w-100px"><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
+                                                            <!-- <td><?php echo $rekap->jnstrans ?></td> -->
+                                                        <?php endif; ?>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                                </tbody>
+                                                <!--end::Table body-->
+                                                </table>
+                                        </form>
                                         </div>
                                         <div style="text-align:left">Ket :<br>
                                         <i>Potensial Revenue = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
@@ -273,6 +283,14 @@
         $(this).text('+');
         }
     });
+    });
+    </script>
+    <script>
+    document.querySelector("#CheckAll").addEventListener("change", function(){
+        let checkboxes = document.querySelectorAll("#Check");
+        checkboxes.forEach(function(checkbox){
+        checkbox.checked = this.checked;
+        }, this);
     });
     </script>
     

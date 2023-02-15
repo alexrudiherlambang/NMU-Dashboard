@@ -217,7 +217,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="<?php echo site_url('SuperUser/cTT') ?>">
+                            <a class="menu-link" href="<?php echo site_url('SuperUser/cSK') ?>">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -369,7 +369,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="<?php echo site_url('SuperUser/cTT/grafik_TT') ?>">
+                            <a class="menu-link" href="<?php echo site_url('SuperUser/cSK/grafik_SK') ?>">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
