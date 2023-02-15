@@ -29,7 +29,7 @@ class mdetail_revenue extends ci_model {
          $this->db->from('test.ra_dashdb_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->where('ket', $jenis);
+         $this->db->where('kelspesimen', $jenis);
          $this->db->group_by('tanggal');
          return $this->db->get();
       }else{
@@ -39,7 +39,7 @@ class mdetail_revenue extends ci_model {
          $this->db->where('lokasi', $lokasi);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->where('ket', $jenis);
+         $this->db->where('kelspesimen', $jenis);
          $this->db->group_by('tanggal');
          return $this->db->get();
       }

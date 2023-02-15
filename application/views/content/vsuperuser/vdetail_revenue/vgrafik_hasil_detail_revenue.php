@@ -74,12 +74,12 @@
 																	</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="lokasi" >
-																			<option value="">K.P</option>
-																			<option>RSG</option>
-																			<option>RST</option>
-																			<option>RSP</option>
-																			<option>RSMU</option>
-																			<option>URJ</option>
+																			<option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
+																			<option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
+																			<option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
+																			<option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
+																			<option <?php if ($lokasi == "RSMU") echo "selected"; ?>>RSMU</option>
+																			<option <?php if ($lokasi == "URJ") echo "selected"; ?>>URJ</option>
 																		</select>
 																	</div>
 																</div>
@@ -101,7 +101,7 @@
 																				</svg>
 																			</span>
 																			<!--end::Svg Icon-->
-																			<input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
+																			<input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required"  value="<?php echo $tglawal?>"/>
 																		</div>
 																	</div>
 																	<!--begin::Col-->
@@ -124,7 +124,7 @@
 																				</svg>
 																			</span>
 																			<!--end::Svg Icon-->
-																			<input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo date('Y-m-d');?>"/>
+																			<input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo $tglakhir?>"/>
 																		</div>
 																	</div>
 																	<!--begin::Col-->
@@ -136,8 +136,9 @@
 																</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="jenis" >
-																			<?php foreach ($jenis as $jenis):?>
-																			<option><?php echo $jenis->ket?></option>
+																			<option><?php echo $jenis?></option>
+																			<?php foreach ($jenis2 as $jenis):?>
+																				<option><?php echo $jenis->ket?></option>
 																			<?php endforeach ?>
 																		</select>
 																	</div>
@@ -243,10 +244,10 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+            labels: <?php echo json_encode($tanggal)?>,
             datasets: [{
                 label: 'Total Revenue',
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                data: [<?php echo implode(',', $revenue) ?>],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 3
@@ -262,13 +263,31 @@
             yAxes: [{
             gridLines: {
                 display: false
-            }
+            },
+			ticks: {
+				// Menentukan format currency
+				callback: function(value, index, values) {
+					return 'Rp ' + value.toLocaleString('id-ID');
+				}
+			}
             }]
         },
         legend: {
             position: 'bottom'
         },
-        responsive: true
+        responsive: true,
+		tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += 'Rp ' + tooltipItem.yLabel.toLocaleString('id-ID');
+                    return label;
+                }
+            }
+        }
         }
     });
     // Menambahkan data baru
@@ -276,7 +295,7 @@
     myChart.update();
     myChart.data.datasets.push({
     label: 'Target Revenue',
-    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data: [<?php echo implode(',', $target) ?>],
     backgroundColor: 'rgba(54, 162, 235, 0.2)',
     borderColor: 'rgba(54, 162, 235, 1)',
     borderWidth: 3
@@ -291,7 +310,9 @@
 
     function drawChart() {
     var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
-        ['Tanggal',     1]
+		<?php foreach ($pie as $pie) :?>
+		['<?php echo date('d-m-Y', strtotime($pie->tanggal)); ?>',<?php echo $pie->total_rsaldosampai; ?>],
+		<?php endforeach;?>
     ]);
 
     var options = {
@@ -299,8 +320,25 @@
         height: 300,
         is3D: true,
         responsive: true,
-		legend: { position: 'none' },
-		pieSliceText: 'percentage'
+		// legend: { position: 'none' },
+		pieSliceText: 'value-and-label',
+        slices: {
+            0: { color: 'blue' },
+            1: { color: 'green' },
+            2: { color: 'red' },
+            3: { color: 'yellow' },
+            4: { color: 'gray' }
+        },
+        tooltip: { 
+			format: 'currency',
+			// Mengatur format currency
+			callback: function(tooltipItem, data) {
+			var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+			var value = data.getValue(tooltipItem.row, 1);
+			return currency.format(value);
+			}
+		},
+		chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
