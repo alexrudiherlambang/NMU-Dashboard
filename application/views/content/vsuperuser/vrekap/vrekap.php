@@ -97,7 +97,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -278,23 +278,6 @@
             </div>
         </div>
     </div>
-    <script>
-    const inputTanggal = document.getElementById("tglakhir");
-
-    inputTanggal.addEventListener("change", function() {
-        // Membuat objek Date dari tanggal input
-        const tanggalInput = new Date(inputTanggal.value);
-
-        // Membuat objek Date untuk tanggal sekarang
-        const tanggalSekarang = new Date();
-
-        // Mengecek apakah tanggal input melebihi tanggal sekarang
-        if (tanggalInput > tanggalSekarang) {
-        alert("Tanggal tidak valid. Silakan masukkan tanggal yang tidak melebihi tanggal sekarang.");
-        inputTanggal.value = "";
-        }
-    });
-    </script>
 
     <?php
         $this->load->view('partials/script');

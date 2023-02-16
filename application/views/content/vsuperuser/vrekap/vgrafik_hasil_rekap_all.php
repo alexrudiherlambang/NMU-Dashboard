@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Data Rekap Pendapatan</h1>
+										Grafik Rekap Pendapatan BPJS / Non BPJS</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -65,8 +65,8 @@
 												<!--begin::Card-->
 												<div class="card card-md-stretch me-xl-3 mb-md-0 mb-6">
 													<!--begin::Body-->
-													<div class="card-body p-10 p-lg-15">
-															<form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
+													<div class="card-body">
+															<form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/grafik_hasil_pendapatan" enctype="multipart/form-data">
 																<div class="row mb-5">
 																	<!--begin::Col-->
 																	<div class="col-xl-4">
@@ -74,12 +74,12 @@
 																	</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="lokasi" >
-																			<option value="">K.P</option>
-																			<option>RSG</option>
-																			<option>RST</option>
-																			<option>RSP</option>
-																			<option>RSMU</option>
-																			<option>URJ</option>
+																			<option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
+																			<option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
+																			<option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
+																			<option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
+																			<option <?php if ($lokasi == "RSMU") echo "selected"; ?>>RSMU</option>
+																			<option <?php if ($lokasi == "URJ") echo "selected"; ?>>URJ</option>
 																		</select>
 																	</div>
 																</div>
@@ -101,7 +101,7 @@
 																				</svg>
 																			</span>
 																			<!--end::Svg Icon-->
-																			<input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
+																			<input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php echo $tglawal?>"/>
 																		</div>
 																	</div>
 																	<!--begin::Col-->
@@ -124,7 +124,7 @@
 																				</svg>
 																			</span>
 																			<!--end::Svg Icon-->
-																			<input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo date('Y-m-d');?>"/>
+																			<input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir?>"/>
 																		</div>
 																	</div>
 																	<!--begin::Col-->
@@ -136,8 +136,11 @@
 																</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="jenis" >
-																			<option>Pendapatan BPJS</option>
-																			<option>Pendapatan NON BPJS</option>
+																			<option><?php echo $jenis?></option>
+																			<?php foreach ($jenis2 as $jenis):?>
+																				<option><?php echo $jenis->ket?></option>
+																			<?php endforeach ?>
+																			<option>SEMUA</option>
 																		</select>
 																	</div>
 																</div>
@@ -157,15 +160,20 @@
 											<div class="col-md-6">
 												<!--begin::Card-->
 												<div class="card card-md-stretch">
-													<!--begin::Body-->
-													<div class="card-body pp-10 p-lg-15">
-														<!--begin::Header-->
-														<div class="d-flex flex-stack">
-															<div id="chart_pendapatan_bpjs"></div>
-														</div>
-														<!--end::Header-->
+													<div class="table-responsive">
+														<table class="table align-middle gs-0 gy-4"> 
+															<tbody class="text-gray-600 fw-semibold">
+																<tr>
+																	<td class="text-end min-w-50px"></td>
+																	<td>
+																		<div class="d-flex flex-stack">
+																			<div id="chart_pendapatan_bpjs"></div>
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
 													</div>
-													<!--end::Body-->
 												</div>
 												<!--end::Card-->
 											</div>
@@ -175,8 +183,60 @@
 										<!--begin::Products Documentations-->
 										<div class="card mb-1">
 											<!--begin::Card body-->
-											<div class="card-body p-10 p-lg-15">
-											<canvas id="myChart" width="300" height="100"></canvas><br>
+											<div class="table-responsive">
+												<table class="table align-middle gs-0 gy-4"> 
+													<tbody class="text-gray-600 fw-semibold">
+														<tr>
+															<td>
+															<div class="card-body">
+																<b>(Dalam Juta)</b> BPJS<br><br>
+																<canvas id="bpjs" width="750" height="200"></canvas><br>
+															</div>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+
+											<div class="table-responsive">
+												<table class="table align-middle gs-0 gy-4"> 
+													<tbody class="text-gray-600 fw-semibold">
+														<tr>
+															<td>
+															<div class="card-body">
+																<b>(Dalam Juta)</b> NON BPJS<br><br>
+																<canvas id="non_bpjs" width="750" height="200"></canvas><br>
+															</div>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+
+											<div class="table-responsive">
+												<table class="table align-middle gs-0 gy-4"> 
+													<tbody class="text-gray-600 fw-semibold">
+														<tr>
+															<td>
+															<div class="card-body">
+																<b>(Dalam Juta)</b> USAHA LAIN<br><br>
+																<canvas id="usaha_lain" width="750" height="200"></canvas><br>
+															</div>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+
+											<div class="table-responsive">
+												<table class="table align-middle gs-0 gy-4"> 
+													<tbody class="text-gray-600 fw-semibold">
+														<tr>
+															<td>
+															<div class="card-body">
+																<b>(Dalam Juta)</b> DILUAR USAHA<br><br>
+																<canvas id="diluar_usaha" width="750" height="200"></canvas><br>
+															</div>
+														</tr>
+													</tbody>
+												</table>
 											</div>
 											<!--end::Card body-->
 										</div>
@@ -235,17 +295,17 @@
             </div>
         </div>
     </div>
-
+	
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+    var ctx = document.getElementById('bpjs').getContext('2d');
+    var bpjs = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+            labels: <?php echo json_encode($bpjstanggal)?>,
             datasets: [{
                 label: 'Total Revenue',
-                data: [12, 19, 3, 5, 2, 3, 20, 10, 20, 13, 12, 11],
+                data: [<?php echo implode(',', $bpjsrevenue) ?>],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 3
@@ -261,26 +321,236 @@
             yAxes: [{
             gridLines: {
                 display: false
-            }
+            },
+			ticks: {
+				// Menentukan format currency
+				callback: function(value, index, values) {
+					return value.toLocaleString('id-ID');
+				}
+			}
             }]
         },
         legend: {
             position: 'bottom'
         },
-        responsive: true
+        responsive: true,
+		tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
+                    return label;
+                }
+            }
+        }
         }
     });
     // Menambahkan data baru
-    myChart.data.datasets[0].data.push(10);
-    myChart.update();
-    myChart.data.datasets.push({
+    bpjs.data.datasets[0].data.push(10);
+    bpjs.update();
+    bpjs.data.datasets.push({
     label: 'Target Revenue',
-    data: [10, 11, 12, 11, 10, 9, 12, 10, 11, 13, 12, 11],
+    data: [<?php echo implode(',', $bpjstarget) ?>],
     backgroundColor: 'rgba(54, 162, 235, 0.2)',
     borderColor: 'rgba(54, 162, 235, 1)',
     borderWidth: 3
     });
-    myChart.update();
+    bpjs.update();
+    </script>
+
+<script>
+    var ctx = document.getElementById('non_bpjs').getContext('2d');
+    var non_bpjs = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: <?php echo json_encode($nontanggal)?>,
+            datasets: [{
+                label: 'Total Revenue',
+                data: [<?php echo implode(',', $nonrevenue) ?>],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 3
+            }]
+        },
+        options: {
+        scales: {
+            xAxes: [{
+            gridLines: {
+                display: false
+            }
+            }],
+            yAxes: [{
+            gridLines: {
+                display: false
+            },
+			ticks: {
+				// Menentukan format currency
+				callback: function(value, index, values) {
+					return value.toLocaleString('id-ID');
+				}
+			}
+            }]
+        },
+        legend: {
+            position: 'bottom'
+        },
+        responsive: true,
+		tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
+                    return label;
+                }
+            }
+        }
+        }
+    });
+    // Menambahkan data baru
+    non_bpjs.data.datasets[0].data.push(10);
+    non_bpjs.update();
+    non_bpjs.data.datasets.push({
+    label: 'Target Revenue',
+    data: [<?php echo implode(',', $nontarget) ?>],
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 3
+    });
+    non_bpjs.update();
+    </script>
+
+<script>
+    var ctx = document.getElementById('usaha_lain').getContext('2d');
+    var usaha_lain = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: <?php echo json_encode($laintanggal)?>,
+            datasets: [{
+                label: 'Total Revenue',
+                data: [<?php echo implode(',', $lainrevenue) ?>],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 3
+            }]
+        },
+        options: {
+        scales: {
+            xAxes: [{
+            gridLines: {
+                display: false
+            }
+            }],
+            yAxes: [{
+            gridLines: {
+                display: false
+            },
+			ticks: {
+				// Menentukan format currency
+				callback: function(value, index, values) {
+					return value.toLocaleString('id-ID');
+				}
+			}
+            }]
+        },
+        legend: {
+            position: 'bottom'
+        },
+        responsive: true,
+		tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
+                    return label;
+                }
+            }
+        }
+        }
+    });
+    // Menambahkan data baru
+    usaha_lain.data.datasets[0].data.push(10);
+    usaha_lain.update();
+    usaha_lain.data.datasets.push({
+    label: 'Target Revenue',
+    data: [<?php echo implode(',', $laintarget) ?>],
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 3
+    });
+    usaha_lain.update();
+    </script>
+
+<script>
+    var ctx = document.getElementById('diluar_usaha').getContext('2d');
+    var diluar_usaha = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: <?php echo json_encode($luartanggal)?>,
+            datasets: [{
+                label: 'Total Revenue',
+                data: [<?php echo implode(',', $luarrevenue) ?>],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 3
+            }]
+        },
+        options: {
+        scales: {
+            xAxes: [{
+            gridLines: {
+                display: false
+            }
+            }],
+            yAxes: [{
+            gridLines: {
+                display: false
+            },
+			ticks: {
+				// Menentukan format currency
+				callback: function(value, index, values) {
+					return value.toLocaleString('id-ID');
+				}
+			}
+            }]
+        },
+        legend: {
+            position: 'bottom'
+        },
+        responsive: true,
+		tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
+                    return label;
+                }
+            }
+        }
+        }
+    });
+    // Menambahkan data baru
+    diluar_usaha.data.datasets[0].data.push(10);
+    diluar_usaha.update();
+    diluar_usaha.data.datasets.push({
+    label: 'Target Revenue',
+    data: [<?php echo implode(',', $luartarget) ?>],
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 3
+    });
+    diluar_usaha.update();
     </script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -290,18 +560,35 @@
 
     function drawChart() {
     var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
-        ['BPJS',     11],
-        ['Eat',      2],
-        ['Commute',  2],
-        ['Watch TV', 2],
-        ['Sleep',    7]
+		<?php foreach ($pie as $pie) :?>
+		['<?php echo date('d-M', strtotime($pie->tanggal)); ?> (<?php echo $pie->ket;?>)',<?php echo number_format($pie->total_rsaldosampai/1000000, 0, ',', '.'); ?>],
+		<?php endforeach;?>
     ]);
 
     var options = {
         width: 340,
         height: 300,
         is3D: true,
-        responsive: true
+        responsive: true,
+		// legend: { position: 'none' },
+		pieSliceText: 'value-and-label',
+        slices: {
+            0: { color: 'blue' },
+            1: { color: 'green' },
+            2: { color: 'red' },
+            3: { color: 'yellow' },
+            4: { color: 'gray' }
+        },
+        tooltip: { 
+			format: 'currency',
+			// Mengatur format currency
+			callback: function(tooltipItem, data) {
+			var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+			var value = data.getValue(tooltipItem.row, 1);
+			return currency.format(value);
+			}
+		},
+		chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));

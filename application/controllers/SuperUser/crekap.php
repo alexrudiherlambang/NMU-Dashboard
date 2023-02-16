@@ -52,30 +52,91 @@ class crekap extends CI_Controller {
       $jenis = $this->input->post('jenis');
       $nama = $this->session->userdata("nama");
       
-      $grafik = $this->mrekap->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama);
-      
-      foreach ($grafik->result() as $b){
-         $hasiltanggal[] = array (
-            $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-         );
-         $hasilrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-         $hasiltarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-         $pie[] = $b;
-      }
-      $jenis2 = $this->mrekap->mshow_all_jenis($nama);   
+      if ($jenis == "SEMUA") {
+         $grafik = $this->mrekap->mshow_all_grafik_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         
+         foreach ($grafik->result() as $b){
+            if ($b->ket == "BPJS"){
+               $bpjstanggal[] = array (
+                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
+               );
+               $bpjsrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+               $bpjstarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+               $pie[] = $b;
+            } elseif ($b->ket == "NON BPJS") {
+               $nontanggal[] = array (
+                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
+               );
+               $nonrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+               $nontarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+               $pie[] = $b;
+            } elseif ($b->ket == "USAHA LAIN") {
+               $laintanggal[] = array (
+                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
+               );
+               $lainrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+               $laintarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+               $pie[] = $b;
+            } elseif ($b->ket == "DI LUAR USAHA") {
+               $luartanggal[] = array (
+                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
+               );
+               $luarrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+               $luartarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+               $pie[] = $b;
+            }
 
-      $data =  array (
-         'tanggal'      => $hasiltanggal,
-         'revenue'      => $hasilrevenue,
-         'target'       => $hasiltarget,
-         'pie'          => $pie,
-         'tglawal'      => $tglawal,
-         'tglakhir'     => $tglakhir,
-         'lokasi'       => $lokasi,
-         'jenis'        => $jenis,
-         'jenis2'       => $jenis2,
-      );
-      $this->load->view('content/vsuperuser/vrekap/vgrafik_hasil_rekap',$data);
+         }
+         $jenis2 = $this->mrekap->mshow_all_jenis($nama);   
+
+         $data =  array (
+            'bpjstanggal'      => $bpjstanggal,
+            'bpjsrevenue'      => $bpjsrevenue,
+            'bpjstarget'       => $bpjstarget,
+            'nontanggal'       => $nontanggal,
+            'nonrevenue'       => $nonrevenue,
+            'nontarget'        => $nontarget,
+            'laintanggal'      => $laintanggal,
+            'lainrevenue'      => $lainrevenue,
+            'laintarget'       => $laintarget,
+            'luartanggal'      => $luartanggal,
+            'luarrevenue'      => $luarrevenue,
+            'luartarget'       => $luartarget,
+            'pie'          => $pie,
+            'tglawal'      => $tglawal,
+            'tglakhir'     => $tglakhir,
+            'lokasi'       => $lokasi,
+            'jenis'        => $jenis,
+            'jenis2'       => $jenis2,
+         );
+         $this->load->view('content/vsuperuser/vrekap/vgrafik_hasil_rekap_all',$data);
+
+      }else{
+         $grafik = $this->mrekap->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         
+         foreach ($grafik->result() as $b){
+            $hasiltanggal[] = array (
+               $tanggal_baru = date('d-M', strtotime($b->tanggal)),
+            );
+            $hasilrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+            $hasiltarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+            $pie[] = $b;
+         }
+         $jenis2 = $this->mrekap->mshow_all_jenis($nama);   
+
+         $data =  array (
+            'tanggal'      => $hasiltanggal,
+            'revenue'      => $hasilrevenue,
+            'target'       => $hasiltarget,
+            'pie'          => $pie,
+            'tglawal'      => $tglawal,
+            'tglakhir'     => $tglakhir,
+            'lokasi'       => $lokasi,
+            'jenis'        => $jenis,
+            'jenis2'       => $jenis2,
+         );
+         $this->load->view('content/vsuperuser/vrekap/vgrafik_hasil_rekap',$data);
+      }
    }
 
    function export_xls() {

@@ -101,7 +101,7 @@
 																				</svg>
 																			</span>
 																			<!--end::Svg Icon-->
-																			<input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="kt_datepicker_1" required="required"  value="<?php echo $tglawal?>"/>
+																			<input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php echo $tglawal?>"/>
 																		</div>
 																	</div>
 																	<!--begin::Col-->
@@ -124,7 +124,7 @@
 																				</svg>
 																			</span>
 																			<!--end::Svg Icon-->
-																			<input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="kt_datepicker_1" required="required" value="<?php echo $tglakhir?>"/>
+																			<input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir?>"/>
 																		</div>
 																	</div>
 																	<!--begin::Col-->
@@ -140,6 +140,7 @@
 																			<?php foreach ($jenis2 as $jenis):?>
 																				<option><?php echo $jenis->ket?></option>
 																			<?php endforeach ?>
+																			<option>SEMUA</option>
 																		</select>
 																	</div>
 																</div>
@@ -252,7 +253,7 @@
             </div>
         </div>
     </div>
-
+	
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script>
     var ctx = document.getElementById('myChart').getContext('2d');

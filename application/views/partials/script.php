@@ -33,4 +33,31 @@
 	
 	<!--end::Custom Javascript-->
 	<!--end::Javascript-->
-	
+	<script>
+    const inputTglAwal = document.getElementById("tglawal");
+    const inputTglAkhir = document.getElementById("tglakhir");
+
+    inputTglAwal.addEventListener("change", function() {
+        const tglAwal = new Date(inputTglAwal.value);
+        const tglAkhir = new Date(inputTglAkhir.value);
+
+        if (tglAwal > tglAkhir) {
+        alert("Tanggal awal tidak boleh melebihi tanggal akhir");
+        inputTglAwal.value = "";
+        }
+    });
+
+    inputTglAkhir.addEventListener("change", function() {
+        const tglAwal = new Date(inputTglAwal.value);
+        const tglAkhir = new Date(inputTglAkhir.value);
+
+        const tanggalSekarang = new Date();
+        if (tglAkhir > tanggalSekarang) {
+        alert("Tanggal akhir tidak valid. Silakan masukkan tanggal yang tidak melebihi tanggal sekarang.");
+        inputTglAkhir.value = "";
+        } else if (tglAkhir < tglAwal) {
+        alert("Tanggal akhir tidak boleh kurang dari tanggal awal");
+        inputTglAkhir.value = "";
+        }
+    });
+    </script>
