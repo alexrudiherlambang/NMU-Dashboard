@@ -49,6 +49,7 @@ class mdetail_revenue extends ci_model {
       $this->db->select('lokasi,tanggal,kelspesimen,rsaldolalu,rsaldosaatini,rsaldosampai,rsaldopotensi1,jmltarget,statuse');
       $this->db->from('test.ra_dashdb_'.$nama);
       $this->db->where('kelspesimen', $ket);
+      $this->db->group_by('lokasi');
       $this->db->group_by('tanggal');
       return $this->db->get()->result();
 }

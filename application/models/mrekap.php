@@ -49,6 +49,7 @@ class mrekap extends ci_model {
          $this->db->select('lokasi,tanggal,ket,rsaldolalu,rsaldosaatini,rsaldosampai,rsaldopotensi1,jmltarget,statuse');
          $this->db->from('test.ra_dashdb_'.$nama);
          $this->db->where('ket', $ket);
+         $this->db->group_by('lokasi');
          $this->db->group_by('tanggal');
          return $this->db->get()->result();
    }
