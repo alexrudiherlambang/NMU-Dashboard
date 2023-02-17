@@ -327,7 +327,7 @@
     function drawChart() {
     var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
 		<?php foreach ($pie as $pie) :?>
-		['<?php echo date('d-M', strtotime($pie->tanggal)); ?>',<?php echo number_format($pie->total_rsaldosampai/1000000, 0, ',', '.'); ?>],
+		['<?php echo $pie->lokasi; ?>',<?php echo number_format($pie->total_rsaldosampai/1000000, 0, ',', '.'); ?>],
 		<?php endforeach;?>
     ]);
 

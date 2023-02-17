@@ -44,6 +44,49 @@ class mdetail_revenue extends ci_model {
          return $this->db->get();
       }
    }
+
+   // untuk menampilkan pie  per jenis
+   function mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
+      if ($lokasi == ''){
+         $this->db->select('lokasi,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_'.$nama);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('kelspesimen', $jenis);
+         $this->db->group_by('lokasi');
+         return $this->db->get();
+      }else{
+         $this->db->select('lokasi,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_'.$nama);
+         $this->db->where('lokasi', $lokasi);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('kelspesimen', $jenis);
+         $this->db->group_by('lokasi');
+         return $this->db->get();
+      }
+   }
+   
+   // untuk menampilkan pie all
+   function mshow_all_pie_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
+      if ($lokasi == ''){
+         $this->db->select('kelspesimen,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_'.$nama);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->group_by('kelspesimen');
+         return $this->db->get();
+      }else{
+         $this->db->select('kelspesimen,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_'.$nama);
+         $this->db->where('lokasi', $lokasi);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->group_by('kelspesimen');
+         return $this->db->get();
+      }
+   }
+
    // untuk menampilkan grafik all jenis
    function mshow_all_grafik_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
       if ($lokasi == ''){
@@ -75,6 +118,6 @@ class mdetail_revenue extends ci_model {
       $this->db->group_by('lokasi');
       $this->db->group_by('tanggal');
       return $this->db->get()->result();
-}
+   }
 }
 ?>

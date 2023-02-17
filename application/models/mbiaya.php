@@ -8,25 +8,22 @@ class mbiaya extends ci_model {
 
    // untuk menampilkan semua rekap
    function mshow_all_biaya($tglawal,$tglakhir,$nama,$lokasi) {
-      // return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_biaya1`('".$tglawal."','".$tglawal."','".$nama."','".$lokasi."');")->result();
-      return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_biaya1`('".$tglawal."','".$tglawal."','ROBI','".$lokasi."');")->result();
+      $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke2('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+      $this->db->select('*');
+      $this->db->from('test.ra_dashdb3_'.$nama);
+      $this->db->group_by('ketgrup');
+      return $this->db->get()->result();
    }
 
-   //INSERT DATA USER
-   function minsert_user($data) {
-      $this->db->insert('user', $data);
+   // untuk menampilkan detail
+   function mshow_all_detail($nama, $ket) {
+      $this->db->select('lokasi,tanggal,kelspesimen,rsaldolalu,rsaldosaatini,rsaldosampai,rsaldopotensi1,jmltarget,statuse');
+      $this->db->from('test.ra_dashdb_'.$nama);
+      $this->db->where('kelspesimen', $ket);
+      $this->db->group_by('lokasi');
+      $this->db->group_by('tanggal');
+      return $this->db->get()->result();
    }
 
-   //UPDATE BERDASARKAN ID
-   function mupdate_user($dataUpdate, $id) {
-      $this->db->where('id', $id);
-      $this->db->update('admin', $dataUpdate);
-   }
-
-   //DELETE
-   function mdelete_user($id_user) {
-      $this->db->where('id_user', $id_user);
-      $this->db->delete('user');
-   }
 }
 ?>

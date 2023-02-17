@@ -127,7 +127,7 @@
                                                     <!--begin::Col-->
                                                 </div>
                                                 <center>
-                                                    <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
+                                                    <button type="submit" name="submit" class="btn btn-sm btn-success">Tampilkan</button>
                                                 </center>
                                             </form>
                                             </center>
@@ -140,48 +140,112 @@
                                         <!-- <canvas id="myChart" width="300" height="80"></canvas><br> -->
                                         <!--begin::Table-->
                                         <div class="table-responsive">
-                                            <table class="table align-middle gs-0 gy-4">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <!-- <th class="w-10px pe-5">No</th> -->
-                                                    <th class="min-w-125px">Keterangan</th>
-                                                    <th class="text-end min-w-100px">Realisasi yang Lalu</th>
-                                                    <th class="text-end min-w-100px">Revenue Bulan Ini</th>
-                                                    <th class="text-end min-w-100px">Total Revenue</th>
-                                                    <th class="text-end min-w-100px">Potensial Revenue</th>
-                                                    <th class="text-end min-w-100px">Target Revenue</th>
-                                                    <th class="text-end min-w-100px">Prosentase</th>
-                                                    <!-- <th class="text-end min-w-100px">Actions</th> -->
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody class="text-gray-600 fw-semibold">
-                                            <?php
-                                            $no = 1;
-                                            $status = "OK";
-                                            foreach ($biaya as $biaya) :
-                                               ?>
-                                               <tr>
-                                                    <td><b><?php echo $biaya->ket ?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->r_saldolalu, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->r_saldosaatini, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->r_saldosampai, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->jmlpotensi, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($biaya->r_jmltarget, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php $prosentase=$biaya->jmlprosen*100; echo $prosentase;?>%</b></td>
-                                               </tr>
-                                               <?php
-                                               $no++;
-                                            endforeach;
-                                            ?>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                            </table>
+                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/cbiaya/export_xls">
+                                                <button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
+                                                <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
+                                                    <table class="table align-middle gs-0 gy-4">
+                                                        <!--begin::Table head-->
+                                                        <thead>
+                                                            <!--begin::Table row-->
+                                                            <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">
+                                                                    All<input type="checkbox" id="CheckAll">
+                                                                </th>
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-110px">Uraian</th>
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban yang Lalu</th>
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban Bulan Ini</th>
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Beban</th>
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Beban</th>
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Beban</th>
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Beban</th>
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
+                                                            </tr>
+                                                            <!--end::Table row-->
+                                                        </thead>
+                                                        <!--end::Table head-->
+                                                        <!--begin::Table body-->
+                                                        <tbody class="text-gray-600 fw-semibold">
+                                                        <?php
+                                                            $no = 1;
+                                                            $status = "OK";
+                                                            $prev_grup_byy = null;
+
+                                                            foreach ($biaya as $biaya) {
+                                                                if ($biaya->grup_byy == $prev_grup_byy) {?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <input type="checkbox" id="Check" value="<?php echo $biaya->ket ?>" name="pilihan[]">
+                                                                        </td>
+                                                                        <td><?php echo $biaya->ket ?></td>
+                                                                        <td class="text-end min-w-100px"><?php echo number_format($biaya->rsaldolalu/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-end min-w-100px"><?php echo number_format($biaya->rsaldosaatini/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-end min-w-100px"><?php echo number_format($biaya->rsaldosampai/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-end min-w-100px"><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-end min-w-100px"><?php $total=$biaya->rsaldosaatini+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-end min-w-100px"><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-end min-w-100px"><?php echo $biaya->jmlprosen;?>%</td>
+                                                                    </tr>
+                                                                    <?php continue;
+                                                                } else {
+                                                                    $prev_grup_byy = $biaya->grup_byy;
+                                                                }
+                                                                ?>
+                                                                <tr style="background-color: #000080;">
+                                                                    <?php if ($biaya->flag == "1"): ?>
+                                                                        <td style="color: #ffffff; vertical-align: middle;"></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;"><b><?php echo $biaya->ket ?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldolalu/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldosampai/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$biaya->rsaldosaatini+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo $biaya->jmlprosen;?>%</b></td>
+                                                                    <?php endif; ?>
+                                                                </tr>
+                                                                <tr>
+                                                                <?php if ($biaya->flag == "0"): ?>
+                                                                    <?php if ($biaya->grup_byy != "1"  && $biaya->grup_byy != "2"){ ?>
+                                                                        <td>
+                                                                            <input type="checkbox" id="Check" value="<?php echo $biaya->ket ?>" name="pilihan[]">
+                                                                        </td>
+                                                                        <td><b><?php echo $biaya->ket ?></b></td>
+                                                                        <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldolalu/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldosampai/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-end min-w-100px"><b><?php $total=$biaya->rsaldosaatini+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-end min-w-100px"><b><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-end min-w-100px"><b><?php echo $biaya->jmlprosen;?>%</b></td>
+                                                                        <?php continue;
+                                                                    } else {?>
+                                                                        <td>
+                                                                            
+                                                                        </td>
+                                                                        <td><b><?php echo $biaya->ket ?></b></td>
+                                                                        <td class="text-end min-w-100px"><b></b></td>
+                                                                        <td class="text-end min-w-100px"><b></b></td>
+                                                                        <td class="text-end min-w-100px"><b></b></td>
+                                                                        <td class="text-end min-w-100px"><b></b></td>
+                                                                        <td class="text-end min-w-100px"><b></b></td>
+                                                                        <td class="text-end min-w-100px"><b></b></td>
+                                                                        <td class="text-end min-w-100px"><b></b></td>
+                                                                <?php } 
+                                                                endif; ?>
+                                                                </tr>
+                                                                <?php
+                                                                $no++;
+                                                            }
+                                                        ?>
+                                                        </tbody>
+                                                        <!--end::Table body-->
+                                                    </table>
+                                            </form>
                                         </div>
+                                        <div style="text-align:left">Ket :<br>
+                                        <i>Potensial Revenue = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
+                                        <i>Estimasi Total Revenue = Penjumlahan total revenue saat ini dengan potensial revenue</i><br>
+                                        <i>Prosentase = Total Revenue / Target Revenue</i><br></div>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->
@@ -239,42 +303,13 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
-            datasets: [{
-                label: 'Total Revenue',
-                data: [12, 19, 3, 5, 2, 3, 20, 10, 20, 13, 12, 11],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
+    document.querySelector("#CheckAll").addEventListener("change", function(){
+        let checkboxes = document.querySelectorAll("#Check");
+        checkboxes.forEach(function(checkbox){
+        checkbox.checked = this.checked;
+        }, this);
     });
-    // Menambahkan data baru
-    myChart.data.datasets[0].data.push(10);
-    myChart.update();
-    myChart.data.datasets.push({
-    label: 'Target Revenue',
-    data: [10, 11, 12, 11, 10, 9, 12, 10, 11, 13, 12, 11],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 1
-    });
-    myChart.update();
     </script>
     <?php
         $this->load->view('partials/script');

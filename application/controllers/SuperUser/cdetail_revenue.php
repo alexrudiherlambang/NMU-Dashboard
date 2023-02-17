@@ -59,30 +59,30 @@ class cdetail_revenue extends CI_Controller {
                );
                $rjrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
                $rjtarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-               $pie[] = $b;
             } elseif ($b->kelspesimen == "2. RAWAT INAP") {
                $ritanggal[] = array (
                   $tanggal_baru = date('d-M', strtotime($b->tanggal)),
                );
                $rirevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
                $ritarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-               $pie[] = $b;
             } elseif ($b->kelspesimen == "3. PENUNJANG") {
                $penunjangtanggal[] = array (
                   $tanggal_baru = date('d-M', strtotime($b->tanggal)),
                );
                $penunjangrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
                $penunjangtarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-               $pie[] = $b;
             } elseif ($b->kelspesimen == "4. USAHA LAIN") {
                $ultanggal[] = array (
                   $tanggal_baru = date('d-M', strtotime($b->tanggal)),
                );
                $ulrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
                $ultarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-               $pie[] = $b;
             }
-
+         }
+         $graf_pie = $this->mdetail_revenue->mshow_all_pie_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         
+         foreach ($graf_pie->result() as $c){
+            $pie[] = $c;
          }
          $jenis2 = $this->mdetail_revenue->mshow_all_jenis($nama);   
 
@@ -110,6 +110,7 @@ class cdetail_revenue extends CI_Controller {
 
       }else{
          $grafik = $this->mdetail_revenue->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         $grafik_kp = $this->mdetail_revenue->mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$jenis,$nama);
          
          foreach ($grafik->result() as $b){
             $hasiltanggal[] = array (
@@ -117,7 +118,9 @@ class cdetail_revenue extends CI_Controller {
             );
             $hasilrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
             $hasiltarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-            $pie[] = $b;
+         }
+         foreach ($grafik_kp->result() as $d){
+            $pie[] = $d;
          }
          $jenis2 = $this->mdetail_revenue->mshow_all_jenis($nama);   
 

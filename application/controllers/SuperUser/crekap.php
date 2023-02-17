@@ -62,30 +62,29 @@ class crekap extends CI_Controller {
                );
                $bpjsrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
                $bpjstarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-               $pie[] = $b;
             } elseif ($b->ket == "NON BPJS") {
                $nontanggal[] = array (
                   $tanggal_baru = date('d-M', strtotime($b->tanggal)),
                );
                $nonrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
                $nontarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-               $pie[] = $b;
             } elseif ($b->ket == "USAHA LAIN") {
                $laintanggal[] = array (
                   $tanggal_baru = date('d-M', strtotime($b->tanggal)),
                );
                $lainrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
                $laintarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-               $pie[] = $b;
             } elseif ($b->ket == "DI LUAR USAHA") {
                $luartanggal[] = array (
                   $tanggal_baru = date('d-M', strtotime($b->tanggal)),
                );
                $luarrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
                $luartarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-               $pie[] = $b;
             }
-
+         }
+         $graf_pie = $this->mrekap->mshow_all_pie_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         foreach ($graf_pie->result() as $b){
+            $pie[] = $b;
          }
          $jenis2 = $this->mrekap->mshow_all_jenis($nama);   
 
@@ -109,18 +108,22 @@ class crekap extends CI_Controller {
             'jenis'        => $jenis,
             'jenis2'       => $jenis2,
          );
+         
          $this->load->view('content/vsuperuser/vrekap/vgrafik_hasil_rekap_all',$data);
 
       }else{
          $grafik = $this->mrekap->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama);
-         
+         $grafik_kp = $this->mrekap->mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+
          foreach ($grafik->result() as $b){
             $hasiltanggal[] = array (
                $tanggal_baru = date('d-M', strtotime($b->tanggal)),
             );
             $hasilrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
             $hasiltarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-            $pie[] = $b;
+         }
+         foreach ($grafik_kp->result() as $d){
+            $pie[] = $d;
          }
          $jenis2 = $this->mrekap->mshow_all_jenis($nama);   
 
