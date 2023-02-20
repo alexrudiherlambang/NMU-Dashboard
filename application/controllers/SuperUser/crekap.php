@@ -54,33 +54,26 @@ class crekap extends CI_Controller {
       
       if ($jenis == "SEMUA") {
          $grafik = $this->mrekap->mshow_all_grafik_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
-         
-         foreach ($grafik->result() as $b){
-            if ($b->ket == "BPJS"){
-               $bpjstanggal[] = array (
-                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-               );
-               $bpjsrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-               $bpjstarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-            } elseif ($b->ket == "NON BPJS") {
-               $nontanggal[] = array (
-                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-               );
-               $nonrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-               $nontarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-            } elseif ($b->ket == "USAHA LAIN") {
-               $laintanggal[] = array (
-                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-               );
-               $lainrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-               $laintarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-            } elseif ($b->ket == "DI LUAR USAHA") {
-               $luartanggal[] = array (
-                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-               );
-               $luarrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-               $luartarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-            }
+
+         foreach ($grafik->result() as $b) {
+            $hasiltanggal[] = date('d-M', strtotime($b->tanggal));
+            $hasilrevenue[$b->ket][] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+            $hasiltarget[$b->ket][] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+         }
+         // Buat array hasil tanggal dari kunci array asosiatif
+        
+         foreach ($hasilrevenue as $ket => $revenues) {
+            $hasilrevenue_data[] = array(
+              'name' => $ket,
+              'data' => $revenues
+            );
+         }
+          
+         foreach ($hasiltarget as $ket => $targets) {
+            $hasiltarget_data[] = array(
+              'name' => $ket,
+              'data' => $targets
+            );
          }
          $graf_pie = $this->mrekap->mshow_all_pie_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
          foreach ($graf_pie->result() as $b){
@@ -89,18 +82,9 @@ class crekap extends CI_Controller {
          $jenis2 = $this->mrekap->mshow_all_jenis($nama);   
 
          $data =  array (
-            'bpjstanggal'      => $bpjstanggal,
-            'bpjsrevenue'      => $bpjsrevenue,
-            'bpjstarget'       => $bpjstarget,
-            'nontanggal'       => $nontanggal,
-            'nonrevenue'       => $nonrevenue,
-            'nontarget'        => $nontarget,
-            'laintanggal'      => $laintanggal,
-            'lainrevenue'      => $lainrevenue,
-            'laintarget'       => $laintarget,
-            'luartanggal'      => $luartanggal,
-            'luarrevenue'      => $luarrevenue,
-            'luartarget'       => $luartarget,
+            'tanggal'      => $hasiltanggal,
+            'revenue'      => $hasilrevenue,
+            'target'       => $hasiltarget,
             'pie'          => $pie,
             'tglawal'      => $tglawal,
             'tglakhir'     => $tglakhir,
@@ -108,7 +92,6 @@ class crekap extends CI_Controller {
             'jenis'        => $jenis,
             'jenis2'       => $jenis2,
          );
-         
          $this->load->view('content/vsuperuser/vrekap/vgrafik_hasil_rekap_all',$data);
 
       }else{

@@ -299,10 +299,10 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: <?php echo json_encode($rjtanggal)?>,
+            labels: <?php echo json_encode(array_unique($tanggal))?>,
             datasets: [{
                 label: 'Total Revenue',
-                data: [<?php echo implode(',', $rjrevenue) ?>],
+                data: [<?php echo implode(',', $revenue['1. RAWAT JALAN']) ?>],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 3
@@ -350,7 +350,7 @@
     myChart.update();
     myChart.data.datasets.push({
     label: 'Target Revenue',
-    data: [<?php echo implode(',', $rjtarget) ?>],
+    data: [<?php echo implode(',', $target['1. RAWAT JALAN']) ?>],
     backgroundColor: 'rgba(54, 162, 235, 0.2)',
     borderColor: 'rgba(54, 162, 235, 1)',
     borderWidth: 3
@@ -362,10 +362,10 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: <?php echo json_encode($ritanggal)?>,
+            labels: <?php echo json_encode(array_unique($tanggal))?>,
             datasets: [{
                 label: 'Total Revenue',
-                data: [<?php echo implode(',', $rirevenue) ?>],
+                data: [<?php echo implode(',', $revenue['2. RAWAT INAP']) ?>],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 3
@@ -413,7 +413,7 @@
     myChart.update();
     myChart.data.datasets.push({
     label: 'Target Revenue',
-    data: [<?php echo implode(',', $ritarget) ?>],
+    data: [<?php echo implode(',', $target['2. RAWAT INAP']) ?>],
     backgroundColor: 'rgba(54, 162, 235, 0.2)',
     borderColor: 'rgba(54, 162, 235, 1)',
     borderWidth: 3
@@ -425,10 +425,10 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: <?php echo json_encode($penunjangtanggal)?>,
+            labels: <?php echo json_encode(array_unique($tanggal))?>,
             datasets: [{
                 label: 'Total Revenue',
-                data: [<?php echo implode(',', $penunjangrevenue) ?>],
+                data: [<?php echo implode(',', $revenue['3. PENUNJANG']) ?>],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 3
@@ -476,7 +476,7 @@
     myChart.update();
     myChart.data.datasets.push({
     label: 'Target Revenue',
-    data: [<?php echo implode(',', $penunjangtarget) ?>],
+    data: [<?php echo implode(',', $target['3. PENUNJANG']) ?>],
     backgroundColor: 'rgba(54, 162, 235, 0.2)',
     borderColor: 'rgba(54, 162, 235, 1)',
     borderWidth: 3
@@ -488,10 +488,10 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: <?php echo json_encode($ultanggal)?>,
+            labels: <?php echo json_encode(array_unique($tanggal))?>,
             datasets: [{
                 label: 'Total Revenue',
-                data: [<?php echo implode(',', $ulrevenue) ?>],
+                data: [<?php echo implode(',', $revenue['4. USAHA LAIN']) ?>],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 3
@@ -539,7 +539,7 @@
     myChart.update();
     myChart.data.datasets.push({
     label: 'Target Revenue',
-    data: [<?php echo implode(',', $ultarget) ?>],
+    data: [<?php echo implode(',', $target['4. USAHA LAIN']) ?>],
     backgroundColor: 'rgba(54, 162, 235, 0.2)',
     borderColor: 'rgba(54, 162, 235, 1)',
     borderWidth: 3

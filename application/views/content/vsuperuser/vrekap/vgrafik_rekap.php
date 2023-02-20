@@ -159,15 +159,20 @@
 											<div class="col-md-6">
 												<!--begin::Card-->
 												<div class="card card-md-stretch">
-													<!--begin::Body-->
-													<div class="card-body">
-														<!--begin::Header-->
-														<div class="d-flex flex-stack">
-															<div id="chart_pendapatan_bpjs"></div>
-														</div>
-														<!--end::Header-->
+													<div class="table-responsive">
+														<table class="table align-middle gs-0 gy-4"> 
+															<tbody class="text-gray-600 fw-semibold">
+																<tr>
+																	<td class="text-end min-w-50px"></td>
+																	<td>
+																		<div class="d-flex flex-stack">
+																			<div id="chart_pendapatan_bpjs"></div>
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
 													</div>
-													<!--end::Body-->
 												</div>
 												<!--end::Card-->
 											</div>
@@ -177,8 +182,18 @@
 										<!--begin::Products Documentations-->
 										<div class="card mb-1">
 											<!--begin::Card body-->
-											<div class="card-body">
-											<canvas id="myChart" width="300" height="100"></canvas><br>
+											<div class="table-responsive">
+												<table class="table align-middle gs-0 gy-4"> 
+													<tbody class="text-gray-600 fw-semibold">
+														<tr>
+															<td>
+															<div class="card-body">
+																<b>(Dalam Juta)</b><br><br>
+																<canvas id="myChart" width="300" height="100"></canvas><br>
+															</div>
+														</tr>
+													</tbody>
+												</table>
 											</div>
 											<!--end::Card body-->
 										</div>

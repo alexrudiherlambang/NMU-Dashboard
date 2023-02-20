@@ -52,32 +52,24 @@ class cdetail_revenue extends CI_Controller {
       if ($jenis == "SEMUA") {
          $grafik = $this->mdetail_revenue->mshow_all_grafik_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
          
-         foreach ($grafik->result() as $b){
-            if ($b->kelspesimen == "1. RAWAT JALAN"){
-               $rjtanggal[] = array (
-                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-               );
-               $rjrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-               $rjtarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-            } elseif ($b->kelspesimen == "2. RAWAT INAP") {
-               $ritanggal[] = array (
-                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-               );
-               $rirevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-               $ritarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-            } elseif ($b->kelspesimen == "3. PENUNJANG") {
-               $penunjangtanggal[] = array (
-                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-               );
-               $penunjangrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-               $penunjangtarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-            } elseif ($b->kelspesimen == "4. USAHA LAIN") {
-               $ultanggal[] = array (
-                  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-               );
-               $ulrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-               $ultarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
-            }
+         foreach ($grafik->result() as $b) {
+            $hasiltanggal[] = date('d-M', strtotime($b->tanggal));
+            $hasilrevenue[$b->kelspesimen][] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+            $hasiltarget[$b->kelspesimen][] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+         }
+          
+         foreach ($hasilrevenue as $kelspesimen => $revenues) {
+            $hasilrevenue_data[] = array(
+              'name' => $kelspesimen,
+              'data' => $revenues
+            );
+         }
+          
+         foreach ($hasiltarget as $kelspesimen => $targets) {
+            $hasiltarget_data[] = array(
+              'name' => $kelspesimen,
+              'data' => $targets
+            );
          }
          $graf_pie = $this->mdetail_revenue->mshow_all_pie_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
          
@@ -87,18 +79,9 @@ class cdetail_revenue extends CI_Controller {
          $jenis2 = $this->mdetail_revenue->mshow_all_jenis($nama);   
 
          $data =  array (
-            'rjtanggal'       => $rjtanggal,
-            'rjrevenue'       => $rjrevenue,
-            'rjtarget'        => $rjtarget,
-            'ritanggal'       => $ritanggal,
-            'rirevenue'       => $rirevenue,
-            'ritarget'        => $ritarget,
-            'penunjangtanggal'=> $penunjangtanggal,
-            'penunjangrevenue'=> $penunjangrevenue,
-            'penunjangtarget' => $penunjangtarget,
-            'ultanggal'       => $ultanggal,
-            'ulrevenue'       => $ulrevenue,
-            'ultarget'        => $ultarget,
+            'tanggal'         => $hasiltanggal,
+            'revenue'         => $hasilrevenue,
+            'target'          => $hasiltarget,
             'pie'             => $pie,
             'tglawal'         => $tglawal,
             'tglakhir'        => $tglakhir,
@@ -138,6 +121,7 @@ class cdetail_revenue extends CI_Controller {
          $this->load->view('content/vsuperuser/vdetail_revenue/vgrafik_hasil_detail_revenue',$data);
       }
    }
+
    function export_xls() {
       $nama = $this->session->userdata("nama");
       $pilihan = $this->input->post('pilihan');

@@ -35,9 +35,95 @@ class cbiaya extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
+      $nama = $this->session->userdata("nama");
+      $data['jenis'] = $this->mbiaya->mshow_all_jenis($nama);
       
-      $this->load->view('content/vsuperuser/vbiaya/vgrafik_biaya');
+      $this->load->view('content/vsuperuser/vbiaya/vgrafik_biaya', $data);
    }
+
+   function grafik_hasil_biaya() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $tglawal = $this->input->post('tglawal');
+      $tglakhir = $this->input->post('tglakhir');
+      $lokasi = $this->input->post('lokasi');
+      $jenis = $this->input->post('jenis');
+      $nama = $this->session->userdata("nama");
+      
+      if ($jenis == "SEMUA") {
+         $grafik = $this->mbiaya->mshow_all_grafik_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         
+         foreach ($grafik->result() as $b) {
+            $hasiltanggal[] = date('d-M', strtotime($b->tanggal));
+            $hasilrevenue[$b->kelspesimen][] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+            $hasiltarget[$b->kelspesimen][] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+         }
+          
+         foreach ($hasilrevenue as $kelspesimen => $revenues) {
+            $hasilrevenue_data[] = array(
+              'name' => $kelspesimen,
+              'data' => $revenues
+            );
+         }
+          
+         foreach ($hasiltarget as $kelspesimen => $targets) {
+            $hasiltarget_data[] = array(
+              'name' => $kelspesimen,
+              'data' => $targets
+            );
+         }
+         $graf_pie = $this->mbiaya->mshow_all_pie_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         
+         foreach ($graf_pie->result() as $c){
+            $pie[] = $c;
+         }
+         $jenis2 = $this->mbiaya->mshow_all_jenis($nama);   
+
+         $data =  array (
+            'tanggal'         => $hasiltanggal,
+            'revenue'         => $hasilrevenue,
+            'target'          => $hasiltarget,
+            'pie'             => $pie,
+            'tglawal'         => $tglawal,
+            'tglakhir'        => $tglakhir,
+            'lokasi'          => $lokasi,
+            'jenis'           => $jenis,
+            'jenis2'          => $jenis2,
+         );
+         $this->load->view('content/vsuperuser/vbiaya/vgrafik_hasil_biaya_all',$data);
+
+      }else{
+         $grafik = $this->mbiaya->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         $grafik_kp = $this->mbiaya->mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         
+         foreach ($grafik->result() as $b){
+            $hasiltanggal[] = array (
+               $tanggal_baru = date('d-M', strtotime($b->tanggal)),
+            );
+            $hasilrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+            $hasiltarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+         }
+         foreach ($grafik_kp->result() as $d){
+            $pie[] = $d;
+         }
+         $jenis2 = $this->mbiaya->mshow_all_jenis($nama);   
+
+         $data =  array (
+            'tanggal'      => $hasiltanggal,
+            'revenue'      => $hasilrevenue,
+            'target'       => $hasiltarget,
+            'pie'          => $pie,
+            'tglawal'      => $tglawal,
+            'tglakhir'     => $tglakhir,
+            'lokasi'       => $lokasi,
+            'jenis'        => $jenis,
+            'jenis2'       => $jenis2,
+         );
+         $this->load->view('content/vsuperuser/vbiaya/vgrafik_hasil_biaya',$data);
+      }
+   }
+
    function export_xls() {
       $nama = $this->session->userdata("nama");
       $pilihan = $this->input->post('pilihan');

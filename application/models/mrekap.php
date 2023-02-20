@@ -16,6 +16,7 @@ class mrekap extends ci_model {
    
    // untuk menampilkan Jenis
    function mshow_all_jenis($nama) {
+      $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1('" . date('Y-m-d') . "', '" . (new DateTime('-7 days'))->format('Y-m-d') . "', '$nama', '')");
       $this->db->select('ket');
       $this->db->from('test.ra_dashdb1_'.$nama);
       $this->db->where('flag', '0');
