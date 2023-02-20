@@ -62,7 +62,7 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/claba_rugi/laba_rugi" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
@@ -142,7 +142,7 @@
                                             <!--begin::Table head-->
                                             <thead>
                                                 <!--begin::Table row-->
-                                                <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Realisasi yang Lalu</th>
@@ -180,16 +180,15 @@
                                                     <td class="text-end min-w-100px"><b>0</b></td>
                                                     <td class="text-end min-w-100px"><b>0</b></td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><b>3</b></td>
-                                                    <td class="min-w-125px"><b>LABA USAHA</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                <tr style="background-color: #000080;">
+                                                    <td style="color: #ffffff; vertical-align: middle;" colspan="2" class="min-w-150px"><b>LABA / RUGI USAHA</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="w-10px pe-5"><b>4</b></td>
@@ -213,8 +212,8 @@
                                                     <td class="text-end min-w-100px"><b>0</b></td>
                                                     <td class="text-end min-w-100px"><b>0</b></td>
                                                 </tr>
-                                                <tr style="background-color: #6f53ab;">
-                                                    <td style="color: #ffffff; vertical-align: middle;" colspan="2" class="min-w-150px"><b>LR SEBELUM PAJAK</b></td>
+                                                <tr style="background-color: #000080;">
+                                                    <td style="color: #ffffff; vertical-align: middle;" colspan="2" class="min-w-150px"><b>LABA / RUGI SEBELUM PAJAK</b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>

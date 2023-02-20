@@ -125,6 +125,8 @@ class cdetail_revenue extends CI_Controller {
    function export_xls() {
       $nama = $this->session->userdata("nama");
       $pilihan = $this->input->post('pilihan');
+      $tglawal = $this->input->post('tglawal');
+      $tglakhir = $this->input->post('tglakhir');
       
       $this->load->helper('exportexcel');
       $namaFile = "Rekap Pendapatan Per-Revenue Stream.xls";
@@ -157,7 +159,7 @@ class cdetail_revenue extends CI_Controller {
 
       foreach ($pilihan as $p) {
          $ket = $p;
-         foreach ($this->mdetail_revenue->mshow_all_detail($nama, $ket) as $data) {
+         foreach ($this->mdetail_revenue->mshow_all_detail($nama, $ket, $tglawal, $tglakhir) as $data) {
             $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric

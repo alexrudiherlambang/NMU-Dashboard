@@ -127,6 +127,8 @@ class cbiaya extends CI_Controller {
    function export_xls() {
       $nama = $this->session->userdata("nama");
       $pilihan = $this->input->post('pilihan');
+      $tglawal = $this->input->post('tglawal');
+      $tglakhir = $this->input->post('tglakhir');
       
       $this->load->helper('exportexcel');
       $namaFile = "Rekap Beban Biaya.xls";
@@ -160,7 +162,7 @@ class cbiaya extends CI_Controller {
       foreach ($pilihan as $p) {
          $ket = $p;
          
-         foreach ($this->mbiaya->mshow_all_detail($nama, $ket) as $data) {
+         foreach ($this->mbiaya->mshow_all_detail($nama, $ket, $tglawal, $tglakhir) as $data) {
             
             $kolombody = 0;
 

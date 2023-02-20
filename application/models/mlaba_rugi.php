@@ -7,30 +7,32 @@ class mlaba_rugi extends ci_model {
    }
 
    // untuk menampilkan semua rekap
-   function mshow_all_laba_rugi($tglawal,$tglakhir,$nama,$lokasi) {
-      return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_ke1`('".$tglawal."','".$tglawal."','".$nama."','".$lokasi."');")->result();
+   function mshow_all_call($tglawal,$tglakhir,$nama,$lokasi) {
+      $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke3('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+      $this->db->select('*');
+      $this->db->from('test.ra_dashdb4_'.$nama);
+      return $this->db->get()->result();
+   }
+   
+   // untuk menampilkan Jenis
+   function mshow_all_jenis($nama) {
+      $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke3('" . date('Y-m-d') . "', '" . (new DateTime('-7 days'))->format('Y-m-d') . "', '$nama', '')");
+      $this->db->select('ket');
+      $this->db->from('test.ra_dashdb4_'.$nama);
+      $this->db->where('flag', '0');
+      return $this->db->get()->result();
    }
 
-   // untuk menampilkan semua rekap
-   function mshow_all_rekap2($tglawal,$tglakhir,$nama,$lokasi) {
-      return $this->db->query("CALL `dashboardnmu_new`.`proses_dashboard_ke4`('".$tglawal."','".$tglawal."','".$nama."','".$lokasi."');")->result();
-   }
-
-   //INSERT DATA USER
-   function minsert_user($data) {
-      $this->db->insert('user', $data);
-   }
-
-   //UPDATE BERDASARKAN ID
-   function mupdate_user($dataUpdate, $id) {
-      $this->db->where('id', $id);
-      $this->db->update('admin', $dataUpdate);
-   }
-
-   //DELETE
-   function mdelete_user($id_user) {
-      $this->db->where('id_user', $id_user);
-      $this->db->delete('user');
+   // untuk cetak excel
+   function mshow_all_detail($nama, $kellabarugi, $tglawal, $tglakhir) {
+      $this->db->select('lokasi,tanggal,kellabarugi,rsaldolalu,rsaldosaatini,rsaldosampai,rsaldopotensi1,jmltarget,statuse');
+      $this->db->from('test.ra_dashdb_'.$nama);
+      $this->db->where('kellabarugi', $kellabarugi);
+      $this->db->where('tanggal>=', $tglawal);
+      $this->db->where('tanggal<=', $tglakhir);
+      $this->db->group_by('lokasi');
+      $this->db->group_by('tanggal');
+      return $this->db->get()->result();
    }
 }
 ?>

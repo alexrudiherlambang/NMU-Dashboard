@@ -216,6 +216,8 @@
                                         <!--begin::Table-->
                                         <div class="table-responsive">
                                             <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/export_xls">
+                                                <input class="form-control form-control-solid ps-12" type="hidden" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>" readonly/>
+                                                <input class="form-control form-control-solid ps-12" type="hidden" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>" readonly/>
                                                 <button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
                                                 <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
                                                 <table class="table align-middle gs-0 gy-4">
