@@ -39,6 +39,31 @@ class cuser extends CI_Controller {
 		return "default.png";
 	 }
 
+    function ctambah_user() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+
+      $this->load->view('content/vsuperuser/vuser/vinput_user');
+   }
+
+   function cinsert_user() {
+      $id = $this->input->post('nama_user');
+      $foto = $this->_uploadgambar($id);
+
+      $simpan = array(
+         'username'            => $this->input->post('username'),
+         'password'            => $this->input->post('password'),
+         'nama'                => strtoupper($this->input->post('nama_user')),
+         'foto'                => $foto,
+         'eemail'              => $this->input->post('email'),
+         'tlok'                => $this->input->post('level'),        
+      );
+
+      $this->muser->minsert_user($simpan);
+      redirect('SuperUser/cuser');
+   }
+
    function clihat_user() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
           redirect("clogin");

@@ -77,6 +77,13 @@
                                             <!--end::Search-->
                                         </div>
                                         <!--begin::Card title-->
+                                        <div class="card-toolbar">
+                                            <!--begin::Toolbar-->
+                                            <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">     
+                                                <?php echo anchor('SuperUser/cuser/ctambah_user', '+ Data User', array('class' => 'btn btn-sm btn-success', 'type' => 'button')) ?>
+                                            </div>
+                                            <!--end::Toolbar-->
+                                        </div>
                                     </div>
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
