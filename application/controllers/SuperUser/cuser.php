@@ -74,9 +74,9 @@ class cuser extends CI_Controller {
      }
 
      function cupdate_foto() {
-      $id = $this->input->post('kduser');
       $id = $this->input->post('id');
-      $foto = $this->_uploadgambar($id);
+      $nama = $this->input->post('nama');
+      $foto = $this->_uploadgambar($nama);
 
       $simpan = array(
         'foto'                => $foto,

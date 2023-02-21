@@ -72,6 +72,7 @@
                                                         <form method="post" id="form_upload" action="<?php echo site_url(); ?>SuperUser/cuser/cupdate_foto" enctype="multipart/form-data">
                                                             <!--begin::Image input-->
                                                             <input type="hidden" class="form-control" name="id" value="<?php echo $user->id;?>">
+                                                            <input type="hidden" class="form-control" name="nama" value="<?php echo $user->nama;?>">
                                                             <div class="image-input image-input-outline image-input-placeholder" data-kt-image-input="true">
                                                                 <!--begin::Preview existing avatar-->
                                                                 <div class="image-input-wrapper w-125px h-125px" style="background-image: url(<?=base_url()?>assets/media/images/<?php echo $user->foto;?>"></div>
