@@ -9,7 +9,7 @@ class muser extends ci_model {
     // untuk menampilkan semua user
     function mshow_all_user() {
       $this->db->select('*');
-      $this->db->from('admin');
+      $this->db->from('user');
       $this->db->order_by('id', 'asc');
       return $this->db->get()->result();
    }
@@ -17,7 +17,7 @@ class muser extends ci_model {
    // SELECT BERDASARKAN ID USER
    function mselect_by_iduser($id) {
       $this->db->select('*');
-      $this->db->from('admin');
+      $this->db->from('user');
       $this->db->where('id', $id);
       return $this->db->get()->row();
    }
@@ -30,7 +30,7 @@ class muser extends ci_model {
    //UPDATE BERDASARKAN ID
    function mupdate_user($dataUpdate, $id) {
       $this->db->where('id', $id);
-      $this->db->update('admin', $dataUpdate);
+      $this->db->update('user', $dataUpdate);
    }
 
    //DELETE

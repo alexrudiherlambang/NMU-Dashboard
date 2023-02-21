@@ -15,13 +15,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		function cek_username($username)
 		{
 			$this->db->where('username', $username);
-			return $this->db->get('admin');
+			return $this->db->get('user');
 		}
 
 		function cek_password($username)
 		{
 			$this->db->where('username', $username);
-			return $this->db->get('admin')->result();
+			return $this->db->get('user')->result();
 		}
 	}
 ?>
