@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Grafik Rekap Pendapatan Per-Revenue Stream</h1>
+										Grafik Rekap Per-Revenue Stream</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php

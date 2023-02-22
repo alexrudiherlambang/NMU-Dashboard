@@ -7,8 +7,8 @@
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
         <!--begin::Logo image-->
         <a href="#">
-            <img alt="Logo" src="<?php echo base_url(); ?>assets/media/logos/crm1.png"
-                class="h-100px app-sidebar-logo-default"/>
+            <img alt="Logo" src="<?php echo base_url(); ?>assets/media/logos/Dash.png"
+                class="h-95px text-center app-sidebar-logo-default"/>
         </a>
         <!--end::Logo image-->
         <!--begin::Sidebar toggle-->

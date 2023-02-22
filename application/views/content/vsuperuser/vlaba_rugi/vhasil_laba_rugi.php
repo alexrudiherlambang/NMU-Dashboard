@@ -179,7 +179,7 @@
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$lr->rsaldosaatini+$lr->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->jmltarget/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $prosentase=$lr->jmlprosen*100; echo $prosentase;?>%</b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo $lr->jmlprosen*100;?>%</b></td>
                                                         <?php endif; ?>
                                                     </tr>
                                                     <tr>
@@ -194,8 +194,7 @@
                                                             <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldopotensi/1000000, 0, ',', '.')?></td>
                                                             <td class="text-end min-w-100px"><b><?php $total=$lr->rsaldosaatini+$lr->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
                                                             <td class="text-end min-w-100px"><?php echo number_format($lr->jmltarget/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><?php $prosentase=$lr->jmlprosen*100; echo $prosentase;?>%</td>
-                                                            <!-- <td><?php echo $lr->jnstrans ?></td> -->
+                                                            <td class="text-end min-w-100px"><?php echo $lr->jmlprosen*100;?>%</td>
                                                         <?php endif; ?>
                                                     </tr>
                                                 <?php endforeach; ?>

@@ -37,8 +37,17 @@ class clogin extends CI_Controller {
 						'eemail'	=> $key->eemail,
 						'status'	=> "Login"
 					);
-
 					$this->session->set_userdata($data_session);
+
+					//insert into log_login table
+					$log = array(
+						'id'		=> $key->id,
+						'platform'	=> $this->agent->platform(),
+						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+						'ip'		=> $this->input->ip_address(),
+						'action'	=> 'Login',
+					);
+					$this->mlogin->insert_log($log);
 					redirect(site_url("SuperUser/Home"));
 				} else if ($key->username == $username && $key->password == $password && $key->tlok == "RSG") {
 					# code...
@@ -54,6 +63,16 @@ class clogin extends CI_Controller {
 						'status'	=> "Login"
 					);
 					$this->session->set_userdata($data_session);
+
+					//insert into log_login table
+					$log = array(
+						'id'		=> $key->id,
+						'platform'	=> $this->agent->platform(),
+						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+						'ip'		=> $this->input->ip_address(),
+						'action'	=> 'Login',
+					);
+					$this->mlogin->insert_log($log);
 					redirect(site_url("Pimpinan/Home"));
 				} else if ($key->username == $username && $key->password == $password && $key->tlok == "RST") {
 					# code...
@@ -69,6 +88,16 @@ class clogin extends CI_Controller {
 						);
 					// print_r($data_session);
 					$this->session->set_userdata($data_session);
+
+					//insert into log_login table
+					$log = array(
+						'id'		=> $key->id,
+						'platform'	=> $this->agent->platform(),
+						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+						'ip'		=> $this->input->ip_address(),
+						'action'	=> 'Login',
+					);
+					$this->mlogin->insert_log($log);
 					redirect(site_url("Legal/Home"));
 				}else if ($key->username == $username && $key->password == $password && $key->tlok == "RSP") {
 					# code...
@@ -82,8 +111,17 @@ class clogin extends CI_Controller {
 							'eemail'	=> $key->eemail,
 							'status'	=> "Login"
 						);
-					// print_r($data_session);
 					$this->session->set_userdata($data_session);
+
+					//insert into log_login table
+					$log = array(
+						'id'		=> $key->id,
+						'platform'	=> $this->agent->platform(),
+						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+						'ip'		=> $this->input->ip_address(),
+						'action'	=> 'Login',
+					);
+					$this->mlogin->insert_log($log);
 					redirect(site_url("Rekanan/Home"));
 				} else if ($key->username == $username && $key->password == $password && $key->tlok == "RSMU") {
 					# code...
@@ -97,8 +135,17 @@ class clogin extends CI_Controller {
 							'eemail'	=> $key->eemail,
 							'status'	=> "Login"
 						);
-					// print_r($data_session);
 					$this->session->set_userdata($data_session);
+
+					//insert into log_login table
+					$log = array(
+						'id'		=> $key->id,
+						'platform'	=> $this->agent->platform(),
+						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+						'ip'		=> $this->input->ip_address(),
+						'action'	=> 'Login',
+					);
+					$this->mlogin->insert_log($log);
 					redirect(site_url("Unit/Home"));
 				} else {
 					echo '<script language="javascript">alert("Password Anda Salah !!!"); window.location.href="./";</script>';

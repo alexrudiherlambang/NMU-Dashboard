@@ -264,8 +264,7 @@
                                                         <!--begin::Card toolbar-->
                                                         <div class="card-toolbar">
                                                             <!--begin::Filter-->
-                                                            <button type="button" class="btn btn-sm btn-flex btn-light-primary" id="kt_modal_sign_out_sesions">
-                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr077.svg-->
+                                                            <!-- <button type="button" class="btn btn-sm btn-flex btn-light-primary" id="kt_modal_sign_out_sesions">
                                                             <span class="svg-icon svg-icon-3">
                                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <rect opacity="0.3" x="4" y="11" width="12" height="2" rx="1" fill="currentColor" />
@@ -273,7 +272,7 @@
                                                                     <path d="M8 5V6C8 6.55228 8.44772 7 9 7C9.55228 7 10 6.55228 10 6C10 5.44772 10.4477 5 11 5H18C18.5523 5 19 5.44772 19 6V18C19 18.5523 18.5523 19 18 19H11C10.4477 19 10 18.5523 10 18C10 17.4477 9.55228 17 9 17C8.44772 17 8 17.4477 8 18V19C8 20.1046 8.89543 21 10 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H10C8.89543 3 8 3.89543 8 5Z" fill="currentColor" />
                                                                 </svg>
                                                             </span>
-                                                            <!--end::Svg Icon-->Sign out all sessions</button>
+                                                            Sign out all sessions</button> -->
                                                             <!--end::Filter-->
                                                         </div>
                                                         <!--end::Card toolbar-->
@@ -289,190 +288,41 @@
                                                                 <thead class="border-bottom border-gray-200 fs-7 fw-bold">
                                                                     <!--begin::Table row-->
                                                                     <tr class="text-start text-muted text-uppercase gs-0">
-                                                                        <th class="min-w-100px">Location</th>
-                                                                        <th>Device</th>
-                                                                        <th>IP Address</th>
-                                                                        <th class="min-w-125px">Time</th>
-                                                                        <th class="min-w-70px">Actions</th>
+                                                                        <th class="text-center w-10px pe-5">No</th>
+                                                                        <th class="text-center min-w-70px">Nama</th>
+                                                                        <th class="text-center min-w-70px">Platform</th>
+                                                                        <th class="text-center min-w-70px">Browser</th>
+                                                                        <th class="text-center min-w-100px">IP Address</th>
+                                                                        <th class="text-center min-w-110px">Tanggal</th>
+                                                                        <th class="text-center min-w-80px">Jam</th>
+                                                                        <th class="text-center min-w-70px">Actions</th>
                                                                     </tr>
                                                                     <!--end::Table row-->
                                                                 </thead>
                                                                 <!--end::Table head-->
                                                                 <!--begin::Table body-->
                                                                 <tbody class="fs-6 fw-semibold text-gray-600">
+                                                                    <?php
+                                                                    $no = 1;
+                                                                    foreach ($log as $log) :
+                                                                    ?>
                                                                     <tr>
-                                                                        <!--begin::Invoice=-->
-                                                                        <td>Australia</td>
-                                                                        <!--end::Invoice=-->
-                                                                        <!--begin::Status=-->
-                                                                        <td>Chome - Windows</td>
-                                                                        <!--end::Status=-->
-                                                                        <!--begin::Amount=-->
-                                                                        <td>207.26.24.365</td>
-                                                                        <!--end::Amount=-->
-                                                                        <!--begin::Date=-->
-                                                                        <td>23 seconds ago</td>
-                                                                        <!--end::Date=-->
-                                                                        <!--begin::Action=-->
-                                                                        <td>Current session</td>
-                                                                        <!--end::Action=-->
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <!--begin::Invoice=-->
-                                                                        <td>Australia</td>
-                                                                        <!--end::Invoice=-->
-                                                                        <!--begin::Status=-->
-                                                                        <td>Safari - iOS</td>
-                                                                        <!--end::Status=-->
-                                                                        <!--begin::Amount=-->
-                                                                        <td>207.11.39.370</td>
-                                                                        <!--end::Amount=-->
-                                                                        <!--begin::Date=-->
-                                                                        <td>3 days ago</td>
-                                                                        <!--end::Date=-->
-                                                                        <!--begin::Action=-->
-                                                                        <td>
-                                                                            <a href="#" data-kt-users-sign-out="single_user">Sign out</a>
+                                                                        <td class="text-center"><?php echo $no ?></td>
+                                                                        <td class="text-center"><?php echo $log->nama ?></td>
+                                                                        <td class="text-center"><?php echo $log->platform ?></td>
+                                                                        <td class="text-center"><?php echo $log->browser ?></td>
+                                                                        <td class="text-center"><?php echo $log->ip ?></td>
+                                                                        <td class="text-center"><?php echo date('d-m-Y', strtotime($log->lastupdate)) ?></td>
+                                                                        <td class="text-center"><?php echo date('h:i A', strtotime($log->lastupdate)) ?></td>
+                                                                        <td class="text-center">
+                                                                            <div class="badge badge-light-success"><?php echo $log->action ?></div>
                                                                         </td>
                                                                         <!--end::Action=-->
                                                                     </tr>
-                                                                    <tr>
-                                                                        <!--begin::Invoice=-->
-                                                                        <td>Australia</td>
-                                                                        <!--end::Invoice=-->
-                                                                        <!--begin::Status=-->
-                                                                        <td>Chrome - Windows</td>
-                                                                        <!--end::Status=-->
-                                                                        <!--begin::Amount=-->
-                                                                        <td>207.22.20.44</td>
-                                                                        <!--end::Amount=-->
-                                                                        <!--begin::Date=-->
-                                                                        <td>last week</td>
-                                                                        <!--end::Date=-->
-                                                                        <!--begin::Action=-->
-                                                                        <td>Expired</td>
-                                                                        <!--end::Action=-->
-                                                                    </tr>
-                                                                </tbody>
-                                                                <!--end::Table body-->
-                                                            </table>
-                                                            <!--end::Table-->
-                                                        </div>
-                                                        <!--end::Table wrapper-->
-                                                    </div>
-                                                    <!--end::Card body-->
-                                                </div>
-                                                <!--end::Card-->
-                                                <!--begin::Card-->
-                                                <div class="card pt-4 mb-6 mb-xl-9">
-                                                    <!--begin::Card header-->
-                                                    <div class="card-header border-0">
-                                                        <!--begin::Card title-->
-                                                        <div class="card-title">
-                                                            <h2>Logs</h2>
-                                                        </div>
-                                                        <!--end::Card title-->
-                                                        <!--begin::Card toolbar-->
-                                                        <div class="card-toolbar">
-                                                            <!--begin::Button-->
-                                                            <button type="button" class="btn btn-sm btn-light-primary">
-                                                            <!--begin::Svg Icon | path: icons/duotune/files/fil021.svg-->
-                                                            <span class="svg-icon svg-icon-3">
-                                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path opacity="0.3" d="M19 15C20.7 15 22 13.7 22 12C22 10.3 20.7 9 19 9C18.9 9 18.9 9 18.8 9C18.9 8.7 19 8.3 19 8C19 6.3 17.7 5 16 5C15.4 5 14.8 5.2 14.3 5.5C13.4 4 11.8 3 10 3C7.2 3 5 5.2 5 8C5 8.3 5 8.7 5.1 9H5C3.3 9 2 10.3 2 12C2 13.7 3.3 15 5 15H19Z" fill="currentColor" />
-                                                                    <path d="M13 17.4V12C13 11.4 12.6 11 12 11C11.4 11 11 11.4 11 12V17.4H13Z" fill="currentColor" />
-                                                                    <path opacity="0.3" d="M8 17.4H16L12.7 20.7C12.3 21.1 11.7 21.1 11.3 20.7L8 17.4Z" fill="currentColor" />
-                                                                </svg>
-                                                            </span>
-                                                            <!--end::Svg Icon-->Download Report</button>
-                                                            <!--end::Button-->
-                                                        </div>
-                                                        <!--end::Card toolbar-->
-                                                    </div>
-                                                    <!--end::Card header-->
-                                                    <!--begin::Card body-->
-                                                    <div class="card-body py-0">
-                                                        <!--begin::Table wrapper-->
-                                                        <div class="table-responsive">
-                                                            <!--begin::Table-->
-                                                            <table class="table align-middle table-row-dashed fw-semibold text-gray-600 fs-6 gy-5" id="kt_table_users_logs">
-                                                                <!--begin::Table body-->
-                                                                <tbody>
-                                                                    <!--begin::Table row-->
-                                                                    <tr>
-                                                                        <!--begin::Badge=-->
-                                                                        <td class="min-w-70px">
-                                                                            <div class="badge badge-light-success">200 OK</div>
-                                                                        </td>
-                                                                        <!--end::Badge=-->
-                                                                        <!--begin::Status=-->
-                                                                        <td>POST /v1/invoices/in_5068_2104/payment</td>
-                                                                        <!--end::Status=-->
-                                                                        <!--begin::Timestamp=-->
-                                                                        <td class="pe-0 text-end min-w-200px">24 Jun 2022, 8:43 pm</td>
-                                                                        <!--end::Timestamp=-->
-                                                                    </tr>
-                                                                    <!--end::Table row-->
-                                                                    <!--begin::Table row-->
-                                                                    <tr>
-                                                                        <!--begin::Badge=-->
-                                                                        <td class="min-w-70px">
-                                                                            <div class="badge badge-light-warning">404 WRN</div>
-                                                                        </td>
-                                                                        <!--end::Badge=-->
-                                                                        <!--begin::Status=-->
-                                                                        <td>POST /v1/customer/c_637dcb9edc0c6/not_found</td>
-                                                                        <!--end::Status=-->
-                                                                        <!--begin::Timestamp=-->
-                                                                        <td class="pe-0 text-end min-w-200px">24 Jun 2022, 11:30 am</td>
-                                                                        <!--end::Timestamp=-->
-                                                                    </tr>
-                                                                    <!--end::Table row-->
-                                                                    <!--begin::Table row-->
-                                                                    <tr>
-                                                                        <!--begin::Badge=-->
-                                                                        <td class="min-w-70px">
-                                                                            <div class="badge badge-light-danger">500 ERR</div>
-                                                                        </td>
-                                                                        <!--end::Badge=-->
-                                                                        <!--begin::Status=-->
-                                                                        <td>POST /v1/invoice/in_7036_6144/invalid</td>
-                                                                        <!--end::Status=-->
-                                                                        <!--begin::Timestamp=-->
-                                                                        <td class="pe-0 text-end min-w-200px">10 Mar 2022, 10:30 am</td>
-                                                                        <!--end::Timestamp=-->
-                                                                    </tr>
-                                                                    <!--end::Table row-->
-                                                                    <!--begin::Table row-->
-                                                                    <tr>
-                                                                        <!--begin::Badge=-->
-                                                                        <td class="min-w-70px">
-                                                                            <div class="badge badge-light-danger">500 ERR</div>
-                                                                        </td>
-                                                                        <!--end::Badge=-->
-                                                                        <!--begin::Status=-->
-                                                                        <td>POST /v1/invoice/in_7036_6144/invalid</td>
-                                                                        <!--end::Status=-->
-                                                                        <!--begin::Timestamp=-->
-                                                                        <td class="pe-0 text-end min-w-200px">20 Dec 2022, 5:30 pm</td>
-                                                                        <!--end::Timestamp=-->
-                                                                    </tr>
-                                                                    <!--end::Table row-->
-                                                                    <!--begin::Table row-->
-                                                                    <tr>
-                                                                        <!--begin::Badge=-->
-                                                                        <td class="min-w-70px">
-                                                                            <div class="badge badge-light-warning">404 WRN</div>
-                                                                        </td>
-                                                                        <!--end::Badge=-->
-                                                                        <!--begin::Status=-->
-                                                                        <td>POST /v1/customer/c_637dcb9edc0c6/not_found</td>
-                                                                        <!--end::Status=-->
-                                                                        <!--begin::Timestamp=-->
-                                                                        <td class="pe-0 text-end min-w-200px">20 Jun 2022, 2:40 pm</td>
-                                                                        <!--end::Timestamp=-->
-                                                                    </tr>
-                                                                    <!--end::Table row-->
+                                                                    <?php
+                                                                    $no++;
+                                                                    endforeach;
+                                                                    ?>
                                                                 </tbody>
                                                                 <!--end::Table body-->
                                                             </table>

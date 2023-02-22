@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Data Pendapatan Per- Revenue Stream</h1>
+										Data Per-Revenue Stream</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -179,7 +179,7 @@
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo $rekap->jmlprosen*100;?>%</b></td>
                                                         <?php endif; ?>
                                                     </tr>
                                                     <tr>
@@ -194,7 +194,7 @@
                                                             <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></td>
                                                             <td class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
                                                             <td class="text-end min-w-100px"><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
+                                                            <td class="text-end min-w-100px"><?php echo $rekap->jmlprosen*100;?>%</td>
                                                             <!-- <td><?php echo $rekap->jnstrans ?></td> -->
                                                         <?php endif; ?>
                                                     </tr>

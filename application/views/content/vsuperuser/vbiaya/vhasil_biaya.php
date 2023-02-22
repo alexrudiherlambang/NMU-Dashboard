@@ -185,7 +185,7 @@
                                                                         <td class="text-end min-w-100px"><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></td>
                                                                         <td class="text-end min-w-100px"><?php $total=$biaya->rsaldosaatini+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></td>
                                                                         <td class="text-end min-w-100px"><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></td>
-                                                                        <td class="text-end min-w-100px"><?php echo $biaya->jmlprosen;?>%</td>
+                                                                        <td class="text-end min-w-100px"><?php echo $biaya->jmlprosen*100;?>%</td>
                                                                     </tr>
                                                                     <?php continue;
                                                                 } else {
@@ -202,7 +202,7 @@
                                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
                                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$biaya->rsaldosaatini+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
                                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></b></td>
-                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo $biaya->jmlprosen;?>%</b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo $biaya->jmlprosen*100;?>%</b></td>
                                                                     <?php endif; ?>
                                                                 </tr>
                                                                 <tr>
@@ -218,7 +218,7 @@
                                                                         <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
                                                                         <td class="text-end min-w-100px"><b><?php $total=$biaya->rsaldosaatini+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
                                                                         <td class="text-end min-w-100px"><b><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></b></td>
-                                                                        <td class="text-end min-w-100px"><b><?php echo $biaya->jmlprosen;?>%</b></td>
+                                                                        <td class="text-end min-w-100px"><b><?php echo $biaya->jmlprosen*100;?>%</b></td>
                                                                         <?php continue;
                                                                     } else {?>
                                                                         <td>

@@ -70,6 +70,7 @@ class cuser extends CI_Controller {
       }
         $id_user = $this->uri->segment(4);
         $data['user'] = $this->muser->mselect_by_iduser($id_user);
+        $data['log'] = $this->muser->mselect_log_login($id_user);
         $this->load->view('content/vsuperuser/vuser/vlihat_user', $data);
      }
 

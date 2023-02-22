@@ -23,5 +23,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			$this->db->where('username', $username);
 			return $this->db->get('user')->result();
 		}
+
+		//Insert Log Login
+		function insert_log($log) {
+			$this->db->insert('log_login', $log);
+		 }
 	}
 ?>

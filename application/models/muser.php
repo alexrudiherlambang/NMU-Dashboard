@@ -22,6 +22,16 @@ class muser extends ci_model {
       return $this->db->get()->row();
    }
 
+   // SELECT LOG LOGIN BY ID USER
+   function mselect_log_login($id) {
+      $this->db->select('a.nama, b.platform, b.browser, b.ip, b.action, b.lastupdate');
+      $this->db->from('log_login as b');
+      $this->db->join('user as a', 'a.id = b.id', 'inner');
+      $this->db->where('b.id', $id);
+      $this->db->order_by('b.lastupdate', 'desc');
+      return $this->db->get()->result();
+   }
+
    //INSERT DATA USER
    function minsert_user($data) {
       $this->db->insert('user', $data);
