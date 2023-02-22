@@ -260,10 +260,12 @@
                                                 <!--end::Table body-->
                                             </table>
                                         </div>
-                                        <div style="text-align:left">Ket :<br>
-                                        <i>Potensial SK = Pasien RJ atau RI yang sudah close bill</i><br>
-                                        <i>Estimasi Total SK = Penjumlahan total SK saat ini dengan potensial SK</i><br>
-                                        <i>Prosentase = Total SK / Target SK</i><br></div>
+                                        <div style="text-align:left"><b>Ket :</b><br>
+                                            <i><b>Potensial SK</b> = Pasien RJ atau RI yang sudah close bill</i><br>
+                                            <i><b>Estimasi Total SK</b> = Penjumlahan total SK saat ini dengan potensial SK</i><br>
+                                            <i><b>Prosentase</b> = Total SK / Target SK</i><br>
+                                            <i><b>Export Excel</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
+                                        </div>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->

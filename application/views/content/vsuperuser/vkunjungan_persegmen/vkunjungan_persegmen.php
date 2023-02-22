@@ -227,10 +227,12 @@
                                             <!--end::Table body-->
                                             </table>
                                         </div>
-                                        <div style="text-align:left">Ket :<br>
-                                        <i>Potensial Kunjungan = Pasien RJ atau RI yang sudah close bill</i><br>
-                                        <i>Estimasi Total Kunjungan = Penjumlahan total kunjungan saat ini dengan potensial kunjungan</i><br>
-                                        <i>Prosentase = Total Kunjungan / Target Kunjungan</i><br></div>
+                                        <div style="text-align:left"><b>Ket :</b><br>
+                                            <i><b>Potensial Kunjungan</b> = Pasien RJ atau RI yang sudah close bill</i><br>
+                                            <i><b>Estimasi Total Kunjungan</b> = Penjumlahan total kunjungan saat ini dengan potensial kunjungan</i><br>
+                                            <i><b>Prosentase</b> = Total Kunjungan / Target Kunjungan</i><br>
+                                            <i><b>Export Excel</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
+                                        </div>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->

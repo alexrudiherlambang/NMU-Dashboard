@@ -244,10 +244,12 @@
                                                     </table>
                                             </form>
                                         </div>
-                                        <div style="text-align:left">Ket :<br>
-                                        <i>Potensial Revenue = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
-                                        <i>Estimasi Total Revenue = Penjumlahan total revenue saat ini dengan potensial revenue</i><br>
-                                        <i>Prosentase = Total Revenue / Target Revenue</i><br></div>
+                                        <div style="text-align:left"><b>Ket :</b><br>
+                                            <i><b>Potensial Beban</b> = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
+                                            <i><b>Estimasi Total Beban</b> = Penjumlahan total beban saat ini dengan potensial beban</i><br>
+                                            <i><b>Prosentase</b> = Total Beban / Target Beban</i><br>
+                                            <i><b>Export Excel</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
+                                        </div>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->
