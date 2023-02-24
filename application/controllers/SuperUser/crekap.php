@@ -85,8 +85,8 @@ class crekap extends CI_Controller {
 
          foreach ($grafik->result() as $b) {
             $hasiltanggal[] = date('d-M', strtotime($b->tanggal));
-            $hasilrevenue[$b->ket][] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-            $hasiltarget[$b->ket][] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+            $hasilrevenue[$b->ket][] = $b->total_rsaldosampai;
+            $hasiltarget[$b->ket][] = $b->total_jmltarget;
          }
          // Buat array hasil tanggal dari kunci array asosiatif
         
@@ -158,14 +158,14 @@ class crekap extends CI_Controller {
             $hasiltanggal[] = array (
                $tanggal_baru = date('d-M', strtotime($b->tanggal)),
             );
-            $hasilrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-            $hasiltarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+            $hasilrevenue[] = $b->total_rsaldosampai;
+            $hasiltarget[] = $b->total_jmltarget;
          }
          foreach ($grafik_kp->result() as $d){
             $pie[] = $d;
          }
          $jenis2 = $this->mrekap->mshow_all_jenis($nama);   
-
+         
          $data =  array (
             'tanggal'      => $hasiltanggal,
             'revenue'      => $hasilrevenue,

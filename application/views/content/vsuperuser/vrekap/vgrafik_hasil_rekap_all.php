@@ -286,7 +286,7 @@
 					ticks: {
 						// Menentukan format currency
 						callback: function(value, index, values) {
-							return value.toLocaleString('id-ID');
+							return (value / 1000000).toFixed(0);
 						}
 					}
 					}]
@@ -302,7 +302,7 @@
 							if (label) {
 								label += ': ';
 							}
-							label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
+							label += (tooltipItem.yLabel / 1000000).toFixed(0).replace('.', ',') + ' (Dalam Juta)';
 							return label;
 						}
 					}
@@ -324,19 +324,27 @@
 	<?php endforeach ?>
     
 	<!-- script pie -->
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script>
 		google.charts.load("current", {packages:["corechart"]});
 		google.charts.setOnLoadCallback(drawChart);
 
 		function drawChart() {
-		var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
+			var data = google.visualization.arrayToDataTable([
+			['Task', 'Hours per Day'],
 			<?php foreach ($pie as $pie) :?>
-			['<?php echo $pie->ket;?>',<?php echo number_format($pie->total_rsaldosampai/1000000, 0, ',', '.'); ?>],
+			['<?php echo $pie->ket;?>',<?php echo $pie->total_rsaldosampai/1000000; ?>],
 			<?php endforeach;?>
-		]);
+			]);
 
-		var options = {
+			var formatter = new google.visualization.NumberFormat({
+			suffix: ' jt',
+			fractionDigits: 0
+			});
+
+			formatter.format(data, 1);
+
+			var options = {
 			width: 340,
 			height: 300,
 			is3D: true,
@@ -356,19 +364,20 @@
 				callback: function(tooltipItem, data) {
 				var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
 				var value = data.getValue(tooltipItem.row, 1);
-				return currency.format(value);
+				return currency.format(value * 1000000);
 				}
 			},
 			chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
-		};
+			};
 
-		var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
-		chart.draw(data, options);
+			var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
+			chart.draw(data, options);
+
+			// Menyesuaikan ukuran grafik saat tampil di mobile
+			window.addEventListener('resize', function() {
+			chart.draw(data, options);
+			});
 		}
-		// Menyesuaikan ukuran grafik saat tampil di mobile
-		window.addEventListener('resize', function() {
-		chart.draw(data, options);
-		});
 	</script>
 
     <?php

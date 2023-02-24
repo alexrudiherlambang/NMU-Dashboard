@@ -83,8 +83,8 @@ class cdetail_segmen extends CI_Controller {
          
          foreach ($grafik->result() as $b) {
             $hasiltanggal[] = date('d-M', strtotime($b->tanggal));
-            $hasilrevenue[$b->kelsegmen][] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-            $hasiltarget[$b->kelsegmen][] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+            $hasilrevenue[$b->kelsegmen][] = $b->total_rsaldosampai;
+            $hasiltarget[$b->kelsegmen][] = $b->total_jmltarget;
          }
           
          foreach ($hasilrevenue as $kelsegmen => $revenues) {
@@ -105,8 +105,7 @@ class cdetail_segmen extends CI_Controller {
          foreach ($graf_pie->result() as $c){
             $pie[] = $c;
          }
-         $jenis2 = $this->msegmen->mshow_all_jenis($nama);   
-
+         $jenis2 = $this->msegmen->mshow_all_jenis($nama);
          $data =  array (
             'tanggal'         => $hasiltanggal,
             'revenue'         => $hasilrevenue,
@@ -148,7 +147,6 @@ class cdetail_segmen extends CI_Controller {
          $this->msegmen->insert_log($log);
 
          $this->load->view('content/vsuperuser/vdetail_segmen/vgrafik_hasil_detail_segmen_all',$data);
-
       }else{
          $grafik = $this->msegmen->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama);
          $grafik_kp = $this->msegmen->mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$jenis,$nama);
@@ -157,55 +155,58 @@ class cdetail_segmen extends CI_Controller {
             $hasiltanggal[] = array (
                $tanggal_baru = date('d-M', strtotime($b->tanggal)),
             );
-            $hasilrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-            $hasiltarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+            $hasilrevenue[] = $b->total_rsaldosampai;
+            $hasiltarget[] = $b->total_jmltarget;
          }
          foreach ($grafik_kp->result() as $d){
             $pie[] = $d;
          }
          $jenis2 = $this->msegmen->mshow_all_jenis($nama);   
-
-         $data =  array (
-            'tanggal'      => $hasiltanggal,
-            'revenue'      => $hasilrevenue,
-            'target'       => $hasiltarget,
-            'pie'          => $pie,
-            'tglawal'      => $tglawal,
-            'tglakhir'     => $tglakhir,
-            'lokasi'       => $lokasi,
-            'jenis'        => $jenis,
-            'jenis2'       => $jenis2,
-         );
-
-         //insert into log_aktifitas table
-         if ($lokasi == ""){
-            $log = array(
-               'id'		   => $this->session->userdata("id"),
-               'tglawal'   => $tglawal,
-               'tglakhir'  => $tglakhir,
-               'unit'      => 'KONSOLIDASI',
-               'jenis'     => $jenis,
-               'platform'	=> $this->agent->platform(),
-               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-               'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Pendapatan Per-Segmen',
-            );
+         if (empty($hasiltanggal)) {
+            echo '<script language="javascript">alert("Data Tidak Tersedia !!!"); document.location="grafik_detail_segmen";</script>';
          }else{
-            $log = array(
-               'id'		   => $this->session->userdata("id"),
-               'tglawal'   => $tglawal,
-               'tglakhir'  => $tglakhir,
-               'unit'      => $lokasi,
-               'jenis'     => $jenis,
-               'platform'	=> $this->agent->platform(),
-               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-               'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Pendapatan Per-Segmen',
+            $data =  array (
+               'tanggal'      => $hasiltanggal,
+               'revenue'      => $hasilrevenue,
+               'target'       => $hasiltarget,
+               'pie'          => $pie,
+               'tglawal'      => $tglawal,
+               'tglakhir'     => $tglakhir,
+               'lokasi'       => $lokasi,
+               'jenis'        => $jenis,
+               'jenis2'       => $jenis2,
             );
+
+            //insert into log_aktifitas table
+            if ($lokasi == ""){
+               $log = array(
+                  'id'		   => $this->session->userdata("id"),
+                  'tglawal'   => $tglawal,
+                  'tglakhir'  => $tglakhir,
+                  'unit'      => 'KONSOLIDASI',
+                  'jenis'     => $jenis,
+                  'platform'	=> $this->agent->platform(),
+                  'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+                  'ip'		   => $this->input->ip_address(),
+                  'action'	   => 'Show Grafik Pendapatan Per-Segmen',
+               );
+            }else{
+               $log = array(
+                  'id'		   => $this->session->userdata("id"),
+                  'tglawal'   => $tglawal,
+                  'tglakhir'  => $tglakhir,
+                  'unit'      => $lokasi,
+                  'jenis'     => $jenis,
+                  'platform'	=> $this->agent->platform(),
+                  'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+                  'ip'		   => $this->input->ip_address(),
+                  'action'	   => 'Show Grafik Pendapatan Per-Segmen',
+               );
+            }
+            $this->msegmen->insert_log($log);
+            
+            $this->load->view('content/vsuperuser/vdetail_segmen/vgrafik_hasil_detail_segmen',$data);
          }
-         $this->msegmen->insert_log($log);
-         
-         $this->load->view('content/vsuperuser/vdetail_segmen/vgrafik_hasil_detail_segmen',$data);
       }
    }
 

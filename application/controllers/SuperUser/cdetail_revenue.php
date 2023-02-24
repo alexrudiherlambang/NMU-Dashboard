@@ -83,8 +83,8 @@ class cdetail_revenue extends CI_Controller {
          
          foreach ($grafik->result() as $b) {
             $hasiltanggal[] = date('d-M', strtotime($b->tanggal));
-            $hasilrevenue[$b->kelspesimen][] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-            $hasiltarget[$b->kelspesimen][] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+            $hasilrevenue[$b->kelspesimen][] = $b->total_rsaldosampai;
+            $hasiltarget[$b->kelspesimen][] = $b->total_jmltarget;
          }
           
          foreach ($hasilrevenue as $kelspesimen => $revenues) {
@@ -157,8 +157,8 @@ class cdetail_revenue extends CI_Controller {
             $hasiltanggal[] = array (
                $tanggal_baru = date('d-M', strtotime($b->tanggal)),
             );
-            $hasilrevenue[] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-            $hasiltarget[] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+            $hasilrevenue[] = $b->total_rsaldosampai;
+            $hasiltarget[] = $b->total_jmltarget;
          }
          foreach ($grafik_kp->result() as $d){
             $pie[] = $d;
