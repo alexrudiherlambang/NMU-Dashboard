@@ -141,7 +141,7 @@
                                                 <!--begin::Table head-->
                                                 <thead>
                                                     <!--begin::Table row-->
-                                                    <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                    <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">SK yang Lalu</th>
@@ -245,7 +245,7 @@
                                                         <td class="text-end min-w-100px"><b>0</b></td>
                                                         <td class="text-end min-w-100px"><b>0</b></td>
                                                     </tr>
-                                                    <tr style="background-color: #6f53ab;">
+                                                    <tr style="background-color: #000080;">
                                                         <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL TT RI</b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>

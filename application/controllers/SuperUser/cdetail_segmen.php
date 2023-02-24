@@ -31,7 +31,7 @@ class cdetail_segmen extends CI_Controller {
             'id'		   => $this->session->userdata("id"),
             'tglawal'   => $tglawal,
             'tglakhir'  => $tglakhir,
-            'unit'      => 'KP',
+            'unit'      => 'KONSOLIDASI',
             'jenis'     => 'SEMUA',
             'platform'	=> $this->agent->platform(),
             'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
@@ -83,20 +83,20 @@ class cdetail_segmen extends CI_Controller {
          
          foreach ($grafik->result() as $b) {
             $hasiltanggal[] = date('d-M', strtotime($b->tanggal));
-            $hasilrevenue[$b->kelspesimen][] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
-            $hasiltarget[$b->kelspesimen][] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
+            $hasilrevenue[$b->kelsegmen][] = number_format($b->total_rsaldosampai/1000000, 0, ',', '.');
+            $hasiltarget[$b->kelsegmen][] = number_format($b->total_jmltarget/1000000, 0, ',', '.');
          }
           
-         foreach ($hasilrevenue as $kelspesimen => $revenues) {
+         foreach ($hasilrevenue as $kelsegmen => $revenues) {
             $hasilrevenue_data[] = array(
-              'name' => $kelspesimen,
+              'name' => $kelsegmen,
               'data' => $revenues
             );
          }
           
-         foreach ($hasiltarget as $kelspesimen => $targets) {
+         foreach ($hasiltarget as $kelsegmen => $targets) {
             $hasiltarget_data[] = array(
-              'name' => $kelspesimen,
+              'name' => $kelsegmen,
               'data' => $targets
             );
          }
@@ -125,7 +125,7 @@ class cdetail_segmen extends CI_Controller {
                'id'		   => $this->session->userdata("id"),
                'tglawal'   => $tglawal,
                'tglakhir'  => $tglakhir,
-               'unit'      => 'KP',
+               'unit'      => 'KONSOLIDASI',
                'jenis'     => $jenis,
                'platform'	=> $this->agent->platform(),
                'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
@@ -147,7 +147,7 @@ class cdetail_segmen extends CI_Controller {
          }
          $this->msegmen->insert_log($log);
 
-         $this->load->view('content/vsuperuser/vdetail_revenue/vgrafik_hasil_detail_revenue_all',$data);
+         $this->load->view('content/vsuperuser/vdetail_segmen/vgrafik_hasil_detail_segmen_all',$data);
 
       }else{
          $grafik = $this->msegmen->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama);
@@ -183,7 +183,7 @@ class cdetail_segmen extends CI_Controller {
                'id'		   => $this->session->userdata("id"),
                'tglawal'   => $tglawal,
                'tglakhir'  => $tglakhir,
-               'unit'      => 'KP',
+               'unit'      => 'KONSOLIDASI',
                'jenis'     => $jenis,
                'platform'	=> $this->agent->platform(),
                'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
@@ -205,7 +205,7 @@ class cdetail_segmen extends CI_Controller {
          }
          $this->msegmen->insert_log($log);
          
-         $this->load->view('content/vsuperuser/vdetail_revenue/vgrafik_hasil_detail_revenue',$data);
+         $this->load->view('content/vsuperuser/vdetail_segmen/vgrafik_hasil_detail_segmen',$data);
       }
    }
 

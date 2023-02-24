@@ -23,6 +23,104 @@ class msegmen extends ci_model {
       return $this->db->get()->result();
    }
 
+   // untuk menampilkan grafik
+   function mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
+      if ($lokasi == ''){
+         //line kp
+         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_s('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+         $this->db->select('tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_s_'.$nama);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('kelsegmen', $jenis);
+         $this->db->group_by('tanggal');
+         return $this->db->get();
+      }else{
+         //line unit
+         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_s('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+         $this->db->select('tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_s_'.$nama);
+         $this->db->where('lokasi', $lokasi);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('kelsegmen', $jenis);
+         $this->db->group_by('tanggal');
+         return $this->db->get();
+      }
+   }
+
+   // untuk menampilkan pie
+   function mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
+      if ($lokasi == ''){
+         //pie kp
+         $this->db->select('lokasi,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_s_'.$nama);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('kelsegmen', $jenis);
+         $this->db->group_by('lokasi');
+         return $this->db->get();
+      }else{
+         //pie unit
+         $this->db->select('lokasi,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_s_'.$nama);
+         $this->db->where('lokasi', $lokasi);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('kelsegmen', $jenis);
+         $this->db->group_by('lokasi');
+         return $this->db->get();
+      }
+   }
+
+   // untuk menampilkan pie all jenis
+   function mshow_all_pie_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
+      if ($lokasi == ''){
+         //pie jenis kp
+         $this->db->select('kelsegmen,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_s_'.$nama);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->group_by('kelsegmen');
+         return $this->db->get();
+      }else{
+         //pie jenis unit
+         $this->db->select('kelsegmen,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_s_'.$nama);
+         $this->db->where('lokasi', $lokasi);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->group_by('kelsegmen');
+         return $this->db->get();
+      }
+   }
+
+   // untuk menampilkan grafik all jenis
+   function mshow_all_grafik_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
+      if ($lokasi == ''){
+         //line jenis kp
+         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_s('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+         $this->db->select('kelsegmen,tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_s_'.$nama);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->group_by('kelsegmen');
+         $this->db->group_by('tanggal');
+         return $this->db->get();
+      }else{
+         //line jenis unit
+         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_s('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+         $this->db->select('kelsegmen,tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->from('test.ra_dashdb_s_'.$nama);
+         $this->db->where('lokasi', $lokasi);
+         $this->db->where('tanggal>=', $tglawal);
+         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->group_by('kelsegmen');
+         $this->db->group_by('tanggal');
+         return $this->db->get();
+      }
+   }
+
    // untuk cetak excel
    function mshow_all_detail($nama, $kelsegmen, $tglawal, $tglakhir) {
       $this->db->select('lokasi,tanggal,kelsegmen,rsaldolalu,rsaldosaatini,rsaldosampai,rsaldopotensi1,jmltarget,statuse');

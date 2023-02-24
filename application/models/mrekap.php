@@ -22,6 +22,7 @@ class mrekap extends ci_model {
       $this->db->where('flag', '0');
       return $this->db->get()->result();
    }
+   
    // untuk menampilkan grafik
    function mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
       if ($lokasi == ''){

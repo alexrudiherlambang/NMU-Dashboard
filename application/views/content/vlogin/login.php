@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <title>NMU | Login Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="assets_login/img/favicon.ico"/>
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets_login/src/normalize.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets_login/dist/style.css">
-    <script src="<?php echo base_url(); ?>assets_login/src/prefixfree.min.js"></script>
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets_login/dist/style.css">
+  <script src="<?php echo base_url(); ?>assets_login/src/prefixfree.min.js"></script>
 
 </head>
 <body>

@@ -184,61 +184,21 @@
 										<!--begin::Products Documentations-->
 										<div class="card mb-1">
 											<!--begin::Card body-->
-											<div class="table-responsive">
-												<table class="table align-middle gs-0 gy-4"> 
-													<tbody class="text-gray-600 fw-semibold">
-														<tr>
-															<td>
-															<div class="card-body">
-																<b>(Dalam Juta)</b> PENDAPATAN USAHA<br><br>
-																<canvas id="pu" width="750" height="200"></canvas><br>
-															</div>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-
-											<div class="table-responsive">
-												<table class="table align-middle gs-0 gy-4"> 
-													<tbody class="text-gray-600 fw-semibold">
-														<tr>
-															<td>
-															<div class="card-body">
-																<b>(Dalam Juta)</b> BEBAN USAHA<br><br>
-																<canvas id="bu" width="750" height="200"></canvas><br>
-															</div>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-
-											<div class="table-responsive">
-												<table class="table align-middle gs-0 gy-4"> 
-													<tbody class="text-gray-600 fw-semibold">
-														<tr>
-															<td>
-															<div class="card-body">
-																<b>(Dalam Juta)</b> DEPRESIASI<br><br>
-																<canvas id="dep" width="750" height="200"></canvas><br>
-															</div>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-
-											<div class="table-responsive">
-												<table class="table align-middle gs-0 gy-4"> 
-													<tbody class="text-gray-600 fw-semibold">
-														<tr>
-															<td>
-															<div class="card-body">
-																<b>(Dalam Juta)</b> PENDAPATAN / BIAYA DILUAR USAHA<br><br>
-																<canvas id="pblu" width="750" height="200"></canvas><br>
-															</div>
-														</tr>
-													</tbody>
-												</table>
-											</div>
+											<?php foreach ($jenis2 as $jenis):?>
+												<div class="table-responsive">
+													<table class="table align-middle gs-0 gy-4"> 
+														<tbody class="text-gray-600 fw-semibold">
+															<tr>
+																<td>
+																<div class="card-body">
+																	<b>(Dalam Juta)</b> <?php echo $jenis->ket?><br><br>
+																	<canvas id="<?php echo $jenis->ket?>" width="750" height="200"></canvas><br>
+																</div>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											<?php endforeach ?>
 											<!--end::Card body-->
 										</div>
 										<!--end::Products Documentations-->
@@ -297,308 +257,120 @@
         </div>
     </div>
 	
+    <!-- script line -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <script>
-    var ctx = document.getElementById('pu').getContext('2d');
-    var pu = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: <?php echo json_encode(array_unique($tanggal))?>,
-            datasets: [{
-                label: 'Total Realisasi',
-                data: [<?php echo implode(',', $revenue['1. PENDAPATAN USAHA']) ?>],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 3
-            }]
-        },
-        options: {
-        scales: {
-            xAxes: [{
-            gridLines: {
-                display: false
-            }
-            }],
-            yAxes: [{
-            gridLines: {
-                display: false
-            },
-			ticks: {
-				// Menentukan format currency
-				callback: function(value, index, values) {
-					return value.toLocaleString('id-ID');
+	<?php foreach ($jenis2 as $jenis):?>
+		<script>
+			var ctx = document.getElementById('<?php echo $jenis->ket?>').getContext('2d');
+			var bpjs = new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: <?php echo json_encode(array_unique($tanggal))?>,
+					datasets: [{
+						label: 'Total Revenue',
+						data: [<?php echo implode(',', $revenue[$jenis->ket]) ?>],
+						backgroundColor: 'rgba(255, 99, 132, 0.2)',
+						borderColor: 'rgba(255, 99, 132, 1)',
+						borderWidth: 3
+					}]
+				},
+				options: {
+				scales: {
+					xAxes: [{
+					gridLines: {
+						display: false
+					}
+					}],
+					yAxes: [{
+					gridLines: {
+						display: false
+					},
+					ticks: {
+						// Menentukan format currency
+						callback: function(value, index, values) {
+							return value.toLocaleString('id-ID');
+						}
+					}
+					}]
+				},
+				legend: {
+					position: 'bottom'
+				},
+				responsive: true,
+				tooltips: {
+					callbacks: {
+						label: function(tooltipItem, data) {
+							var label = data.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+								label += ': ';
+							}
+							label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
+							return label;
+						}
+					}
 				}
-			}
-            }]
-        },
-        legend: {
-            position: 'bottom'
-        },
-        responsive: true,
-		tooltips: {
-            callbacks: {
-                label: function(tooltipItem, data) {
-                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
-                    if (label) {
-                        label += ': ';
-                    }
-                    label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
-                    return label;
-                }
-            }
-        }
-        }
-    });
-    // Menambahkan data baru
-    pu.data.datasets[0].data.push(10);
-    pu.update();
-    pu.data.datasets.push({
-    label: 'Target Realisasi',
-    data: [<?php echo implode(',', $target['1. PENDAPATAN USAHA']) ?>],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3
-    });
-    pu.update();
-    </script>
-
-<script>
-    var ctx = document.getElementById('bu').getContext('2d');
-    var bu = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: <?php echo json_encode(array_unique($tanggal))?>,
-            datasets: [{
-                label: 'Total Realisasi',
-                data: [<?php echo implode(',', $revenue['2. BEBAN USAHA']) ?>],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 3
-            }]
-        },
-        options: {
-        scales: {
-            xAxes: [{
-            gridLines: {
-                display: false
-            }
-            }],
-            yAxes: [{
-            gridLines: {
-                display: false
-            },
-			ticks: {
-				// Menentukan format currency
-				callback: function(value, index, values) {
-					return value.toLocaleString('id-ID');
 				}
-			}
-            }]
-        },
-        legend: {
-            position: 'bottom'
-        },
-        responsive: true,
-		tooltips: {
-            callbacks: {
-                label: function(tooltipItem, data) {
-                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
-                    if (label) {
-                        label += ': ';
-                    }
-                    label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
-                    return label;
-                }
-            }
-        }
-        }
-    });
-    // Menambahkan data baru
-    bu.data.datasets[0].data.push(10);
-    bu.update();
-    bu.data.datasets.push({
-    label: 'Target Realisasi',
-    data: [<?php echo implode(',', $target['2. BEBAN USAHA']) ?>],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3
-    });
-    bu.update();
-    </script>
-
-<script>
-    var ctx = document.getElementById('dep').getContext('2d');
-    var dep = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: <?php echo json_encode(array_unique($tanggal))?>,
-            datasets: [{
-                label: 'Total Realisasi',
-                data: [<?php echo implode(',', $revenue['4. DEPRESIASI']) ?>],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 3
-            }]
-        },
-        options: {
-        scales: {
-            xAxes: [{
-            gridLines: {
-                display: false
-            }
-            }],
-            yAxes: [{
-            gridLines: {
-                display: false
-            },
-			ticks: {
-				// Menentukan format currency
-				callback: function(value, index, values) {
-					return value.toLocaleString('id-ID');
-				}
-			}
-            }]
-        },
-        legend: {
-            position: 'bottom'
-        },
-        responsive: true,
-		tooltips: {
-            callbacks: {
-                label: function(tooltipItem, data) {
-                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
-                    if (label) {
-                        label += ': ';
-                    }
-                    label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
-                    return label;
-                }
-            }
-        }
-        }
-    });
-    // Menambahkan data baru
-    dep.data.datasets[0].data.push(10);
-    dep.update();
-    dep.data.datasets.push({
-    label: 'Target Realisasi',
-    data: [<?php echo implode(',', $target['4. DEPRESIASI']) ?>],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3
-    });
-    dep.update();
-    </script>
-
-<script>
-    var ctx = document.getElementById('pblu').getContext('2d');
-    var pblu = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: <?php echo json_encode(array_unique($tanggal))?>,
-            datasets: [{
-                label: 'Total Realisasi',
-                data: [<?php echo implode(',', $revenue['5. PENDAPATAN/BIAYA LUAR USAHA']) ?>],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 3
-            }]
-        },
-        options: {
-        scales: {
-            xAxes: [{
-            gridLines: {
-                display: false
-            }
-            }],
-            yAxes: [{
-            gridLines: {
-                display: false
-            },
-			ticks: {
-				// Menentukan format currency
-				callback: function(value, index, values) {
-					return value.toLocaleString('id-ID');
-				}
-			}
-            }]
-        },
-        legend: {
-            position: 'bottom'
-        },
-        responsive: true,
-		tooltips: {
-            callbacks: {
-                label: function(tooltipItem, data) {
-                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
-                    if (label) {
-                        label += ': ';
-                    }
-                    label += tooltipItem.yLabel.toLocaleString('id-ID') + ' (Dalam Juta)';
-                    return label;
-                }
-            }
-        }
-        }
-    });
-    // Menambahkan data baru
-    pblu.data.datasets[0].data.push(10);
-    pblu.update();
-    pblu.data.datasets.push({
-    label: 'Target Realisasi',
-    data: [<?php echo implode(',', $target['5. PENDAPATAN/BIAYA LUAR USAHA']) ?>],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3
-    });
-    pblu.update();
-    </script>
-
+			});
+			// Menambahkan data baru
+			bpjs.data.datasets[0].data.push(10);
+			bpjs.update();
+			bpjs.data.datasets.push({
+			label: 'Target Revenue',
+			data: [<?php echo implode(',', $target[$jenis->ket]) ?>],
+			backgroundColor: 'rgba(54, 162, 235, 0.2)',
+			borderColor: 'rgba(54, 162, 235, 1)',
+			borderWidth: 3
+			});
+			bpjs.update();
+		</script>
+	<?php endforeach ?>
+    
+	<!-- script pie -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-    google.charts.load("current", {packages:["corechart"]});
-    google.charts.setOnLoadCallback(drawChart);
+		google.charts.load("current", {packages:["corechart"]});
+		google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
-    var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
-		<?php foreach ($pie as $pie) :?>
-		['<?php echo $pie->kellabarugi;?>',<?php echo number_format($pie->total_rsaldosampai/1000000, 0, ',', '.'); ?>],
-		<?php endforeach;?>
-    ]);
+		function drawChart() {
+		var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
+			<?php foreach ($pie as $pie) :?>
+			['<?php echo $pie->kellabarugi;?>',<?php echo number_format($pie->total_rsaldosampai/1000000, 0, ',', '.'); ?>],
+			<?php endforeach;?>
+		]);
 
-    var options = {
-        width: 340,
-        height: 300,
-        is3D: true,
-        responsive: true,
-		// legend: { position: 'none' },
-		pieSliceText: 'value-and-label',
-        slices: {
-            0: { color: 'blue' },
-            1: { color: 'green' },
-            2: { color: 'red' },
-            3: { color: 'yellow' },
-            4: { color: 'gray' }
-        },
-        tooltip: { 
-			format: 'currency',
-			// Mengatur format currency
-			callback: function(tooltipItem, data) {
-			var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
-			var value = data.getValue(tooltipItem.row, 1);
-			return currency.format(value);
-			}
-		},
-		chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
-    };
+		var options = {
+			width: 340,
+			height: 300,
+			is3D: true,
+			responsive: true,
+			// legend: { position: 'none' },
+			pieSliceText: 'value-and-label',
+			slices: {
+				0: { color: 'blue' },
+				1: { color: 'green' },
+				2: { color: 'red' },
+				3: { color: 'yellow' },
+				4: { color: 'gray' }
+			},
+			tooltip: { 
+				format: 'currency',
+				// Mengatur format currency
+				callback: function(tooltipItem, data) {
+				var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+				var value = data.getValue(tooltipItem.row, 1);
+				return currency.format(value);
+				}
+			},
+			chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
+		};
 
-    var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
-    chart.draw(data, options);
-    }
-    // Menyesuaikan ukuran grafik saat tampil di mobile
-    window.addEventListener('resize', function() {
-      chart.draw(data, options);
-    });
+		var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
+		chart.draw(data, options);
+		}
+		// Menyesuaikan ukuran grafik saat tampil di mobile
+		window.addEventListener('resize', function() {
+		chart.draw(data, options);
+		});
     </script>
 
     <?php

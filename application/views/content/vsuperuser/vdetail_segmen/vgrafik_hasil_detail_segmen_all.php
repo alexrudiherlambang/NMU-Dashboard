@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Grafik Rekap Pendapatan BPJS / Non BPJS</h1>
+										Grafik Rekap Pendapatan Per-Segmen</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -66,7 +66,7 @@
 												<div class="card card-md-stretch me-xl-3 mb-md-0 mb-6">
 													<!--begin::Body-->
 													<div class="card-body">
-															<form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/grafik_hasil_pendapatan" enctype="multipart/form-data">
+															<form method="post" action="<?php echo site_url(); ?>SuperUser/cdetail_segmen/grafik_hasil_pendapatan" enctype="multipart/form-data">
 																<div class="row mb-5">
 																	<!--begin::Col-->
 																	<div class="col-xl-4">
@@ -168,7 +168,7 @@
 																	<td class="text-end min-w-50px"></td>
 																	<td>
 																		<div class="d-flex flex-stack">
-																			<div id="chart_pendapatan_bpjs"></div>
+																			<div id="chart_pie_all"></div>
 																		</div>
 																	</td>
 																</tr>
@@ -183,6 +183,7 @@
 										<!--end::Row-->
 										<!--begin::Products Documentations-->
 										<div class="card mb-1">
+											<!--begin::Card body-->
 											<?php foreach ($jenis2 as $jenis):?>
 												<div class="table-responsive">
 													<table class="table align-middle gs-0 gy-4"> 
@@ -255,7 +256,8 @@
             </div>
         </div>
     </div>
-	<!-- script line -->
+	
+    <!-- script line -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 	<?php foreach ($jenis2 as $jenis):?>
 		<script>
@@ -324,52 +326,52 @@
 	<?php endforeach ?>
     
 	<!-- script pie -->
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-		google.charts.load("current", {packages:["corechart"]});
-		google.charts.setOnLoadCallback(drawChart);
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
 
-		function drawChart() {
-		var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
-			<?php foreach ($pie as $pie) :?>
-			['<?php echo $pie->ket;?>',<?php echo number_format($pie->total_rsaldosampai/1000000, 0, ',', '.'); ?>],
-			<?php endforeach;?>
-		]);
+        function drawChart() {
+        var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
+            <?php foreach ($pie as $pie) :?>
+            ['<?php echo $pie->kelsegmen;?>',<?php echo number_format($pie->total_rsaldosampai/1000000, 0, ',', '.'); ?>],
+            <?php endforeach;?>
+        ]);
 
-		var options = {
-			width: 340,
-			height: 300,
-			is3D: true,
-			responsive: true,
-			// legend: { position: 'none' },
-			pieSliceText: 'value-and-label',
-			slices: {
-				0: { color: 'blue' },
-				1: { color: 'green' },
-				2: { color: 'red' },
-				3: { color: 'yellow' },
-				4: { color: 'gray' }
-			},
-			tooltip: { 
-				format: 'currency',
-				// Mengatur format currency
-				callback: function(tooltipItem, data) {
-				var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
-				var value = data.getValue(tooltipItem.row, 1);
-				return currency.format(value);
-				}
-			},
-			chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
-		};
+        var options = {
+            width: 340,
+            height: 300,
+            is3D: true,
+            responsive: true,
+            // legend: { position: 'none' },
+            pieSliceText: 'value-and-label',
+            slices: {
+                0: { color: 'blue' },
+                1: { color: 'green' },
+                2: { color: 'red' },
+                3: { color: 'yellow' },
+                4: { color: 'gray' }
+            },
+            tooltip: { 
+                format: 'currency',
+                // Mengatur format currency
+                callback: function(tooltipItem, data) {
+                var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+                var value = data.getValue(tooltipItem.row, 1);
+                return currency.format(value);
+                }
+            },
+            chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
+        };
 
-		var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
-		chart.draw(data, options);
-		}
-		// Menyesuaikan ukuran grafik saat tampil di mobile
-		window.addEventListener('resize', function() {
-		chart.draw(data, options);
-		});
-	</script>
+        var chart = new google.visualization.PieChart(document.getElementById('chart_pie_all'));
+        chart.draw(data, options);
+        }
+        // Menyesuaikan ukuran grafik saat tampil di mobile
+        window.addEventListener('resize', function() {
+        chart.draw(data, options);
+        });
+    </script>
 
     <?php
         $this->load->view('partials/script');
