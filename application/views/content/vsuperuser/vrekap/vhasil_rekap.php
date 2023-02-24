@@ -51,84 +51,7 @@
 							<!--end::Toolbar container-->
 						</div>
 						<!--end::Toolbar-->
-						<!--begin::Modal-->
-                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-
-                                <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">Data User</h4>
-                                </div>
-                                <div class="modal-body">
-                                <form action="<?php echo base_url("owner/datauser/tambah") ?>" method="post" class="form-horizontal form-label-left">
-                                    <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">ID User</label>
-                                    <div class="col-md-2 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" id="id_user_isi" name="id_user_isi" value="<?php echo $kode ?>" readonly="readonly" required="required">
-                                    </div>
-                                    </div>
-                                    <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama <span class="required">*</span></label>
-                                    <div class="col-md-4 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" id="nama_isi" name="nama_isi" placeholder="Nama Lengkap" required="required">
-                                    </div>
-                                    </div>
-                                    <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Jenis Kelamin <span class="required">*</span></label>
-                                    <div class="col-md-4 col-sm-9 col-xs-12">
-                                        <select class="form-control" id="jenis_kelamin_isi" name="jenis_kelamin_isi" required="required">
-                                        <option>--Pilih--</option>
-                                        <option>Laki - laki</option>
-                                        <option>Perempuan</option>
-                                        </select>
-                                    </div>
-                                    </div>
-                                    <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Alamat <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-4 col-sm-9 col-xs-12">
-                                        <textarea class="form-control" rows="3" id="alamat_isi" name="alamat_isi" placeholder="Alamat Lengkap" required="required"></textarea>
-                                    </div>
-                                    </div>
-                                    <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Jabatan <span class="required">*</span></label>
-                                    <div class="col-md-4 col-sm-9 col-xs-12">
-                                        <select class="form-control" id="jabatan_isi" name="jabatan_isi" required="required">
-                                        <option>--Pilih--</option>
-                                        <option>Kasir</option>
-                                        <option>Admin</option>
-                                        </select>
-                                    </div>
-                                    </div>
-                                    <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Username <span class="required">*</span></label>
-                                    <div class="col-md-4 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" id="username_isi" name="username_isi" placeholder="Username" required="required">
-                                        <p id="pesan"></p>
-                                    </div>
-                                    </div>
-                                    <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Password <span class="required">*</span></label>
-                                    <div class="col-md-4 col-sm-9 col-xs-12">
-                                        <input type="password" class="form-control" id="password_isi" name="password_isi" placeholder="Password" required="required">
-                                    </div>
-                                    </div>
-                                    <div class="ln_solid"></div>
-                                    <div class="form-group">
-                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="reset" class="btn btn-primary">Reset</button>
-                                        <button type="submit" id="submit" class="btn btn-success">Submit</button>
-                                    </div>
-                                    </div>
-                                </form>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <!--end::Modal-->
+						
 						<!--begin::Content-->
 						<div id="kt_app_content" class="app-content flex-column-fluid">
                             <!--begin::Content container-->
@@ -147,7 +70,8 @@
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
                                                         <select class="form-select form-select-solid select2" name="lokasi">
-                                                            <option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
+                                                            <option <?php if ($lokasi == "") echo "selected"; ?> value="">KONSOLIDASI</option>
+                                                            <option <?php if ($lokasi == "K.P") echo "selected"; ?>>K.P</option>
                                                             <option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
                                                             <option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
                                                             <option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
@@ -257,7 +181,7 @@
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosampai+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo $rekap->jmlprosen*100;?>%</b></td>
                                                         <?php endif; ?>
@@ -273,7 +197,7 @@
                                                             <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></td>
                                                             <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></td>
                                                             <td class="text-end min-w-100px"><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosaatini+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td class="text-end min-w-100px"><b><?php $total=$rekap->rsaldosampai+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
                                                             <td class="text-end min-w-100px"><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></td>
                                                             <td class="text-end min-w-100px"><?php echo $rekap->jmlprosen*100;?>%</td>
                                                         <?php endif; ?>

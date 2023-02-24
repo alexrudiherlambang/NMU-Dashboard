@@ -71,7 +71,8 @@
                                                     <div class="col-xl-5 fv-row">
                                                         <select class="form-select form-select-solid select2" name="lokasi">
                                                             <option selected="selected">-</option>
-                                                            <option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
+                                                            <option <?php if ($lokasi == "") echo "selected"; ?> value="">KONSOLIDASI</option>
+                                                            <option <?php if ($lokasi == "K.P") echo "selected"; ?>>K.P</option>
                                                             <option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
                                                             <option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
                                                             <option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
@@ -98,7 +99,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>" readonly/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -121,7 +122,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>" readonly/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -177,7 +178,7 @@
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->rsaldosampai/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$lr->rsaldosaatini+$lr->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$lr->rsaldosampai+$lr->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->jmltarget/1000000, 0, ',', '.')?></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo $lr->jmlprosen*100;?>%</b></td>
                                                         <?php endif; ?>
@@ -192,7 +193,7 @@
                                                             <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldosaatini/1000000, 0, ',', '.')?></td>
                                                             <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldosampai/1000000, 0, ',', '.')?></td>
                                                             <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldopotensi/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><b><?php $total=$lr->rsaldosaatini+$lr->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td class="text-end min-w-100px"><b><?php $total=$lr->rsaldosampai+$lr->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
                                                             <td class="text-end min-w-100px"><?php echo number_format($lr->jmltarget/1000000, 0, ',', '.')?></td>
                                                             <td class="text-end min-w-100px"><?php echo $lr->jmlprosen*100;?>%</td>
                                                         <?php endif; ?>

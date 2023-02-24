@@ -66,15 +66,16 @@
 												<div class="card card-md-stretch me-xl-3 mb-md-0 mb-6">
 													<!--begin::Body-->
 													<div class="card-body p-10 p-lg-15">
-															<form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
-																<div class="row mb-5">
+															<form method="post" action="<?php echo site_url(); ?>SuperUser/cdetail_segmen/grafik_hasil_pendapatan" enctype="multipart/form-data">
+															<div class="row mb-5">
 																	<!--begin::Col-->
 																	<div class="col-xl-4">
 																		<div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
 																	</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="lokasi" >
-																			<option value="">K.P</option>
+																			<option value="">KONSOLIDASI</option>
+																			<option>K.P</option>
 																			<option>RSG</option>
 																			<option>RST</option>
 																			<option>RSP</option>
@@ -136,8 +137,10 @@
 																</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="jenis" >
-																			<option>Pendapatan BPJS</option>
-																			<option>Pendapatan NON BPJS</option>
+																			<?php foreach ($jenis as $jenis):?>
+																			<option><?php echo $jenis->ket?></option>
+																			<?php endforeach ?>
+																			<option>SEMUA</option>
 																		</select>
 																	</div>
 																</div>
@@ -157,15 +160,20 @@
 											<div class="col-md-6">
 												<!--begin::Card-->
 												<div class="card card-md-stretch">
-													<!--begin::Body-->
-													<div class="card-body pp-10 p-lg-15">
-														<!--begin::Header-->
-														<div class="d-flex flex-stack">
-															<div id="chart_pendapatan_bpjs"></div>
-														</div>
-														<!--end::Header-->
+													<div class="table-responsive">
+														<table class="table align-middle gs-0 gy-4"> 
+															<tbody class="text-gray-600 fw-semibold">
+																<tr>
+																	<td class="text-end min-w-50px"></td>
+																	<td>
+																		<div class="d-flex flex-stack">
+																			<div id="chart_pendapatan_bpjs"></div>
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
 													</div>
-													<!--end::Body-->
 												</div>
 												<!--end::Card-->
 											</div>
@@ -175,8 +183,18 @@
 										<!--begin::Products Documentations-->
 										<div class="card mb-1">
 											<!--begin::Card body-->
-											<div class="card-body p-10 p-lg-15">
-											<canvas id="myChart" width="300" height="100"></canvas><br>
+											<div class="table-responsive">
+												<table class="table align-middle gs-0 gy-4"> 
+													<tbody class="text-gray-600 fw-semibold">
+														<tr>
+															<td>
+															<div class="card-body">
+																<b>(Dalam Juta)</b><br><br>
+																<canvas id="myChart" width="300" height="100"></canvas><br>
+															</div>
+														</tr>
+													</tbody>
+												</table>
 											</div>
 											<!--end::Card body-->
 										</div>
@@ -235,7 +253,7 @@
             </div>
         </div>
     </div>
-
+	
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script>
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -245,7 +263,7 @@
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
             datasets: [{
                 label: 'Total Revenue',
-                data: [12, 19, 3, 5, 2, 3, 20, 10, 20, 13, 12, 11],
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 3
@@ -275,7 +293,7 @@
     myChart.update();
     myChart.data.datasets.push({
     label: 'Target Revenue',
-    data: [10, 11, 12, 11, 10, 9, 12, 10, 11, 13, 12, 11],
+    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     backgroundColor: 'rgba(54, 162, 235, 0.2)',
     borderColor: 'rgba(54, 162, 235, 1)',
     borderWidth: 3
@@ -290,18 +308,16 @@
 
     function drawChart() {
     var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
-        ['BPJS',     11],
-        ['Eat',      2],
-        ['Commute',  2],
-        ['Watch TV', 2],
-        ['Sleep',    7]
+        ['Tanggal',     1]
     ]);
 
     var options = {
         width: 340,
         height: 300,
         is3D: true,
-        responsive: true
+        responsive: true,
+		legend: { position: 'none' },
+		pieSliceText: 'percentage'
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));

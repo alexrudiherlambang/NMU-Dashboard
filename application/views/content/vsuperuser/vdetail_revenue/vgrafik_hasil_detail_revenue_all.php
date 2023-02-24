@@ -74,7 +74,8 @@
 																	</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="lokasi" >
-																			<option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
+																			<option <?php if ($lokasi == "") echo "selected"; ?> value="">KONSOLIDASI</option>
+																			<option <?php if ($lokasi == "K.P") echo "selected"; ?>>K.P</option>
 																			<option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
 																			<option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
 																			<option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>

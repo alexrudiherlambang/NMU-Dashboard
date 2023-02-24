@@ -133,6 +133,9 @@ class mbiaya extends ci_model {
       $this->db->group_by('tanggal');
       return $this->db->get()->result();
    }
-
+   //Insert Log Login
+   function insert_log($log) {
+      $this->db->insert('log_aktifitas', $log);
+   }
 }
 ?>

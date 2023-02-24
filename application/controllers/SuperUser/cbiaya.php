@@ -24,6 +24,34 @@ class cbiaya extends CI_Controller {
       $nama = $this->session->userdata("nama");
       $lokasi = $this->input->post('lokasi');
       $data['biaya'] = $this->mbiaya->mshow_all_biaya($tglawal,$tglakhir,$nama,$lokasi);
+
+      //insert into log_aktifitas table
+      if ($lokasi == ""){
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => 'KP',
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Biaya',
+         );
+      }else{
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => $lokasi,
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Biaya',
+         );
+      }
+      $this->mbiaya->insert_log($log);
       
       $data['lokasi'] = $lokasi;
       $data['tglawal'] = $tglawal;
@@ -91,6 +119,35 @@ class cbiaya extends CI_Controller {
             'jenis'           => $jenis,
             'jenis2'          => $jenis2,
          );
+
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KP',
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Biaya',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Biaya',
+            );
+         }
+         $this->mbiaya->insert_log($log);
+
          $this->load->view('content/vsuperuser/vbiaya/vgrafik_hasil_biaya_all',$data);
 
       }else{
@@ -120,6 +177,33 @@ class cbiaya extends CI_Controller {
             'jenis'        => $jenis,
             'jenis2'       => $jenis2,
          );
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KP',
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Biaya',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Biaya',
+            );
+         }
+         $this->mbiaya->insert_log($log);
          $this->load->view('content/vsuperuser/vbiaya/vgrafik_hasil_biaya',$data);
       }
    }

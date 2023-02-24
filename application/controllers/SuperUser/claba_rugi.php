@@ -27,6 +27,34 @@ class claba_rugi extends CI_Controller {
       //eksekusi prosedure & Call Tabel Container
       $data['laba_rugi'] = $this->mlaba_rugi->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);
 
+      //insert into log_aktifitas table
+      if ($lokasi == ""){
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => 'KP',
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Laba-Rugi',
+         );
+      }else{
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => $lokasi,
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Laba-Rugi',
+         );
+      }
+      $this->mlaba_rugi->insert_log($log);
+
       $data['lokasi'] = $lokasi;
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
@@ -93,9 +121,33 @@ class claba_rugi extends CI_Controller {
             'jenis'        => $jenis,
             'jenis2'       => $jenis2,
          );
-         // echo "<pre>";
-         // print_r ($data);
-         // die;
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KP',
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Laba-Rugi',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Laba-Rugi',
+            );
+         }
+         $this->mlaba_rugi->insert_log($log);
          $this->load->view('content/vsuperuser/vlaba_rugi/vgrafik_hasil_laba_rugi_all',$data);
 
       }else{
@@ -125,6 +177,33 @@ class claba_rugi extends CI_Controller {
             'jenis'        => $jenis,
             'jenis2'       => $jenis2,
          );
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KP',
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Laba-Rugi',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Laba-Rugi',
+            );
+         }
+         $this->mlaba_rugi->insert_log($log);
          $this->load->view('content/vsuperuser/vlaba_rugi/vgrafik_hasil_laba_rugi',$data);
       }
    }

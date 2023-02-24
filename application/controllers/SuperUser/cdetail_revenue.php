@@ -24,6 +24,35 @@ class cdetail_revenue extends CI_Controller {
       $nama = $this->session->userdata("nama");
       $lokasi = $this->input->post('lokasi');
       $data['rekap'] = $this->mdetail_revenue->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);
+
+      //insert into log_aktifitas table
+      if ($lokasi == ""){
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => 'KP',
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Revenue Stream',
+         );
+      }else{
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => $lokasi,
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Revenue Stream',
+         );
+      }
+      $this->mdetail_revenue->insert_log($log);
+
       $data['lokasi'] = $lokasi;
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
@@ -89,6 +118,35 @@ class cdetail_revenue extends CI_Controller {
             'jenis'           => $jenis,
             'jenis2'          => $jenis2,
          );
+
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KP',
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Revenue Stream',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Revenue Stream',
+            );
+         }
+         $this->mdetail_revenue->insert_log($log);
+
          $this->load->view('content/vsuperuser/vdetail_revenue/vgrafik_hasil_detail_revenue_all',$data);
 
       }else{
@@ -118,6 +176,35 @@ class cdetail_revenue extends CI_Controller {
             'jenis'        => $jenis,
             'jenis2'       => $jenis2,
          );
+
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KP',
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Revenue Stream',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Revenue Stream',
+            );
+         }
+         $this->mdetail_revenue->insert_log($log);
+         
          $this->load->view('content/vsuperuser/vdetail_revenue/vgrafik_hasil_detail_revenue',$data);
       }
    }

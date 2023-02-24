@@ -74,7 +74,8 @@
 																	</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="lokasi" >
-																			<option value="">K.P</option>
+																			<option value="">KONSOLIDASI</option>
+																			<option>K.P</option>
 																			<option>RSG</option>
 																			<option>RST</option>
 																			<option>RSP</option>

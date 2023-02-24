@@ -62,7 +62,7 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/cdetail_segmen/pendapatan" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
@@ -70,7 +70,8 @@
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
                                                         <select class="form-select form-select-solid select2" name="lokasi" >
-                                                            <option value="">K.P</option>
+                                                            <option value="">KONSOLIDASI</option>
+                                                            <option>K.P</option>
                                                             <option>RSG</option>
                                                             <option>RST</option>
                                                             <option>RSP</option>
@@ -142,7 +143,7 @@
                                             <!--begin::Table head-->
                                             <thead>
                                                 <!--begin::Table row-->
-                                                <tr style="background-color: #6f53ab;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue yang Lalu</th>
@@ -160,7 +161,7 @@
                                             <tbody class="text-gray-600 fw-semibold">
                                                 <tr>
                                                     <td class="w-10px pe-5">1</td>
-                                                    <td class="min-w-125px">PERTAMINA</td>
+                                                    <td class="min-w-125px">OWN USE</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
@@ -171,7 +172,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="w-10px pe-5">2</td>
-                                                    <td class="min-w-125px">PIHAK BERELASI</td>
+                                                    <td class="min-w-125px">JAMINAN PERUSAHAAN</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
@@ -182,7 +183,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="w-10px pe-5">3</td>
-                                                    <td class="min-w-125px">PIHAK JAMINAN KE-3</td>
+                                                    <td class="min-w-125px">CASH</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
@@ -193,7 +194,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="w-10px pe-5">4</td>
-                                                    <td class="min-w-125px">SWASTA TUNAI</td>
+                                                    <td class="min-w-125px">ASSURANSI</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
@@ -204,7 +205,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="w-10px pe-5">5</td>
-                                                    <td class="min-w-125px">OWN USE</td>
+                                                    <td class="min-w-125px">CIVIC MISSION</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
@@ -212,7 +213,63 @@
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
-                                                </tr><tr style="background-color: #6f53ab;">
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5">6</td>
+                                                    <td class="min-w-125px">HOMECARE</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5">7</td>
+                                                    <td class="min-w-125px">TELEMEDICINE</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5">8</td>
+                                                    <td class="min-w-125px">KEMENKES</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5">9</td>
+                                                    <td class="min-w-125px">BPJS KESEHATAN</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5">10</td>
+                                                    <td class="min-w-125px">BPJS KETENAGAKERJAAN</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                </tr>
+                                                <tr style="background-color: #000080;">
                                                     <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL</b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>

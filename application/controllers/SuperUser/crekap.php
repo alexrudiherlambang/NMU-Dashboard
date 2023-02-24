@@ -25,8 +25,36 @@ class crekap extends CI_Controller {
       $lokasi = $this->input->post('lokasi');
       
       //eksekusi prosedure & Call Tabel Container
-      $data['rekap'] = $this->mrekap->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);    
-      
+      $data['rekap'] = $this->mrekap->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi); 
+
+      //insert into log_aktifitas table
+      if ($lokasi == ""){
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => 'KP',
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Pendapatan BPJS/NON-BPJS',
+         );
+      }else{
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => $lokasi,
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Pendapatan BPJS/NON-BPJS',
+         );
+      }
+      $this->mrekap->insert_log($log);
+
       $data['lokasi'] = $lokasi;
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
@@ -92,6 +120,34 @@ class crekap extends CI_Controller {
             'jenis'        => $jenis,
             'jenis2'       => $jenis2,
          );
+
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KP',
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Pendapatan BPJS/NON-BPJS',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Pendapatan BPJS/NON-BPJS',
+            );
+         }
+         $this->mrekap->insert_log($log);
          $this->load->view('content/vsuperuser/vrekap/vgrafik_hasil_rekap_all',$data);
 
       }else{
@@ -121,6 +177,35 @@ class crekap extends CI_Controller {
             'jenis'        => $jenis,
             'jenis2'       => $jenis2,
          );
+
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KP',
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Pendapatan BPJS/NON-BPJS',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Pendapatan BPJS/NON-BPJS',
+            );
+         }
+         $this->mrekap->insert_log($log);
+         
          $this->load->view('content/vsuperuser/vrekap/vgrafik_hasil_rekap',$data);
       }
    }
