@@ -22,7 +22,7 @@
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 <?php
-                    $this->load->view('partials/sidebar_superuser');
+                    $this->load->view('partials/sidebar_unit');
                 ?>
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Data Kunjungan Per-Segmen</h1>
+										Data Pendapatan Per-Segmen</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -62,21 +62,14 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>Unit/cdetail_segmen/pendapatan" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <select class="form-select form-select-solid select2" name="lokasi" >
-                                                            <option value="">K.P</option>
-                                                            <option>RSG</option>
-                                                            <option>RST</option>
-                                                            <option>RSP</option>
-                                                            <option>RSMU</option>
-                                                            <option>URJ</option>
-                                                        </select>
+                                                        <input type="text" class="form-control form-control-solid" name="lokasi" placeholder="level" value="<?php echo $this->session->userdata("tlok");?>" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -126,7 +119,7 @@
                                                     <!--begin::Col-->
                                                 </div>
                                                 <center>
-                                                    <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
+                                                    <button type="submit" name="submit" class="btn btn-sm btn-success">Tampilkan</button>
                                                 </center>
                                             </form>
                                         </center></div>
@@ -135,6 +128,7 @@
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
                                     <div class="card-body py-4">
+                                        <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
                                         <!--begin::Table-->
                                         <div class="table-responsive">
                                             <table class="table align-middle gs-0 gy-4">
@@ -144,12 +138,12 @@
                                                 <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Bulan Ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Kunjungan</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue yang Lalu</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue Bulan Ini</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Revenue</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Revenue</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Revenue</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Revenue</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
                                                 </tr>
                                                 <!--end::Table row-->
@@ -283,9 +277,9 @@
                                             </table>
                                         </div>
                                         <div style="text-align:left"><b>Ket :</b><br>
-                                            <i><b>Potensial Kunjungan</b> = Pasien RJ atau RI yang sudah close bill</i><br>
-                                            <i><b>Estimasi Total Kunjungan</b> = Penjumlahan total kunjungan saat ini dengan potensial kunjungan</i><br>
-                                            <i><b>Prosentase</b> = Total Kunjungan / Target Kunjungan</i><br>
+                                            <i><b>Potensial Revenue</b> = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
+                                            <i><b>Estimasi Total Revenue</b> = Penjumlahan total revenue saat ini dengan potensial revenue</i><br>
+                                            <i><b>Prosentase</b> = Total Revenue / Target Revenue</i><br>
                                             <i><b>Export Excel</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
                                         </div>
                                         <!--end::Table-->

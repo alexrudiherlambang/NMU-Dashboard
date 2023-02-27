@@ -9,14 +9,12 @@ class cuser extends CI_Controller {
    }
 
    function index() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-         redirect("clogin");
-      }
-      //untuk set notifikasi
-      // $data['notif'] = $this->mnotif->mshow_all_notif();
-
-      $data['user'] = $this->muser->mshow_all_user();
-      $this->load->view('content/vsuperuser/vuser/vuser', $data);
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
+			redirect("clogin");
+		}
+      $lokasi = $this->session->userdata("tlok");
+      $data['user'] = $this->muser->mshow_all_user_by_lokasi($lokasi);
+      $this->load->view('content/vunit/vuser/vuser', $data);
    }
 
    //function upload gambar hasil pemeriksaan
@@ -39,11 +37,11 @@ class cuser extends CI_Controller {
 	 }
 
     function ctambah_user() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-         redirect("clogin");
-      }
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
+			redirect("clogin");
+		}
 
-      $this->load->view('content/vsuperuser/vuser/vinput_user');
+      $this->load->view('content/vunit/vuser/vinput_user');
    }
 
    function cinsert_user() {
@@ -66,19 +64,19 @@ class cuser extends CI_Controller {
          'id'            => $id_max->id,
       );
       $this->muser->minsert_role_user($simpan_role);
-      redirect('SuperUser/cuser');
+      redirect('Unit/cuser');
    }
 
    function clihat_user() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-          redirect("clogin");
-      }
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
+			redirect("clogin");
+		}
         $id_user = $this->uri->segment(4);
         $data['user'] = $this->muser->mselect_by_iduser($id_user);
         $data['log'] = $this->muser->mselect_log_login($id_user);
         $data['activity'] = $this->muser->mselect_log_activity($id_user);
         $data['role'] = $this->muser->mselect_role_user($id_user);
-        $this->load->view('content/vsuperuser/vuser/vlihat_user', $data);
+        $this->load->view('content/vunit/vuser/vlihat_user', $data);
      }
 
      function cupdate_foto() {
@@ -95,7 +93,7 @@ class cuser extends CI_Controller {
       }
 
       $this->muser->mupdate_user($simpan, $id);
-      redirect('SuperUser/cuser/clihat_user/'.$id);
+      redirect('Unit/cuser/clihat_user/'.$id);
    }
 
    function cupdate_role_user(){
@@ -119,7 +117,7 @@ class cuser extends CI_Controller {
       );
       
       $this->muser->mupdate_role_user($Update, $id);
-      redirect('SuperUser/cuser/clihat_user/'.$id);
+      redirect('Unit/cuser/clihat_user/'.$id);
    }
 
    

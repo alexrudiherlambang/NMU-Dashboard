@@ -22,7 +22,7 @@
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 <?php
-                    $this->load->view('partials/sidebar_superuser');
+                    $this->load->view('partials/sidebar_unit');
                 ?>
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -62,21 +62,14 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>Unit/crekap/pendapatan" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <select class="form-select form-select-solid select2" name="lokasi" >
-                                                            <option value="">K.P</option>
-                                                            <option>RSG</option>
-                                                            <option>RST</option>
-                                                            <option>RSP</option>
-                                                            <option>RSMU</option>
-                                                            <option>URJ</option>
-                                                        </select>
+                                                        <input type="text" class="form-control form-control-solid" name="lokasi" value="<?php echo $this->session->userdata("tlok");?>" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">

@@ -22,7 +22,7 @@
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 <?php
-                    $this->load->view('partials/sidebar_superuser');
+                    $this->load->view('partials/sidebar_unit');
                 ?>
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -69,7 +69,7 @@
                                                 <div class="d-flex flex-center flex-column py-5">
                                                     <!--begin::Image input wrapper-->
                                                     <div class="mt-1">
-                                                        <form method="post" id="form_upload" action="<?php echo site_url(); ?>SuperUser/cuser/cupdate_foto" enctype="multipart/form-data">
+                                                        <form method="post" id="form_upload" action="<?php echo site_url(); ?>Unit/cuser/cupdate_foto" enctype="multipart/form-data">
                                                             <!--begin::Image input-->
                                                             <input type="hidden" class="form-control" name="id" value="<?php echo $user->id;?>">
                                                             <input type="hidden" class="form-control" name="nama" value="<?php echo $user->nama;?>">
@@ -166,7 +166,7 @@
                                             <!--begin:::Tab item-->
                                             <li class="nav-item ms-auto">
                                                 <!--begin::Action menu-->
-                                                <a href="<?php echo site_url(); ?>SuperUser/cuser" class="btn btn-danger ps-7" data-kt-menu-placement="bottom-end">Close</a>
+                                                <a href="<?php echo site_url(); ?>Unit/cuser" class="btn btn-danger ps-7" data-kt-menu-placement="bottom-end">Close</a>
                                                 <!--end::Menu-->
                                             </li>
                                             <!--end:::Tab item-->
@@ -440,7 +440,7 @@
                                                         <!--begin::Table wrapper-->
                                                         <div class="table-responsive">
                                                             <!--begin::Table-->
-                                                            <form method="post" id="form_role" action="<?php echo site_url(); ?>SuperUser/cuser/cupdate_role_user" enctype="multipart/form-data">
+                                                            <form method="post" id="form_role" action="<?php echo site_url(); ?>Unit/cuser/cupdate_role_user" enctype="multipart/form-data">
                                                                 <input type="hidden" class="form-control" name="id" value="<?php echo $user->id;?>">
                                                                 <table class="table align-middle table-row-dashed gy-5" id="kt_table_users_login_session">
                                                                     <!--begin::Table head-->
@@ -459,111 +459,111 @@
                                                                             <td class="text-left">User Management</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tum" <?php 
-                                                                                if ($role->tum == "1") { echo 'checked';}?>>
+                                                                                if ($role->tum == "1") { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Operasional (Kunjungan BPJS & NON-BPJS)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkok1" <?php
-                                                                                if ($role->tkok1 == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkok1 == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Operasional (Kunjungan Per-Segmen)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkok2" <?php
-                                                                                if ($role->tkok2 == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkok2 == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Operasional (Kunjungan Rawat Jalan)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkok3" <?php
-                                                                                if ($role->tkok3 == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkok3 == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Operasional (Kunjungan Rawat Inap)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkok4" <?php
-                                                                                if ($role->tkok4 == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkok4 == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Operasional (Kunjungan Penunjang Medis)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkok5" <?php
-                                                                                if ($role->tkok5 == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkok5 == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Operasional (Sensus Kamar)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkoksk" <?php
-                                                                                if ($role->tkoksk == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkoksk == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Operasional (Tempat Tidur)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkoktt" <?php
-                                                                                if ($role->tkoktt == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkoktt == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Operasional (HAPER)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkokhp" <?php
-                                                                                if ($role->tkokhp == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkokhp == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Operasional (BOR)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkokbor" <?php
-                                                                                if ($role->tkokbor == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkokbor == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Keuangan (Pendapatan BPJS & NON-BPJS)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkkp1" <?php
-                                                                                if ($role->tkkp1 == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkkp1 == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Keuangan (Per-Revenue Stream)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkkp2" <?php
-                                                                                if ($role->tkkp2 == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkkp2 == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Keuangan (Pendapatan Per-Segmen)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkkp3" <?php
-                                                                                if ($role->tkkp3 == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkkp3 == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Keuangan (Biaya)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkkb" <?php
-                                                                                if ($role->tkkb == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkkb == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Kinerja Keuangan (Laba-Rugi)</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tkklr" <?php
-                                                                                if ($role->tkklr == '1') { echo 'checked';}?>>
+                                                                                if ($role->tkklr == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
                                                                     <!--end::Table body-->
                                                                 </table>
-                                                                <center>
+                                                                <!-- <center>
                                                                 <label>
                                                                     <input id="cek" type="checkbox" class="flat-red">
                                                                     Yakin data diatas benar
@@ -571,7 +571,7 @@
                                                                 </center>
                                                                 <center>
                                                                     <button type="submit" name="submit" class="btn btn-sm btn-primary">Update Data</button>
-                                                                </center>
+                                                                </center> -->
                                                             </form>
                                                                 <!--end::Table-->
                                                         </div>

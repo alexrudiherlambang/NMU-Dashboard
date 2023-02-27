@@ -11,7 +11,7 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		if ($this->session->userdata('status') != "Login" || $this->session->userdata("level") != "Unit") {
+		if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
 			redirect("clogin");
 		}
 		$this->load->view('content/vunit/home');

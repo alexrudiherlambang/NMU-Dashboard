@@ -22,7 +22,7 @@
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 <?php
-                    $this->load->view('partials/sidebar_superuser');
+                    $this->load->view('partials/sidebar_unit');
                 ?>
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Data Kunjungan Per-Segmen</h1>
+										Data Rekap Kunjungan BPJS & NON-BPJS</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -62,21 +62,14 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_BPJS/kunjungan" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <select class="form-select form-select-solid select2" name="lokasi" >
-                                                            <option value="">K.P</option>
-                                                            <option>RSG</option>
-                                                            <option>RST</option>
-                                                            <option>RSP</option>
-                                                            <option>RSMU</option>
-                                                            <option>URJ</option>
-                                                        </select>
+                                                        <input type="text" class="form-control form-control-solid" name="lokasi" value="<?php echo $lokasi;?>" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -97,7 +90,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -120,7 +113,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo date('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -129,158 +122,92 @@
                                                     <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
                                                 </center>
                                             </form>
-                                        </center></div>
+                                            </center>
+                                        </div>
                                         <!--begin::Card title-->
                                     </div>
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
-                                    <div class="card-body py-4">
-                                        <!--begin::Table-->
+                                    <div class="card-body border-0 pt-10">
+                                    <!-- <canvas id="myChart" width="300" height="80"></canvas><br> -->
                                         <div class="table-responsive">
-                                            <table class="table align-middle gs-0 gy-4">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Bulan Ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody class="text-gray-600 fw-semibold">
-                                                <tr>
-                                                    <td class="w-10px pe-5">1</td>
-                                                    <td class="min-w-125px">OWN USE</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">2</td>
-                                                    <td class="min-w-125px">JAMINAN PERUSAHAAN</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">3</td>
-                                                    <td class="min-w-125px">CASH</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">4</td>
-                                                    <td class="min-w-125px">ASSURANSI</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">5</td>
-                                                    <td class="min-w-125px">CIVIC MISSION</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">6</td>
-                                                    <td class="min-w-125px">HOMECARE</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">7</td>
-                                                    <td class="min-w-125px">TELEMEDICINE</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">8</td>
-                                                    <td class="min-w-125px">KEMENKES</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">9</td>
-                                                    <td class="min-w-125px">BPJS KESEHATAN</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">10</td>
-                                                    <td class="min-w-125px">BPJS KETENAGAKERJAAN</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr style="background-color: #000080;">
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                            </table>
+                                        <!--begin::Table-->
+                                            <form method="post" action="<?php echo site_url(); ?>Unit/crekap/export_xls">
+                                                <input class="form-control form-control-solid ps-12" type="hidden" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>" readonly/>
+                                                <input class="form-control form-control-solid ps-12" type="hidden" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>" readonly/>
+                                                <button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
+                                                <div style="text-align:right"></div><br>
+                                                <table class="table align-middle gs-0 gy-4">
+                                                    <!--begin::Table head-->
+                                                    <thead>
+                                                        <!--begin::Table row-->
+                                                        <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                            <th style="color: #ffffff; vertical-align: middle;">
+                                                                All<input type="checkbox" id="CheckAll">
+                                                            </th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Bulan Ini</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Kunjungan</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
+                                                        </tr>
+                                                        <!--end::Table row-->
+                                                    </thead>
+                                                    <!--end::Table head-->
+                                                    <!--begin::Table body-->
+                                                    <tbody class="text-gray-600 fw-semibold">
+                                                    <?php
+                                                    $no = 1;
+                                                    $total_rsaldolalu = 0;
+                                                    $total_rsaldosaatini = 0;
+                                                    $total_rsaldosampai = 0;
+                                                    $total_rsaldopotensi = 0;
+                                                    $total_jmltarget = 0;
+                                                    foreach ($kunjung as $k) :
+                                                        $total_rsaldolalu += $k->rsaldolalu;
+                                                        $total_rsaldosaatini += $k->rsaldosaatini;
+                                                        $total_rsaldosampai += $k->rsaldosampai;
+                                                        $total_rsaldopotensi += $k->rsaldopotensi;
+                                                        $total_jmltarget += $k->jmltarget;
+                                                    ?>
+                                                    <tr>    
+                                                        <td>
+                                                            <input type="checkbox" id="Check" value="<?php echo $k->ketgrup ?>" name="pilihan[]">
+                                                        </td>
+                                                        <td class="w-10px pe-5"><?php echo $no ?></td>
+                                                        <td class="text-center"><?php echo $k->ketgrup ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo $k->rsaldolalu?></td>
+                                                        <td class="text-center min-w-100px"><?php echo $k->rsaldosaatini?></td>
+                                                        <td class="text-center min-w-100px"><?php echo $k->rsaldosampai?></td>
+                                                        <td class="text-center min-w-100px"><?php echo $k->rsaldopotensi?></td>
+                                                        <td class="text-center min-w-100px"><?php $total=$k->rsaldosampai+$k->rsaldopotensi; echo $total?></td>
+                                                        <td class="text-center min-w-100px"><?php echo $k->jmltarget?></td>
+                                                        <td class="text-center min-w-100px"><?php echo $k->jmlprosen*100;?>%</td>
+                                                    </tr>
+                                                    <?php
+                                                    $no++;
+                                                    endforeach;
+                                                    ?>
+                                                    <tr style="background-color: #000080;">
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px"><b>TOTAL</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo $total_rsaldolalu?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo $total_rsaldosaatini?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo $total_rsaldosampai?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo $total_rsaldopotensi?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo $total_rsaldosampai+$total_rsaldopotensi?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo $total_jmltarget?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0%</b></td>
+                                                    </tr>
+                                                    </tbody>
+                                                    <!--end::Table body-->
+                                                </table>
+                                            </form>
                                         </div>
                                         <div style="text-align:left"><b>Ket :</b><br>
                                             <i><b>Potensial Kunjungan</b> = Pasien RJ atau RI yang sudah close bill</i><br>
@@ -345,7 +272,14 @@
             </div>
         </div>
     </div>
-
+    <script>
+    document.querySelector("#CheckAll").addEventListener("change", function(){
+        let checkboxes = document.querySelectorAll("#Check");
+        checkboxes.forEach(function(checkbox){
+        checkbox.checked = this.checked;
+        }, this);
+    });
+    </script>
     <?php
         $this->load->view('partials/script');
     ?>

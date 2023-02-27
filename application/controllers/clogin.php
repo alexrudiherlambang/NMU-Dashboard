@@ -8,6 +8,7 @@ class clogin extends CI_Controller {
 		# code...
 		parent::__construct();
 		$this->load->model('mlogin');
+		$this->load->model('muser');
 	}
 
 	public function index()
@@ -27,6 +28,7 @@ class clogin extends CI_Controller {
 				# code...
 				if ($key->username == $username && $key->password == $password && $key->tlok == "") {
 					# code...
+					$role = $this->muser->mselect_role_user($key->id);
 					$data_session = array(
 						'id'		=> $key->id,
 						'username'	=> $key->username,
@@ -35,8 +37,25 @@ class clogin extends CI_Controller {
 						'foto'		=> $key->foto,
 						'tlok' 		=> $key->tlok,
 						'eemail'	=> $key->eemail,
-						'status'	=> "Login"
+						'status'	=> "Login",
+						//role user
+						'tum'		=> $role->tum,
+						'tkok1'		=> $role->tkok1,
+						'tkok2'		=> $role->tkok2,
+						'tkok3'		=> $role->tkok3,
+						'tkok4'		=> $role->tkok4,
+						'tkok5'		=> $role->tkok5,
+						'tkoksk'	=> $role->tkoksk,
+						'tkoktt'	=> $role->tkoktt,
+						'tkokhp'	=> $role->tkokhp,
+						'tkokbor'	=> $role->tkokbor,
+						'tkkp1'		=> $role->tkkp1,
+						'tkkp2'		=> $role->tkkp2,
+						'tkkp3'		=> $role->tkkp3,
+						'tkkb'		=> $role->tkkb,
+						'tkklr'		=> $role->tkklr,
 					);
+					
 					$this->session->set_userdata($data_session);
 
 					//insert into log_login table
@@ -52,6 +71,7 @@ class clogin extends CI_Controller {
 				} else if ($key->username == $username && $key->password == $password && $key->tlok == "RSG") {
 					# code...
 
+					$role = $this->muser->mselect_role_user($key->id);
 					$data_session = array(
 						'id'		=> $key->id,
 						'username'	=> $key->username,
@@ -60,81 +80,24 @@ class clogin extends CI_Controller {
 						'foto'		=> $key->foto,
 						'tlok' 		=> $key->tlok,
 						'eemail'	=> $key->eemail,
-						'status'	=> "Login"
+						'status'	=> "Login",
+						//role user
+						'tum'		=> $role->tum,
+						'tkok1'		=> $role->tkok1,
+						'tkok2'		=> $role->tkok2,
+						'tkok3'		=> $role->tkok3,
+						'tkok4'		=> $role->tkok4,
+						'tkok5'		=> $role->tkok5,
+						'tkoksk'	=> $role->tkoksk,
+						'tkoktt'	=> $role->tkoktt,
+						'tkokhp'	=> $role->tkokhp,
+						'tkokbor'	=> $role->tkokbor,
+						'tkkp1'		=> $role->tkkp1,
+						'tkkp2'		=> $role->tkkp2,
+						'tkkp3'		=> $role->tkkp3,
+						'tkkb'		=> $role->tkkb,
+						'tkklr'		=> $role->tkklr,
 					);
-					$this->session->set_userdata($data_session);
-
-					//insert into log_login table
-					$log = array(
-						'id'		=> $key->id,
-						'platform'	=> $this->agent->platform(),
-						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-						'ip'		=> $this->input->ip_address(),
-						'action'	=> 'Login',
-					);
-					$this->mlogin->insert_log($log);
-					redirect(site_url("Pimpinan/Home"));
-				} else if ($key->username == $username && $key->password == $password && $key->tlok == "RST") {
-					# code...
-						$data_session = array(
-							'id'		=> $key->id,
-							'username'	=> $key->username,
-							'password'	=> $key->password,
-							'nama'		=> $key->nama,
-							'foto'		=> $key->foto,
-							'tlok' 		=> $key->tlok,
-							'eemail'	=> $key->eemail,
-							'status'	=> "Login"
-						);
-					// print_r($data_session);
-					$this->session->set_userdata($data_session);
-
-					//insert into log_login table
-					$log = array(
-						'id'		=> $key->id,
-						'platform'	=> $this->agent->platform(),
-						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-						'ip'		=> $this->input->ip_address(),
-						'action'	=> 'Login',
-					);
-					$this->mlogin->insert_log($log);
-					redirect(site_url("Legal/Home"));
-				}else if ($key->username == $username && $key->password == $password && $key->tlok == "RSP") {
-					# code...
-						$data_session = array(
-							'id'		=> $key->id,
-							'username'	=> $key->username,
-							'password'	=> $key->password,
-							'nama'		=> $key->nama,
-							'foto'		=> $key->foto,
-							'tlok' 		=> $key->tlok,
-							'eemail'	=> $key->eemail,
-							'status'	=> "Login"
-						);
-					$this->session->set_userdata($data_session);
-
-					//insert into log_login table
-					$log = array(
-						'id'		=> $key->id,
-						'platform'	=> $this->agent->platform(),
-						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-						'ip'		=> $this->input->ip_address(),
-						'action'	=> 'Login',
-					);
-					$this->mlogin->insert_log($log);
-					redirect(site_url("Rekanan/Home"));
-				} else if ($key->username == $username && $key->password == $password && $key->tlok == "RSMU") {
-					# code...
-						$data_session = array(
-							'id'		=> $key->id,
-							'username'	=> $key->username,
-							'password'	=> $key->password,
-							'nama'		=> $key->nama,
-							'foto'		=> $key->foto,
-							'tlok' 		=> $key->tlok,
-							'eemail'	=> $key->eemail,
-							'status'	=> "Login"
-						);
 					$this->session->set_userdata($data_session);
 
 					//insert into log_login table
@@ -147,7 +110,172 @@ class clogin extends CI_Controller {
 					);
 					$this->mlogin->insert_log($log);
 					redirect(site_url("Unit/Home"));
-				} else {
+				} else if ($key->username == $username && $key->password == $password && $key->tlok == "RST") {
+					# code...
+					$role = $this->muser->mselect_role_user($key->id);
+					$data_session = array(
+						'id'		=> $key->id,
+						'username'	=> $key->username,
+						'password'	=> $key->password,
+						'nama'		=> $key->nama,
+						'foto'		=> $key->foto,
+						'tlok' 		=> $key->tlok,
+						'eemail'	=> $key->eemail,
+						'status'	=> "Login",
+						//role user
+						'tum'		=> $role->tum,
+						'tkok1'		=> $role->tkok1,
+						'tkok2'		=> $role->tkok2,
+						'tkok3'		=> $role->tkok3,
+						'tkok4'		=> $role->tkok4,
+						'tkok5'		=> $role->tkok5,
+						'tkoksk'	=> $role->tkoksk,
+						'tkoktt'	=> $role->tkoktt,
+						'tkokhp'	=> $role->tkokhp,
+						'tkokbor'	=> $role->tkokbor,
+						'tkkp1'		=> $role->tkkp1,
+						'tkkp2'		=> $role->tkkp2,
+						'tkkp3'		=> $role->tkkp3,
+						'tkkb'		=> $role->tkkb,
+						'tkklr'		=> $role->tkklr,
+					);
+					// print_r($data_session);
+					$this->session->set_userdata($data_session);
+
+					//insert into log_login table
+					$log = array(
+						'id'		=> $key->id,
+						'platform'	=> $this->agent->platform(),
+						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+						'ip'		=> $this->input->ip_address(),
+						'action'	=> 'Login',
+					);
+					$this->mlogin->insert_log($log);
+					redirect(site_url("Unit/Home"));
+				}else if ($key->username == $username && $key->password == $password && $key->tlok == "RSP") {
+					# code...
+					$role = $this->muser->mselect_role_user($key->id);
+					$data_session = array(
+						'id'		=> $key->id,
+						'username'	=> $key->username,
+						'password'	=> $key->password,
+						'nama'		=> $key->nama,
+						'foto'		=> $key->foto,
+						'tlok' 		=> $key->tlok,
+						'eemail'	=> $key->eemail,
+						'status'	=> "Login",
+						//role user
+						'tum'		=> $role->tum,
+						'tkok1'		=> $role->tkok1,
+						'tkok2'		=> $role->tkok2,
+						'tkok3'		=> $role->tkok3,
+						'tkok4'		=> $role->tkok4,
+						'tkok5'		=> $role->tkok5,
+						'tkoksk'	=> $role->tkoksk,
+						'tkoktt'	=> $role->tkoktt,
+						'tkokhp'	=> $role->tkokhp,
+						'tkokbor'	=> $role->tkokbor,
+						'tkkp1'		=> $role->tkkp1,
+						'tkkp2'		=> $role->tkkp2,
+						'tkkp3'		=> $role->tkkp3,
+						'tkkb'		=> $role->tkkb,
+						'tkklr'		=> $role->tkklr,
+					);
+					$this->session->set_userdata($data_session);
+
+					//insert into log_login table
+					$log = array(
+						'id'		=> $key->id,
+						'platform'	=> $this->agent->platform(),
+						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+						'ip'		=> $this->input->ip_address(),
+						'action'	=> 'Login',
+					);
+					$this->mlogin->insert_log($log);
+					redirect(site_url("Unit/Home"));
+				} else if ($key->username == $username && $key->password == $password && $key->tlok == "RSMU") {
+					# code...
+					$role = $this->muser->mselect_role_user($key->id);
+					$data_session = array(
+						'id'		=> $key->id,
+						'username'	=> $key->username,
+						'password'	=> $key->password,
+						'nama'		=> $key->nama,
+						'foto'		=> $key->foto,
+						'tlok' 		=> $key->tlok,
+						'eemail'	=> $key->eemail,
+						'status'	=> "Login",
+						//role user
+						'tum'		=> $role->tum,
+						'tkok1'		=> $role->tkok1,
+						'tkok2'		=> $role->tkok2,
+						'tkok3'		=> $role->tkok3,
+						'tkok4'		=> $role->tkok4,
+						'tkok5'		=> $role->tkok5,
+						'tkoksk'	=> $role->tkoksk,
+						'tkoktt'	=> $role->tkoktt,
+						'tkokhp'	=> $role->tkokhp,
+						'tkokbor'	=> $role->tkokbor,
+						'tkkp1'		=> $role->tkkp1,
+						'tkkp2'		=> $role->tkkp2,
+						'tkkp3'		=> $role->tkkp3,
+						'tkkb'		=> $role->tkkb,
+						'tkklr'		=> $role->tkklr,
+					);
+					$this->session->set_userdata($data_session);
+
+					//insert into log_login table
+					$log = array(
+						'id'		=> $key->id,
+						'platform'	=> $this->agent->platform(),
+						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+						'ip'		=> $this->input->ip_address(),
+						'action'	=> 'Login',
+					);
+					$this->mlogin->insert_log($log);
+					redirect(site_url("Unit/Home"));
+				}else if ($key->username == $username && $key->password == $password && $key->tlok == "URJ") {
+					# code...
+					$role = $this->muser->mselect_role_user($key->id);
+					$data_session = array(
+						'id'		=> $key->id,
+						'username'	=> $key->username,
+						'password'	=> $key->password,
+						'nama'		=> $key->nama,
+						'foto'		=> $key->foto,
+						'tlok' 		=> $key->tlok,
+						'eemail'	=> $key->eemail,
+						'status'	=> "Login",
+						//role user
+						'tum'		=> $role->tum,
+						'tkok1'		=> $role->tkok1,
+						'tkok2'		=> $role->tkok2,
+						'tkok3'		=> $role->tkok3,
+						'tkok4'		=> $role->tkok4,
+						'tkok5'		=> $role->tkok5,
+						'tkoksk'	=> $role->tkoksk,
+						'tkoktt'	=> $role->tkoktt,
+						'tkokhp'	=> $role->tkokhp,
+						'tkokbor'	=> $role->tkokbor,
+						'tkkp1'		=> $role->tkkp1,
+						'tkkp2'		=> $role->tkkp2,
+						'tkkp3'		=> $role->tkkp3,
+						'tkkb'		=> $role->tkkb,
+						'tkklr'		=> $role->tkklr,
+					);
+					$this->session->set_userdata($data_session);
+
+					//insert into log_login table
+					$log = array(
+						'id'		=> $key->id,
+						'platform'	=> $this->agent->platform(),
+						'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+						'ip'		=> $this->input->ip_address(),
+						'action'	=> 'Login',
+					);
+					$this->mlogin->insert_log($log);
+					redirect(site_url("Unit/Home"));
+				}else {
 					echo '<script language="javascript">alert("Password Anda Salah !!!"); window.location.href="./";</script>';
 					// redirect(site_url("clogin"));
 				}

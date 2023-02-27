@@ -22,7 +22,7 @@
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 <?php
-                    $this->load->view('partials/sidebar_superuser');
+                    $this->load->view('partials/sidebar_unit');
                 ?>
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Data Kunjungan Per-Segmen</h1>
+										Data Rekap Pendapatan</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -62,20 +62,21 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>Unit/crekap/pendapatan" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <select class="form-select form-select-solid select2" name="lokasi" >
-                                                            <option value="">K.P</option>
-                                                            <option>RSG</option>
-                                                            <option>RST</option>
-                                                            <option>RSP</option>
-                                                            <option>RSMU</option>
-                                                            <option>URJ</option>
+                                                        <select class="form-control form-control-solid select2" name="lokasi">
+                                                            <option selected="selected">-</option>
+                                                            <option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
+                                                            <option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
+                                                            <option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
+                                                            <option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
+                                                            <option <?php if ($lokasi == "RSMU") echo "selected"; ?>>RSMU</option>
+                                                            <option <?php if ($lokasi == "URJ") echo "selected"; ?>>URJ</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -97,7 +98,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -120,7 +121,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo date('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -129,165 +130,72 @@
                                                     <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
                                                 </center>
                                             </form>
-                                        </center></div>
+                                            </center>
+                                        </div>
                                         <!--begin::Card title-->
                                     </div>
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
-                                    <div class="card-body py-4">
+                                    <div class="card-body border-0 pt-10">
+                                        <!-- <canvas id="myChart" width="300" height="80"></canvas><br> -->
                                         <!--begin::Table-->
-                                        <div class="table-responsive">
-                                            <table class="table align-middle gs-0 gy-4">
+                                        <table class="table align-middle table-row-dashed fs-6 gy-5">
                                             <!--begin::Table head-->
                                             <thead>
                                                 <!--begin::Table row-->
-                                                <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Bulan Ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
+                                                <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                    <th class="w-10px pe-5">No</th>
+                                                    <th class="min-w-125px">Uraian</th>
+                                                    <th class="text-end min-w-100px">Realisasi yang Lalu</th>
+                                                    <th class="text-end min-w-100px">Revenue Bulan Ini</th>
+                                                    <th class="text-end min-w-100px">Total Revenue</th>
+                                                    <th class="text-end min-w-100px">Potensial Revenue</th>
+                                                    <th class="text-end min-w-100px">Target Revenue</th>
+                                                    <th class="text-end min-w-100px">Prosentase</th>
+
+                                                    <!-- <th class="text-end min-w-100px">Actions</th> -->
                                                 </tr>
                                                 <!--end::Table row-->
                                             </thead>
                                             <!--end::Table head-->
                                             <!--begin::Table body-->
                                             <tbody class="text-gray-600 fw-semibold">
-                                                <tr>
-                                                    <td class="w-10px pe-5">1</td>
-                                                    <td class="min-w-125px">OWN USE</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">2</td>
-                                                    <td class="min-w-125px">JAMINAN PERUSAHAAN</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">3</td>
-                                                    <td class="min-w-125px">CASH</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">4</td>
-                                                    <td class="min-w-125px">ASSURANSI</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">5</td>
-                                                    <td class="min-w-125px">CIVIC MISSION</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">6</td>
-                                                    <td class="min-w-125px">HOMECARE</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">7</td>
-                                                    <td class="min-w-125px">TELEMEDICINE</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">8</td>
-                                                    <td class="min-w-125px">KEMENKES</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">9</td>
-                                                    <td class="min-w-125px">BPJS KESEHATAN</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">10</td>
-                                                    <td class="min-w-125px">BPJS KETENAGAKERJAAN</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr style="background-color: #000080;">
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                </tr>
+                                            <?php
+                                            $no = 1;
+                                            $status = "OK";
+                                            foreach ($rekap as $rekap) :
+                                               ?>
+                                               <tr>
+                                                <?php if ($rekap->flag == "1"): ?>
+                                                    <td></td>
+                                                    <td><b><?php echo $rekap->ket ?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldolalu, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldosaatini, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldosampai, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->jmlpotensi, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_jmltarget, 0, ',', '.')?></b></td>
+                                                    <td class="text-end min-w-100px"><b><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</b></td>
+                                                    <!-- <td><?php echo $rekap->jnstrans ?></td> -->
+                                                <?php endif; ?>
+                                                <?php if ($rekap->flag == "0"): ?>
+                                                    <td><?php echo $no ?></td>
+                                                    <td><?php echo $rekap->ket ?></td>
+                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldolalu, 0, ',', '.')?></td>
+                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldosaatini, 0, ',', '.')?></td>
+                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldosampai, 0, ',', '.')?></td>
+                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->jmlpotensi, 0, ',', '.')?></td>
+                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_jmltarget, 0, ',', '.')?></td>
+                                                    <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
+                                                    <!-- <td><?php echo $rekap->jnstrans ?></td> -->
+                                                <?php endif; ?>
+                                               </tr>
+                                               <?php
+                                               $no++;
+                                            endforeach;
+                                            ?>
                                             </tbody>
                                             <!--end::Table body-->
-                                            </table>
-                                        </div>
-                                        <div style="text-align:left"><b>Ket :</b><br>
-                                            <i><b>Potensial Kunjungan</b> = Pasien RJ atau RI yang sudah close bill</i><br>
-                                            <i><b>Estimasi Total Kunjungan</b> = Penjumlahan total kunjungan saat ini dengan potensial kunjungan</i><br>
-                                            <i><b>Prosentase</b> = Total Kunjungan / Target Kunjungan</i><br>
-                                            <i><b>Export Excel</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
-                                        </div>
+                                        </table>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->
@@ -345,7 +253,43 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+            datasets: [{
+                label: 'Total Revenue',
+                data: [12, 19, 3, 5, 2, 3, 20, 10, 20, 13, 12, 11],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    // Menambahkan data baru
+    myChart.data.datasets[0].data.push(10);
+    myChart.update();
+    myChart.data.datasets.push({
+    label: 'Target Revenue',
+    data: [10, 11, 12, 11, 10, 9, 12, 10, 11, 13, 12, 11],
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 1
+    });
+    myChart.update();
+    </script>
     <?php
         $this->load->view('partials/script');
     ?>

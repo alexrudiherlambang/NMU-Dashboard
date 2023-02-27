@@ -50,27 +50,31 @@
                 data-kt-menu="true" data-kt-menu-expand="false">
                 <!--begin:Menu item-->
                 <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
-                    <!--begin:Menu link-->
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor" />
-                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                        fill="currentColor" />
-                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                        fill="currentColor" />
-                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                        fill="currentColor" />
-                                </svg>
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link" href="<?php echo site_url('Unit/Home') ?>">
+                            <span class="menu-icon">
+                                <!--begin::Svg Icon | path: icons/duotune/abstract/abs014.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor" />
+                                        <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
+                                            fill="currentColor" />
+                                        <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
+                                            fill="currentColor" />
+                                        <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
+                                            fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
                             </span>
-                            <!--end::Svg Icon-->
-                        </span>
-                        <span class="menu-title">Dashboards</span>
-                    </span>
-                    <!--end:Menu link-->
+                            <span class="menu-title">Dashboards</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
@@ -83,27 +87,203 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
+                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                    <!--begin:Menu item-->
+                    <?php if ($this->session->userdata("tum") == "1"): ?>
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="<?php echo site_url('Unit/cuser') ?>">
+                                <span class="menu-icon">
+                                    <!--begin::Svg Icon | path: icons/duotune/abstract/abs014.svg-->
+                                    <span class="svg-icon svg-icon-2">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z"
+                                                fill="currentColor" />
+                                            <path opacity="0.3"
+                                                d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                                <span class="menu-title">User Management</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                    <?php endif; ?>
+                    <!--end:Menu item-->
+                </div>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
+                            <!--begin::Svg Icon | path: icons/duotune/finance/fin002.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z"
-                                        fill="currentColor" />
+                                    <path d="M22 7H2V11H22V7Z" fill="currentColor" />
                                     <path opacity="0.3"
-                                        d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z"
+                                        d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19ZM14 14C14 13.4 13.6 13 13 13H5C4.4 13 4 13.4 4 14C4 14.6 4.4 15 5 15H13C13.6 15 14 14.6 14 14ZM16 15.5C16 16.3 16.7 17 17.5 17H18.5C19.3 17 20 16.3 20 15.5C20 14.7 19.3 14 18.5 14H17.5C16.7 14 16 14.7 16 15.5Z"
                                         fill="currentColor" />
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">User Management</span>
+                        <span class="menu-title">Kinerja Operasional</span>
+                        <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Kunjungan</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <!--end:Menu link-->
+                            <!--begin:Menu sub-->
+                            <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok1") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('Unit/ckunjungan_BPJS') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan BPJS & NON BPJS</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok2") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('Unit/ckunjungan_persegmen') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan Per - Segmen</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok3") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('Unit/ckunjungan_RJ') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan Rawat Jalan</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok4") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('Unit/ckunjungan_RI') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan Rawat Inap</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok5") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('Unit/ckunjungan_jangmed') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kegiatan Penunjang Medis</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                            </div>
+                            <!--end:Menu sub-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkoksk") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/cSK') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Sensus Kamar</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkoktt") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/cTT') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Tempat Tidur</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkokhp") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/cHAPER') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">HAPER</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkokbor") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/cBOR') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">BOR</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                    </div>
+                    <!--end:Menu sub-->
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
@@ -112,20 +292,168 @@
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/files/fil003.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.3"
-                                        d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22Z"
-                                        fill="currentColor" />
-                                    <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="currentColor" />
-                                </svg>
-                            </span>
+                            <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/Shopping/Chart-bar1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <rect fill="currentColor" opacity="0.3" x="12" y="4" width="3" height="13" rx="1.5"/>
+                                    <rect fill="currentColor" opacity="0.3" x="7" y="9" width="3" height="8" rx="1.5"/>
+                                    <path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z" fill="currentColor" fill-rule="nonzero"/>
+                                    <rect fill="currentColor" opacity="0.3" x="17" y="11" width="3" height="6" rx="1.5"/>
+                                </g>
+                            </svg><!--end::Svg Icon--></span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Kontrak</span>
+                        <span class="menu-title">Grafik Kinerja Operasional</span>
+                        <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Kunjungan</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <!--end:Menu link-->
+                            <!--begin:Menu sub-->
+                            <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok1") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('Unit/ckunjungan_BPJS/grafik_kunjungan_bpjs') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan BPJS & NON BPJS</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok2") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('Unit/ckunjungan_persegmen/grafik_persegmen') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan Per - Segmen</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok3") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('Unit/ckunjungan_RJ/grafik_kunjungan_RJ') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan Rawat Jalan</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok4") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('Unit/ckunjungan_RI/grafik_kunjungan_RI') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan Rawat Inap</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok5") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('Unit/ckunjungan_jangmed/grafik_kunjungan_jangmed') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kegiatan Penunjang Medis</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                            </div>
+                            <!--end:Menu sub-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkoksk") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/cSK/grafik_SK') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Sensus Kamar</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkoktt") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/cTT/grafik_TT') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Tempat Tidur</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkokhp") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/cHAPER/grafik_HAPER') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">HAPER</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkokbor") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/cBOR/grafik_BOR') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">BOR</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                    </div>
+                    <!--end:Menu sub-->
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
@@ -133,7 +461,7 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/maps/map002.svg-->
+                            <!--begin::Svg Icon | path: icons/duotune/finance/fin002.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -156,19 +484,104 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Rekapan</span>
+                        <span class="menu-title">Kinerja Keuangan</span>
+                        <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
-                </div>
-                <!--end:Menu item-->
-                
-                <!--begin:Menu item-->
-                <div class="menu-item pt-5">
-                    <!--begin:Menu content-->
-                    <div class="menu-content">
-                        <span class="menu-heading fw-bold text-uppercase fs-7">Data Master</span>
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Pendapatan</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <!--end:Menu link-->
+                            <!--begin:Menu sub-->
+                            <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkkp1") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('Unit/crekap') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Pendapatan BPJS / NON-BPJS</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkkp2") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('Unit/cdetail_revenue') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title"> Per-Revenue Stream</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkkp3") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('Unit/cdetail_segmen') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Pendapatan Per-Segmen</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                            </div>
+                            <!--end:Menu sub-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkkb") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/cbiaya') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Biaya</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkklr") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/claba_rugi') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Laba - Rugi</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
                     </div>
-                    <!--end:Menu content-->
+                    <!--end:Menu sub-->
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
@@ -176,47 +589,116 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/layouts/lay008.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M20 7H3C2.4 7 2 6.6 2 6V3C2 2.4 2.4 2 3 2H20C20.6 2 21 2.4 21 3V6C21 6.6 20.6 7 20 7ZM7 9H3C2.4 9 2 9.4 2 10V20C2 20.6 2.4 21 3 21H7C7.6 21 8 20.6 8 20V10C8 9.4 7.6 9 7 9Z"
-                                        fill="currentColor" />
-                                    <path opacity="0.3"
-                                        d="M20 21H11C10.4 21 10 20.6 10 20V10C10 9.4 10.4 9 11 9H20C20.6 9 21 9.4 21 10V20C21 20.6 20.6 21 20 21Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </span>
+                            <!--begin::Svg Icon | path: icons/duotune/files/fil003.svg-->
+                            <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/Shopping/Chart-bar1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <rect fill="currentColor" opacity="0.3" x="12" y="4" width="3" height="13" rx="1.5"/>
+                                    <rect fill="currentColor" opacity="0.3" x="7" y="9" width="3" height="8" rx="1.5"/>
+                                    <path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z" fill="currentColor" fill-rule="nonzero"/>
+                                    <rect fill="currentColor" opacity="0.3" x="17" y="11" width="3" height="6" rx="1.5"/>
+                                </g>
+                            </svg><!--end::Svg Icon--></span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Master Rekanan</span>
+                        <span class="menu-title">Grafik Kinerja Keuangan</span>
+                        <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
-                </div>
-                <!--end:Menu item-->
-                <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <!--begin:Menu link-->
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/text/txt002.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M17 11H7C6.4 11 6 10.6 6 10V9C6 8.4 6.4 8 7 8H17C17.6 8 18 8.4 18 9V10C18 10.6 17.6 11 17 11ZM22 5V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4V5C2 5.6 2.4 6 3 6H21C21.6 6 22 5.6 22 5Z"
-                                        fill="currentColor" />
-                                    <path opacity="0.3"
-                                        d="M21 16H3C2.4 16 2 15.6 2 15V14C2 13.4 2.4 13 3 13H21C21.6 13 22 13.4 22 14V15C22 15.6 21.6 16 21 16ZM18 20V19C18 18.4 17.6 18 17 18H7C6.4 18 6 18.4 6 19V20C6 20.6 6.4 21 7 21H17C17.6 21 18 20.6 18 20Z"
-                                        fill="currentColor" />
-                                </svg>
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Pendapatan</span>
+                                <span class="menu-arrow"></span>
                             </span>
-                            <!--end::Svg Icon-->
-                        </span>
-                        <span class="menu-title">Toolbars</span>
-                    </span>
-                    <!--end:Menu link-->
+                            <!--end:Menu link-->
+                            <!--begin:Menu sub-->
+                            <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkkp1") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('Unit/crekap/grafik_pendapatan') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Pendapatan BPJS / NON-BPJS</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkkp2") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('Unit/cdetail_revenue/grafik_detail_revenue') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title"> Per-Revenue Stream</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkkp3") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('Unit/cdetail_segmen/grafik_detail_segmen') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Pendapatan Per-Segmen</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                            </div>
+                            <!--end:Menu sub-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkkb") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/cbiaya/grafik_biaya') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Biaya</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tkklr") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/claba_rugi/grafik_laba_rugi') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Laba-Rugi</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                    </div>
+                    <!--end:Menu sub-->
                 </div>
                 <!--end:Menu item-->
             </div>
@@ -225,29 +707,5 @@
         <!--end::Menu wrapper-->
     </div>
     <!--end::sidebar menu-->
-    <!--begin::Footer-->
-    <!-- <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
-        <a href="https://preview.keenthemes.com/html/metronic/docs"
-            class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100"
-            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click"
-            title="200+ in-house components and 3rd-party plugins">
-            <span class="btn-label">Docs & Components</span>
-           
-            <span class="svg-icon btn-icon svg-icon-2 m-0">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path opacity="0.3"
-                        d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22ZM12.5 18C12.5 17.4 12.6 17.5 12 17.5H8.5C7.9 17.5 8 17.4 8 18C8 18.6 7.9 18.5 8.5 18.5L12 18C12.6 18 12.5 18.6 12.5 18ZM16.5 13C16.5 12.4 16.6 12.5 16 12.5H8.5C7.9 12.5 8 12.4 8 13C8 13.6 7.9 13.5 8.5 13.5H15.5C16.1 13.5 16.5 13.6 16.5 13ZM12.5 8C12.5 7.4 12.6 7.5 12 7.5H8C7.4 7.5 7.5 7.4 7.5 8C7.5 8.6 7.4 8.5 8 8.5H12C12.6 8.5 12.5 8.6 12.5 8Z"
-                        fill="currentColor" />
-                    <rect x="7" y="17" width="6" height="2" rx="1" fill="currentColor" />
-                    <rect x="7" y="12" width="10" height="2" rx="1" fill="currentColor" />
-                    <rect x="7" y="7" width="6" height="2" rx="1" fill="currentColor" />
-                    <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="currentColor" />
-                </svg>
-            </span>
-            
-        </a>
-    </div> -->
-    <!--end::Footer-->
 </div>
 <!--end::Sidebar-->
