@@ -53,9 +53,10 @@
 						<!--end::Toolbar-->
                         
 						<!--begin::Content-->
-						<div id="kt_app_content" class="app-content flex-column-fluid">
-							
-						</div>
+						<center>
+							<img src="<?php echo base_url(); ?>assets/media/images/ptnmu.png" width="400" height="350">
+						</center>
+						<div><marquee><h1>Selamat Datang Di Dashboard NMU</h1></marquee></div>
 						<!--end::Content-->
 					</div>
 					<!--end::Content wrapper-->

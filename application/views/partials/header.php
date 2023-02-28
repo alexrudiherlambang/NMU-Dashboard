@@ -71,7 +71,7 @@
                                     <div class="fw-bold d-flex align-items-center fs-5"><?php echo $this->session->userdata("nama") ?>
                                     </div>
                                     <a href="#"
-                                        class="fw-semibold text-muted text-hover-primary fs-7"><?php echo $this->session->userdata("level") ?></a>
+                                        class="fw-semibold text-muted text-hover-primary fs-7"><?php echo $this->session->userdata("tlok") ?></a>
                                 </div>
                                 <!--end::Username-->
                             </div>
@@ -82,7 +82,7 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="<?php echo site_url("SuperUser/cuser/clihat_user/".$this->session->userdata("id_user")) ?>" class="menu-link px-5">My
+                            <a href="<?php echo site_url("SuperUser/cuser/clihat_user/".$this->session->userdata("id")) ?>" class="menu-link px-5">My
                                 Profile</a>
                         </div>
                         <!--end::Menu item-->

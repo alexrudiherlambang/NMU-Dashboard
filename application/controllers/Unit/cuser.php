@@ -120,5 +120,15 @@ class cuser extends CI_Controller {
       redirect('Unit/cuser/clihat_user/'.$id);
    }
 
+   function cupdate_pass(){
+      $id = $this->input->post('id');
+      $Update = array(
+         'username'            => $this->input->post('username'),
+         'password'            => $this->input->post('password'),
+      );
+      
+      $this->muser->mupdate_user($Update, $id);
+      redirect('Unit/cuser/clihat_user/'.$id);
+   }
    
 }

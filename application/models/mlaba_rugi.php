@@ -123,7 +123,7 @@ class mlaba_rugi extends ci_model {
 
    // untuk cetak excel
    function mshow_all_detail($nama, $kellabarugi, $tglawal, $tglakhir) {
-      $this->db->select('lokasi,tanggal,kellabarugi,rsaldolalu,rsaldosaatini,rsaldosampai,rsaldopotensi1,jmltarget,statuse');
+      $this->db->select('lokasi,tanggal,kellabarugi,sum(rsaldolalu) as rsaldolalu,sum(rsaldosaatini) as rsaldosaatini,sum(rsaldosampai) as rsaldosampai,sum(rsaldopotensi1) as rsaldopotensi1,sum(jmltarget) as jmltarget, statuse');
       $this->db->from('test.ra_dashdb_'.$nama);
       $this->db->where('kellabarugi', $kellabarugi);
       $this->db->where('tanggal>=', $tglawal);
