@@ -27,10 +27,10 @@ class mkunjungan_BPJS extends ci_model {
 
    // untuk cetak excel
    function mshow_all_detail($nama, $ket, $tglawal, $tglakhir) {
-         $this->db->select('lokasi, tanggal, ket, sum(rsaldolalu) as rsaldolalu, sum(rsaldosaatini) as rsaldosaatini, sum(rsaldosampai) as rsaldosampai, sum(rsaldopotensi1) as rsaldopotensi1, sum(jmltarget) as jmltarget');
+         $this->db->select('lokasi, tanggal, kelspesimen, kelsegmen, kelompok, ket, sum(rsaldolalu) as rsaldolalu, sum(rsaldosaatini) as rsaldosaatini, sum(rsaldosampai) as rsaldosampai, sum(rsaldopotensi1) as rsaldopotensi1, sum(jmltarget) as jmltarget, statuse');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('ket', $ket);
-         $this->db->where('tanggal>=', $tglawal);
+         // $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
          $this->db->where_in('ket', array('BPJS', 'NON BPJS'));
          $this->db->group_by('lokasi');
