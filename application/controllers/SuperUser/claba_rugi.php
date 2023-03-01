@@ -236,7 +236,8 @@ class claba_rugi extends CI_Controller {
       xlsWriteLabel($tablehead, $kolomhead++, "No");
       xlsWriteLabel($tablehead, $kolomhead++, "Unit");
       xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
-      xlsWriteLabel($tablehead, $kolomhead++, "Uraian");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Laba-Rugi");
+      xlsWriteLabel($tablehead, $kolomhead++, "Keterangan Laba-Rugi");
       xlsWriteLabel($tablehead, $kolomhead++, "Realisasi Yang Lalu");
       xlsWriteLabel($tablehead, $kolomhead++, "Realisasi Bulan Ini");
       xlsWriteLabel($tablehead, $kolomhead++, "Total Realisasi s/d Saat Ini");
@@ -254,6 +255,7 @@ class claba_rugi extends CI_Controller {
             xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
             xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
             xlsWriteLabel($tablebody, $kolombody++, $data->kellabarugi);
+            xlsWriteLabel($tablebody, $kolombody++, $data->ket);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);

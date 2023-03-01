@@ -123,10 +123,10 @@ class msegmen extends ci_model {
 
    // untuk cetak excel
    function mshow_all_detail($nama, $kelsegmen, $tglawal, $tglakhir) {
-      $this->db->select('lokasi,tanggal,kelsegmen,sum(rsaldolalu) as rsaldolalu,sum(rsaldosaatini) as rsaldosaatini,sum(rsaldosampai) as rsaldosampai,sum(rsaldopotensi1) as rsaldopotensi1,sum(jmltarget) as jmltarget, statuse');
+      $this->db->select('lokasi,tanggal,kelspesimen,kelsegmen,kelsegmen_sub,ket,sum(rsaldolalu) as rsaldolalu,sum(rsaldosaatini) as rsaldosaatini,sum(rsaldosampai) as rsaldosampai,sum(rsaldopotensi1) as rsaldopotensi1,sum(jmltarget) as jmltarget, statuse');
       $this->db->from('test.ra_dashdb_s_'.$nama);
       $this->db->where('kelsegmen', $kelsegmen);
-      $this->db->where('tanggal>=', $tglawal);
+      // $this->db->where('tanggal>=', $tglawal);
       $this->db->where('tanggal<=', $tglakhir);
       $this->db->group_by('lokasi');
       $this->db->group_by('tanggal');

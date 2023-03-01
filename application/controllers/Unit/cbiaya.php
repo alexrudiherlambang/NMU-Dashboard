@@ -236,12 +236,14 @@ class cbiaya extends CI_Controller {
       xlsWriteLabel($tablehead, $kolomhead++, "No");
       xlsWriteLabel($tablehead, $kolomhead++, "Unit");
       xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
-      xlsWriteLabel($tablehead, $kolomhead++, "Uraian");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Beban");
+      xlsWriteLabel($tablehead, $kolomhead++, "Keterangan Beban");
       xlsWriteLabel($tablehead, $kolomhead++, "Beban Yang Lalu");
       xlsWriteLabel($tablehead, $kolomhead++, "Beban Bulan Ini");
       xlsWriteLabel($tablehead, $kolomhead++, "Total Beban s/d Saat Ini");
       xlsWriteLabel($tablehead, $kolomhead++, "Potensial Beban");
       xlsWriteLabel($tablehead, $kolomhead++, "Target Beban");
+      xlsWriteLabel($tablehead, $kolomhead++, "Status");
 
       foreach ($pilihan as $p) {
          $ket = $p;
@@ -255,11 +257,13 @@ class cbiaya extends CI_Controller {
             xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
             xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
             xlsWriteLabel($tablebody, $kolombody++, $data->kelspesimen);
+            xlsWriteLabel($tablebody, $kolombody++, $data->ket);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi1);
             xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
+            xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
          
                $tablebody++;
             $nourut++;

@@ -238,7 +238,10 @@ class cdetail_segmen extends CI_Controller {
       xlsWriteLabel($tablehead, $kolomhead++, "No");
       xlsWriteLabel($tablehead, $kolomhead++, "Unit");
       xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
-      xlsWriteLabel($tablehead, $kolomhead++, "Uraian");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Spesimen");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Segmen");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Segmen");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok BPJS/NON BPJS");
       xlsWriteLabel($tablehead, $kolomhead++, "Revenue Yang Lalu");
       xlsWriteLabel($tablehead, $kolomhead++, "Revenue Bulan Ini");
       xlsWriteLabel($tablehead, $kolomhead++, "Total Revenue s/d Saat Ini");
@@ -255,7 +258,10 @@ class cdetail_segmen extends CI_Controller {
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
             xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
             xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
+            xlsWriteLabel($tablebody, $kolombody++, $data->kelspesimen);
             xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+            xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+            xlsWriteLabel($tablebody, $kolombody++, $data->ket);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);
