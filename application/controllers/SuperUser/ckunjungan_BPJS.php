@@ -24,7 +24,35 @@ class ckunjungan_BPJS extends CI_Controller {
       $nama = $this->session->userdata("nama");
       $lokasi = $this->input->post('lokasi');
       $kunjung = $this->mkunjungan_BPJS->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);
-      
+
+      //insert into log_aktifitas table
+      if ($lokasi == ""){
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => 'KONSOLIDASI',
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Kunjungan BPJS / NON BPJS',
+         );
+      }else{
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => $lokasi,
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Kunjungan BPJS / NON BPJS',
+         );
+      }
+      $this->mkunjungan_BPJS->insert_log($log);
+
       $data = array(
          'kunjung' => $kunjung,
          'lokasi' => $lokasi,
@@ -38,7 +66,149 @@ class ckunjungan_BPJS extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vkunjungan_bpjs/vgrafik_kunjungan_bpjs');
+      $nama = $this->session->userdata("nama");
+      $data['jenis'] = $this->mkunjungan_BPJS->mshow_all_jenis($nama);
+      $this->load->view('content/vsuperuser/vkunjungan_bpjs/vgrafik_kunjungan_bpjs', $data);
+   }
+
+   function grafik_hasil_kunjungan() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $tglawal = $this->input->post('tglawal');
+      $tglakhir = $this->input->post('tglakhir');
+      $lokasi = $this->input->post('lokasi');
+      $jenis = $this->input->post('jenis');
+      $nama = $this->session->userdata("nama");
+      
+      if ($jenis == "SEMUA") {
+         $grafik = $this->mkunjungan_BPJS->mshow_all_grafik_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+
+         foreach ($grafik->result() as $b) {
+            $hasiltanggal[] = date('d-M', strtotime($b->tanggal));
+            $hasilrevenue[$b->ket][] = $b->total_rsaldosampai;
+            $hasiltarget[$b->ket][] = $b->total_jmltarget;
+         }
+         // Buat array hasil tanggal dari kunci array asosiatif
+        
+         foreach ($hasilrevenue as $ket => $revenues) {
+            $hasilrevenue_data[] = array(
+              'name' => $ket,
+              'data' => $revenues
+            );
+         }
+          
+         foreach ($hasiltarget as $ket => $targets) {
+            $hasiltarget_data[] = array(
+              'name' => $ket,
+              'data' => $targets
+            );
+         }
+         $graf_pie = $this->mkunjungan_BPJS->mshow_all_pie_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         foreach ($graf_pie->result() as $b){
+            $pie[] = $b;
+         }
+         $jenis2 = $this->mkunjungan_BPJS->mshow_all_jenis($nama);   
+
+         $data =  array (
+            'tanggal'      => $hasiltanggal,
+            'revenue'      => $hasilrevenue,
+            'target'       => $hasiltarget,
+            'pie'          => $pie,
+            'tglawal'      => $tglawal,
+            'tglakhir'     => $tglakhir,
+            'lokasi'       => $lokasi,
+            'jenis'        => $jenis,
+            'jenis2'       => $jenis2,
+         );
+
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KONSOLIDASI',
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
+            );
+         }
+         $this->mkunjungan_BPJS->insert_log($log);
+         $this->load->view('content/vsuperuser/vkunjungan_BPJS/vgrafik_hasil_kunjungan_BPJS_all',$data);
+
+      }else{
+         $grafik = $this->mkunjungan_BPJS->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+         $grafik_kp = $this->mkunjungan_BPJS->mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$jenis,$nama);
+
+         foreach ($grafik->result() as $b){
+            $hasiltanggal[] = array (
+               $tanggal_baru = date('d-M', strtotime($b->tanggal)),
+            );
+            $hasilrevenue[] = $b->total_rsaldosampai;
+            $hasiltarget[] = $b->total_jmltarget;
+         }
+         foreach ($grafik_kp->result() as $d){
+            $pie[] = $d;
+         }
+         $jenis2 = $this->mkunjungan_BPJS->mshow_all_jenis($nama);   
+         
+         $data =  array (
+            'tanggal'      => $hasiltanggal,
+            'revenue'      => $hasilrevenue,
+            'target'       => $hasiltarget,
+            'pie'          => $pie,
+            'tglawal'      => $tglawal,
+            'tglakhir'     => $tglakhir,
+            'lokasi'       => $lokasi,
+            'jenis'        => $jenis,
+            'jenis2'       => $jenis2,
+         );
+
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KONSOLIDASI',
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => $jenis,
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
+            );
+         }
+         $this->mkunjungan_BPJS->insert_log($log);
+         
+         $this->load->view('content/vsuperuser/vkunjungan_BPJS/vgrafik_hasil_kunjungan_BPJS',$data);
+      }
    }
    
    function export_xls() {

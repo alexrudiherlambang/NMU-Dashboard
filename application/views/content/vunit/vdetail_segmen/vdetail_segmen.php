@@ -206,30 +206,9 @@
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                 </tr>
+                                                
                                                 <tr>
                                                     <td class="w-10px pe-5">6</td>
-                                                    <td class="min-w-125px">HOMECARE</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">7</td>
-                                                    <td class="min-w-125px">TELEMEDICINE</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                    <td class="text-end min-w-100px">0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5">8</td>
                                                     <td class="min-w-125px">KEMENKES</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
@@ -240,7 +219,7 @@
                                                     <td class="text-end min-w-100px">0</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5">9</td>
+                                                    <td class="w-10px pe-5">7</td>
                                                     <td class="min-w-125px">BPJS KESEHATAN</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
@@ -251,8 +230,19 @@
                                                     <td class="text-end min-w-100px">0</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5">10</td>
+                                                    <td class="w-10px pe-5">8</td>
                                                     <td class="min-w-125px">BPJS KETENAGAKERJAAN</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                    <td class="text-end min-w-100px">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5">9</td>
+                                                    <td class="min-w-125px">OTHER'S</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>
                                                     <td class="text-end min-w-100px">0</td>

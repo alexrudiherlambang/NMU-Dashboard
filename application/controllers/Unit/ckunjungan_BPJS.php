@@ -25,15 +25,40 @@ class ckunjungan_BPJS extends CI_Controller {
       $lokasi = $this->input->post('lokasi');
       $kunjung = $this->mkunjungan_BPJS->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);
       
+      //insert into log_aktifitas table
+      if ($lokasi == ""){
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => 'KONSOLIDASI',
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Kunjungan BPJS / NON BPJS',
+         );
+      }else{
+         $log = array(
+            'id'		   => $this->session->userdata("id"),
+            'tglawal'   => $tglawal,
+            'tglakhir'  => $tglakhir,
+            'unit'      => $lokasi,
+            'jenis'     => 'SEMUA',
+            'platform'	=> $this->agent->platform(),
+            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+            'ip'		   => $this->input->ip_address(),
+            'action'	   => 'Show Tabel Kunjungan BPJS / NON BPJS',
+         );
+      }
+      $this->mkunjungan_BPJS->insert_log($log);
+      
       $data = array(
          'kunjung' => $kunjung,
          'lokasi' => $lokasi,
          'tglawal' => $tglawal,
          'tglakhir' => $tglakhir,
       );
-      // echo "<pre>";
-      // print_r ($data);
-      // die;
       $this->load->view('content/vunit/vkunjungan_BPJS/vhasil_kunjungan_BPJS',$data);
    }
 
