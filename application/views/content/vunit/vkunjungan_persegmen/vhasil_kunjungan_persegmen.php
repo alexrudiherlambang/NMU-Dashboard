@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Data Rekap Pendapatan</h1>
+										Data Rekap Kunjungan Per-Segmen</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -62,7 +62,7 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>Unit/crekap/pendapatan" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_persegmen/kunjungan" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
@@ -70,8 +70,8 @@
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
                                                         <select class="form-control form-control-solid select2" name="lokasi">
-                                                            <option selected="selected">-</option>
-                                                            <option <?php if ($lokasi == "") echo "selected"; ?> value="">K.P</option>
+                                                            <option <?php if ($lokasi == "") echo "selected"; ?> value="">KONSOLIDASI</option>
+                                                            <option <?php if ($lokasi == "K.P") echo "selected"; ?>>K.P</option>
                                                             <option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
                                                             <option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
                                                             <option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
@@ -137,65 +137,94 @@
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
                                     <div class="card-body border-0 pt-10">
-                                        <!-- <canvas id="myChart" width="300" height="80"></canvas><br> -->
+                                    <!-- <canvas id="myChart" width="300" height="80"></canvas><br> -->
+                                        <div class="table-responsive">
                                         <!--begin::Table-->
-                                        <table class="table align-middle table-row-dashed fs-6 gy-5">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th class="w-10px pe-5">No</th>
-                                                    <th class="min-w-125px">Uraian</th>
-                                                    <th class="text-end min-w-100px">Realisasi yang Lalu</th>
-                                                    <th class="text-end min-w-100px">Revenue Bulan Ini</th>
-                                                    <th class="text-end min-w-100px">Total Revenue</th>
-                                                    <th class="text-end min-w-100px">Potensial Revenue</th>
-                                                    <th class="text-end min-w-100px">Target Revenue</th>
-                                                    <th class="text-end min-w-100px">Prosentase</th>
-
-                                                    <!-- <th class="text-end min-w-100px">Actions</th> -->
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody class="text-gray-600 fw-semibold">
-                                            <?php
-                                            $no = 1;
-                                            $status = "OK";
-                                            foreach ($rekap as $rekap) :
-                                               ?>
-                                               <tr>
-                                                <?php if ($rekap->flag == "1"): ?>
-                                                    <td></td>
-                                                    <td><b><?php echo $rekap->ket ?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldolalu, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldosaatini, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_saldosampai, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->jmlpotensi, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php echo number_format($rekap->r_jmltarget, 0, ',', '.')?></b></td>
-                                                    <td class="text-end min-w-100px"><b><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</b></td>
-                                                    <!-- <td><?php echo $rekap->jnstrans ?></td> -->
-                                                <?php endif; ?>
-                                                <?php if ($rekap->flag == "0"): ?>
-                                                    <td><?php echo $no ?></td>
-                                                    <td><?php echo $rekap->ket ?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldolalu, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldosaatini, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_saldosampai, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->jmlpotensi, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php echo number_format($rekap->r_jmltarget, 0, ',', '.')?></td>
-                                                    <td class="text-end min-w-100px"><?php $prosentase=$rekap->jmlprosen*100; echo $prosentase;?>%</td>
-                                                    <!-- <td><?php echo $rekap->jnstrans ?></td> -->
-                                                <?php endif; ?>
-                                               </tr>
-                                               <?php
-                                               $no++;
-                                            endforeach;
-                                            ?>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
+                                            <form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_persegmen/export_xls">
+                                                <input class="form-control form-control-solid ps-12" type="hidden" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>" readonly/>
+                                                <input class="form-control form-control-solid ps-12" type="hidden" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>" readonly/>
+                                                <button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
+                                                <div style="text-align:right"></div><br>
+                                                <table class="table align-middle gs-0 gy-4">
+                                                    <!--begin::Table head-->
+                                                    <thead>
+                                                        <!--begin::Table row-->
+                                                        <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                            <th style="color: #ffffff; vertical-align: middle;">
+                                                                All<input type="checkbox" id="CheckAll">
+                                                            </th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Bulan Ini</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Kunjungan</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
+                                                        </tr>
+                                                        <!--end::Table row-->
+                                                    </thead>
+                                                    <!--end::Table head-->
+                                                    <!--begin::Table body-->
+                                                    <tbody class="text-gray-600 fw-semibold">
+                                                    <?php
+                                                    $no = 1;
+                                                    $total_rsaldolalu = 0;
+                                                    $total_rsaldosaatini = 0;
+                                                    $total_rsaldosampai = 0;
+                                                    $total_rsaldopotensi = 0;
+                                                    $total_jmltarget = 0;
+                                                    $total_jmlprosen = 0;
+                                                    foreach ($kunjung as $k) :
+                                                        $total_rsaldolalu += $k->rsaldolalu;
+                                                        $total_rsaldosaatini += $k->rsaldosaatini;
+                                                        $total_rsaldosampai += $k->rsaldosampai;
+                                                        $total_rsaldopotensi += $k->rsaldopotensi;
+                                                        $total_jmltarget += $k->jmltarget;
+                                                        $total_jmlprosen += $k->jmlprosen;
+                                                    ?>
+                                                    <tr>    
+                                                        <td>
+                                                            <input type="checkbox" id="Check" value="<?php echo $k->ket ?>" name="pilihan[]">
+                                                        </td>
+                                                        <td class="w-10px pe-5"><?php echo $no ?></td>
+                                                        <td class="text-center"><?php echo $k->ket ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldolalu, 0, ',', '.')?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosaatini, 0, ',', '.')?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosampai, 0, ',', '.')?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldopotensi, 0, ',', '.')?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosampai+$k->rsaldopotensi, 0, ',', '.')?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($k->jmltarget, 0, ',', '.')?></td>
+                                                        <td class="text-center min-w-100px"><?php echo $k->jmlprosen*100;?>%</td>
+                                                    </tr>
+                                                    <?php
+                                                    $no++;
+                                                    endforeach;
+                                                    ?>
+                                                    <tr style="background-color: #000080;">
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px"><b>TOTAL</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldolalu, 0, ',', '.')?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosaatini, 0, ',', '.')?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai, 0, ',', '.')?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldopotensi, 0, ',', '.')?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai+$total_rsaldopotensi, 0, ',', '.')?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_jmltarget, 0, ',', '.')?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai/$total_jmltarget*100, 0, ',', '.');?>%</b></td>
+                                                    </tr>
+                                                    </tbody>
+                                                    <!--end::Table body-->
+                                                </table>
+                                            </form>
+                                        </div>
+                                        <div style="text-align:left"><b>Ket :</b><br>
+                                            <i><b>Potensial Kunjungan</b> = Pasien RJ atau RI yang sudah close bill</i><br>
+                                            <i><b>Estimasi Total Kunjungan</b> = Penjumlahan total kunjungan saat ini dengan potensial kunjungan</i><br>
+                                            <i><b>Prosentase</b> = Total Kunjungan / Target Kunjungan</i><br>
+                                            <i><b>Export Excel</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
+                                        </div>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->
@@ -253,42 +282,13 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
-            datasets: [{
-                label: 'Total Revenue',
-                data: [12, 19, 3, 5, 2, 3, 20, 10, 20, 13, 12, 11],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
+    document.querySelector("#CheckAll").addEventListener("change", function(){
+        let checkboxes = document.querySelectorAll("#Check");
+        checkboxes.forEach(function(checkbox){
+        checkbox.checked = this.checked;
+        }, this);
     });
-    // Menambahkan data baru
-    myChart.data.datasets[0].data.push(10);
-    myChart.update();
-    myChart.data.datasets.push({
-    label: 'Target Revenue',
-    data: [10, 11, 12, 11, 10, 9, 12, 10, 11, 13, 12, 11],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 1
-    });
-    myChart.update();
     </script>
     <?php
         $this->load->view('partials/script');

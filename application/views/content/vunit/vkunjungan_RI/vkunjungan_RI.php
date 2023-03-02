@@ -62,14 +62,14 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>Unit/crekap/pendapatan" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_RI/kunjungan" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <input type="text" class="form-control form-control-solid" name="lokasi" value="<?php echo $this->session->userdata("tlok");?>" readonly>
+                                                        <input type="text" class="form-control form-control-solid" name="lokasi" placeholder="level" value="<?php echo $this->session->userdata("tlok");?>" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -90,7 +90,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" id="tglawal" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -113,7 +113,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo date('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" id="tglakhir" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo date('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->

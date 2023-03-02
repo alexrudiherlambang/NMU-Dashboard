@@ -173,29 +173,30 @@
                                                     $total_rsaldolalu = 0;
                                                     $total_rsaldosaatini = 0;
                                                     $total_rsaldosampai = 0;
-                                                    $total_rsaldopotensi1 = 0;
+                                                    $total_rsaldopotensi = 0;
                                                     $total_jmltarget = 0;
+                                                    $total_jmlprosen = 0;
                                                     foreach ($kunjung as $k) :
                                                         $total_rsaldolalu += $k->rsaldolalu;
                                                         $total_rsaldosaatini += $k->rsaldosaatini;
                                                         $total_rsaldosampai += $k->rsaldosampai;
-                                                        $total_rsaldopotensi1 += $k->rsaldopotensi1;
+                                                        $total_rsaldopotensi += $k->rsaldopotensi;
                                                         $total_jmltarget += $k->jmltarget;
+                                                        $total_jmlprosen += $k->jmlprosen;
                                                     ?>
                                                     <tr>    
                                                         <td>
-                                                            <input type="checkbox" id="Check" value="<?php echo $k->kelsegmen ?>" name="pilihan[]">
+                                                            <input type="checkbox" id="Check" value="<?php echo $k->ket ?>" name="pilihan[]">
                                                         </td>
                                                         <td class="w-10px pe-5"><?php echo $no ?></td>
-                                                        <td class="text-center"><?php echo $k->kelsegmen ?></td>
+                                                        <td class="text-center"><?php echo $k->ket ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($k->rsaldolalu, 0, ',', '.')?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosaatini, 0, ',', '.')?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosampai, 0, ',', '.')?></td>
-                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldopotensi1, 0, ',', '.')?></td>
-                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosampai+$k->rsaldopotensi1, 0, ',', '.')?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldopotensi, 0, ',', '.')?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosampai+$k->rsaldopotensi, 0, ',', '.')?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($k->jmltarget, 0, ',', '.')?></td>
-                                                        <td class="text-center min-w-100px">0 %</td>
-                                                        <!-- <td class="text-center min-w-100px"><?php echo $k->rsaldosampai/$k->jmltarget;?>%</td> -->
+                                                        <td class="text-center min-w-100px"><?php echo $k->jmlprosen*100;?>%</td>
                                                     </tr>
                                                     <?php
                                                     $no++;
@@ -208,11 +209,10 @@
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldolalu, 0, ',', '.')?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosaatini, 0, ',', '.')?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldopotensi1, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai+$total_rsaldopotensi1, 0, ',', '.')?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldopotensi, 0, ',', '.')?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai+$total_rsaldopotensi, 0, ',', '.')?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_jmltarget, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0%</b></td>
-                                                        <!-- <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo $k->total_rsaldosampai/$k->total_jmltarget;?>%</b></td> -->
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai/$total_jmltarget*100, 0, ',', '.');?>%</b></td>
                                                     </tr>
                                                     </tbody>
                                                     <!--end::Table body-->

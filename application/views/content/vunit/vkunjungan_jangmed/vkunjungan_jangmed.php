@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Data Kunjungan Penunjang Medis</h1>
+										Data Kegiatan Penunjang Medis</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -62,7 +62,7 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>Unit/crekap/pendapatan" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_jangmed/kunjungan" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
@@ -90,7 +90,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" id="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -113,7 +113,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo date('Y-m-d');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="date" id="tglakhir" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo date('Y-m-d');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->

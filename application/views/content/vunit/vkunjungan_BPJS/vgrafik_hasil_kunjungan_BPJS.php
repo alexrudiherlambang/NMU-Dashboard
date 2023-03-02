@@ -22,7 +22,7 @@
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 <?php
-                    $this->load->view('partials/sidebar_superuser');
+                    $this->load->view('partials/sidebar_unit');
                 ?>
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -66,22 +66,14 @@
 												<div class="card card-md-stretch me-xl-3 mb-md-0 mb-6">
 													<!--begin::Body-->
 													<div class="card-body">
-															<form method="post" action="<?php echo site_url(); ?>SuperUser/ckunjungan_BPJS/grafik_hasil_kunjungan" enctype="multipart/form-data">
+															<form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_BPJS/grafik_hasil_kunjungan" enctype="multipart/form-data">
 																<div class="row mb-5">
 																	<!--begin::Col-->
 																	<div class="col-xl-4">
 																		<div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
 																	</div>
 																	<div class="col-xl-8 fv-row">
-																		<select class="form-select form-select-solid select2" name="lokasi" >
-																			<option <?php if ($lokasi == "") echo "selected"; ?> value="">KONSOLIDASI</option>
-																			<option <?php if ($lokasi == "K.P") echo "selected"; ?>>K.P</option>
-																			<option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
-																			<option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
-																			<option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
-																			<option <?php if ($lokasi == "RSMU") echo "selected"; ?>>RSMU</option>
-																			<option <?php if ($lokasi == "URJ") echo "selected"; ?>>URJ</option>
-																		</select>
+																		<input type="text" class="form-control form-control-solid" name="lokasi" value="<?php echo $lokasi;?>" readonly>
 																	</div>
 																</div>
 																<div class="row mb-5">

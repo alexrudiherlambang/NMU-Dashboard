@@ -22,7 +22,7 @@
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 <?php
-                    $this->load->view('partials/sidebar_superuser');
+                    $this->load->view('partials/sidebar_unit');
                 ?>
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Grafik Kunjungan BPJS / Non BPJS</h1>
+										Grafik Kunjungan Per-Segmen</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -66,22 +66,14 @@
 												<div class="card card-md-stretch me-xl-3 mb-md-0 mb-6">
 													<!--begin::Body-->
 													<div class="card-body">
-															<form method="post" action="<?php echo site_url(); ?>SuperUser/ckunjungan_BPJS/grafik_hasil_kunjungan" enctype="multipart/form-data">
+															<form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_persegmen/grafik_hasil_kunjungan" enctype="multipart/form-data">
 																<div class="row mb-5">
 																	<!--begin::Col-->
 																	<div class="col-xl-4">
 																		<div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
 																	</div>
 																	<div class="col-xl-8 fv-row">
-																		<select class="form-select form-select-solid select2" name="lokasi" >
-																			<option <?php if ($lokasi == "") echo "selected"; ?> value="">KONSOLIDASI</option>
-																			<option <?php if ($lokasi == "K.P") echo "selected"; ?>>K.P</option>
-																			<option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
-																			<option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
-																			<option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
-																			<option <?php if ($lokasi == "RSMU") echo "selected"; ?>>RSMU</option>
-																			<option <?php if ($lokasi == "URJ") echo "selected"; ?>>URJ</option>
-																		</select>
+																		<input type="text" class="form-control form-control-solid" name="lokasi" value="<?php echo $lokasi;?>" readonly>
 																	</div>
 																</div>
 																<div class="row mb-5">
@@ -139,7 +131,7 @@
 																		<select class="form-select form-select-solid select2" name="jenis" >
 																			<option><?php echo $jenis?></option>
 																			<?php foreach ($jenis2 as $jenis):?>
-																				<option><?php echo $jenis->ket?></option>
+																				<option><?php echo $jenis->kelsegmen?></option>
 																			<?php endforeach ?>
 																			<option>SEMUA</option>
 																		</select>
@@ -183,19 +175,21 @@
 										<!--end::Row-->
 										<!--begin::Products Documentations-->
 										<div class="card mb-1">
-											<!--begin::Card body-->
-											<div class="table-responsive">
-												<table class="table align-middle gs-0 gy-4"> 
-													<tbody class="text-gray-600 fw-semibold">
-														<tr>
-															<td>
-															<div class="card-body">
-																<canvas id="myChart" width="750" height="200"></canvas><br>
-															</div>
-														</tr>
-													</tbody>
-												</table>
-											</div>
+											<?php foreach ($jenis2 as $jenis):?>
+												<div class="table-responsive">
+													<table class="table align-middle gs-0 gy-4"> 
+														<tbody class="text-gray-600 fw-semibold">
+															<tr>
+																<td>
+																<div class="card-body">
+																	<?php echo $jenis->kelsegmen?><br><br>
+																	<canvas id="<?php echo $jenis->kelsegmen?>" width="750" height="200"></canvas><br>
+																</div>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											<?php endforeach ?>
 											<!--end::Card body-->
 										</div>
 										<!--end::Products Documentations-->
@@ -253,73 +247,78 @@
             </div>
         </div>
     </div>
-	
+	<!-- script line -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <script>
-		var ctx = document.getElementById('myChart').getContext('2d');
-		var myChart = new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: <?php echo json_encode($tanggal)?>,
-				datasets: [{
-					label: 'Total Kunjungan',
-					data: [<?php echo implode(',', $revenue) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
-					borderWidth: 3
-				}]
-			},
-			options: {
-			scales: {
-				xAxes: [{
-				gridLines: {
-					display: false
-				}
-				}],
-				yAxes: [{
-				gridLines: {
-					display: false
+	<?php foreach ($jenis2 as $jenis):?>
+		<?php
+			$tanggal_unik = array_unique($tanggal);
+		?>
+		<script>
+			var ctx = document.getElementById('<?php echo $jenis->kelsegmen?>').getContext('2d');
+			var bpjs = new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: <?php echo json_encode(array_values($tanggal_unik))?>,
+					datasets: [{
+						label: 'Total Kunjungan',
+						data: [<?php echo implode(',', $revenue[$jenis->kelsegmen]) ?>],
+						backgroundColor: 'rgba(255, 99, 132, 0.2)',
+						borderColor: 'rgba(255, 99, 132, 1)',
+						borderWidth: 3
+					}]
 				},
-				ticks: {
-					// Menentukan format currency
-					callback: function(value, index, values) {
-						return (value).toFixed(0);
+				options: {
+				scales: {
+					xAxes: [{
+					gridLines: {
+						display: false
 					}
-				}
-				}]
-			},
-			legend: {
-				position: 'bottom'
-			},
-			responsive: true,
-			tooltips: {
-				callbacks: {
-					label: function(tooltipItem, data) {
-						var label = data.datasets[tooltipItem.datasetIndex].label || '';
-						if (label) {
-							label += ': ';
+					}],
+					yAxes: [{
+					gridLines: {
+						display: false
+					},
+					ticks: {
+						// Menentukan format currency
+						callback: function(value, index, values) {
+							return (value).toFixed(0);
 						}
-						label += (tooltipItem.yLabel).toFixed(0).replace('.', ',');
-						return label;
+					}
+					}]
+				},
+				legend: {
+					position: 'bottom'
+				},
+				responsive: true,
+				tooltips: {
+					callbacks: {
+						label: function(tooltipItem, data) {
+							var label = data.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+								label += ': ';
+							}
+							label += (tooltipItem.yLabel).toFixed(0).replace('.', ',');
+							return label;
+						}
 					}
 				}
-			}
-			}
-		});
-		// Menambahkan data baru
-		myChart.data.datasets[0].data.push(10);
-		myChart.update();
-		myChart.data.datasets.push({
-		label: 'Target Kunjungan',
-		data: [<?php echo implode(',', $target) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
-		borderWidth: 3
-		});
-		myChart.update();
-    </script>
-
-    <!-- script pie -->
+				}
+			});
+			// Menambahkan data baru
+			bpjs.data.datasets[0].data.push(10);
+			bpjs.update();
+			bpjs.data.datasets.push({
+			label: 'Target Kunjungan',
+			data: [<?php echo implode(',', $target[$jenis->kelsegmen]) ?>],
+			backgroundColor: 'rgba(54, 162, 235, 0.2)',
+			borderColor: 'rgba(54, 162, 235, 1)',
+			borderWidth: 3
+			});
+			bpjs.update();
+		</script>
+	<?php endforeach ?>
+    
+	<!-- script pie -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script>
 		google.charts.load("current", {packages:["corechart"]});
@@ -329,7 +328,7 @@
 			var data = google.visualization.arrayToDataTable([
 			['Task', 'Hours per Day'],
 			<?php foreach ($pie as $pie) :?>
-			['<?php echo $pie->lokasi;?>',<?php echo $pie->total_rsaldosampai; ?>],
+			['<?php echo $pie->kelsegmen;?>',<?php echo $pie->total_rsaldosampai; ?>],
 			<?php endforeach;?>
 			]);
 

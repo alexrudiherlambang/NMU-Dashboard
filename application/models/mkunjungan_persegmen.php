@@ -8,16 +8,16 @@ class mkunjungan_persegmen extends ci_model {
 
    // untuk menampilkan semua rekap
    function mshow_all_call($tglawal,$tglakhir,$nama,$lokasi) {
-      $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi')");
-      $this->db->select('kelsegmen, sum(rsaldolalu) as rsaldolalu, sum(rsaldosaatini) as rsaldosaatini, sum(rsaldosampai) as rsaldosampai, sum(rsaldopotensi1) as rsaldopotensi1, sum(jmltarget) as jmltarget');
-      $this->db->from('test.ra_dashdb_k_'.$nama);
-      $this->db->group_by('kelsegmen');
+      $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi','kelsegmen')");
+      $this->db->select('ket, rsaldolalu, rsaldosaatini, rsaldosampai, rsaldopotensi, jmltarget, jmlprosen');
+      $this->db->from('test.ra_dashdb1_k_'.$nama);
+      // $this->db->group_by('ket');
       return $this->db->get()->result();
    }
    
    // untuk menampilkan Jenis
    function mshow_all_jenis($nama) {
-      $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('" . date('Y-m-d') . "', '" . (new DateTime('-7 days'))->format('Y-m-d') . "', '$nama', '')");
+      $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('" . date('Y-m-d') . "', '" . (new DateTime('-7 days'))->format('Y-m-d') . "', '$nama', '', 'kelsegmen')");
       $this->db->select('kelsegmen');
       $this->db->from('test.ra_dashdb_k_'.$nama);
       $this->db->group_by('kelsegmen');
@@ -28,7 +28,7 @@ class mkunjungan_persegmen extends ci_model {
    function mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
       if ($lokasi == ''){
          //line kp
-         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi','kelsegmen')");
          $this->db->select('tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
@@ -38,7 +38,7 @@ class mkunjungan_persegmen extends ci_model {
          return $this->db->get();
       }else{
          //line unit
-         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi','kelsegmen')");
          $this->db->select('tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('lokasi', $lokasi);
@@ -100,7 +100,7 @@ class mkunjungan_persegmen extends ci_model {
     function mshow_all_grafik_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
       if ($lokasi == ''){
          //line jenis kp
-         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi','kelsegmen')");
          $this->db->select('kelsegmen,tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
@@ -110,7 +110,7 @@ class mkunjungan_persegmen extends ci_model {
          return $this->db->get();
       }else{
          //line jenis unit
-         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi','kelsegmen')");
          $this->db->select('kelsegmen,tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('lokasi', $lokasi);
