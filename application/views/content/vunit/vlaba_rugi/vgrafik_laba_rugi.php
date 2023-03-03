@@ -129,10 +129,10 @@
 																</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="jenis" >
-																			<?php foreach ($jenis as $jenis):?>
+																		<option>SEMUA</option>
+																		<?php foreach ($jenis as $jenis):?>
 																				<option><?php echo $jenis->ket?></option>
 																			<?php endforeach ?>
-																			<option>SEMUA</option>
 																		</select>
 																	</div>
 																</div>
