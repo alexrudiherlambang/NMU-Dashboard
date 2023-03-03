@@ -18,10 +18,10 @@ class mkunjungan_RI extends ci_model {
    // untuk menampilkan Jenis
    function mshow_all_jenis($nama) {
       $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('" . date('Y-m-d') . "', '" . (new DateTime('-7 days'))->format('Y-m-d') . "', '$nama', '', 'kelunit')");
-      $this->db->select('ket');
+      $this->db->select('kelunit');
       $this->db->from('test.ra_dashdb_k_'.$nama);
-      $this->db->group_by('ket');
-      $this->db->where_in('ket', array('BPJS', 'NON BPJS'));
+      $this->db->group_by('kelunit');
+      $this->db->where('kelspesimen', '2. RAWAT INAP');
       return $this->db->get()->result();
    }
 
@@ -34,7 +34,8 @@ class mkunjungan_RI extends ci_model {
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->where('ket', $jenis);
+         $this->db->where('kelunit', $jenis);   
+         $this->db->where('kelspesimen', '2. RAWAT INAP');
          $this->db->group_by('tanggal');
          return $this->db->get();
       }else{
@@ -45,7 +46,8 @@ class mkunjungan_RI extends ci_model {
          $this->db->where('lokasi', $lokasi);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->where('ket', $jenis);
+         $this->db->where('kelunit', $jenis);
+         $this->db->where('kelspesimen', '2. RAWAT INAP');
          $this->db->group_by('tanggal');
          return $this->db->get();
       }
@@ -59,7 +61,8 @@ class mkunjungan_RI extends ci_model {
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->where('ket', $jenis);
+         $this->db->where('kelunit', $jenis);
+         $this->db->where('kelspesimen', '2. RAWAT INAP');
          $this->db->group_by('lokasi');
          return $this->db->get();
       }else{
@@ -69,7 +72,8 @@ class mkunjungan_RI extends ci_model {
          $this->db->where('lokasi', $lokasi);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->where('ket', $jenis);
+         $this->db->where('kelunit', $jenis);
+         $this->db->where('kelspesimen', '2. RAWAT INAP');
          $this->db->group_by('lokasi');
          return $this->db->get();
       }
@@ -79,20 +83,22 @@ class mkunjungan_RI extends ci_model {
    function mshow_all_pie_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
       if ($lokasi == ''){
          //pie jenis kp
-         $this->db->select('ket,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->select('kelunit,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->group_by('ket');
+         $this->db->where('kelspesimen', '2. RAWAT INAP');
+         $this->db->group_by('kelunit');
          return $this->db->get();
       }else{
          //pie jenis unit
-         $this->db->select('ket,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->select('kelunit,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('lokasi', $lokasi);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->group_by('ket');
+         $this->db->where('kelspesimen', '2. RAWAT INAP');
+         $this->db->group_by('kelunit');
          return $this->db->get();
       }
    }
@@ -102,22 +108,24 @@ class mkunjungan_RI extends ci_model {
       if ($lokasi == ''){
          //line jenis kp
          $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi', 'kelunit')");
-         $this->db->select('ket,tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->select('kelunit,tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->group_by('ket');
+         $this->db->where('kelspesimen', '2. RAWAT INAP');
+         $this->db->group_by('kelunit');
          $this->db->group_by('tanggal');
          return $this->db->get();
       }else{
          //line jenis unit
          $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi', 'kelunit')");
-         $this->db->select('ket,tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->select('kelunit,tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('lokasi', $lokasi);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->group_by('ket');
+         $this->db->where('kelspesimen', '2. RAWAT INAP');
+         $this->db->group_by('kelunit');
          $this->db->group_by('tanggal');
          return $this->db->get();
       }

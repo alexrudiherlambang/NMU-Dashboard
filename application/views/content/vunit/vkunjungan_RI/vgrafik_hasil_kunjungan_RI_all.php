@@ -22,7 +22,7 @@
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 <?php
-                    $this->load->view('partials/sidebar_superuser');
+                    $this->load->view('partials/sidebar_unit');
                 ?>
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Grafik Kegiatan Penunjang Medis</h1>
+										Grafik Kunjungan Rawat Inap</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -53,7 +53,7 @@
 						<!--end::Toolbar-->
                         
 						<!--begin::Content-->
-							<div id="kt_app_content" class="app-content flex-column-fluid">
+						<div id="kt_app_content" class="app-content flex-column-fluid">
 								<!--begin::Content container-->
 								<div id="kt_app_content_container" class="app-container container-xxl">
 									<!--begin::Hero card-->
@@ -66,22 +66,14 @@
 												<div class="card card-md-stretch me-xl-3 mb-md-0 mb-6">
 													<!--begin::Body-->
 													<div class="card-body">
-															<form method="post" action="<?php echo site_url(); ?>SuperUser/ckunjungan_jangmed/grafik_hasil_kunjungan" enctype="multipart/form-data">
+															<form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_RI/grafik_hasil_kunjungan" enctype="multipart/form-data">
 																<div class="row mb-5">
 																	<!--begin::Col-->
 																	<div class="col-xl-4">
 																		<div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
 																	</div>
 																	<div class="col-xl-8 fv-row">
-																		<select class="form-select form-select-solid select2" name="lokasi" >
-																			<option value="">KONSOLIDASI</option>
-																			<option>K.P</option>
-																			<option>RSG</option>
-																			<option>RST</option>
-																			<option>RSP</option>
-																			<option>RSMU</option>
-																			<option>URJ</option>
-																		</select>
+																		<input type="text" class="form-control form-control-solid" name="lokasi" value="<?php echo $lokasi;?>" readonly>
 																	</div>
 																</div>
 																<div class="row mb-5">
@@ -102,7 +94,7 @@
 																				</svg>
 																			</span>
 																			<!--end::Svg Icon-->
-																			<input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php $date = new DateTime();$date->modify('-7 days');echo $date->format('Y-m-d');?>"/>
+																			<input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"  value="<?php echo $tglawal?>"/>
 																		</div>
 																	</div>
 																	<!--begin::Col-->
@@ -125,7 +117,7 @@
 																				</svg>
 																			</span>
 																			<!--end::Svg Icon-->
-																			<input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo date('Y-m-d');?>"/>
+																			<input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir?>"/>
 																		</div>
 																	</div>
 																	<!--begin::Col-->
@@ -137,8 +129,9 @@
 																</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="jenis" >
+																			<option><?php echo $jenis?></option>
 																			<option>SEMUA</option>
-																			<?php foreach ($jenis as $jenis):?>
+																			<?php foreach ($jenis2 as $jenis):?>
 																				<option><?php echo $jenis->kelunit?></option>
 																			<?php endforeach ?>
 																		</select>
@@ -182,19 +175,21 @@
 										<!--end::Row-->
 										<!--begin::Products Documentations-->
 										<div class="card mb-1">
-											<!--begin::Card body-->
-											<div class="table-responsive">
-												<table class="table align-middle gs-0 gy-4"> 
-													<tbody class="text-gray-600 fw-semibold">
-														<tr>
-															<td>
-															<div class="card-body">
-																<canvas id="myChart" width="300" height="100"></canvas><br>
-															</div>
-														</tr>
-													</tbody>
-												</table>
-											</div>
+											<?php foreach ($jenis2 as $jenis):?>
+												<div class="table-responsive">
+													<table class="table align-middle gs-0 gy-4"> 
+														<tbody class="text-gray-600 fw-semibold">
+															<tr>
+																<td>
+																<div class="card-body">
+																	<?php echo $jenis->kelunit?><br><br>
+																	<canvas id="<?php echo $jenis->kelunit?>" width="750" height="200"></canvas><br>
+																</div>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											<?php endforeach ?>
 											<!--end::Card body-->
 										</div>
 										<!--end::Products Documentations-->
@@ -252,81 +247,130 @@
             </div>
         </div>
     </div>
-	
+	<!-- script line -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
-            datasets: [{
-                label: 'Total Kunjungan',
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 3
-            }]
-        },
-        options: {
-        scales: {
-            xAxes: [{
-            gridLines: {
-                display: false
-            }
-            }],
-            yAxes: [{
-            gridLines: {
-                display: false
-            }
-            }]
-        },
-        legend: {
-            position: 'bottom'
-        },
-        responsive: true
-        }
-    });
-    // Menambahkan data baru
-    myChart.data.datasets[0].data.push(10);
-    myChart.update();
-    myChart.data.datasets.push({
-    label: 'Target Kunjungan',
-    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3
-    });
-    myChart.update();
-    </script>
-
+	<?php foreach ($jenis2 as $jenis):?>
+		<script>
+			var ctx = document.getElementById('<?php echo $jenis->kelunit?>').getContext('2d');
+			var bpjs = new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: <?php echo json_encode(array_unique($tanggal))?>,
+					datasets: [{
+						label: 'Total Kunjungan',
+						data: [<?php echo implode(',', $revenue[$jenis->kelunit]) ?>],
+						backgroundColor: 'rgba(255, 99, 132, 0.2)',
+						borderColor: 'rgba(255, 99, 132, 1)',
+						borderWidth: 3
+					}]
+				},
+				options: {
+				scales: {
+					xAxes: [{
+					gridLines: {
+						display: false
+					}
+					}],
+					yAxes: [{
+					gridLines: {
+						display: false
+					},
+					ticks: {
+						// Menentukan format currency
+						callback: function(value, index, values) {
+							return (value).toFixed(0);
+						}
+					}
+					}]
+				},
+				legend: {
+					position: 'bottom'
+				},
+				responsive: true,
+				tooltips: {
+					callbacks: {
+						label: function(tooltipItem, data) {
+							var label = data.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+								label += ': ';
+							}
+							label += (tooltipItem.yLabel).toFixed(0).replace('.', ',');
+							return label;
+						}
+					}
+				}
+				}
+			});
+			// Menambahkan data baru
+			bpjs.data.datasets[0].data.push(10);
+			bpjs.update();
+			bpjs.data.datasets.push({
+			label: 'Target Kunjungan',
+			data: [<?php echo implode(',', $target[$jenis->kelunit]) ?>],
+			backgroundColor: 'rgba(54, 162, 235, 0.2)',
+			borderColor: 'rgba(54, 162, 235, 1)',
+			borderWidth: 3
+			});
+			bpjs.update();
+		</script>
+	<?php endforeach ?>
+    
+	<!-- script pie -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
-    google.charts.load("current", {packages:["corechart"]});
-    google.charts.setOnLoadCallback(drawChart);
+	<script>
+		google.charts.load("current", {packages:["corechart"]});
+		google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
-    var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
-        ['Tanggal',     1]
-    ]);
+		function drawChart() {
+			var data = google.visualization.arrayToDataTable([
+			['Task', 'Hours per Day'],
+			<?php foreach ($pie as $pie) :?>
+			['<?php echo $pie->kelunit;?>',<?php echo $pie->total_rsaldosampai; ?>],
+			<?php endforeach;?>
+			]);
 
-    var options = {
-        width: 340,
-        height: 300,
-        is3D: true,
-        responsive: true,
-		legend: { position: 'none' },
-		pieSliceText: 'percentage'
-    };
+			var formatter = new google.visualization.NumberFormat({
+			suffix: ' ',
+			fractionDigits: 0
+			});
 
-    var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
-    chart.draw(data, options);
-    }
-    // Menyesuaikan ukuran grafik saat tampil di mobile
-    window.addEventListener('resize', function() {
-      chart.draw(data, options);
-    });
-    </script>
+			formatter.format(data, 1);
+
+			var options = {
+			width: 340,
+			height: 300,
+			is3D: true,
+			responsive: true,
+			// legend: { position: 'none' },
+			pieSliceText: 'value-and-label',
+			slices: {
+				0: { color: 'blue' },
+				1: { color: 'green' },
+				2: { color: 'red' },
+				3: { color: 'yellow' },
+				4: { color: 'gray' }
+			},
+			tooltip: { 
+				format: 'currency',
+				// Mengatur format currency
+				callback: function(tooltipItem, data) {
+				var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+				var value = data.getValue(tooltipItem.row, 1);
+				return currency.format(value * 1000000);
+				}
+			},
+			chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
+			};
+
+			var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
+			chart.draw(data, options);
+
+			// Menyesuaikan ukuran grafik saat tampil di mobile
+			window.addEventListener('resize', function() {
+			chart.draw(data, options);
+			});
+		}
+	</script>
 
     <?php
         $this->load->view('partials/script');

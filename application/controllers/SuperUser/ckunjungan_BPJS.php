@@ -109,48 +109,50 @@ class ckunjungan_BPJS extends CI_Controller {
             $pie[] = $b;
          }
          $jenis2 = $this->mkunjungan_BPJS->mshow_all_jenis($nama);   
-
-         $data =  array (
-            'tanggal'      => $hasiltanggal,
-            'revenue'      => $hasilrevenue,
-            'target'       => $hasiltarget,
-            'pie'          => $pie,
-            'tglawal'      => $tglawal,
-            'tglakhir'     => $tglakhir,
-            'lokasi'       => $lokasi,
-            'jenis'        => $jenis,
-            'jenis2'       => $jenis2,
-         );
-
-         //insert into log_aktifitas table
-         if ($lokasi == ""){
-            $log = array(
-               'id'		   => $this->session->userdata("id"),
-               'tglawal'   => $tglawal,
-               'tglakhir'  => $tglakhir,
-               'unit'      => 'KONSOLIDASI',
-               'jenis'     => $jenis,
-               'platform'	=> $this->agent->platform(),
-               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-               'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
-            );
+         if (empty($hasiltanggal)) {
+            echo '<script language="javascript">alert("Data Tidak Tersedia !!!"); document.location="grafik_kunjungan_bpjs";</script>';
          }else{
-            $log = array(
-               'id'		   => $this->session->userdata("id"),
-               'tglawal'   => $tglawal,
-               'tglakhir'  => $tglakhir,
-               'unit'      => $lokasi,
-               'jenis'     => $jenis,
-               'platform'	=> $this->agent->platform(),
-               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-               'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
+            $data =  array (
+               'tanggal'      => $hasiltanggal,
+               'revenue'      => $hasilrevenue,
+               'target'       => $hasiltarget,
+               'pie'          => $pie,
+               'tglawal'      => $tglawal,
+               'tglakhir'     => $tglakhir,
+               'lokasi'       => $lokasi,
+               'jenis'        => $jenis,
+               'jenis2'       => $jenis2,
             );
-         }
-         $this->mkunjungan_BPJS->insert_log($log);
-         $this->load->view('content/vsuperuser/vkunjungan_BPJS/vgrafik_hasil_kunjungan_BPJS_all',$data);
 
+            //insert into log_aktifitas table
+            if ($lokasi == ""){
+               $log = array(
+                  'id'		   => $this->session->userdata("id"),
+                  'tglawal'   => $tglawal,
+                  'tglakhir'  => $tglakhir,
+                  'unit'      => 'KONSOLIDASI',
+                  'jenis'     => $jenis,
+                  'platform'	=> $this->agent->platform(),
+                  'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+                  'ip'		   => $this->input->ip_address(),
+                  'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
+               );
+            }else{
+               $log = array(
+                  'id'		   => $this->session->userdata("id"),
+                  'tglawal'   => $tglawal,
+                  'tglakhir'  => $tglakhir,
+                  'unit'      => $lokasi,
+                  'jenis'     => $jenis,
+                  'platform'	=> $this->agent->platform(),
+                  'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+                  'ip'		   => $this->input->ip_address(),
+                  'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
+               );
+            }
+            $this->mkunjungan_BPJS->insert_log($log);
+            $this->load->view('content/vsuperuser/vkunjungan_BPJS/vgrafik_hasil_kunjungan_BPJS_all',$data);
+         }
       }else{
          $grafik = $this->mkunjungan_BPJS->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama);
          $grafik_kp = $this->mkunjungan_BPJS->mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$jenis,$nama);
@@ -166,48 +168,51 @@ class ckunjungan_BPJS extends CI_Controller {
             $pie[] = $d;
          }
          $jenis2 = $this->mkunjungan_BPJS->mshow_all_jenis($nama);   
-         
-         $data =  array (
-            'tanggal'      => $hasiltanggal,
-            'revenue'      => $hasilrevenue,
-            'target'       => $hasiltarget,
-            'pie'          => $pie,
-            'tglawal'      => $tglawal,
-            'tglakhir'     => $tglakhir,
-            'lokasi'       => $lokasi,
-            'jenis'        => $jenis,
-            'jenis2'       => $jenis2,
-         );
-
-         //insert into log_aktifitas table
-         if ($lokasi == ""){
-            $log = array(
-               'id'		   => $this->session->userdata("id"),
-               'tglawal'   => $tglawal,
-               'tglakhir'  => $tglakhir,
-               'unit'      => 'KONSOLIDASI',
-               'jenis'     => $jenis,
-               'platform'	=> $this->agent->platform(),
-               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-               'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
-            );
+         if (empty($hasiltanggal)) {
+            echo '<script language="javascript">alert("Data Tidak Tersedia !!!"); document.location="grafik_kunjungan_bpjs";</script>';
          }else{
-            $log = array(
-               'id'		   => $this->session->userdata("id"),
-               'tglawal'   => $tglawal,
-               'tglakhir'  => $tglakhir,
-               'unit'      => $lokasi,
-               'jenis'     => $jenis,
-               'platform'	=> $this->agent->platform(),
-               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-               'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
+            $data =  array (
+               'tanggal'      => $hasiltanggal,
+               'revenue'      => $hasilrevenue,
+               'target'       => $hasiltarget,
+               'pie'          => $pie,
+               'tglawal'      => $tglawal,
+               'tglakhir'     => $tglakhir,
+               'lokasi'       => $lokasi,
+               'jenis'        => $jenis,
+               'jenis2'       => $jenis2,
             );
-         }
-         $this->mkunjungan_BPJS->insert_log($log);
+
+            //insert into log_aktifitas table
+            if ($lokasi == ""){
+               $log = array(
+                  'id'		   => $this->session->userdata("id"),
+                  'tglawal'   => $tglawal,
+                  'tglakhir'  => $tglakhir,
+                  'unit'      => 'KONSOLIDASI',
+                  'jenis'     => $jenis,
+                  'platform'	=> $this->agent->platform(),
+                  'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+                  'ip'		   => $this->input->ip_address(),
+                  'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
+               );
+            }else{
+               $log = array(
+                  'id'		   => $this->session->userdata("id"),
+                  'tglawal'   => $tglawal,
+                  'tglakhir'  => $tglakhir,
+                  'unit'      => $lokasi,
+                  'jenis'     => $jenis,
+                  'platform'	=> $this->agent->platform(),
+                  'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+                  'ip'		   => $this->input->ip_address(),
+                  'action'	   => 'Show Grafik Kunjungan BPJS/NON-BPJS',
+               );
+            }
+            $this->mkunjungan_BPJS->insert_log($log);
          
-         $this->load->view('content/vsuperuser/vkunjungan_BPJS/vgrafik_hasil_kunjungan_BPJS',$data);
+            $this->load->view('content/vsuperuser/vkunjungan_BPJS/vgrafik_hasil_kunjungan_BPJS',$data);
+         }
       }
    }
    
