@@ -63,7 +63,7 @@
 										<!--begin::Title-->
 										<h3 class="card-title align-items-start flex-column">
 											<span class="card-label fw-bold text-gray-800">Grafik Pendapatan</span>
-											<span class="text-gray-400 mt-1 fw-semibold fs-6">All</span>
+											<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
 										</h3>
 										<!--end::Title-->
 
@@ -74,10 +74,10 @@
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
 													<?php
-														$start_date = date('Y') . '-01-01'; // tanggal awal tahun ini
-														$end_date = date('Y-m-d'); // tanggal sekarang
+														$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+														$end_date = date('Y-m-d'); // tanggal hari ini
 														setlocale(LC_TIME, 'id_ID');
-														echo strftime('%B %Y', strtotime($start_date)) . ' - ' . strftime('%B %Y', strtotime($end_date));
+														echo strftime('%d %B %Y', strtotime($start_date)) . ' - ' . strftime('%d %B %Y', strtotime($end_date));
 													?>
 												</div>
 												<!--end::Display range-->
@@ -120,7 +120,7 @@
 										<!--begin::Title-->
 										<h3 class="card-title align-items-start flex-column">
 											<span class="card-label fw-bold text-gray-800">Grafik Laba - Rugi</span>
-											<span class="text-gray-400 mt-1 fw-semibold fs-6">All</span>
+											<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
 										</h3>
 										<!--end::Title-->
 
@@ -131,10 +131,10 @@
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
 													<?php
-														$start_date = date('Y') . '-01-01'; // tanggal awal tahun ini
-														$end_date = date('Y-m-d'); // tanggal sekarang
+														$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+														$end_date = date('Y-m-d'); // tanggal hari ini
 														setlocale(LC_TIME, 'id_ID');
-														echo strftime('%B %Y', strtotime($start_date)) . ' - ' . strftime('%B %Y', strtotime($end_date));
+														echo strftime('%d %B %Y', strtotime($start_date)) . ' - ' . strftime('%d %B %Y', strtotime($end_date));
 													?>
 												</div>
 												<!--end::Display range-->
@@ -177,7 +177,7 @@
 										<!--begin::Title-->
 										<h3 class="card-title align-items-start flex-column">
 											<span class="card-label fw-bold text-gray-800">Grafik Beban</span>
-											<span class="text-gray-400 mt-1 fw-semibold fs-6">All</span>
+											<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
 										</h3>
 										<!--end::Title-->
 
@@ -188,10 +188,10 @@
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
 													<?php
-														$start_date = date('Y') . '-01-01'; // tanggal awal tahun ini
-														$end_date = date('Y-m-d'); // tanggal sekarang
+														$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+														$end_date = date('Y-m-d'); // tanggal hari ini
 														setlocale(LC_TIME, 'id_ID');
-														echo strftime('%B %Y', strtotime($start_date)) . ' - ' . strftime('%B %Y', strtotime($end_date));
+														echo strftime('%d %B %Y', strtotime($start_date)) . ' - ' . strftime('%d %B %Y', strtotime($end_date));
 													?>
 												</div>
 												<!--end::Display range-->
@@ -234,7 +234,7 @@
 										<!--begin::Title-->
 										<h3 class="card-title align-items-start flex-column">
 											<span class="card-label fw-bold text-gray-800">Grafik Kunjungan</span>
-											<span class="text-gray-400 mt-1 fw-semibold fs-6">All</span>
+											<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
 										</h3>
 										<!--end::Title-->
 
@@ -244,12 +244,12 @@
 											<div data-kt-daterangepicker="true" data-kt-daterangepicker-opens="left" class="btn btn-sm btn-light d-flex align-items-center px-4" data-kt-initialized="1">           
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
-													<?php
-														$start_date = date('Y') . '-01-01'; // tanggal awal tahun ini
-														$end_date = date('Y-m-d'); // tanggal sekarang
-														setlocale(LC_TIME, 'id_ID');
-														echo strftime('%B %Y', strtotime($start_date)) . ' - ' . strftime('%B %Y', strtotime($end_date));
-													?>
+												<?php
+													$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+													$end_date = date('Y-m-d'); // tanggal hari ini
+													setlocale(LC_TIME, 'id_ID');
+													echo strftime('%d %B %Y', strtotime($start_date)) . ' - ' . strftime('%d %B %Y', strtotime($end_date));
+												?>
 												</div>
 												<!--end::Display range-->
 

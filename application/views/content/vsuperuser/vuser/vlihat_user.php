@@ -543,7 +543,7 @@
                                                                 </table>
                                                                 <center>
                                                                 <label>
-                                                                    <input id="cek" type="checkbox" class="flat-red">
+                                                                    <input id="cek1" type="checkbox" class="flat-red">
                                                                     Yakin data diatas benar
                                                                 </label>
                                                                 </center>
@@ -631,7 +631,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $("#form_role").submit(function(e) {
-                if (!$('#cek').is(':checked')) {
+                if (!$('#cek1').is(':checked')) {
                     alert("Mohon centang checkbox 'Yakin data diatas benar' untuk melanjutkan");
                     e.preventDefault();
                 }

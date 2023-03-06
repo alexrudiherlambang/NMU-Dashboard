@@ -74,10 +74,10 @@
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
 													<?php
-														$start_date = date('Y') . '-01-01'; // tanggal awal tahun ini
-														$end_date = date('Y-m-d'); // tanggal sekarang
+														$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+														$end_date = date('Y-m-d'); // tanggal hari ini
 														setlocale(LC_TIME, 'id_ID');
-														echo strftime('%B %Y', strtotime($start_date)) . ' - ' . strftime('%B %Y', strtotime($end_date));
+														echo strftime('%d %B %Y', strtotime($start_date)) . ' - ' . strftime('%d %B %Y', strtotime($end_date));
 													?>
 												</div>
 												<!--end::Display range-->
@@ -131,10 +131,10 @@
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
 													<?php
-														$start_date = date('Y') . '-01-01'; // tanggal awal tahun ini
-														$end_date = date('Y-m-d'); // tanggal sekarang
+														$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+														$end_date = date('Y-m-d'); // tanggal hari ini
 														setlocale(LC_TIME, 'id_ID');
-														echo strftime('%B %Y', strtotime($start_date)) . ' - ' . strftime('%B %Y', strtotime($end_date));
+														echo strftime('%d %B %Y', strtotime($start_date)) . ' - ' . strftime('%d %B %Y', strtotime($end_date));
 													?>
 												</div>
 												<!--end::Display range-->
@@ -188,10 +188,10 @@
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
 													<?php
-														$start_date = date('Y') . '-01-01'; // tanggal awal tahun ini
-														$end_date = date('Y-m-d'); // tanggal sekarang
+														$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+														$end_date = date('Y-m-d'); // tanggal hari ini
 														setlocale(LC_TIME, 'id_ID');
-														echo strftime('%B %Y', strtotime($start_date)) . ' - ' . strftime('%B %Y', strtotime($end_date));
+														echo strftime('%d %B %Y', strtotime($start_date)) . ' - ' . strftime('%d %B %Y', strtotime($end_date));
 													?>
 												</div>
 												<!--end::Display range-->
@@ -245,10 +245,10 @@
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
 													<?php
-														$start_date = date('Y') . '-01-01'; // tanggal awal tahun ini
-														$end_date = date('Y-m-d'); // tanggal sekarang
+														$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+														$end_date = date('Y-m-d'); // tanggal hari ini
 														setlocale(LC_TIME, 'id_ID');
-														echo strftime('%B %Y', strtotime($start_date)) . ' - ' . strftime('%B %Y', strtotime($end_date));
+														echo strftime('%d %B %Y', strtotime($start_date)) . ' - ' . strftime('%d %B %Y', strtotime($end_date));
 													?>
 												</div>
 												<!--end::Display range-->
