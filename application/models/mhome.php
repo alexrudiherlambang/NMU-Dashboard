@@ -7,8 +7,8 @@ class mhome extends ci_model {
    }
    // untuk menampilkan grafik
    function mshow_all_grafik_pendapatan($lokasi,$nama) {
-      // $tglawal = date('Y') . '-01-01'; // tanggal 1 Januari tahun ini
-      $tglawal = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+      $tglawal = date('Y') . '-01-01'; // tanggal 1 Januari tahun ini
+      // $tglawal = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
       $tglakhir = date('Y-m-d'); // tanggal hari ini
       if ($lokasi == ''){
          //line kp
