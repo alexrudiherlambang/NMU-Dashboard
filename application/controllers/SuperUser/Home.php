@@ -23,11 +23,35 @@ class Home extends CI_Controller {
 		$grafik_kunjungan = $this->mhome->mshow_all_grafik_kunjungan($lokasi,$nama);
 		
 		foreach ($grafik_pendapatan->result() as $b){
-		   $hasiltanggal[] = array (
-			  $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-		   );
-		   $hasilrevenue[] = $b->total_rsaldosampai;
-		   $hasiltarget[] = $b->total_jmltarget;
+		   if ($b->ket == "Realisasi"){
+				$realisasi = (object)[
+					$k_p1 = $b->k_p1,
+					$rsg1 = $b->rsg1,
+					$rst1 = $b->rst1,
+					$rsp1 = $b->rsp1,
+					$rsmu1 = $b->rsmu1,
+					$urj1 = $b->urj1,
+				];
+		   } elseif ($b->ket == "Potensi") {
+				$potensi = (object)[
+					$k_p1 = $b->k_p1,
+					$rsg1 = $b->rsg1,
+					$rst1 = $b->rst1,
+					$rsp1 = $b->rsp1,
+					$rsmu1 = $b->rsmu1,
+					$urj1 = $b->urj1,
+			];
+		   }elseif ($b->ket == "Target") {
+				$target = (object)[
+					$k_p1 = $b->k_p1,
+					$rsg1 = $b->rsg1,
+					$rst1 = $b->rst1,
+					$rsp1 = $b->rsp1,
+					$rsmu1 = $b->rsmu1,
+					$urj1 = $b->urj1,
+			];
+		   }
+		   $pie[] = $b->total;		   
 		}
 		foreach ($grafik_labarugi->result() as $c){
 			$hasiltanggal1[] = array (
@@ -52,19 +76,23 @@ class Home extends CI_Controller {
 		}
 		
 		$data =  array (
-		   'tanggal'      => $hasiltanggal,
-		   'revenue'      => $hasilrevenue,
-		   'target'       => $hasiltarget,
-		   'tanggal1'      => $hasiltanggal1,
-		   'revenue1'      => $hasilrevenue1,
-		   'target1'       => $hasiltarget1,
-		   'tanggal2'      => $hasiltanggal2,
-		   'revenue2'      => $hasilrevenue2,
-		   'target2'       => $hasiltarget2,
-		   'tanggal3'      => $hasiltanggal3,
-		   'revenue3'      => $hasilrevenue3,
-		   'target3'       => $hasiltarget3,
+			'realisasi'     => $realisasi,
+			'potensi'      	=> $potensi,
+			'target'      	=> $target,
+			'pie'      		=> $pie,
+		   'tanggal1'      	=> $hasiltanggal1,
+		   'revenue1'      	=> $hasilrevenue1,
+		   'target1'       	=> $hasiltarget1,
+		   'tanggal2'      	=> $hasiltanggal2,
+		   'revenue2'      	=> $hasilrevenue2,
+		   'target2'       	=> $hasiltarget2,
+		   'tanggal3'      	=> $hasiltanggal3,
+		   'revenue3'      	=> $hasilrevenue3,
+		   'target3'       	=> $hasiltarget3,
 		);
+		// echo "<pre>";
+		// print_r ($data);
+		// die;
 		
 		$this->load->view('content/vsuperuser/home', $data);
 	}

@@ -12,17 +12,16 @@ class mhome extends ci_model {
       $tglakhir = date('Y-m-d'); // tanggal hari ini
       if ($lokasi == ''){
          //line kp
-         $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1('$tglawal', '$tglakhir', '$nama', '$lokasi')");
-         $this->db->select('tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
-         $this->db->from('test.ra_dashdb_'.$nama);
-         $this->db->where('tanggal>=', $tglawal);
-         $this->db->where('tanggal<=', $tglakhir);
-         $this->db->group_by('tanggal');
+         $this->db->query("CALL dashboardnmu_new.proses_rekap_dapatdash('$tglawal', '$tglakhir', '$nama', '$lokasi')");
+         // $this->db->select('tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->select('ket, k_p1, rsg1, rst1, rsp1, rsmu1, urj1, total');
+         $this->db->from('test.ra_dash_db3_'.$nama);
          return $this->db->get();
       }else{
          //line unit
          $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1('$tglawal', '$tglakhir', '$nama', '$lokasi')");
          $this->db->select('tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         // $this->db->select('ket, k_p1, rsg1, rst1, rsp1, rsmu1, urj1, total');
          $this->db->from('test.ra_dashdb_'.$nama);
          $this->db->where('lokasi', $lokasi);
          $this->db->where('tanggal>=', $tglawal);

@@ -63,7 +63,7 @@
 										<!--begin::Title-->
 										<h3 class="card-title align-items-start flex-column">
 											<span class="card-label fw-bold text-gray-800">Grafik Pendapatan</span>
-											<span class="text-gray-400 mt-1 fw-semibold fs-6">All</span>
+											<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
 										</h3>
 										<!--end::Title-->
 
@@ -120,7 +120,7 @@
 										<!--begin::Title-->
 										<h3 class="card-title align-items-start flex-column">
 											<span class="card-label fw-bold text-gray-800">Grafik Laba - Rugi</span>
-											<span class="text-gray-400 mt-1 fw-semibold fs-6">All</span>
+											<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
 										</h3>
 										<!--end::Title-->
 
@@ -177,7 +177,7 @@
 										<!--begin::Title-->
 										<h3 class="card-title align-items-start flex-column">
 											<span class="card-label fw-bold text-gray-800">Grafik Beban</span>
-											<span class="text-gray-400 mt-1 fw-semibold fs-6">All</span>
+											<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
 										</h3>
 										<!--end::Title-->
 
@@ -234,7 +234,7 @@
 										<!--begin::Title-->
 										<h3 class="card-title align-items-start flex-column">
 											<span class="card-label fw-bold text-gray-800">Grafik Kunjungan</span>
-											<span class="text-gray-400 mt-1 fw-semibold fs-6">All</span>
+											<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
 										</h3>
 										<!--end::Title-->
 
@@ -244,12 +244,12 @@
 											<div data-kt-daterangepicker="true" data-kt-daterangepicker-opens="left" class="btn btn-sm btn-light d-flex align-items-center px-4" data-kt-initialized="1">           
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
-													<?php
-														$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
-														$end_date = date('Y-m-d'); // tanggal hari ini
-														setlocale(LC_TIME, 'id_ID');
-														echo strftime('%d %B %Y', strtotime($start_date)) . ' - ' . strftime('%d %B %Y', strtotime($end_date));
-													?>
+												<?php
+													$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+													$end_date = date('Y-m-d'); // tanggal hari ini
+													setlocale(LC_TIME, 'id_ID');
+													echo strftime('%d %B %Y', strtotime($start_date)) . ' - ' . strftime('%d %B %Y', strtotime($end_date));
+												?>
 												</div>
 												<!--end::Display range-->
 
@@ -333,7 +333,6 @@
             </div>
         </div>
     </div>
-
 	<!-- Show hide grafik Pendapatan -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
@@ -411,14 +410,28 @@
     <script>
 		var ctx = document.getElementById('pendapatan').getContext('2d');
 		var pendapatan = new Chart(ctx, {
-			type: 'line',
+			type: 'bar',
 			data: {
-				labels: <?php echo json_encode($tanggal)?>,
+				labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
 				datasets: [{
-					label: 'Total Revenue',
-					data: [<?php echo implode(',', $revenue) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
+					label: 'Realisasi',
+					data: Object.values(<?php echo json_encode($realisasi)?>),
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
+					borderWidth: 2
+				}, {
+					label: 'Potensi',
+					data: Object.values(<?php echo json_encode($potensi)?>),
+					backgroundColor: 'rgba(255, 99, 132, 0.5)',
+					borderColor: 'rgba(255, 0, 0, 1)',
+					borderWidth: 2
+				}, {
+					label: 'Target',
+					data: Object.values(<?php echo json_encode($target)?>),
+					type: 'line',  // tipe dataset menjadi line
+                	fill: false,  // isi area di bawah garis target dinonaktifkan
+					backgroundColor: 'rgba(50, 205, 50, 0.2)',
+					borderColor: 'rgba(50, 205, 50, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -459,17 +472,7 @@
 			}
 			}
 		});
-		// Menambahkan data baru
-		pendapatan.data.datasets[0].data.push(10);
-		pendapatan.update();
-		pendapatan.data.datasets.push({
-		label: 'Target Revenue',
-		data: [<?php echo implode(',', $target) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
-		borderWidth: 3
-		});
-		pendapatan.update();
+		
 	</script>
 
 	<!-- Isi Grafik Laba - Rugi -->
@@ -483,8 +486,8 @@
 				datasets: [{
 					label: 'Total Revenue',
 					data: [<?php echo implode(',', $revenue1) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -531,8 +534,8 @@
 		labarugi.data.datasets.push({
 		label: 'Target Revenue',
 		data: [<?php echo implode(',', $target1) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
+		backgroundColor: 'rgba(50, 205, 50, 0.2)',
+		borderColor: 'rgba(50, 205, 50, 1)',
 		borderWidth: 3
 		});
 		labarugi.update();
@@ -549,8 +552,8 @@
 				datasets: [{
 					label: 'Total Beban',
 					data: [<?php echo implode(',', $revenue2) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -597,8 +600,8 @@
 		beban.data.datasets.push({
 		label: 'Target Beban',
 		data: [<?php echo implode(',', $target2) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
+		backgroundColor: 'rgba(50, 205, 50, 0.2)',
+		borderColor: 'rgba(50, 205, 50, 1)',
 		borderWidth: 3
 		});
 		beban.update();
@@ -615,8 +618,8 @@
 				datasets: [{
 					label: 'Total Kunjungan',
 					data: [<?php echo implode(',', $revenue3) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -663,8 +666,8 @@
 		kunjungan.data.datasets.push({
 		label: 'Target Kunjungan',
 		data: [<?php echo implode(',', $target3) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
+		backgroundColor: 'rgba(50, 205, 50, 0.2)',
+		borderColor: 'rgba(50, 205, 50, 1)',
 		borderWidth: 3
 		});
 		kunjungan.update();

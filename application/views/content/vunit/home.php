@@ -416,8 +416,8 @@
 				datasets: [{
 					label: 'Total Revenue',
 					data: [<?php echo implode(',', $revenue) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -464,8 +464,8 @@
 		pendapatan.data.datasets.push({
 		label: 'Target Revenue',
 		data: [<?php echo implode(',', $target) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
+		backgroundColor: 'rgba(50, 205, 50, 0.2)',
+		borderColor: 'rgba(50, 205, 50, 1)',
 		borderWidth: 3
 		});
 		pendapatan.update();
@@ -482,8 +482,8 @@
 				datasets: [{
 					label: 'Total Revenue',
 					data: [<?php echo implode(',', $revenue1) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -530,8 +530,8 @@
 		labarugi.data.datasets.push({
 		label: 'Target Revenue',
 		data: [<?php echo implode(',', $target1) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
+		backgroundColor: 'rgba(50, 205, 50, 0.2)',
+		borderColor: 'rgba(50, 205, 50, 1)',
 		borderWidth: 3
 		});
 		labarugi.update();
@@ -548,8 +548,8 @@
 				datasets: [{
 					label: 'Total Beban',
 					data: [<?php echo implode(',', $revenue2) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -596,8 +596,8 @@
 		beban.data.datasets.push({
 		label: 'Target Beban',
 		data: [<?php echo implode(',', $target2) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
+		backgroundColor: 'rgba(50, 205, 50, 0.2)',
+		borderColor: 'rgba(50, 205, 50, 1)',
 		borderWidth: 3
 		});
 		beban.update();
@@ -614,8 +614,8 @@
 				datasets: [{
 					label: 'Total Kunjungan',
 					data: [<?php echo implode(',', $revenue3) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -662,8 +662,8 @@
 		kunjungan.data.datasets.push({
 		label: 'Target Kunjungan',
 		data: [<?php echo implode(',', $target3) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
+		backgroundColor: 'rgba(50, 205, 50, 0.2)',
+		borderColor: 'rgba(50, 205, 50, 1)',
 		borderWidth: 3
 		});
 		kunjungan.update();
