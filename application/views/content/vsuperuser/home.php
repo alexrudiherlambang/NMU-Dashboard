@@ -551,19 +551,19 @@
 				labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
 				datasets: [{
 					label: 'Realisasi',
-					data: Object.values(<?php echo json_encode($realisasi)?>),
+					data: Object.values(<?php echo json_encode($realisasi2)?>),
 					backgroundColor: 'rgba(0, 0, 128, 0.2)',
 					borderColor: 'rgba(0, 0, 128, 1)',
 					borderWidth: 2
 				}, {
 					label: 'Potensi',
-					data: Object.values(<?php echo json_encode($potensi)?>),
+					data: Object.values(<?php echo json_encode($potensi2)?>),
 					backgroundColor: 'rgba(255, 99, 132, 0.5)',
 					borderColor: 'rgba(255, 0, 0, 1)',
 					borderWidth: 2
 				}, {
 					label: 'Target',
-					data: Object.values(<?php echo json_encode($target)?>),
+					data: Object.values(<?php echo json_encode($target2)?>),
 					type: 'line',  // tipe dataset menjadi line
                 	fill: false,  // isi area di bawah garis target dinonaktifkan
 					backgroundColor: 'rgba(50, 205, 50, 0.2)',

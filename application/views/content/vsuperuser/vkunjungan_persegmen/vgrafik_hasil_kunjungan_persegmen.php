@@ -185,16 +185,32 @@
 										<div class="card mb-1">
 											<!--begin::Card body-->
 											<div class="table-responsive">
-												<table class="table align-middle gs-0 gy-4"> 
-													<tbody class="text-gray-600 fw-semibold">
-														<tr>
-															<td>
-															<div class="card-body">
-																<canvas id="myChart" width="750" height="200"></canvas><br>
-															</div>
-														</tr>
-													</tbody>
-												</table>
+												<div class="card-body">
+													<table class="table align-middle gs-0 gy-4"> 
+														<tbody class="text-gray-600 fw-semibold">
+															<tr>
+																<td>
+																	<canvas id="myChart" width="750" height="200"></canvas><br>
+																</td>
+															</tr>
+															<tr>
+																<td style="text-align:center">
+																	<form method="post" action="<?php echo site_url(); ?>SuperUser/ckunjungan_persegmen/export_xls">
+																		<div>
+																		<?php foreach ($jenis2 as $jns) : ?>
+																			<input type="checkbox" style="transform: scale(0.8);" class="form-check-input" value="<?php echo $jns->kelsegmen ?>" name="pilihan[]" checked>
+																			<span class="fw-semibold ps-2 fs-6"> <?php echo $jns->kelsegmen ?> | </span>
+																		<?php endforeach; ?>
+																		</div>
+																		<input type="hidden" name="tglawal" id="tglawal" required="required" value="<?php echo $tglawal;?>" readonly/>
+																		<input type="hidden" name="tglakhir" id="tglakhir" required="required" value="<?php echo $tglakhir;?>" readonly/>
+																		<br><button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
+																	</form>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
 											</div>
 											<!--end::Card body-->
 										</div>

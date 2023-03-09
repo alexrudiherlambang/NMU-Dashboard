@@ -174,23 +174,34 @@
 										</div>
 										<!--end::Row-->
 										<!--begin::Products Documentations-->
-										<div class="card mb-1">
-											<?php foreach ($jenis2 as $jenis):?>
-												<div class="table-responsive">
-													<table class="table align-middle gs-0 gy-4"> 
-														<tbody class="text-gray-600 fw-semibold">
-															<tr>
-																<td>
-																<div class="card-body">
-																	<b>(Dalam Juta)</b> <?php echo $jenis->ket?><br><br>
-																	<canvas id="<?php echo $jenis->ket?>" width="750" height="200"></canvas><br>
-																</div>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											<?php endforeach ?>
-											<!--end::Card body-->
+										<div class="table-responsive">
+											<div class="card-body">
+												<table class="table align-middle gs-0 gy-4"> 
+													<tbody class="text-gray-600 fw-semibold">
+														<?php foreach ($jenis2 as $jenis):?>
+														<tr>
+															<td>
+																<b>(Dalam Juta) </b><?php echo $jenis->ket?><br><br>
+																<canvas id="<?php echo $jenis->ket?>" width="750" height="200"></canvas><br>
+															</td>
+														</tr>
+														<?php endforeach ?>
+														<tr>
+															<td style="text-align:center">
+																<form method="post" action="<?php echo site_url(); ?>Unit/crekap/export_xls">
+																	<?php foreach ($jenis2 as $jns) : ?>
+																		<input type="checkbox" style="transform: scale(0.8);" class="form-check-input" value="<?php echo $jns->ket ?>" name="pilihan[]" checked>
+																		<span class="fw-semibold ps-2 fs-6"> <?php echo $jns->ket ?> |</span>
+																	<?php endforeach; ?>
+																	<input type="hidden" name="tglawal" id="tglawal" required="required" value="<?php echo $tglawal;?>" readonly/>
+																	<input type="hidden" name="tglakhir" id="tglakhir" required="required" value="<?php echo $tglakhir;?>" readonly/>
+																	<br><br><button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
+																</form>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
 										</div>
 										<!--end::Products Documentations-->
 									</div>

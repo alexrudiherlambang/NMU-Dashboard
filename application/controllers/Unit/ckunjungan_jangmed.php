@@ -223,8 +223,8 @@ class ckunjungan_jangmed extends CI_Controller {
       $tglakhir = $this->input->post('tglakhir');
       
       $this->load->helper('exportexcel');
-      $namaFile = "Rekap Kunjungan Penunjang Medis.xls";
-      $judul = "Rekap Kunjungan Penunjang Medis";
+      $namaFile = "Rekap Kegiatan Penunjang Medis.xls";
+      $judul = "Rekap Kegiatan Penunjang Medis";
       $tablehead = 0;
       $tablebody = 1;
       $nourut = 1;

@@ -137,8 +137,8 @@
 																</div>
 																	<div class="col-xl-8 fv-row">
 																		<select class="form-select form-select-solid select2" name="jenis" >
+																			<option>SEMUA</option>
 																			<?php foreach ($jenis as $jenis):?>
-																				<option>SEMUA</option>
 																				<option><?php echo $jenis->ket?></option>
 																			<?php endforeach ?>
 																		</select>

@@ -119,7 +119,8 @@ class Home extends CI_Controller {
 		// print_r ($data);
 		// die;
 		
-		$this->load->view('content/vsuperuser/home backup with pie', $data);
+		$this->load->view('content/vsuperuser/home', $data);
+		// $this->load->view('content/vsuperuser/home backup with pie', $data);
 	}
 }
 ?>

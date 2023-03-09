@@ -255,49 +255,49 @@
 	
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
-            datasets: [{
-                label: 'Total Kegiatan',
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 3
-            }]
-        },
-        options: {
-        scales: {
-            xAxes: [{
-            gridLines: {
-                display: false
-            }
-            }],
-            yAxes: [{
-            gridLines: {
-                display: false
-            }
-            }]
-        },
-        legend: {
-            position: 'bottom'
-        },
-        responsive: true
-        }
-    });
-    // Menambahkan data baru
-    myChart.data.datasets[0].data.push(10);
-    myChart.update();
-    myChart.data.datasets.push({
-    label: 'Target Kegiatan',
-    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3
-    });
-    myChart.update();
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+				datasets: [{
+					label: 'Total Kegiatan',
+					data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
+					borderWidth: 3
+				}]
+			},
+			options: {
+			scales: {
+				xAxes: [{
+				gridLines: {
+					display: false
+				}
+				}],
+				yAxes: [{
+				gridLines: {
+					display: false
+				}
+				}]
+			},
+			legend: {
+				position: 'bottom'
+			},
+			responsive: true
+			}
+		});
+		// Menambahkan data baru
+		myChart.data.datasets[0].data.push(10);
+		myChart.update();
+		myChart.data.datasets.push({
+		label: 'Target Kegiatan',
+		data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		backgroundColor: 'rgba(50, 205, 50, 0.2)',
+		borderColor: 'rgba(50, 205, 50, 1)',
+		borderWidth: 3
+		});
+		myChart.update();
     </script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
