@@ -70,27 +70,27 @@ class mhome extends ci_model {
    }
 
    function mshow_all_grafik_kunjungan($lokasi,$nama) {
-      // $tglawal = date('Y') . '-01-01'; // tanggal 1 Januari tahun ini
-      $tglawal = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+      $tglawal = date('Y') . '-01-01'; // tanggal 1 Januari tahun ini
+      // $tglawal = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
       $tglakhir = date('Y-m-d'); // tanggal hari ini
       if ($lokasi == ''){
          //line kp
          $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi','ket')");
-         $this->db->select('tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->select('lokasi,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget, SUM(rsaldopotensi1) as total_rsaldopotensi1');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->group_by('tanggal');
+         $this->db->group_by('lokasi');
          return $this->db->get();
       }else{
          //line unit
          $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi','ket')");
-         $this->db->select('tanggal,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget');
+         $this->db->select('lokasi,SUM(rsaldosampai) as total_rsaldosampai,SUM(jmltarget) as total_jmltarget, SUM(rsaldopotensi1) as total_rsaldopotensi1');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('lokasi', $lokasi);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
-         $this->db->group_by('tanggal');
+         $this->db->group_by('lokasi');
          return $this->db->get();
       }
    }

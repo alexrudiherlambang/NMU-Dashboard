@@ -21,7 +21,7 @@ class Home extends CI_Controller {
 		$grafik_labarugi = $this->mhome->mshow_all_grafik_labarugi($lokasi,$nama);
 		$grafik_biaya = $this->mhome->mshow_all_grafik_biaya($lokasi,$nama);
 		$grafik_kunjungan = $this->mhome->mshow_all_grafik_kunjungan($lokasi,$nama);
-	
+		
 		foreach ($grafik_pendapatan->result() as $b){
 		   if ($b->ket == "Realisasi"){
 				$realisasi = (object)[
@@ -102,7 +102,7 @@ class Home extends CI_Controller {
 						$rsp1 = $d->rsp1,
 						$rsmu1 = $d->rsmu1,
 						$urj1 = $d->urj1,
-				];
+					];
 			}elseif ($d->ket == "Target") {
 					$target2 = (object)[
 						$k_p1 = $d->k_p1,
@@ -111,16 +111,18 @@ class Home extends CI_Controller {
 						$rsp1 = $d->rsp1,
 						$rsmu1 = $d->rsmu1,
 						$urj1 = $d->urj1,
-				];
+					];
 			}
 			$pie2[] = $d->total;
 		}
-		foreach ($grafik_kunjungan->result() as $e){
-			$hasiltanggal3[] = array (
-			   $tanggal_baru = date('d-M', strtotime($e->tanggal)),
-			);
-			$hasilrevenue3[] = $e->total_rsaldosampai;
-			$hasiltarget3[] = $e->total_jmltarget;
+		
+		$realisasi3 = (object)[];
+		$potensi3 = (object)[];
+		$target3 = (object)[];
+		foreach ($grafik_kunjungan->result() as $e) {
+			$realisasi3->{$e->lokasi} = $e->total_rsaldosampai;
+			$potensi3->{$e->lokasi} = $e->total_rsaldopotensi1;
+			$target3->{$e->lokasi} = $e->total_jmltarget;
 		}
 		
 		$data =  array (
@@ -136,12 +138,16 @@ class Home extends CI_Controller {
 			'potensi2'      	=> $potensi2,
 			'target2'      		=> $target2,
 			'pie2'      		=> $pie2,
-			'tanggal3'      	=> $hasiltanggal3,
-			'revenue3'      	=> $hasilrevenue3,
-			'target3'       	=> $hasiltarget3,
+			'realisasi3'     	=> $realisasi3,
+			'potensi3'      	=> $potensi3,
+			'target3'      		=> $target3,
+			// 'tanggal3'      	=> $hasiltanggal3,
+			// 'revenue3'      	=> $hasilrevenue3,
+			// 'target3'       	=> $hasiltarget3,
 		);
 		// echo "<pre>";
 		// print_r ($data);
+		// print_r ($grafik_kunjungan->result());
 		// die;
 		
 		$this->load->view('content/vsuperuser/home', $data);

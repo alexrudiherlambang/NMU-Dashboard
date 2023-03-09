@@ -245,7 +245,7 @@
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
 												<?php
-													$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+													$start_date = date('Y') . '-01-01'; // tanggal 1 Januari tahun ini
 													$end_date = date('Y-m-d'); // tanggal hari ini
 													setlocale(LC_TIME, 'id_ID');
 													echo strftime('%d %b %Y', strtotime($start_date)) . ' - ' . strftime('%d %b %Y', strtotime($end_date));
@@ -618,14 +618,28 @@
     <script>
 		var ctx = document.getElementById('kunjungan').getContext('2d');
 		var kunjungan = new Chart(ctx, {
-			type: 'line',
+			type: 'bar',
 			data: {
-				labels: <?php echo json_encode($tanggal3)?>,
+				labels: ['RSG', 'RSMU', 'RSP', 'RST'],
 				datasets: [{
-					label: 'Total Kunjungan',
-					data: [<?php echo implode(',', $revenue3) ?>],
+					label: 'Realisasi',
+					data: Object.values(<?php echo json_encode($realisasi3)?>),
 					backgroundColor: 'rgba(0, 0, 128, 0.2)',
 					borderColor: 'rgba(0, 0, 128, 1)',
+					borderWidth: 2
+				}, {
+					label: 'Potensi',
+					data: Object.values(<?php echo json_encode($potensi3)?>),
+					backgroundColor: 'rgba(255, 99, 132, 0.5)',
+					borderColor: 'rgba(255, 0, 0, 1)',
+					borderWidth: 2
+				}, {
+					label: 'Target',
+					data: Object.values(<?php echo json_encode($target3)?>),
+					type: 'line',  // tipe dataset menjadi line
+                	fill: false,  // isi area di bawah garis target dinonaktifkan
+					backgroundColor: 'rgba(50, 205, 50, 0.2)',
+					borderColor: 'rgba(50, 205, 50, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -666,17 +680,6 @@
 			}
 			}
 		});
-		// Menambahkan data baru
-		kunjungan.data.datasets[0].data.push(10);
-		kunjungan.update();
-		kunjungan.data.datasets.push({
-		label: 'Target Kunjungan',
-		data: [<?php echo implode(',', $target3) ?>],
-		backgroundColor: 'rgba(50, 205, 50, 0.2)',
-		borderColor: 'rgba(50, 205, 50, 1)',
-		borderWidth: 3
-		});
-		kunjungan.update();
     </script>
 
     <?php
