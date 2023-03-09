@@ -54,11 +54,35 @@ class Home extends CI_Controller {
 		   $pie[] = $b->total;		   
 		}
 		foreach ($grafik_labarugi->result() as $c){
-			$hasiltanggal1[] = array (
-			   $tanggal_baru = date('d-M', strtotime($c->tanggal)),
-			);
-			$hasilrevenue1[] = $c->total_rsaldosampai;
-			$hasiltarget1[] = $c->total_jmltarget;
+			if ($c->ket == "Realisasi"){
+				$realisasi1 = (object)[
+					$k_p1 = $c->k_p1,
+					$rsg1 = $c->rsg1,
+					$rst1 = $c->rst1,
+					$rsp1 = $c->rsp1,
+					$rsmu1 = $c->rsmu1,
+					$urj1 = $c->urj1,
+				];
+			} elseif ($c->ket == "Potensi") {
+					$potensi1 = (object)[
+						$k_p1 = $c->k_p1,
+						$rsg1 = $c->rsg1,
+						$rst1 = $c->rst1,
+						$rsp1 = $c->rsp1,
+						$rsmu1 = $c->rsmu1,
+						$urj1 = $c->urj1,
+				];
+			}elseif ($c->ket == "Target") {
+					$target1 = (object)[
+						$k_p1 = $c->k_p1,
+						$rsg1 = $c->rsg1,
+						$rst1 = $c->rst1,
+						$rsp1 = $c->rsp1,
+						$rsmu1 = $c->rsmu1,
+						$urj1 = $c->urj1,
+				];
+			}
+			$pie1[] = $c->total;
 		}
 		foreach ($grafik_biaya->result() as $d){
 			if ($d->ket == "Realisasi"){
@@ -104,9 +128,10 @@ class Home extends CI_Controller {
 			'potensi'      		=> $potensi,
 			'target'      		=> $target,
 			'pie'      			=> $pie,
-			'tanggal1'      	=> $hasiltanggal1,
-			'revenue1'      	=> $hasilrevenue1,
-			'target1'       	=> $hasiltarget1,
+			'realisasi1'     	=> $realisasi1,
+			'potensi1'      	=> $potensi1,
+			'target1'      		=> $target1,
+			'pie1'      		=> $pie1,
 			'realisasi2'     	=> $realisasi2,
 			'potensi2'      	=> $potensi2,
 			'target2'      		=> $target2,
