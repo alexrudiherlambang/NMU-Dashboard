@@ -711,7 +711,7 @@
 				ticks: {
 					// Menentukan format currency
 					callback: function(value, index, values) {
-						return (value / 1000000).toFixed(0);
+						return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 					}
 				}
 				}]
@@ -727,7 +727,7 @@
 						if (label) {
 							label += ': ';
 						}
-						label += (tooltipItem.yLabel / 1000000).toFixed(0).replace('.', ',') + ' (Dalam Juta)';
+						label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
 						return label;
 					}
 				}
@@ -810,13 +810,27 @@
 		var beban = new Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: <?php echo json_encode($tanggal2)?>,
+				labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
 				datasets: [{
-					label: 'Total Beban',
-					data: [<?php echo implode(',', $revenue2) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
-					borderWidth: 3
+					label: 'Realisasi',
+					data: Object.values(<?php echo json_encode($realisasi2)?>),
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
+					borderWidth: 2
+				}, {
+					label: 'Potensi',
+					data: Object.values(<?php echo json_encode($potensi2)?>),
+					backgroundColor: 'rgba(255, 99, 132, 0.5)',
+					borderColor: 'rgba(255, 0, 0, 1)',
+					borderWidth: 2
+				}, {
+					label: 'Target',
+					data: Object.values(<?php echo json_encode($target2)?>),
+					type: 'line',  // tipe dataset menjadi line
+                	fill: false,  // isi area di bawah garis target dinonaktifkan
+					backgroundColor: 'rgba(50, 205, 50, 0.2)',
+					borderColor: 'rgba(50, 205, 50, 1)',
+					borderWidth: 2
 				}]
 			},
 			options: {
@@ -833,7 +847,7 @@
 				ticks: {
 					// Menentukan format currency
 					callback: function(value, index, values) {
-						return (value / 1000000).toFixed(0);
+						return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 					}
 				}
 				}]
@@ -849,24 +863,14 @@
 						if (label) {
 							label += ': ';
 						}
-						label += (tooltipItem.yLabel / 1000000).toFixed(0).replace('.', ',') + ' (Dalam Juta)';
+						label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
 						return label;
 					}
 				}
 			}
 			}
 		});
-		// Menambahkan data baru
-		beban.data.datasets[0].data.push(10);
-		beban.update();
-		beban.data.datasets.push({
-		label: 'Target Beban',
-		data: [<?php echo implode(',', $target2) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
-		borderWidth: 3
-		});
-		beban.update();
+		
 	</script>
 
 	<!-- Isi Grafik Kunjungan -->
@@ -1029,26 +1033,55 @@
 		google.charts.setOnLoadCallback(drawChart);
 
 		function drawChart() {
-		var data = google.visualization.arrayToDataTable([    ['Task', 'Hours per Day'],
-			['Tanggal',     1]
-		]);
+			var data = google.visualization.arrayToDataTable([
+			['Task', 'Hours per Day'],
+			['Realisasi', <?php echo $pie2[0]/1000000; ?>],
+			['Potensi', <?php echo $pie2[2]/1000000; ?>],
+			// ['Target', <?php echo ($pie2[1]-$pie2[0]-$pie2[2])/1000000; ?>]
+			]);
 
-		var options = {
-			width: 260,
-			height: 300,
-			is3D: true,
-			responsive: true,
-			legend: { position: 'none' },
-			pieSliceText: 'percentage'
-		};
+			var formatter = new google.visualization.NumberFormat({
+			suffix: ' jt',
+			fractionDigits: 0,
+			pattern: '#,###'
+			});
 
-		var chart = new google.visualization.PieChart(document.getElementById('beban_pie'));
-		chart.draw(data, options);
+			formatter.format(data, 1);
+
+			var options = {
+				width: 260,
+				height: 300,
+				is3D: true,
+				responsive: true,
+				// legend: { position: 'none' },
+				pieSliceText: 'value-and-label',
+				slices: {
+					0: { color: 'blue' },
+					1: { color: 'red' },
+					2: { color: 'lime' },
+					3: { color: 'yellow' },
+					4: { color: 'gray' }
+				},
+				tooltip: { 
+					pattern: '#,### jt',
+					// Mengatur format currency
+					callback: function(tooltipItem, data) {
+						var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+						var value = data.getValue(tooltipItem.row, 1);
+						return currency.format(value * 1000000);
+					}
+				},
+				chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
+			};
+
+			var chart = new google.visualization.PieChart(document.getElementById('beban_pie'));
+			chart.draw(data, options);
+
+			// Menyesuaikan ukuran grafik saat tampil di mobile
+			window.addEventListener('resize', function() {
+				chart.draw(data, options);
+			});
 		}
-		// Menyesuaikan ukuran grafik saat tampil di mobile
-		window.addEventListener('resize', function() {
-		chart.draw(data, options);
-		});
 	</script>
 
 	<!-- Isi Pie Kunjungan -->

@@ -176,7 +176,7 @@
                                                     <!--begin::Details-->
                                                     <div class="d-flex align-items-center mb-1">
                                                         <!--begin::Name-->
-                                                        <a href="../../demo1/dist/apps/customers/view.html" class="fw-bold text-gray-800 text-hover-primary me-2"><?php echo $this->session->userdata("nama") ?></a>
+                                                        <a class="fw-bold text-gray-800 text-hover-primary me-2"><?php echo $this->session->userdata("nama") ?></a>
                                                         <!--end::Name-->
                                                         <!--begin::Status-->
                                                         <span class="badge badge-light-success">Active</span>

@@ -254,10 +254,10 @@
 			data: {
 				labels: <?php echo json_encode($tanggal)?>,
 				datasets: [{
-					label: 'Total Kunjungan',
+					label: 'Total Kegiatan',
 					data: [<?php echo implode(',', $revenue) ?>],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255, 99, 132, 1)',
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -275,7 +275,7 @@
 				ticks: {
 					// Menentukan format currency
 					callback: function(value, index, values) {
-						return (value).toFixed(0);
+						return (value).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 					}
 				}
 				}]
@@ -291,7 +291,7 @@
 						if (label) {
 							label += ': ';
 						}
-						label += (tooltipItem.yLabel).toFixed(0).replace('.', ',');
+						label += (tooltipItem.yLabel).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 						return label;
 					}
 				}
@@ -302,10 +302,10 @@
 		myChart.data.datasets[0].data.push(10);
 		myChart.update();
 		myChart.data.datasets.push({
-		label: 'Target Kunjungan',
+		label: 'Target Kegiatan',
 		data: [<?php echo implode(',', $target) ?>],
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		borderColor: 'rgba(54, 162, 235, 1)',
+		backgroundColor: 'rgba(50, 205, 50, 0.2)',
+		borderColor: 'rgba(50, 205, 50, 1)',
 		borderWidth: 3
 		});
 		myChart.update();

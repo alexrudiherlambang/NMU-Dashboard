@@ -25,111 +25,157 @@
                     $this->load->view('partials/sidebar_superuser');
                 ?>
 				<!--begin::Main-->
-				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
-					<!--begin::Content wrapper-->
-					<div class="d-flex flex-column flex-column-fluid">
-
-						<!--begin::Toolbar-->
-						<div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
-							<!--begin::Toolbar container-->
-							<div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
-								<!--begin::Page title-->
-								<div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-									<!--begin::Title-->
-									<h1
-										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Data User</h1>
-									<!--end::Title-->
-									<!--begin::Breadcrumb-->
-									<?php
-										$this->load->view('partials/breadcrumb');
-									?>
-									<!--end::Breadcrumb-->
-								</div>
-								<!--end::Page title-->
-							</div>
-							<!--end::Toolbar container-->
-						</div>
-						<!--end::Toolbar-->
-                        
-						<!--begin::Content-->
-						<div id="kt_app_content" class="app-content flex-column-fluid">
+                <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+                    <!--begin::Content wrapper-->
+                    <div class="d-flex flex-column flex-column-fluid">
+                        <!--begin::Toolbar-->
+                        <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+                            <!--begin::Toolbar container-->
+                            <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
+                                <!--begin::Page title-->
+                                <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+                                    <!--begin::Title-->
+                                    <h1
+                                        class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+                                        Data User</h1>
+                                    <!--end::Title-->
+                                    <!--begin::Breadcrumb-->
+                                    <?php
+                                        $this->load->view('partials/breadcrumb');
+                                    ?>
+                                    <!--end::Breadcrumb-->
+                                </div>
+                                <!--end::Page title-->
+                                
+                            </div>
+                            <!--end::Toolbar container-->
+                        </div>
+                        <!--end::Toolbar-->
+                        <!--begin::Content-->
+                        <div id="kt_app_content" class="app-content flex-column-fluid">
                             <!--begin::Content container-->
                             <div id="kt_app_content_container" class="app-container container-xxl">
-                                <!--begin::Card-->
-                                <div class="card">
+                                <!--begin::Products-->
+                                <div class="card card-flush">
                                     <!--begin::Card header-->
-                                    <div class="card-header border-0 pt-6">
+                                    <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                                         <!--begin::Card title-->
                                         <div class="card-title">
                                             <!--begin::Search-->
                                             <div class="d-flex align-items-center position-relative my-1">
                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                                                <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                                                <span class="svg-icon svg-icon-1 position-absolute ms-4">
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
                                                         <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor" />
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
-                                                <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search user" />
+                                                <input type="text" data-kt-ecommerce-order-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Order" />
                                             </div>
                                             <!--end::Search-->
                                         </div>
-                                        <!--begin::Card title-->
-                                        <div class="card-toolbar">
-                                            <!--begin::Toolbar-->
-                                            <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">     
-                                                <?php echo anchor('SuperUser/cuser/ctambah_user', '+ Data User', array('class' => 'btn btn-sm btn-success', 'type' => 'button')) ?>
-                                            </div>
-                                            <!--end::Toolbar-->
+                                        <!--end::Card title-->
+                                        <!--begin::Card toolbar-->
+                                        <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                                            <!--begin::Add product-->
+                                            <?php echo anchor('SuperUser/cuser/ctambah_user', '+ Data User', array('class' => 'btn btn-sm btn-success', 'type' => 'button')) ?>
+                                            <!--end::Add product-->
                                         </div>
+                                        <!--end::Card toolbar-->
                                     </div>
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
-                                    <div class="card-body py-4">
-                                        <div class="table-responsive">
-                                            <!--begin::Table-->
-                                            <table class="table align-middle gs-0 gy-4">
-                                                <!--begin::Table head-->
-                                                <thead>
-                                                    <!--begin::Table row-->
-                                                    <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                        <th class="w-10px pe-5">No</th>
-                                                        <th class="min-w-125px">Nama User</th>
-                                                        <th class="min-w-125px">Username</th>
-                                                        <!-- <th class="w-10px pe-2">Password</th>                                                     -->
-                                                        <th class="min-w-125px">Email</th>
-                                                        <th class="w-10px pe-5">Level</th>
-                                                        <th class="text-end min-w-100px">Actions</th>
-                                                    </tr>
-                                                    <!--end::Table row-->
-                                                </thead>
-                                                <!--end::Table head-->
-                                                <!--begin::Table body-->
-                                                <tbody class="text-gray-600 fw-semibold">
+                                    <div class="card-body pt-0">
+                                        <!--begin::Table-->
+                                        <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_sales_table">
+                                            <!--begin::Table head-->
+                                            <thead>
+                                                <!--begin::Table row-->
+                                                <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
+                                                    <th class="w-10px pe-2">No
+                                                    </th>
+                                                    <th class="min-w-100px">ID</th>
+                                                    <th class="min-w-175px">Nama</th>
+                                                    <th class="text-center min-w-70px">Level</th>
+                                                    <th class="text-center min-w-100px">Username</th>
+                                                    <th class="text-center min-w-100px">Password</th>
+                                                    <th class="text-center min-w-100px">Email</th>
+                                                    <th class="text-center min-w-100px">Actions</th>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody class="fw-semibold text-gray-600">
                                                 <?php
                                                 $no = 1;
                                                 $status = "OK";
                                                 foreach ($user as $user) :
                                                 ?>
+                                                <!--begin::Table row-->
                                                 <tr>
-                                                    <td><?php echo $no ?></td>
-                                                    <td class="d-flex align-items-center">
-                                                        <!--begin:: Avatar -->
-                                                        <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                            <div class="symbol-label">
-                                                                <img src='<?=base_url()?>assets/media/images/<?php echo $user->foto;?>' alt="Emma Smith" class="w-100" />
+                                                    <!--begin::Checkbox-->
+                                                    <td>
+                                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                                            <?php echo $no ?>
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Checkbox-->
+                                                    <!--begin::Order ID=-->
+                                                    <td data-kt-ecommerce-order-filter="order_id">
+                                                        <a class="text-gray-800 text-hover-primary fw-bold">USR<?php echo $user->id ?></a>
+                                                    </td>
+                                                    <!--end::Order ID=-->
+                                                    <!--begin::Customer=-->
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <!--begin:: Avatar -->
+                                                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
+                                                                <a>
+                                                                    <div class="symbol-label fs-3 bg-light-primary text-primary">
+                                                                        <img src='<?=base_url()?>assets/media/images/<?php echo $user->foto;?>' alt="Emma Smith" class="w-100" />
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <!--end::Avatar-->
+                                                            <div class="ms-5">
+                                                                <!--begin::Title-->
+                                                                <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><?php echo $user->nama ?></a>
+                                                                <!--end::Title-->
                                                             </div>
                                                         </div>
-                                                        <!--end::Avatar-->
-                                                        <?php echo $user->nama ?>
                                                     </td>
-                                                    <td><?php echo $user->username ?></td>
-                                                    <!-- <td><?php echo $user->password ?></td> -->
-                                                    <td><?php echo $user->eemail ?></td>
-                                                    <td><?php echo $user->tlok ?></td>
-                                                    <td class="center">
+                                                    <!--end::Customer=-->
+                                                    <!--begin::Status=-->
+                                                    <td class="text-center pe-0" data-order="<?php echo $user->tlok ?>">
+                                                        <!--begin::Badges-->
+                                                        <?php if ($user->tlok == ""){
+                                                            echo '<div class="badge badge-light-primary">K.P</div>';
+                                                        }else{
+                                                            echo '<div class="badge badge-light-success">'.$user->tlok.'</div>';
+                                                        }
+                                                        ?>
+                                                        <!--end::Badges-->
+                                                    </td>
+                                                    <!--end::Status=-->
+                                                    <!--begin::Total=-->
+                                                    <td class="text-center pe-0">
+                                                        <span class="fw-bold"><?php echo $user->username ?></span>
+                                                    </td>
+                                                    <!--end::Total=-->
+                                                    <!--begin::Date Added=-->
+                                                    <td class="text-center" data-order="2022-11-21">
+                                                        <span class="fw-bold"><?php echo $user->password ?></span>
+                                                    </td>
+                                                    <!--end::Date Added=-->
+                                                    <!--begin::Date Modified=-->
+                                                    <td class="text-center" data-order="2022-11-22">
+                                                        <span class="fw-bold"><?php echo $user->eemail ?></span>
+                                                    </td>
+                                                    <!--end::Date Modified=-->
+                                                    <!--begin::Action=-->
+                                                    <td class="text-center">
                                                         <div class="d-flex justify-content-end flex-shrink-0">
                                                             <a href="<?php echo site_url("SuperUser/cuser/clihat_user/" . $user->id) ?>" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
@@ -143,26 +189,27 @@
                                                             </a>
                                                         </div>
                                                     </td>
+                                                    <!--end::Action=-->
                                                 </tr>
+                                                <!--end::Table row-->	
                                                 <?php
                                                 $no++;
                                                 endforeach;
                                                 ?>
-                                                </tbody>
-                                                <!--end::Table body-->
-                                            </table>
-                                            <!--end::Table-->
-                                        </div>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->
                                 </div>
-                                <!--end::Card-->
+                                <!--end::Products-->
                             </div>
                             <!--end::Content container-->
-						</div>
-						<!--end::Content-->
-					</div>
-					<!--end::Content wrapper-->
+                        </div>
+                        <!--end::Content-->
+                    </div>
+                    <!--end::Content wrapper-->
 					<?php
                         $this->load->view('partials/footer');
                     ?>
@@ -213,6 +260,7 @@
     <?php
         $this->load->view('partials/script');
     ?>
+    <script src="<?php echo base_url(); ?>assets/js/custom/apps/ecommerce/sales/listing.js"></script>
 	
 </body>
 <!--end::Body-->

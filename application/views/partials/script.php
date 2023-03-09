@@ -19,7 +19,7 @@
 	<script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
 	<script src="<?php echo base_url(); ?>assets/plugins/custom/datatables/datatables.bundle.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/custom/apps/user-management/users/list/table.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/custom/apps/user-management/users/list/export-users.js"></script>
+
 	<script src="<?php echo base_url(); ?>assets/js/custom/apps/user-management/users/list/add.js"></script>
 	<!--end::Vendors Javascript-->
 	<!--begin::Custom Javascript(used for this page only)-->

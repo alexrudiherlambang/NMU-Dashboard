@@ -74,7 +74,7 @@
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
 													<?php
-														$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+														$start_date = date('Y') . '-01-01'; // tanggal 1 Januari tahun ini
 														$end_date = date('Y-m-d'); // tanggal hari ini
 														setlocale(LC_TIME, 'id_ID');
 														echo strftime('%d %b %Y', strtotime($start_date)) . ' - ' . strftime('%d %b %Y', strtotime($end_date));
@@ -188,7 +188,7 @@
 												<!--begin::Display range-->
 												<div class="text-gray-600 fw-bold">
 													<?php
-														$start_date = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
+														$start_date = date('Y') . '-01-01'; // tanggal 1 Januari tahun ini
 														$end_date = date('Y-m-d'); // tanggal hari ini
 														setlocale(LC_TIME, 'id_ID');
 														echo strftime('%d %b %Y', strtotime($start_date)) . ' - ' . strftime('%d %b %Y', strtotime($end_date));
@@ -407,17 +407,31 @@
 	
 	<!-- Isi Grafik Pendapatan -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <script>
+	<script>
 		var ctx = document.getElementById('pendapatan').getContext('2d');
 		var pendapatan = new Chart(ctx, {
-			type: 'line',
+			type: 'bar',
 			data: {
-				labels: <?php echo json_encode($tanggal)?>,
+				labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
 				datasets: [{
-					label: 'Total Revenue',
-					data: [<?php echo implode(',', $revenue) ?>],
+					label: 'Realisasi',
+					data: Object.values(<?php echo json_encode($realisasi)?>),
 					backgroundColor: 'rgba(0, 0, 128, 0.2)',
 					borderColor: 'rgba(0, 0, 128, 1)',
+					borderWidth: 2
+				}, {
+					label: 'Potensi',
+					data: Object.values(<?php echo json_encode($potensi)?>),
+					backgroundColor: 'rgba(255, 99, 132, 0.5)',
+					borderColor: 'rgba(255, 0, 0, 1)',
+					borderWidth: 2
+				}, {
+					label: 'Target',
+					data: Object.values(<?php echo json_encode($target)?>),
+					type: 'line',  // tipe dataset menjadi line
+                	fill: false,  // isi area di bawah garis target dinonaktifkan
+					backgroundColor: 'rgba(50, 205, 50, 0.2)',
+					borderColor: 'rgba(50, 205, 50, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -435,7 +449,7 @@
 				ticks: {
 					// Menentukan format currency
 					callback: function(value, index, values) {
-						return (value / 1000000).toFixed(0);
+						return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 					}
 				}
 				}]
@@ -451,24 +465,14 @@
 						if (label) {
 							label += ': ';
 						}
-						label += (tooltipItem.yLabel / 1000000).toFixed(0).replace('.', ',') + ' (Dalam Juta)';
+						label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
 						return label;
 					}
 				}
 			}
 			}
 		});
-		// Menambahkan data baru
-		pendapatan.data.datasets[0].data.push(10);
-		pendapatan.update();
-		pendapatan.data.datasets.push({
-		label: 'Target Revenue',
-		data: [<?php echo implode(',', $target) ?>],
-		backgroundColor: 'rgba(50, 205, 50, 0.2)',
-		borderColor: 'rgba(50, 205, 50, 1)',
-		borderWidth: 3
-		});
-		pendapatan.update();
+		
 	</script>
 
 	<!-- Isi Grafik Laba - Rugi -->
@@ -501,7 +505,7 @@
 				ticks: {
 					// Menentukan format currency
 					callback: function(value, index, values) {
-						return (value / 1000000).toFixed(0);
+						return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 					}
 				}
 				}]
@@ -517,7 +521,7 @@
 						if (label) {
 							label += ': ';
 						}
-						label += (tooltipItem.yLabel / 1000000).toFixed(0).replace('.', ',') + ' (Dalam Juta)';
+						label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
 						return label;
 					}
 				}
@@ -542,14 +546,28 @@
     <script>
 		var ctx = document.getElementById('beban').getContext('2d');
 		var beban = new Chart(ctx, {
-			type: 'line',
+			type: 'bar',
 			data: {
-				labels: <?php echo json_encode($tanggal2)?>,
+				labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
 				datasets: [{
-					label: 'Total Beban',
-					data: [<?php echo implode(',', $revenue2) ?>],
+					label: 'Realisasi',
+					data: Object.values(<?php echo json_encode($realisasi)?>),
 					backgroundColor: 'rgba(0, 0, 128, 0.2)',
 					borderColor: 'rgba(0, 0, 128, 1)',
+					borderWidth: 2
+				}, {
+					label: 'Potensi',
+					data: Object.values(<?php echo json_encode($potensi)?>),
+					backgroundColor: 'rgba(255, 99, 132, 0.5)',
+					borderColor: 'rgba(255, 0, 0, 1)',
+					borderWidth: 2
+				}, {
+					label: 'Target',
+					data: Object.values(<?php echo json_encode($target)?>),
+					type: 'line',  // tipe dataset menjadi line
+                	fill: false,  // isi area di bawah garis target dinonaktifkan
+					backgroundColor: 'rgba(50, 205, 50, 0.2)',
+					borderColor: 'rgba(50, 205, 50, 1)',
 					borderWidth: 3
 				}]
 			},
@@ -567,7 +585,7 @@
 				ticks: {
 					// Menentukan format currency
 					callback: function(value, index, values) {
-						return (value / 1000000).toFixed(0);
+						return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 					}
 				}
 				}]
@@ -583,24 +601,13 @@
 						if (label) {
 							label += ': ';
 						}
-						label += (tooltipItem.yLabel / 1000000).toFixed(0).replace('.', ',') + ' (Dalam Juta)';
+						label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
 						return label;
 					}
 				}
 			}
 			}
 		});
-		// Menambahkan data baru
-		beban.data.datasets[0].data.push(10);
-		beban.update();
-		beban.data.datasets.push({
-		label: 'Target Beban',
-		data: [<?php echo implode(',', $target2) ?>],
-		backgroundColor: 'rgba(50, 205, 50, 0.2)',
-		borderColor: 'rgba(50, 205, 50, 1)',
-		borderWidth: 3
-		});
-		beban.update();
 	</script>
 
 	<!-- Isi Grafik Kunjungan -->
@@ -633,7 +640,7 @@
 				ticks: {
 					// Menentukan format currency
 					callback: function(value, index, values) {
-						return (value).toFixed(0);
+						return (value).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 					}
 				}
 				}]
@@ -649,7 +656,7 @@
 						if (label) {
 							label += ': ';
 						}
-						label += (tooltipItem.yLabel).toFixed(0).replace('.', ',');
+						label += (tooltipItem.yLabel).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 						return label;
 					}
 				}

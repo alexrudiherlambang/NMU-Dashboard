@@ -253,7 +253,7 @@
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
             datasets: [{
-                label: 'Total Kunjungan',
+                label: 'Total Kegiatan',
                 data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
@@ -283,7 +283,7 @@
     myChart.data.datasets[0].data.push(10);
     myChart.update();
     myChart.data.datasets.push({
-    label: 'Target Kunjungan',
+    label: 'Target Kegiatan',
     data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     backgroundColor: 'rgba(54, 162, 235, 0.2)',
     borderColor: 'rgba(54, 162, 235, 1)',

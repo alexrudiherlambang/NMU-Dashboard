@@ -254,70 +254,70 @@
         </div>
     </div>
 	
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: <?php echo json_encode($tanggal)?>,
-            datasets: [{
-                label: 'Total Kunjungan',
-                data: [<?php echo implode(',', $revenue) ?>],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 3
-            }]
-        },
-        options: {
-        scales: {
-            xAxes: [{
-            gridLines: {
-                display: false
-            }
-            }],
-            yAxes: [{
-            gridLines: {
-                display: false
-            },
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<script>
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'line',
+		data: {
+			labels: <?php echo json_encode($tanggal)?>,
+			datasets: [{
+				label: 'Total Kunjungan',
+				data: [<?php echo implode(',', $revenue) ?>],
+				backgroundColor: 'rgba(0, 0, 128, 0.2)',
+				borderColor: 'rgba(0, 0, 128, 1)',
+				borderWidth: 3
+			}]
+		},
+		options: {
+		scales: {
+			xAxes: [{
+			gridLines: {
+				display: false
+			}
+			}],
+			yAxes: [{
+			gridLines: {
+				display: false
+			},
 			ticks: {
 				// Menentukan format currency
 				callback: function(value, index, values) {
-					return (value).toFixed(0);
+					return (value).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 				}
 			}
-            }]
-        },
-        legend: {
-            position: 'bottom'
-        },
-        responsive: true,
+			}]
+		},
+		legend: {
+			position: 'bottom'
+		},
+		responsive: true,
 		tooltips: {
-            callbacks: {
-                label: function(tooltipItem, data) {
-                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
-                    if (label) {
-                        label += ': ';
-                    }
-					label += (tooltipItem.yLabel).toFixed(0).replace('.', ',');
-                    return label;
-                }
-            }
-        }
-        }
-    });
-    // Menambahkan data baru
-    myChart.data.datasets[0].data.push(10);
-    myChart.update();
-    myChart.data.datasets.push({
-    label: 'Target Kunjungan',
-    data: [<?php echo implode(',', $target) ?>],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3
-    });
-    myChart.update();
-    </script>
+			callbacks: {
+				label: function(tooltipItem, data) {
+					var label = data.datasets[tooltipItem.datasetIndex].label || '';
+					if (label) {
+						label += ': ';
+					}
+					label += (tooltipItem.yLabel).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+					return label;
+				}
+			}
+		}
+		}
+	});
+	// Menambahkan data baru
+	myChart.data.datasets[0].data.push(10);
+	myChart.update();
+	myChart.data.datasets.push({
+	label: 'Target Kunjungan',
+	data: [<?php echo implode(',', $target) ?>],
+	backgroundColor: 'rgba(50, 205, 50, 0.2)',
+	borderColor: 'rgba(50, 205, 50, 1)',
+	borderWidth: 3
+	});
+	myChart.update();
+	</script>
 
     <!-- script pie -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
