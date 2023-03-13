@@ -336,6 +336,9 @@
             </div>
         </div>
     </div>
+	<?php
+        $this->load->view('partials/script');
+    ?>
 	<!-- Show hide grafik Pendapatan -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
@@ -409,286 +412,333 @@
 	</script>
 	
 	<!-- Isi Grafik Pendapatan -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script> -->
 	<script>
-		var ctx = document.getElementById('pendapatan').getContext('2d');
-		var pendapatan = new Chart(ctx, {
-			type: 'bar',
-			data: {
-				labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
-				datasets: [{
-					label: 'Realisasi',
-					data: Object.values(<?php echo json_encode($realisasi)?>),
-					backgroundColor: 'rgba(0, 0, 128, 0.2)',
-					borderColor: 'rgba(0, 0, 128, 1)',
-					borderWidth: 2
-				}, {
-					label: 'Potensi',
-					data: Object.values(<?php echo json_encode($potensi)?>),
-					backgroundColor: 'rgba(255, 99, 132, 0.5)',
-					borderColor: 'rgba(255, 0, 0, 1)',
-					borderWidth: 2
-				}, {
-					label: 'Target',
-					data: Object.values(<?php echo json_encode($target)?>),
-					type: 'line',  // tipe dataset menjadi line
-                	fill: false,  // isi area di bawah garis target dinonaktifkan
-					backgroundColor: 'rgba(50, 205, 50, 0.2)',
-					borderColor: 'rgba(50, 205, 50, 1)',
-					borderWidth: 3
-				}]
-			},
-			options: {
-			scales: {
-				xAxes: [{
-				gridLines: {
-					display: false
-				}
-				}],
-				yAxes: [{
-				gridLines: {
-					display: false
-				},
-				ticks: {
-					// Menentukan format currency
-					callback: function(value, index, values) {
-						return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-					}
-				}
-				}]
-			},
-			legend: {
-				position: 'bottom'
-			},
-			responsive: true,
-			tooltips: {
-				callbacks: {
-					label: function(tooltipItem, data) {
-						var label = data.datasets[tooltipItem.datasetIndex].label || '';
-						if (label) {
-							label += ': ';
+		$(document).ready(function(){
+			$.ajax({
+			url: '<?php echo site_url('SuperUser/Home/pendapatan') ?>',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				var ctx = document.getElementById('pendapatan').getContext('2d');
+				var pendapatan = new Chart(ctx, {
+					type: 'bar',
+					data: {
+						// labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
+						datasets: [{
+							label: 'Realisasi',
+							data: data.realisasi,
+							backgroundColor: 'rgba(0, 0, 128, 0.2)',
+							borderColor: 'rgba(0, 0, 128, 1)',
+							borderWidth: 2
+						}, {
+							label: 'Potensi',
+							data: data.potensi,
+							backgroundColor: 'rgba(255, 99, 132, 0.5)',
+							borderColor: 'rgba(255, 0, 0, 1)',
+							borderWidth: 2
+						}, {
+							label: 'Target',
+							data: data.target,
+							type: 'line',  // tipe dataset menjadi line
+							fill: false,  // isi area di bawah garis target dinonaktifkan
+							backgroundColor: 'rgba(50, 205, 50, 0.2)',
+							borderColor: 'rgba(50, 205, 50, 1)',
+							borderWidth: 3
+						}]
+					},
+					options: {
+					scales: {
+						xAxes: [{
+						gridLines: {
+							display: false
 						}
-						label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
-						return label;
+						}],
+						yAxes: [{
+						gridLines: {
+							display: false
+						},
+						ticks: {
+							// Menentukan format currency
+							callback: function(value, index, values) {
+								return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+							}
+						}
+						}]
+					},
+					legend: {
+						position: 'bottom'
+					},
+					responsive: true,
+					tooltips: {
+						callbacks: {
+							label: function(tooltipItem, data) {
+								var label = data.datasets[tooltipItem.datasetIndex].label || '';
+								if (label) {
+									label += ': ';
+								}
+								label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
+								return label;
+							}
+						}
 					}
-				}
+					}
+				});
+			},
+			error: function(xhr, status, error) {
+				// Tangani kesalahan jika terjadi
+				console.log('Error: ' + error);
 			}
-			}
+			});
 		});
-		
 	</script>
 
 	<!-- Isi Grafik Laba - Rugi -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script> -->
     <script>
-		var ctx = document.getElementById('labarugi').getContext('2d');
-		var labarugi = new Chart(ctx, {
-			type: 'bar',
-			data: {
-				labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
-				datasets: [{
-					label: 'Realisasi',
-					data: Object.values(<?php echo json_encode($realisasi1)?>),
-					backgroundColor: 'rgba(0, 0, 128, 0.2)',
-					borderColor: 'rgba(0, 0, 128, 1)',
-					borderWidth: 2
-				}, {
-					label: 'Potensi',
-					data: Object.values(<?php echo json_encode($potensi1)?>),
-					backgroundColor: 'rgba(255, 99, 132, 0.5)',
-					borderColor: 'rgba(255, 0, 0, 1)',
-					borderWidth: 2
-				}, {
-					label: 'Target',
-					data: Object.values(<?php echo json_encode($target1)?>),
-					type: 'line',  // tipe dataset menjadi line
-                	fill: false,  // isi area di bawah garis target dinonaktifkan
-					backgroundColor: 'rgba(50, 205, 50, 0.2)',
-					borderColor: 'rgba(50, 205, 50, 1)',
-					borderWidth: 3
-				}]
-			},
-			options: {
-			scales: {
-				xAxes: [{
-				gridLines: {
-					display: false
-				}
-				}],
-				yAxes: [{
-				gridLines: {
-					display: false
-				},
-				ticks: {
-					// Menentukan format currency
-					callback: function(value, index, values) {
-						return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-					}
-				}
-				}]
-			},
-			legend: {
-				position: 'bottom'
-			},
-			responsive: true,
-			tooltips: {
-				callbacks: {
-					label: function(tooltipItem, data) {
-						var label = data.datasets[tooltipItem.datasetIndex].label || '';
-						if (label) {
-							label += ': ';
+		$(document).ready(function(){
+			$.ajax({
+			url: '<?php echo site_url('SuperUser/Home/labarugi') ?>',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				var ctx = document.getElementById('labarugi').getContext('2d');
+				var labarugi = new Chart(ctx, {
+					type: 'bar',
+					data: {
+						// labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
+						datasets: [{
+							label: 'Realisasi',
+							data: data.realisasi1,
+							backgroundColor: 'rgba(0, 0, 128, 0.2)',
+							borderColor: 'rgba(0, 0, 128, 1)',
+							borderWidth: 2
+						}, {
+							label: 'Potensi',
+							data: data.potensi1,
+							backgroundColor: 'rgba(255, 99, 132, 0.5)',
+							borderColor: 'rgba(255, 0, 0, 1)',
+							borderWidth: 2
+						}, {
+							label: 'Target',
+							data: data.target1,
+							type: 'line',  // tipe dataset menjadi line
+							fill: false,  // isi area di bawah garis target dinonaktifkan
+							backgroundColor: 'rgba(50, 205, 50, 0.2)',
+							borderColor: 'rgba(50, 205, 50, 1)',
+							borderWidth: 3
+						}]
+					},
+					options: {
+					scales: {
+						xAxes: [{
+						gridLines: {
+							display: false
 						}
-						label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
-						return label;
+						}],
+						yAxes: [{
+						gridLines: {
+							display: false
+						},
+						ticks: {
+							// Menentukan format currency
+							callback: function(value, index, values) {
+								return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+							}
+						}
+						}]
+					},
+					legend: {
+						position: 'bottom'
+					},
+					responsive: true,
+					tooltips: {
+						callbacks: {
+							label: function(tooltipItem, data) {
+								var label = data.datasets[tooltipItem.datasetIndex].label || '';
+								if (label) {
+									label += ': ';
+								}
+								label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
+								return label;
+							}
+						}
 					}
-				}
+					}
+				});
+			},
+			error: function(xhr, status, error) {
+				// Tangani kesalahan jika terjadi
+				console.log('Error: ' + error);
 			}
-			}
+			});
 		});
 	</script>
 
 	<!-- Isi Grafik Biaya -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script> -->
     <script>
-		var ctx = document.getElementById('beban').getContext('2d');
-		var beban = new Chart(ctx, {
-			type: 'bar',
-			data: {
-				labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
-				datasets: [{
-					label: 'Realisasi',
-					data: Object.values(<?php echo json_encode($realisasi2)?>),
-					backgroundColor: 'rgba(0, 0, 128, 0.2)',
-					borderColor: 'rgba(0, 0, 128, 1)',
-					borderWidth: 2
-				}, {
-					label: 'Potensi',
-					data: Object.values(<?php echo json_encode($potensi2)?>),
-					backgroundColor: 'rgba(255, 99, 132, 0.5)',
-					borderColor: 'rgba(255, 0, 0, 1)',
-					borderWidth: 2
-				}, {
-					label: 'Target',
-					data: Object.values(<?php echo json_encode($target2)?>),
-					type: 'line',  // tipe dataset menjadi line
-                	fill: false,  // isi area di bawah garis target dinonaktifkan
-					backgroundColor: 'rgba(50, 205, 50, 0.2)',
-					borderColor: 'rgba(50, 205, 50, 1)',
-					borderWidth: 3
-				}]
-			},
-			options: {
-			scales: {
-				xAxes: [{
-				gridLines: {
-					display: false
-				}
-				}],
-				yAxes: [{
-				gridLines: {
-					display: false
-				},
-				ticks: {
-					// Menentukan format currency
-					callback: function(value, index, values) {
-						return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-					}
-				}
-				}]
-			},
-			legend: {
-				position: 'bottom'
-			},
-			responsive: true,
-			tooltips: {
-				callbacks: {
-					label: function(tooltipItem, data) {
-						var label = data.datasets[tooltipItem.datasetIndex].label || '';
-						if (label) {
-							label += ': ';
+		$(document).ready(function(){
+			$.ajax({
+			url: '<?php echo site_url('SuperUser/Home/beban') ?>',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				var ctx = document.getElementById('beban').getContext('2d');
+				var beban = new Chart(ctx, {
+					type: 'bar',
+					data: {
+						// labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
+						datasets: [{
+							label: 'Realisasi',
+							data: data.realisasi2,
+							backgroundColor: 'rgba(0, 0, 128, 0.2)',
+							borderColor: 'rgba(0, 0, 128, 1)',
+							borderWidth: 2
+						}, {
+							label: 'Potensi',
+							data: data.potensi2,
+							backgroundColor: 'rgba(255, 99, 132, 0.5)',
+							borderColor: 'rgba(255, 0, 0, 1)',
+							borderWidth: 2
+						}, {
+							label: 'Target',
+							data: data.target2,
+							type: 'line',  // tipe dataset menjadi line
+							fill: false,  // isi area di bawah garis target dinonaktifkan
+							backgroundColor: 'rgba(50, 205, 50, 0.2)',
+							borderColor: 'rgba(50, 205, 50, 1)',
+							borderWidth: 3
+						}]
+					},
+					options: {
+					scales: {
+						xAxes: [{
+						gridLines: {
+							display: false
 						}
-						label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
-						return label;
+						}],
+						yAxes: [{
+						gridLines: {
+							display: false
+						},
+						ticks: {
+							// Menentukan format currency
+							callback: function(value, index, values) {
+								return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+							}
+						}
+						}]
+					},
+					legend: {
+						position: 'bottom'
+					},
+					responsive: true,
+					tooltips: {
+						callbacks: {
+							label: function(tooltipItem, data) {
+								var label = data.datasets[tooltipItem.datasetIndex].label || '';
+								if (label) {
+									label += ': ';
+								}
+								label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
+								return label;
+							}
+						}
 					}
-				}
+					}
+				});
+			},
+			error: function(xhr, status, error) {
+				// Tangani kesalahan jika terjadi
+				console.log('Error: ' + error);
 			}
-			}
+			});
 		});
 	</script>
 
 	<!-- Isi Grafik Kunjungan -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script> -->
     <script>
-		var ctx = document.getElementById('kunjungan').getContext('2d');
-		var kunjungan = new Chart(ctx, {
-			type: 'bar',
-			data: {
-				labels: ['RSG', 'RSMU', 'RSP', 'RST'],
-				datasets: [{
-					label: 'Realisasi',
-					data: Object.values(<?php echo json_encode($realisasi3)?>),
-					backgroundColor: 'rgba(0, 0, 128, 0.2)',
-					borderColor: 'rgba(0, 0, 128, 1)',
-					borderWidth: 2
-				}, {
-					label: 'Potensi',
-					data: Object.values(<?php echo json_encode($potensi3)?>),
-					backgroundColor: 'rgba(255, 99, 132, 0.5)',
-					borderColor: 'rgba(255, 0, 0, 1)',
-					borderWidth: 2
-				}, {
-					label: 'Target',
-					data: Object.values(<?php echo json_encode($target3)?>),
-					type: 'line',  // tipe dataset menjadi line
-                	fill: false,  // isi area di bawah garis target dinonaktifkan
-					backgroundColor: 'rgba(50, 205, 50, 0.2)',
-					borderColor: 'rgba(50, 205, 50, 1)',
-					borderWidth: 3
-				}]
-			},
-			options: {
-			scales: {
-				xAxes: [{
-				gridLines: {
-					display: false
-				}
-				}],
-				yAxes: [{
-				gridLines: {
-					display: false
-				},
-				ticks: {
-					// Menentukan format currency
-					callback: function(value, index, values) {
-						return (value).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-					}
-				}
-				}]
-			},
-			legend: {
-				position: 'bottom'
-			},
-			responsive: true,
-			tooltips: {
-				callbacks: {
-					label: function(tooltipItem, data) {
-						var label = data.datasets[tooltipItem.datasetIndex].label || '';
-						if (label) {
-							label += ': ';
+		$(document).ready(function(){
+			$.ajax({
+			url: '<?php echo site_url('SuperUser/Home/kunjungan') ?>',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				var ctx = document.getElementById('kunjungan').getContext('2d');
+				var kunjungan = new Chart(ctx, {
+					type: 'bar',
+					data: {
+						labels: ['RSG', 'RSMU', 'RSP', 'RST'],
+						datasets: [{
+							label: 'Realisasi',
+							data: data.realisasi3,
+							backgroundColor: 'rgba(0, 0, 128, 0.2)',
+							borderColor: 'rgba(0, 0, 128, 1)',
+							borderWidth: 2
+						}, {
+							label: 'Potensi',
+							data: data.potensi3,
+							backgroundColor: 'rgba(255, 99, 132, 0.5)',
+							borderColor: 'rgba(255, 0, 0, 1)',
+							borderWidth: 2
+						}, {
+							label: 'Target',
+							data: data.target3,
+							type: 'line',  // tipe dataset menjadi line
+							fill: false,  // isi area di bawah garis target dinonaktifkan
+							backgroundColor: 'rgba(50, 205, 50, 0.2)',
+							borderColor: 'rgba(50, 205, 50, 1)',
+							borderWidth: 3
+						}]
+					},
+					options: {
+					scales: {
+						xAxes: [{
+						gridLines: {
+							display: false
 						}
-						label += (tooltipItem.yLabel).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-						return label;
+						}],
+						yAxes: [{
+						gridLines: {
+							display: false
+						},
+						ticks: {
+							// Menentukan format currency
+							callback: function(value, index, values) {
+								return (value).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+							}
+						}
+						}]
+					},
+					legend: {
+						position: 'bottom'
+					},
+					responsive: true,
+					tooltips: {
+						callbacks: {
+							label: function(tooltipItem, data) {
+								var label = data.datasets[tooltipItem.datasetIndex].label || '';
+								if (label) {
+									label += ': ';
+								}
+								label += (tooltipItem.yLabel).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+								return label;
+							}
+						}
 					}
-				}
+					}
+				});
+			},
+			error: function(xhr, status, error) {
+				// Tangani kesalahan jika terjadi
+				console.log('Error: ' + error);
 			}
-			}
+			});
 		});
     </script>
 
-    <?php
-        $this->load->view('partials/script');
-    ?>
-	
 </body>
 <!--end::Body-->
 

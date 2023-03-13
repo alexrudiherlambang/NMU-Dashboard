@@ -129,7 +129,12 @@ class msegmen extends ci_model {
       // $this->db->where('tanggal>=', $tglawal);
       $this->db->where('tanggal<=', $tglakhir);
       $this->db->group_by('lokasi');
-      $this->db->group_by('tanggal');
+      // $this->db->group_by('tanggal');
+      $this->db->group_by('kelspesimen');
+      $this->db->group_by('kelsegmen');
+      $this->db->group_by('kelsegmen_sub');
+      $this->db->group_by('ket');
+      $this->db->group_by('unitperiksa');
       return $this->db->get()->result();
    }
 
