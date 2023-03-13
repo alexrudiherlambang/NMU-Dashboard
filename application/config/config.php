@@ -388,10 +388,11 @@ $config['encryption_key'] = 'd41d8cd98f00b204e9800998ecf8427e';
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-$config['sess_driver'] = 'files';
+$config['sess_driver'] = 'files'; // untuk file cookies tersimpan pada file server
+// $config['sess_driver'] = 'cookie'; // untuk menyimpan data session pada cookie yang dikirimkan ke browser pengguna.
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_samesite'] = 'Lax';
-$config['sess_expiration'] = 7200;
+$config['sess_expiration'] = 7200; //2jam(satuan detik)
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
