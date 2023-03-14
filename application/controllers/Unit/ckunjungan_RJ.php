@@ -248,11 +248,11 @@ class ckunjungan_RJ extends CI_Controller {
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Segmen");
       // xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Layanan");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok BPJS / NON BPJS");
-      xlsWriteLabel($tablehead, $kolomhead++, "Revenue Yang Lalu");
-      xlsWriteLabel($tablehead, $kolomhead++, "Revenue Bulan Ini");
-      xlsWriteLabel($tablehead, $kolomhead++, "Total Revenue s/d Saat Ini");
-      xlsWriteLabel($tablehead, $kolomhead++, "Potensial Revenue");
-      xlsWriteLabel($tablehead, $kolomhead++, "Target Revenue");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kunjungan Yang Lalu");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kunjungan Bulan Ini");
+      xlsWriteLabel($tablehead, $kolomhead++, "Total Kunjungan s/d Saat Ini");
+      xlsWriteLabel($tablehead, $kolomhead++, "Potensial Kunjungan");
+      xlsWriteLabel($tablehead, $kolomhead++, "Target Kunjungan");
       xlsWriteLabel($tablehead, $kolomhead++, "Status");
 
       foreach ($pilihan as $p) {
