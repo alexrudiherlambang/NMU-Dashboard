@@ -246,13 +246,15 @@ class ckunjungan_persegmen extends CI_Controller {
       xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Spesimen");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Segmen");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Segmen");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Layanan");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok BPJS / NON BPJS");
-      xlsWriteLabel($tablehead, $kolomhead++, "Revenue Yang Lalu");
-      xlsWriteLabel($tablehead, $kolomhead++, "Revenue Bulan Ini");
-      xlsWriteLabel($tablehead, $kolomhead++, "Total Revenue s/d Saat Ini");
-      xlsWriteLabel($tablehead, $kolomhead++, "Potensial Revenue");
-      xlsWriteLabel($tablehead, $kolomhead++, "Target Revenue");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Unit");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kunjungan Yang Lalu");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kunjungan Bulan Ini");
+      xlsWriteLabel($tablehead, $kolomhead++, "Total Kunjungan s/d Saat Ini");
+      xlsWriteLabel($tablehead, $kolomhead++, "Potensial Kunjungan");
+      xlsWriteLabel($tablehead, $kolomhead++, "Target Kunjungan");
       xlsWriteLabel($tablehead, $kolomhead++, "Status");
 
       foreach ($pilihan as $p) {
@@ -266,8 +268,10 @@ class ckunjungan_persegmen extends CI_Controller {
             xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
             xlsWriteLabel($tablebody, $kolombody++, $data->kelspesimen);
             xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+            xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
             xlsWriteLabel($tablebody, $kolombody++, $data->kelompok);
             xlsWriteLabel($tablebody, $kolombody++, $data->ket);
+            xlsWriteLabel($tablebody, $kolombody++, $data->kelunit);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);

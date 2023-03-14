@@ -124,13 +124,18 @@ class mkunjungan_persegmen extends ci_model {
 
    // untuk cetak excel
    function mshow_all_detail($nama, $ket, $tglawal, $tglakhir) {
-         $this->db->select('lokasi, tanggal, kelspesimen, kelsegmen, kelompok, ket, sum(rsaldolalu) as rsaldolalu, sum(rsaldosaatini) as rsaldosaatini, sum(rsaldosampai) as rsaldosampai, sum(rsaldopotensi1) as rsaldopotensi1, sum(jmltarget) as jmltarget, statuse');
+         $this->db->select('lokasi, tanggal, kelspesimen, kelsegmen, kelsegmen_sub, ket, kelunit, kelompok, sum(rsaldolalu) as rsaldolalu, sum(rsaldosaatini) as rsaldosaatini, sum(rsaldosampai) as rsaldosampai, sum(rsaldopotensi1) as rsaldopotensi1, sum(jmltarget) as jmltarget, statuse');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('kelsegmen', $ket);
          // $this->db->where('tanggal>=', $tglawal);
-         $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('tanggal<=', $tglakhir); 
          $this->db->group_by('lokasi');
-         $this->db->group_by('tanggal');
+         // $this->db->group_by('tanggal');
+         $this->db->group_by('kelspesimen');
+         $this->db->group_by('kelsegmen');
+         $this->db->group_by('kelsegmen_sub');
+         $this->db->group_by('ket');
+         $this->db->group_by('kelunit');
          return $this->db->get()->result();
    }
 
