@@ -63,11 +63,10 @@
 										<div class="card-header pt-7">
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bold text-gray-800">Grafik Pendapatan</span>
+												<span class="card-label fw-bold text-gray-800">Grafik Pedapatan</span>
 												<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
 											</h3>
 											<!--end::Title-->
-
 											<!--begin::Toolbar-->
 											<div class="card-toolbar">           
 												<!--begin::Daterangepicker(defined in src/js/layout/app.js)-->
@@ -340,7 +339,7 @@
         $this->load->view('partials/script');
     ?>
 	<!-- Show hide grafik Pendapatan -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 	<script>
 		$(document).ready(function(){
 			$("#card_pendapatan").hide(); // menyembunyikan grafik secara default
@@ -358,7 +357,7 @@
 	</script>
 
 	<!-- Show hide grafik Laba Rugi -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 	<script>
 		$(document).ready(function(){
 			$("#card_labarugi").hide(); // menyembunyikan grafik secara default
@@ -376,7 +375,7 @@
 	</script>
 
 	<!-- Show hide grafik Biaya -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 	<script>
 		$(document).ready(function(){
 			$("#card_beban").hide(); // menyembunyikan grafik secara default
@@ -394,7 +393,7 @@
 	</script>
 
 	<!-- Show hide grafik Kunjungan -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 	<script>
 		$(document).ready(function(){
 			$("#card_kunjungan").hide(); // menyembunyikan grafik secara default
@@ -444,44 +443,46 @@
 							fill: false,  // isi area di bawah garis target dinonaktifkan
 							backgroundColor: 'rgba(50, 205, 50, 0.2)',
 							borderColor: 'rgba(50, 205, 50, 1)',
-							borderWidth: 3
+							borderWidth: 3,
+							tension: 0.4 // nilai kekencangan kurva pada titik data
 						}]
 					},
 					options: {
-					scales: {
-						xAxes: [{
-						gridLines: {
-							display: false
-						}
-						}],
-						yAxes: [{
-						gridLines: {
-							display: false
-						},
-						ticks: {
-							// Menentukan format currency
-							callback: function(value, index, values) {
+						scales: {
+							x: {
+							grid: {
+								display: false
+							}
+							},
+							y: {
+							grid: {
+								display: false
+							},
+							ticks: {
+								callback: function(value, index, values) {
 								return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-							}
-						}
-						}]
-					},
-					legend: {
-						position: 'bottom'
-					},
-					responsive: true,
-					tooltips: {
-						callbacks: {
-							label: function(tooltipItem, data) {
-								var label = data.datasets[tooltipItem.datasetIndex].label || '';
-								if (label) {
-									label += ': ';
 								}
-								label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
-								return label;
 							}
-						}
-					}
+							}
+						},
+						plugins: {
+							legend: {
+							position: 'bottom'
+							},
+							tooltip: {
+								callbacks: {
+									label: function(context) {
+										var label = context.dataset.label || '';
+										if (label) {
+										label += ': ';
+										}
+										label += 'Rp. ' + (context.parsed.y / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
+										return label;
+									}
+								}
+							}
+						},
+						responsive: true
 					}
 				});
 			},
@@ -526,44 +527,46 @@
 							fill: false,  // isi area di bawah garis target dinonaktifkan
 							backgroundColor: 'rgba(50, 205, 50, 0.2)',
 							borderColor: 'rgba(50, 205, 50, 1)',
-							borderWidth: 3
+							borderWidth: 3,
+							tension: 0.4 // nilai kekencangan kurva pada titik data
 						}]
 					},
 					options: {
-					scales: {
-						xAxes: [{
-						gridLines: {
-							display: false
-						}
-						}],
-						yAxes: [{
-						gridLines: {
-							display: false
-						},
-						ticks: {
-							// Menentukan format currency
-							callback: function(value, index, values) {
+						scales: {
+							x: {
+							grid: {
+								display: false
+							}
+							},
+							y: {
+							grid: {
+								display: false
+							},
+							ticks: {
+								callback: function(value, index, values) {
 								return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-							}
-						}
-						}]
-					},
-					legend: {
-						position: 'bottom'
-					},
-					responsive: true,
-					tooltips: {
-						callbacks: {
-							label: function(tooltipItem, data) {
-								var label = data.datasets[tooltipItem.datasetIndex].label || '';
-								if (label) {
-									label += ': ';
 								}
-								label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
-								return label;
 							}
-						}
-					}
+							}
+						},
+						plugins: {
+							legend: {
+							position: 'bottom'
+							},
+							tooltip: {
+								callbacks: {
+									label: function(context) {
+										var label = context.dataset.label || '';
+										if (label) {
+										label += ': ';
+										}
+										label += 'Rp. ' + (context.parsed.y / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
+										return label;
+									}
+								}
+							}
+						},
+						responsive: true
 					}
 				});
 			},
@@ -608,44 +611,46 @@
 							fill: false,  // isi area di bawah garis target dinonaktifkan
 							backgroundColor: 'rgba(50, 205, 50, 0.2)',
 							borderColor: 'rgba(50, 205, 50, 1)',
-							borderWidth: 3
+							borderWidth: 3,
+							tension: 0.4 // nilai kekencangan kurva pada titik data
 						}]
 					},
 					options: {
-					scales: {
-						xAxes: [{
-						gridLines: {
-							display: false
-						}
-						}],
-						yAxes: [{
-						gridLines: {
-							display: false
-						},
-						ticks: {
-							// Menentukan format currency
-							callback: function(value, index, values) {
+						scales: {
+							x: {
+							grid: {
+								display: false
+							}
+							},
+							y: {
+							grid: {
+								display: false
+							},
+							ticks: {
+								callback: function(value, index, values) {
 								return 'Rp. ' + (value / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-							}
-						}
-						}]
-					},
-					legend: {
-						position: 'bottom'
-					},
-					responsive: true,
-					tooltips: {
-						callbacks: {
-							label: function(tooltipItem, data) {
-								var label = data.datasets[tooltipItem.datasetIndex].label || '';
-								if (label) {
-									label += ': ';
 								}
-								label += 'Rp. ' + (tooltipItem.yLabel / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
-								return label;
 							}
-						}
-					}
+							}
+						},
+						plugins: {
+							legend: {
+							position: 'bottom'
+							},
+							tooltip: {
+								callbacks: {
+									label: function(context) {
+										var label = context.dataset.label || '';
+										if (label) {
+										label += ': ';
+										}
+										label += 'Rp. ' + (context.parsed.y / 1000000).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' ( jt )';
+										return label;
+									}
+								}
+							}
+						},
+						responsive: true
 					}
 				});
 			},
@@ -670,7 +675,7 @@
 				var kunjungan = new Chart(ctx, {
 					type: 'bar',
 					data: {
-						labels: ['RSG', 'RSMU', 'RSP', 'RST'],
+						// labels: ['RSG', 'RSMU', 'RSP', 'RST'],
 						datasets: [{
 							label: 'Realisasi',
 							data: data.realisasi3,
@@ -690,44 +695,46 @@
 							fill: false,  // isi area di bawah garis target dinonaktifkan
 							backgroundColor: 'rgba(50, 205, 50, 0.2)',
 							borderColor: 'rgba(50, 205, 50, 1)',
-							borderWidth: 3
+							borderWidth: 3,
+							tension: 0.4 // nilai kekencangan kurva pada titik data
 						}]
 					},
 					options: {
-					scales: {
-						xAxes: [{
-						gridLines: {
-							display: false
-						}
-						}],
-						yAxes: [{
-						gridLines: {
-							display: false
-						},
-						ticks: {
-							// Menentukan format currency
-							callback: function(value, index, values) {
-								return (value).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+						scales: {
+							x: {
+							grid: {
+								display: false
 							}
-						}
-						}]
-					},
-					legend: {
-						position: 'bottom'
-					},
-					responsive: true,
-					tooltips: {
-						callbacks: {
-							label: function(tooltipItem, data) {
-								var label = data.datasets[tooltipItem.datasetIndex].label || '';
-								if (label) {
-									label += ': ';
+							},
+							y: {
+							grid: {
+								display: false
+							},
+							ticks: {
+								callback: function(value, index, values) {
+									return (value).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 								}
-								label += (tooltipItem.yLabel).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-								return label;
 							}
-						}
-					}
+							}
+						},
+						plugins: {
+							legend: {
+							position: 'bottom'
+							},
+							tooltip: {
+								callbacks: {
+									label: function(context) {
+										var label = context.dataset.label || '';
+										if (label) {
+										label += ': ';
+										}
+										label += (context.parsed.y).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+										return label;
+									}
+								}
+							}
+						},
+						responsive: true
 					}
 				});
 			},
