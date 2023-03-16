@@ -143,7 +143,9 @@
                                         <form method="post" action="<?php echo site_url(); ?>SuperUser/claba_rugi/export_xls">
                                             <input class="form-control form-control-solid ps-12" type="hidden" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>" readonly/>
                                             <input class="form-control form-control-solid ps-12" type="hidden" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>" readonly/>
-                                            <button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
+                                            <input class="form-control form-control-solid ps-12" type="hidden" name="lokasi" required="required" value="<?php echo $lokasi;?>" readonly/>
+                                            <button type="submit" name="exportType" value="detail" class="btn btn-sm btn-primary">Export Detail</button>
+                                            <button type="submit" name="exportType" value="tabel" class="btn btn-sm btn-info">Export Tabel</button>
                                             <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
                                                 <table class="table align-middle gs-0 gy-4">
                                                 <!--begin::Table head-->
@@ -156,7 +158,7 @@
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Realisasi yang Lalu</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Realisasi Bulan Ini</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Realisasi</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Realisasi s/d Saat Ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Realisasi</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Realisasi</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Realisasi</th>
@@ -232,7 +234,8 @@
                                             <i><b>Potensial Realisasi</b> = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
                                             <i><b>Estimasi Total Realisasi</b> = Penjumlahan total realisasi saat ini dengan potensial realisasi</i><br>
                                             <i><b>Prosentase</b> = Total Realisasi / Target Realisasi</i><br>
-                                            <i><b>Export Excel</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
+                                            <i><b>Export Detail</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
+                                            <i><b>Export Tabel</b> digunakan untuk export data tabel yang tampil</i><br>
                                         </div>
                                         <!--end::Table-->
                                     </div>

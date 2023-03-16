@@ -144,7 +144,9 @@
                                             <form method="post" action="<?php echo site_url(); ?>SuperUser/cbiaya/export_xls">
                                                 <input class="form-control form-control-solid ps-12" type="hidden" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>" readonly/>
                                                 <input class="form-control form-control-solid ps-12" type="hidden" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>" readonly/>
-                                                <button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
+                                                <input class="form-control form-control-solid ps-12" type="hidden" name="lokasi" required="required" value="<?php echo $lokasi;?>" readonly/>
+                                                <button type="submit" name="exportType" value="detail" class="btn btn-sm btn-primary">Export Detail</button>
+                                                <button type="submit" name="exportType" value="tabel" class="btn btn-sm btn-info">Export Tabel</button>
                                                 <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
                                                     <table class="table align-middle gs-0 gy-4">
                                                         <!--begin::Table head-->
@@ -157,7 +159,7 @@
                                                                 <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-110px">Uraian</th>
                                                                 <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban yang Lalu</th>
                                                                 <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban Bulan Ini</th>
-                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Beban</th>
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Beban s/d Saat Ini</th>
                                                                 <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Beban</th>
                                                                 <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Beban</th>
                                                                 <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Beban</th>
@@ -249,7 +251,8 @@
                                             <i><b>Potensial Beban</b> = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
                                             <i><b>Estimasi Total Beban</b> = Penjumlahan total beban saat ini dengan potensial beban</i><br>
                                             <i><b>Prosentase</b> = Total Beban / Target Beban</i><br>
-                                            <i><b>Export Excel</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
+                                            <i><b>Export Detail</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
+                                            <i><b>Export Tabel</b> digunakan untuk export data tabel yang tampil</i><br>
                                         </div>
                                         <!--end::Table-->
                                     </div>

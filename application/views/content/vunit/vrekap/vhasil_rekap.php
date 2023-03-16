@@ -134,7 +134,9 @@
                                             <form method="post" action="<?php echo site_url(); ?>Unit/crekap/export_xls">
                                                 <input class="form-control form-control-solid ps-12" type="hidden" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>" readonly/>
                                                 <input class="form-control form-control-solid ps-12" type="hidden" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>" readonly/>
-                                                <button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
+                                                <input class="form-control form-control-solid ps-12" type="hidden" name="lokasi" required="required" value="<?php echo $lokasi;?>" readonly/>
+                                                <button type="submit" name="exportType" value="detail" class="btn btn-sm btn-primary">Export Detail</button>
+                                                <button type="submit" name="exportType" value="tabel" class="btn btn-sm btn-info">Export Tabel</button>
                                                 <div style="text-align:right"><b><i>(Dalam Jutaan)</i></b></div>
                                                 <table class="table align-middle gs-0 gy-4">
                                                     <!--begin::Table head-->
@@ -207,7 +209,8 @@
                                             <i><b>Potensial Revenue</b> = Transaksi Pasien RJ atau RI yang sudah close bill</i><br>
                                             <i><b>Estimasi Total Revenue</b> = Penjumlahan total revenue saat ini dengan potensial revenue</i><br>
                                             <i><b>Prosentase</b> = Total Revenue / Target Revenue</i><br>
-                                            <i><b>Export Excel</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
+                                            <i><b>Export Detail</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
+                                            <i><b>Export Tabel</b> digunakan untuk export data tabel yang tampil</i><br>
                                         </div>
                                         <!--end::Table-->
                                     </div>

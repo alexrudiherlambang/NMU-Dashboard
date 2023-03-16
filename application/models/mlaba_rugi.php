@@ -81,6 +81,7 @@ class mlaba_rugi extends ci_model {
          $this->db->from('test.ra_dashdb_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
+         // $this->db->where_in('kellabarugi', array('1 PENDAPATAN USAHA','2. BEBAN USAHA','4. DEPRESIASI','5. PENDAPATAN/BIAYA LUAR USAHA'));
          $this->db->group_by('kellabarugi');
          return $this->db->get();
       }else{

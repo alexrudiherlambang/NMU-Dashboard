@@ -209,66 +209,150 @@ class claba_rugi extends CI_Controller {
    }
 
    function export_xls() {
-      $nama = $this->session->userdata("nama");
-      $pilihan = $this->input->post('pilihan');
-      $tglawal = $this->input->post('tglawal');
-      $tglakhir = $this->input->post('tglakhir');
+      // Mengecek jenis export yang diminta
+      if (isset($_POST['exportType'])) {
+         $exportType = $_POST['exportType'];
+         if ($exportType == 'detail') {
+            $nama = $this->session->userdata("nama");
+            $pilihan = $this->input->post('pilihan');
+            $tglawal = $this->input->post('tglawal');
+            $tglakhir = $this->input->post('tglakhir');
+            
+            $this->load->helper('exportexcel');
+            $namaFile = "Rekap Laba / Rugi.xls";
+            $judul = "Rekap Laba / Rugi";
+            $tablehead = 0;
+            $tablebody = 1;
+            $nourut = 1;
+            //penulisan header
+            header("Pragma: public");
+            header("Expires: 0");
+            header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+            header("Content-Type: application/force-download");
+            header("Content-Type: application/octet-stream");
+            header("Content-Type: application/download");
+            header("Content-Disposition: attachment;filename=" . $namaFile . "");
+            header("Content-Transfer-Encoding: binary ");
       
-      $this->load->helper('exportexcel');
-      $namaFile = "Rekap Laba / Rugi.xls";
-      $judul = "Rekap Laba / Rugi";
-      $tablehead = 0;
-      $tablebody = 1;
-      $nourut = 1;
-      //penulisan header
-      header("Pragma: public");
-      header("Expires: 0");
-      header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
-      header("Content-Type: application/force-download");
-      header("Content-Type: application/octet-stream");
-      header("Content-Type: application/download");
-      header("Content-Disposition: attachment;filename=" . $namaFile . "");
-      header("Content-Transfer-Encoding: binary ");
-  
-      xlsBOF();
-  
-      $kolomhead = 0;
-      xlsWriteLabel($tablehead, $kolomhead++, "No");
-      xlsWriteLabel($tablehead, $kolomhead++, "Unit");
-      xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
-      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Laba-Rugi");
-      xlsWriteLabel($tablehead, $kolomhead++, "Keterangan Laba-Rugi");
-      xlsWriteLabel($tablehead, $kolomhead++, "Realisasi Yang Lalu");
-      xlsWriteLabel($tablehead, $kolomhead++, "Realisasi Bulan Ini");
-      xlsWriteLabel($tablehead, $kolomhead++, "Total Realisasi s/d Saat Ini");
-      xlsWriteLabel($tablehead, $kolomhead++, "Potensial Realisasi");
-      xlsWriteLabel($tablehead, $kolomhead++, "Target Realisasi");
-      xlsWriteLabel($tablehead, $kolomhead++, "Status");
+            xlsBOF();
+      
+            $kolomhead = 0;
+            xlsWriteLabel($tablehead, $kolomhead++, "No");
+            xlsWriteLabel($tablehead, $kolomhead++, "Unit");
+            xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
+            xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Laba-Rugi");
+            xlsWriteLabel($tablehead, $kolomhead++, "Keterangan Laba-Rugi");
+            xlsWriteLabel($tablehead, $kolomhead++, "Realisasi Yang Lalu");
+            xlsWriteLabel($tablehead, $kolomhead++, "Realisasi Bulan Ini");
+            xlsWriteLabel($tablehead, $kolomhead++, "Total Realisasi s/d Saat Ini");
+            xlsWriteLabel($tablehead, $kolomhead++, "Potensial Realisasi");
+            xlsWriteLabel($tablehead, $kolomhead++, "Target Realisasi");
+            xlsWriteLabel($tablehead, $kolomhead++, "Status");
 
-      foreach ($pilihan as $p) {
-         $kellabarugi = $p;
-         foreach ($this->mlaba_rugi->mshow_all_detail($nama, $kellabarugi, $tglawal, $tglakhir) as $data) {
-            $kolombody = 0;
+            foreach ($pilihan as $p) {
+               $kellabarugi = $p;
+               foreach ($this->mlaba_rugi->mshow_all_detail($nama, $kellabarugi, $tglawal, $tglakhir) as $data) {
+                  $kolombody = 0;
 
-            //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
-            xlsWriteNumber($tablebody, $kolombody++, $nourut);
-            xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
-            xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
-            xlsWriteLabel($tablebody, $kolombody++, $data->kellabarugi);
-            xlsWriteLabel($tablebody, $kolombody++, $data->ket);
-            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
-            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
-            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);
-            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi1);
-            xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
-            xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
-         
+                  //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                  xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->kellabarugi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->ket);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi1);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+               
+                     $tablebody++;
+                  $nourut++;
+               }
+            }
+      
+            xlsEOF();
+            exit();
+         } else if ($exportType == 'tabel') {
+            $nama = $this->session->userdata("nama");
+            $lokasi = $this->input->post('lokasi');
+            $tglawal = $this->input->post('tglawal');
+            $tglakhir = $this->input->post('tglakhir');
+            
+            $this->load->helper('exportexcel');
+            $namaFile = "Tabel Laba / Rugi.xls";
+            $judul = "Tabel Laba / Rugi";
+            $tablehead = 0;
+            $tablebody = 1;
+            $nourut = 1;
+            //penulisan header
+            header("Pragma: public");
+            header("Expires: 0");
+            header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+            header("Content-Type: application/force-download");
+            header("Content-Type: application/octet-stream");
+            header("Content-Type: application/download");
+            header("Content-Disposition: attachment;filename=" . $namaFile . "");
+            header("Content-Transfer-Encoding: binary ");
+      
+            xlsBOF();
+      
+            $kolomhead = 0;
+            xlsWriteLabel($tablehead, $kolomhead++, "NO");
+            xlsWriteLabel($tablehead, $kolomhead++, "URAIAN");
+            xlsWriteLabel($tablehead, $kolomhead++, "LABA-RUGI YANG LALU");
+            xlsWriteLabel($tablehead, $kolomhead++, "LABA-RUGI BULAN INI");
+            xlsWriteLabel($tablehead, $kolomhead++, "TOTAL LABA-RUGI S/D SAAT INI");
+            xlsWriteLabel($tablehead, $kolomhead++, "POTENSIAL LABA-RUGI");
+            xlsWriteLabel($tablehead, $kolomhead++, "ESTIMASI TOTAL LABA-RUGI");
+            xlsWriteLabel($tablehead, $kolomhead++, "TARGET LABA-RUGI");
+            xlsWriteLabel($tablehead, $kolomhead++, "PROSENTASE");
+
+            foreach ($this->mlaba_rugi->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi) as $data) {
+               $kolombody = 0;
+
+               //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+               xlsWriteNumber($tablebody, $kolombody++, $nourut);
+               xlsWriteLabel($tablebody, $kolombody++, $data->ket);
+               xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
+               xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
+               xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);
+               xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi);
+               xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai+$data->rsaldopotensi);
+               xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
+               xlsWriteLabel($tablebody, $kolombody++, $data->jmlprosen*100);
                $tablebody++;
-            $nourut++;
-         }
+               $nourut++;
+               if ($data->ket == '6. LABA/RUGI SEBELUM PAJAK' && $data->flag == "1"){
+                  $kolombody = 0;
+                  xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                  xlsWriteLabel($tablebody, $kolombody++, "7. ESTIMASI PPH BADAN (22%)");
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu*22/100);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini*22/100);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai*22/100);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi*22/100);
+                  xlsWriteLabel($tablebody, $kolombody++, ($data->rsaldosampai+$data->rsaldopotensi)*22/100);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget*22/100);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->jmlprosen*22/100*100);
+                  $tablebody++;
+                  $nourut++;
+                  $kolombody = 0;
+                  xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                  xlsWriteLabel($tablebody, $kolombody++, "8. LABA SETELAH PAJAK");
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu-($data->rsaldolalu*22/100));
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini-($data->rsaldosaatini*22/100));
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai-($data->rsaldosampai*22/100));
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi-($data->rsaldopotensi*22/100));
+                  xlsWriteLabel($tablebody, $kolombody++, ($data->rsaldosampai+$data->rsaldopotensi)-(($data->rsaldosampai+$data->rsaldopotensi)*22/100));
+                  xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget-($data->jmltarget*22/100));
+                  xlsWriteLabel($tablebody, $kolombody++, $data->jmlprosen*100-($data->jmlprosen*22/100*100));
+               }
+            }
+      
+            xlsEOF();
+            exit();
+         } 
       }
-  
-      xlsEOF();
-      exit();
    }
 }
