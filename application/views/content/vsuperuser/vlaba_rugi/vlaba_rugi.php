@@ -223,6 +223,27 @@
                                                     <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
                                                 </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5"><b>6</b></td>
+                                                    <td class="min-w-125px"><b>ESTIMASI PPH BADAN (22%)</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr style="background-color: #000080;">
+                                                    <td style="color: #ffffff; vertical-align: middle;" colspan="2" class="min-w-150px"><b>LABA / RUGI SETELAH PAJAK</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                </tr>
                                             </tbody>
                                             <!--end::Table body-->
                                             </table>
