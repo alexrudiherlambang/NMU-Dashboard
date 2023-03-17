@@ -155,7 +155,7 @@
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">
                                                             All<input type="checkbox" id="CheckAll">
                                                         </th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Realisasi yang Lalu</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Realisasi Bulan Ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Realisasi s/d Saat Ini</th>
@@ -176,37 +176,37 @@
                                                         <?php if ($lr->flag == "1"): ?>
                                                             <td style="color: #ffffff; vertical-align: middle;"><b></b></td>
                                                             <td style="color: #ffffff; vertical-align: middle;"><b><?php echo $lr->ket ?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->rsaldolalu/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->rsaldosampai/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$lr->rsaldosampai+$lr->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($lr->jmltarget/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo $lr->jmlprosen*100;?>%</b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($lr->rsaldolalu/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($lr->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($lr->rsaldosampai/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($lr->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php $total=$lr->rsaldosampai+$lr->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($lr->jmltarget/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo $lr->jmlprosen*100;?>%</b></td>
                                                         <?php endif; ?>
                                                     </tr>
                                                     <?php if ($lr->ket == '6. LABA/RUGI SEBELUM PAJAK' && $lr->flag == "1") :?>
                                                         <tr>
                                                             <td> </td>
                                                             <td>7. ESTIMASI PPH BADAN (22%)</td>
-                                                            <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldolalu/1000000*22/100, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldosaatini/1000000*22/100, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldosampai/1000000*22/100, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldopotensi/1000000*22/100, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><b><?php $total=$lr->rsaldosampai+$lr->rsaldopotensi; echo number_format($total/1000000*22/100, 0, ',', '.')?></b></td>
-                                                            <td class="text-end min-w-100px"><?php echo number_format($lr->jmltarget/1000000*22/100, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><?php echo $lr->jmlprosen*22/100*100;?>%</td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($lr->rsaldolalu/1000000*22/100, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($lr->rsaldosaatini/1000000*22/100, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($lr->rsaldosampai/1000000*22/100, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($lr->rsaldopotensi/1000000*22/100, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><b><?php $total=$lr->rsaldosampai+$lr->rsaldopotensi; echo number_format($total/1000000*22/100, 0, ',', '.')?></b></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($lr->jmltarget/1000000*22/100, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo $lr->jmlprosen*22/100*100;?>%</td>
                                                         </tr>
                                                         <tr style="background-color: #000080;">
                                                             <td> </td>
                                                             <td style="color: #ffffff; vertical-align: middle;">8. LABA SETELAH PAJAK</td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><?php echo number_format($lr->rsaldolalu/1000000-($lr->rsaldolalu/1000000*22/100), 0, ',', '.')?></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><?php echo number_format($lr->rsaldosaatini/1000000-($lr->rsaldosaatini/1000000*22/100), 0, ',', '.')?></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><?php echo number_format($lr->rsaldosampai/1000000-($lr->rsaldosampai/1000000*22/100), 0, ',', '.')?></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><?php echo number_format($lr->rsaldopotensi/1000000-($lr->rsaldopotensi/1000000*22/100), 0, ',', '.')?></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$lr->rsaldosampai+$lr->rsaldopotensi; echo number_format($total/1000000-($total/1000000*22/100), 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><?php echo number_format($lr->jmltarget/1000000-($lr->jmltarget/1000000*22/100), 0, ',', '.')?></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><?php echo $lr->jmlprosen*100-($lr->jmlprosen*22/100*100);?>%</td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($lr->rsaldolalu/1000000-($lr->rsaldolalu/1000000*22/100), 0, ',', '.')?></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($lr->rsaldosaatini/1000000-($lr->rsaldosaatini/1000000*22/100), 0, ',', '.')?></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($lr->rsaldosampai/1000000-($lr->rsaldosampai/1000000*22/100), 0, ',', '.')?></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($lr->rsaldopotensi/1000000-($lr->rsaldopotensi/1000000*22/100), 0, ',', '.')?></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php $total=$lr->rsaldosampai+$lr->rsaldopotensi; echo number_format($total/1000000-($total/1000000*22/100), 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($lr->jmltarget/1000000-($lr->jmltarget/1000000*22/100), 0, ',', '.')?></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo $lr->jmlprosen*100-($lr->jmlprosen*22/100*100);?>%</td>
                                                         </tr>
                                                     <?php endif; ?>
                                                     <tr>
@@ -215,13 +215,13 @@
                                                                 <input type="checkbox" id="Check" value="<?php echo $lr->ket ?>" name="pilihan[]">
                                                             </td>
                                                             <td><?php echo $lr->ket ?></td>
-                                                            <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldolalu/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldosaatini/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldosampai/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><?php echo number_format($lr->rsaldopotensi/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><b><?php $total=$lr->rsaldosampai+$lr->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
-                                                            <td class="text-end min-w-100px"><?php echo number_format($lr->jmltarget/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-end min-w-100px"><?php echo $lr->jmlprosen*100;?>%</td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($lr->rsaldolalu/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($lr->rsaldosaatini/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($lr->rsaldosampai/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($lr->rsaldopotensi/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><b><?php $total=$lr->rsaldosampai+$lr->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($lr->jmltarget/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo $lr->jmlprosen*100;?>%</td>
                                                         <?php endif; ?>
                                                     </tr>
                                                 <?php endforeach; ?>

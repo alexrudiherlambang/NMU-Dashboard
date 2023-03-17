@@ -425,7 +425,7 @@
 					data: {
 						// labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
 						datasets: [{
-							label: 'Realisasi',
+							label: 'Revenue',
 							data: data.realisasi,
 							backgroundColor: 'rgba(0, 0, 128, 0.2)',
 							borderColor: 'rgba(0, 0, 128, 1)',
@@ -506,7 +506,7 @@
 					data: {
 						// labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
 						datasets: [{
-							label: 'Realisasi',
+							label: 'Revenue',
 							data: data.realisasi1,
 							backgroundColor: 'rgba(0, 0, 128, 0.2)',
 							borderColor: 'rgba(0, 0, 128, 1)',
@@ -587,7 +587,7 @@
 					data: {
 						// labels: ['KP', 'RSG', 'RST', 'RSP', 'RSMU', 'URJ'],
 						datasets: [{
-							label: 'Realisasi',
+							label: 'Revenue',
 							data: data.realisasi2,
 							backgroundColor: 'rgba(0, 0, 128, 0.2)',
 							borderColor: 'rgba(0, 0, 128, 1)',

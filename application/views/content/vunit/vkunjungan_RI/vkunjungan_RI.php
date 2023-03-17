@@ -135,8 +135,8 @@
                                             <thead>
                                                 <!--begin::Table row-->
                                                 <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center text-center w-10px pe-5">No</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Bulan Ini</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
@@ -151,103 +151,103 @@
                                             <!--begin::Table body-->
                                             <tbody class="text-gray-600 fw-semibold">
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>1</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>1</b></td>
                                                     <td class="min-w-125px"><b>PRESIDENCE SUITE</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>2</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>2</b></td>
                                                     <td class="min-w-125px"><b>VVIP</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>3</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>3</b></td>
                                                     <td class="min-w-125px"><b>VIP</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>4</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>4</b></td>
                                                     <td class="min-w-125px"><b>KELAS I</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>5</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>5</b></td>
                                                     <td class="min-w-125px"><b>KELAS II</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>6</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>6</b></td>
                                                     <td class="min-w-125px"><b>KELAS III</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>7</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>7</b></td>
                                                     <td class="min-w-125px"><b>ICU/ICCU/HCU/PICU/NICU</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>8</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>8</b></td>
                                                     <td class="min-w-125px"><b>KAMAR OPERASI</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr style="background-color: #000080;">
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5"><b></b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL KUNJ. R. INAP</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                             </tbody>
                                             <!--end::Table body-->

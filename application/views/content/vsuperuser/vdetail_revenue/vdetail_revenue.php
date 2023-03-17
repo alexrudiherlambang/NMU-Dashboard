@@ -144,8 +144,8 @@
                                                 <thead>
                                                     <!--begin::Table row-->
                                                     <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center text-center w-10px pe-5">No</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue yang Lalu</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue Bulan Ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Revenue</th>
@@ -160,59 +160,59 @@
                                                 <!--begin::Table body-->
                                                 <tbody class="text-gray-600 fw-semibold">
                                                 <tr>
-                                                        <td class="w-10px pe-5">1</td>
+                                                        <td class="text-center w-10px pe-5">1</td>
                                                         <td class="min-w-125px">RAWAT JALAN</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="w-10px pe-5">2</td>
+                                                        <td class="text-center w-10px pe-5">2</td>
                                                         <td class="min-w-125px">PENUNJANG MEDIS</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="w-10px pe-5">3</td>
+                                                        <td class="text-center w-10px pe-5">3</td>
                                                         <td class="min-w-125px">RAWAT INAP</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="w-10px pe-5">4</td>
+                                                        <td class="text-center w-10px pe-5">4</td>
                                                         <td class="min-w-125px">USAHA LAIN</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
-                                                        <td class="text-end min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
                                                     </tr>
                                                     <tr style="background-color: #000080;">
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5"><b></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL</b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
                                                     </tr>
                                                 </tbody>
                                                 <!--end::Table body-->

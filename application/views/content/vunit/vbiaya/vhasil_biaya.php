@@ -147,7 +147,7 @@
                                                                 <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">
                                                                     All<input type="checkbox" id="CheckAll">
                                                                 </th>
-                                                                <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-110px">Uraian</th>
+                                                                <th style="color: #ffffff; vertical-align: middle;" class="min-w-110px">Uraian</th>
                                                                 <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban yang Lalu</th>
                                                                 <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban Bulan Ini</th>
                                                                 <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Beban s/d Saat Ini</th>
@@ -173,13 +173,13 @@
                                                                             <input type="checkbox" id="Check" value="<?php echo $biaya->ket ?>" name="pilihan[]">
                                                                         </td>
                                                                         <td><?php echo $biaya->ket ?></td>
-                                                                        <td class="text-end min-w-100px"><?php echo number_format($biaya->rsaldolalu/1000000, 0, ',', '.')?></td>
-                                                                        <td class="text-end min-w-100px"><?php echo number_format($biaya->rsaldosaatini/1000000, 0, ',', '.')?></td>
-                                                                        <td class="text-end min-w-100px"><?php echo number_format($biaya->rsaldosampai/1000000, 0, ',', '.')?></td>
-                                                                        <td class="text-end min-w-100px"><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></td>
-                                                                        <td class="text-end min-w-100px"><?php $total=$biaya->rsaldosampai+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></td>
-                                                                        <td class="text-end min-w-100px"><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></td>
-                                                                        <td class="text-end min-w-100px"><?php echo $biaya->jmlprosen*100;?>%</td>
+                                                                        <td class="text-center min-w-100px"><?php echo number_format($biaya->rsaldolalu/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-center min-w-100px"><?php echo number_format($biaya->rsaldosaatini/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-center min-w-100px"><?php echo number_format($biaya->rsaldosampai/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-center min-w-100px"><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-center min-w-100px"><?php $total=$biaya->rsaldosampai+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-center min-w-100px"><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></td>
+                                                                        <td class="text-center min-w-100px"><?php echo $biaya->jmlprosen*100;?>%</td>
                                                                     </tr>
                                                                     <?php continue;
                                                                 } else {
@@ -190,13 +190,13 @@
                                                                     <?php if ($biaya->flag == "1"): ?>
                                                                         <td style="color: #ffffff; vertical-align: middle;"></td>
                                                                         <td style="color: #ffffff; vertical-align: middle;"><b><?php echo $biaya->ket ?></b></td>
-                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldolalu/1000000, 0, ',', '.')?></b></td>
-                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
-                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldosampai/1000000, 0, ',', '.')?></b></td>
-                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
-                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php $total=$biaya->rsaldosampai+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
-                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></b></td>
-                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b><?php echo $biaya->jmlprosen*100;?>%</b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($biaya->rsaldolalu/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($biaya->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($biaya->rsaldosampai/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php $total=$biaya->rsaldosampai+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></b></td>
+                                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo $biaya->jmlprosen*100;?>%</b></td>
                                                                     <?php endif; ?>
                                                                 </tr>
                                                                 <tr>
@@ -206,26 +206,26 @@
                                                                             <input type="checkbox" id="Check" value="<?php echo $biaya->ket ?>" name="pilihan[]">
                                                                         </td>
                                                                         <td><b><?php echo $biaya->ket ?></b></td>
-                                                                        <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldolalu/1000000, 0, ',', '.')?></b></td>
-                                                                        <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
-                                                                        <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldosampai/1000000, 0, ',', '.')?></b></td>
-                                                                        <td class="text-end min-w-100px"><b><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
-                                                                        <td class="text-end min-w-100px"><b><?php $total=$biaya->rsaldosampai+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
-                                                                        <td class="text-end min-w-100px"><b><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></b></td>
-                                                                        <td class="text-end min-w-100px"><b><?php echo $biaya->jmlprosen*100;?>%</b></td>
+                                                                        <td class="text-center min-w-100px"><b><?php echo number_format($biaya->rsaldolalu/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-center min-w-100px"><b><?php echo number_format($biaya->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-center min-w-100px"><b><?php echo number_format($biaya->rsaldosampai/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-center min-w-100px"><b><?php echo number_format($biaya->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-center min-w-100px"><b><?php $total=$biaya->rsaldosampai+$biaya->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-center min-w-100px"><b><?php echo number_format($biaya->jmltarget/1000000, 0, ',', '.')?></b></td>
+                                                                        <td class="text-center min-w-100px"><b><?php echo $biaya->jmlprosen*100;?>%</b></td>
                                                                         <?php continue;
                                                                     } else {?>
                                                                         <td>
                                                                             
                                                                         </td>
                                                                         <td><b><?php echo $biaya->ket ?></b></td>
-                                                                        <td class="text-end min-w-100px"><b></b></td>
-                                                                        <td class="text-end min-w-100px"><b></b></td>
-                                                                        <td class="text-end min-w-100px"><b></b></td>
-                                                                        <td class="text-end min-w-100px"><b></b></td>
-                                                                        <td class="text-end min-w-100px"><b></b></td>
-                                                                        <td class="text-end min-w-100px"><b></b></td>
-                                                                        <td class="text-end min-w-100px"><b></b></td>
+                                                                        <td class="text-center min-w-100px"><b></b></td>
+                                                                        <td class="text-center min-w-100px"><b></b></td>
+                                                                        <td class="text-center min-w-100px"><b></b></td>
+                                                                        <td class="text-center min-w-100px"><b></b></td>
+                                                                        <td class="text-center min-w-100px"><b></b></td>
+                                                                        <td class="text-center min-w-100px"><b></b></td>
+                                                                        <td class="text-center min-w-100px"><b></b></td>
                                                                 <?php } 
                                                                 endif; ?>
                                                                 </tr>

@@ -135,8 +135,8 @@
                                             <thead>
                                                 <!--begin::Table row-->
                                                 <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center text-center w-10px pe-5">No</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Bulan Ini</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
@@ -151,142 +151,142 @@
                                             <!--begin::Table body-->
                                             <tbody class="text-gray-600 fw-semibold">
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>1</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>1</b></td>
                                                     <td class="min-w-125px"><b>POLIKLINIK</b></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
+                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
                                                     <td class="min-w-125px"><i>POLI UMUM</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
+                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
                                                     <td class="min-w-125px"><i>POLI GIGI</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>2</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>2</b></td>
                                                     <td class="min-w-125px"><b>POLI SPESIALIS</b></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
-                                                    <td class="text-end min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
+                                                    <td class="text-center min-w-100px"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
+                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
                                                     <td class="min-w-125px"><i>POLI SPESIALIS OBSGYN</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
+                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
                                                     <td class="min-w-125px"><i>POLI SPESIALIS BEDAH</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
+                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
                                                     <td class="min-w-125px"><i>POLI SPESIALIS ANAK</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
+                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
                                                     <td class="min-w-125px"><i>POLI SPESIALIS INTERNIS</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
+                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
                                                     <td class="min-w-125px"><i>POLI SPESIALIS LAINNYA</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>3</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>3</b></td>
                                                     <td class="min-w-125px"><b>HEMODIALISIS</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr style="background-color: #000080;">
                                                     <td style="color: #ffffff; vertical-align: middle;" class="min-w-150px" colspan="2"><b>TOTAL KUNJ. R. JALAN</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>4</b></td>
+                                                    <td class="text-center w-10px pe-5"><b>4</b></td>
                                                     <td class="min-w-125px"><b>IGD</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
-                                                    <td class="text-end min-w-100px"><i>0</i></td>
-                                                    <td class="text-end min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                                 <tr style="background-color: #000080;">
                                                     <td style="color: #ffffff; vertical-align: middle;" class="min-w-150px" colspan="2"><b>TOTAL KUNJ. RJ & IGD</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-end min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
                                             </tbody>
                                             <!--end::Table body-->
