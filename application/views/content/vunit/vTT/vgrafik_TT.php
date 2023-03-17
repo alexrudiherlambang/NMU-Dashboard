@@ -66,7 +66,7 @@
 												<div class="card card-md-stretch me-xl-3 mb-md-0 mb-6">
 													<!--begin::Body-->
 													<div class="card-body p-10 p-lg-15">
-															<form method="post" action="<?php echo site_url(); ?>Unit/crekap/pendapatan" enctype="multipart/form-data">
+															<form method="post" action="<?php echo site_url(); ?>Unit/Blank" enctype="multipart/form-data">
 																<div class="row mb-5">
 																	<!--begin::Col-->
 																	<div class="col-xl-4">

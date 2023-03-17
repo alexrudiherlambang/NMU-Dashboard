@@ -292,7 +292,7 @@
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/files/fil003.svg-->
-                            <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/Shopping/Chart-bar1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <span class="svg-icon svg-icon-primary"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/Shopping/Chart-bar1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24"/>
                                     <rect fill="currentColor" opacity="0.3" x="12" y="4" width="3" height="13" rx="1.5"/>
@@ -590,7 +590,7 @@
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/files/fil003.svg-->
-                            <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/Shopping/Chart-bar1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <span class="svg-icon svg-icon-primary"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/Shopping/Chart-bar1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24"/>
                                     <rect fill="currentColor" opacity="0.3" x="12" y="4" width="3" height="13" rx="1.5"/>
@@ -692,6 +692,91 @@
                                         <span class="bullet bullet-dot"></span>
                                     </span>
                                     <span class="menu-title">Laba-Rugi</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                    </div>
+                    <!--end:Menu sub-->
+                </div>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu link-->
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/files/fil003.svg-->
+                            <span class="svg-icon svg-icon-primary"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/Shopping/Chart-bar1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <polygon fill="currentColor" opacity="0.3" points="5 3 19 3 23 8 1 8"/>
+                                    <polygon fill="currentColor" points="23 8 12 20 1 8"/>
+                                </g>
+                            </svg><!--end::Svg Icon--></span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Indikator Mutu</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tmn") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Mutu Nasional</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Mutu Prioritas</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <!--end:Menu link-->
+                            <!--begin:Menu sub-->
+                            <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tmp") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('SuperUser/Blank') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Prioritas</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                            </div>
+                            <!--end:Menu sub-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tmuk") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Mutu Unit Kerja</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>

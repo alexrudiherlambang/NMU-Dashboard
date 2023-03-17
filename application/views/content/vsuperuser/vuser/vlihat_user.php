@@ -538,6 +538,27 @@
                                                                                 if ($role->tkklr == '1') { echo 'checked';}?>>
                                                                             </td>
                                                                         </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Indikasi Mutu Nasional</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="tmn" <?php
+                                                                                if ($role->tmn == '1') { echo 'checked';}?>>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Indikasi Mutu Prioritas</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="tmp" <?php
+                                                                                if ($role->tmp == '1') { echo 'checked';}?>>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Indikasi Mutu Unit Kerja</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="tmuk" <?php
+                                                                                if ($role->tmuk == '1') { echo 'checked';}?>>
+                                                                            </td>
+                                                                        </tr>
                                                                     </tbody>
                                                                     <!--end::Table body-->
                                                                 </table>

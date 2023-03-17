@@ -116,6 +116,9 @@ class cuser extends CI_Controller {
          'tkkp3'		      => isset($_POST['tkkp3']) ? '1' : '0',
          'tkkb'		      => isset($_POST['tkkb']) ? '1' : '0',
          'tkklr'		      => isset($_POST['tkklr']) ? '1' : '0',
+         'tmn'		         => isset($_POST['tmn']) ? '1' : '0',
+         'tmp'		         => isset($_POST['tmp']) ? '1' : '0',
+         'tmuk'		      => isset($_POST['tmuk']) ? '1' : '0',
       );
       
       $this->muser->mupdate_role_user($Update, $id);

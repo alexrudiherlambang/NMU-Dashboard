@@ -54,6 +54,9 @@ class clogin extends CI_Controller {
 						'tkkp3'		=> $role->tkkp3,
 						'tkkb'		=> $role->tkkb,
 						'tkklr'		=> $role->tkklr,
+						'tmn'		=> $role->tmn,
+						'tmp'		=> $role->tmp,
+						'tmuk'		=> $role->tmuk,
 					);
 					
 					$this->session->set_userdata($data_session);
@@ -97,6 +100,9 @@ class clogin extends CI_Controller {
 						'tkkp3'		=> $role->tkkp3,
 						'tkkb'		=> $role->tkkb,
 						'tkklr'		=> $role->tkklr,
+						'tmn'		=> $role->tmn,
+						'tmp'		=> $role->tmp,
+						'tmuk'		=> $role->tmuk,
 					);
 					$this->session->set_userdata($data_session);
 
@@ -138,6 +144,9 @@ class clogin extends CI_Controller {
 						'tkkp3'		=> $role->tkkp3,
 						'tkkb'		=> $role->tkkb,
 						'tkklr'		=> $role->tkklr,
+						'tmn'		=> $role->tmn,
+						'tmp'		=> $role->tmp,
+						'tmuk'		=> $role->tmuk,
 					);
 					// print_r($data_session);
 					$this->session->set_userdata($data_session);
@@ -180,6 +189,9 @@ class clogin extends CI_Controller {
 						'tkkp3'		=> $role->tkkp3,
 						'tkkb'		=> $role->tkkb,
 						'tkklr'		=> $role->tkklr,
+						'tmn'		=> $role->tmn,
+						'tmp'		=> $role->tmp,
+						'tmuk'		=> $role->tmuk,
 					);
 					$this->session->set_userdata($data_session);
 
@@ -221,6 +233,9 @@ class clogin extends CI_Controller {
 						'tkkp3'		=> $role->tkkp3,
 						'tkkb'		=> $role->tkkb,
 						'tkklr'		=> $role->tkklr,
+						'tmn'		=> $role->tmn,
+						'tmp'		=> $role->tmp,
+						'tmuk'		=> $role->tmuk,
 					);
 					$this->session->set_userdata($data_session);
 
@@ -262,6 +277,9 @@ class clogin extends CI_Controller {
 						'tkkp3'		=> $role->tkkp3,
 						'tkkb'		=> $role->tkkb,
 						'tkklr'		=> $role->tkklr,
+						'tmn'		=> $role->tmn,
+						'tmp'		=> $role->tmp,
+						'tmuk'		=> $role->tmuk,
 					);
 					$this->session->set_userdata($data_session);
 

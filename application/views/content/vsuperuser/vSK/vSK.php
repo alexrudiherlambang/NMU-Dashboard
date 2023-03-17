@@ -62,7 +62,7 @@
                                     <div class="card-body border-0 pt-10">
                                         <!--begin::Card title-->
                                         <div class="card-title"><center>
-                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/pendapatan" enctype="multipart/form-data">
+                                            <form method="post" action="<?php echo site_url(); ?>SuperUser/Blank" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
