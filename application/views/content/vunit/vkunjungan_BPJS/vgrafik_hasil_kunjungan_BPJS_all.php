@@ -188,7 +188,7 @@
 														<?php endforeach ?>
 														<tr>
 															<td style="text-align:center">
-																<form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_BPJS/export_xls">
+																<form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_BPJS/export_xlsx">
 																	<?php foreach ($jenis2 as $jns) : ?>
 																		<input type="checkbox" style="transform: scale(0.8);" class="form-check-input" value="<?php echo $jns->ket ?>" name="pilihan[]" checked>
 																		<span class="fw-semibold ps-2 fs-6"> <?php echo $jns->ket ?> |</span>

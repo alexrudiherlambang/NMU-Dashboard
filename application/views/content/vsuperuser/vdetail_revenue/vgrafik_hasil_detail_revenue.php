@@ -196,7 +196,7 @@
 															</tr>
 															<tr>
 																<td style="text-align:center">
-																	<form method="post" action="<?php echo site_url(); ?>SuperUser/cdetail_revenue/export_xls">
+																	<form method="post" action="<?php echo site_url(); ?>SuperUser/cdetail_revenue/export_xlsx">
 																		<div>
 																		<?php foreach ($jenis2 as $jns) : ?>
 																			<input type="checkbox" style="transform: scale(0.8);" class="form-check-input" value="<?php echo $jns->ket ?>" name="pilihan[]" checked>

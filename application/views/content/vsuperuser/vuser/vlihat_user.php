@@ -559,6 +559,13 @@
                                                                                 if ($role->tmuk == '1') { echo 'checked';}?>>
                                                                             </td>
                                                                         </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Data Report</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="tdr" <?php
+                                                                                if ($role->tdr == '1') { echo 'checked';}?>>
+                                                                            </td>
+                                                                        </tr>
                                                                     </tbody>
                                                                     <!--end::Table body-->
                                                                 </table>
