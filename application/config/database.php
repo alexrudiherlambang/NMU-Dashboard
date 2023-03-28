@@ -97,3 +97,99 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+//DB RSG
+$db['db_rsg'] = array(
+	'dsn'	=> '',
+	'hostname' => '10.17.20.254',
+	'port'     => '3306',
+	'username' => 'itnmu',
+	'password' => 'itnmu',
+	'database' => 'ptnmusimrs_rsg',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
+//DB RST
+$db['db_rst'] = array(
+	'dsn'	=> '',
+	'hostname' => '10.18.20.254',
+	'port'     => '3306',
+	'username' => 'itnmu',
+	'password' => 'itnmu',
+	'database' => 'ptnmusimrs_rst',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
+//DB RSP
+$db['db_rsp'] = array(
+	'dsn'	=> '',
+	'hostname' => '10.10.10.9',
+	'port'     => '3306',
+	'username' => 'itnmu',
+	'password' => 'itnmu',
+	'database' => 'ptnmusimrs',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
+//DB RSMU
+$db['db_rsmu'] = array(
+	'dsn'	=> '',
+	'hostname' => '10.26.20.254',
+	'port'     => '3306',
+	'username' => 'itnmu',
+	'password' => 'itnmu',
+	'database' => 'ptnmusimrs_rsmu',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
