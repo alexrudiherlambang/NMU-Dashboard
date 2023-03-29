@@ -25,7 +25,7 @@ class creport extends CI_Controller {
       $lokasi = $this->input->post('lokasi');
       $jenis = $this->input->post('jenis');
 
-      //insert into log_aktifitas table
+      // insert into log_aktifitas table
       // $log = array(
       //    'id'		   => $this->session->userdata("id"),
       //    'tglawal'   => $tglawal,
@@ -39,7 +39,7 @@ class creport extends CI_Controller {
       // );
       // $this->mreport->insert_log($log);
 
-      if ($jenis == "NILAI HARI DOKTER BERDASARKAN PERIODE"){
+      if ($jenis == "NILAI HONOR DOKTER BERDASARKAN PERIODE"){
          //eksekusi Query
          // $data['hasil'] = $this->mreport->mshow_hasil_query1($tglawal,$tglakhir,$lokasi);
          $data['lokasi'] = $lokasi;
@@ -55,7 +55,7 @@ class creport extends CI_Controller {
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
          $this->load->view('content/vsuperuser/vreport/vhasil_report2',$data);
-      }elseif ($jenis == "PERHITUNGAN  BIAYA INVENTORY"){
+      }elseif ($jenis == "PERHITUNGAN BIAYA INVENTORY"){
          //eksekusi Query
          // $data['hasil'] = $this->mreport->mshow_hasil_query3($tglawal,$tglakhir,$lokasi);
          $data['lokasi'] = $lokasi;
@@ -95,7 +95,7 @@ class creport extends CI_Controller {
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
          $this->load->view('content/vsuperuser/vreport/vhasil_report7',$data);
-      }elseif ($jenis == "KUNJUNGAN KE LAB RAWAT INAP"){
+      }elseif ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT INAP"){
          //eksekusi Query
          // $data['hasil'] = $this->mreport->mshow_hasil_query8($tglawal,$tglakhir,$lokasi);
          $data['lokasi'] = $lokasi;
@@ -127,6 +127,79 @@ class creport extends CI_Controller {
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
          $this->load->view('content/vsuperuser/vreport/vhasil_report11',$data);
+      }
+   }
+
+   function get_data($lokasi,$jenis, $tglawal, $tglakhir){
+      $tglawal = urldecode($tglawal);
+      $tglakhir = urldecode($tglakhir);
+      $jenis = urldecode($jenis);
+      if ($jenis == "NILAI HONOR DOKTER BERDASARKAN PERIODE"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query1($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+      }elseif ($jenis == "CEK KASBON PPN"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query2($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+      }elseif ($jenis == "PERHITUNGAN BIAYA INVENTORY"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query3($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+      }elseif ($jenis == "TOTAL BILLING RAWAT INAP"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query4($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+      }elseif ($jenis == "TOTAL BILLING RAWAT JALAN"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query5($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+      }elseif ($jenis == "REPORT RUJUKAN DOKTER KE LAB"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query6($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+      }elseif ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT JALAN"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query7($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+      }elseif ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT INAP"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query8($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+      }elseif ($jenis == "MEMORIAL RAWAT INAP"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query9($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+      }elseif ($jenis == "MEMORIAL RAWAT JALAN"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query10($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+      }elseif ($jenis == "KUNJUNGAN DOKTER SELAIN SHIFT PAGI"){
+         //eksekusi Query
+         $data = $this->mreport->mshow_hasil_query11($tglawal,$tglakhir,$lokasi);
+         return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
       }
    }
 

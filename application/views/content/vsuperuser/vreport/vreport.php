@@ -86,14 +86,14 @@
                                                     <div class="col-xl-5 fv-row">
                                                         <select class="form-select form-select-solid select2" name="jenis" >
                                                             <option>--Pilih--</option>
-                                                            <option>NILAI HARI DOKTER BERDASARKAN PERIODE</option>
+                                                            <option>NILAI HONOR DOKTER BERDASARKAN PERIODE</option>
                                                             <option>CEK KASBON PPN</option>
-                                                            <option>PERHITUNGAN  BIAYA INVENTORY</option>
+                                                            <option>PERHITUNGAN BIAYA INVENTORY</option>
                                                             <option>TOTAL BILLING RAWAT INAP</option>
                                                             <option>TOTAL BILLING RAWAT JALAN</option>
                                                             <option>REPORT RUJUKAN DOKTER KE LAB</option>
                                                             <option>REPORT KUNJUNGAN KE LAB RAWAT JALAN</option>
-                                                            <option>KUNJUNGAN KE LAB RAWAT INAP</option>
+                                                            <option>REPORT KUNJUNGAN KE LAB RAWAT INAP</option>
                                                             <option>MEMORIAL RAWAT INAP</option>
                                                             <option>MEMORIAL RAWAT JALAN</option>
                                                             <option>KUNJUNGAN DOKTER SELAIN SHIFT PAGI</option>

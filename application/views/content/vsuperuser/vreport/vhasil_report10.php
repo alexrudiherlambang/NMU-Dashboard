@@ -86,14 +86,14 @@
                                                     <div class="col-xl-5 fv-row">
                                                         <select class="form-select form-select-solid select2" name="jenis" >
                                                             <option>--Pilih--</option>
-                                                            <option <?php if ($jenis == "NILAI HARI DOKTER BERDASARKAN PERIODE") echo "selected"; ?>>NILAI HARI DOKTER BERDASARKAN PERIODE</option>
+                                                            <option <?php if ($jenis == "NILAI HONOR DOKTER BERDASARKAN PERIODE") echo "selected"; ?>>NILAI HONOR DOKTER BERDASARKAN PERIODE</option>
                                                             <option <?php if ($jenis == "CEK KASBON PPN") echo "selected"; ?>>CEK KASBON PPN</option>
-                                                            <option <?php if ($jenis == "PERHITUNGAN  BIAYA INVENTORY") echo "selected"; ?>>PERHITUNGAN  BIAYA INVENTORY</option>
+                                                            <option <?php if ($jenis == "PERHITUNGAN BIAYA INVENTORY") echo "selected"; ?>>PERHITUNGAN BIAYA INVENTORY</option>
                                                             <option <?php if ($jenis == "TOTAL BILLING RAWAT INAP") echo "selected"; ?>>TOTAL BILLING RAWAT INAP</option>
                                                             <option <?php if ($jenis == "TOTAL BILLING RAWAT JALAN") echo "selected"; ?>>TOTAL BILLING RAWAT JALAN</option>
                                                             <option <?php if ($jenis == "REPORT RUJUKAN DOKTER KE LAB") echo "selected"; ?>>REPORT RUJUKAN DOKTER KE LAB</option>
                                                             <option <?php if ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT JALAN") echo "selected"; ?>>REPORT KUNJUNGAN KE LAB RAWAT JALAN</option>
-                                                            <option <?php if ($jenis == "KUNJUNGAN KE LAB RAWAT INAP") echo "selected"; ?>>KUNJUNGAN KE LAB RAWAT INAP</option>
+                                                            <option <?php if ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT INAP") echo "selected"; ?>>REPORT KUNJUNGAN KE LAB RAWAT INAP</option>
                                                             <option <?php if ($jenis == "MEMORIAL RAWAT INAP") echo "selected"; ?>>MEMORIAL RAWAT INAP</option>
                                                             <option <?php if ($jenis == "MEMORIAL RAWAT JALAN") echo "selected"; ?>>MEMORIAL RAWAT JALAN</option>
                                                             <option <?php if ($jenis == "KUNJUNGAN DOKTER SELAIN SHIFT PAGI") echo "selected"; ?>>KUNJUNGAN DOKTER SELAIN SHIFT PAGI</option>
@@ -191,30 +191,34 @@
                                     <!--begin::Card body-->
                                     <div class="card-body pt-0">
                                         <!--begin::Table-->
-                                        <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_sales_table">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                                                    <th class="w-10px pe-2">No</th>
-                                                    <th class="text-center min-w-70px">Tanggal</th>
-                                                    <th class="text-center min-w-100px">Nama Pasien</th>
-                                                    <th class="text-center min-w-100px">No RI</th>
-                                                    <th class="text-center min-w-100px">No. Posting</th>
-                                                    <th class="text-center min-w-100px">Nama Konsumen</th>
-                                                    <th class="text-center min-w-100px">Jenis Transaksi</th>
-                                                    <th class="text-center min-w-70px">Piutang</th>
-                                                    <th class="text-center min-w-70px">HRDR</th>
-                                                    <th class="text-center min-w-100px">Debet</th>
-                                                    <th class="text-center min-w-100px">Kredit</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-
-                                            <!--end::Table body-->
-                                        </table>
+                                        <div class="table-responsive">
+                                            <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_sales_table">
+                                                <!--begin::Table head-->
+                                                <thead>
+                                                    <!--begin::Table row-->
+                                                    <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
+                                                        <th class="w-10px pe-2">No</th>
+                                                        <th class="text-center min-w-70px">Tanggal</th>
+                                                        <th class="text-center min-w-100px">Nama Pasien</th>
+                                                        <th class="text-center min-w-100px">No RI</th>
+                                                        <th class="text-center min-w-100px">No. Posting</th>
+                                                        <th class="text-center min-w-100px">Nama Konsumen</th>
+                                                        <th class="text-center min-w-100px">Jenis Transaksi</th>
+                                                        <th class="text-center min-w-70px">Piutang</th>
+                                                        <th class="text-center min-w-70px">HRDR</th>
+                                                        <th class="text-center min-w-100px">Debet</th>
+                                                        <th class="text-center min-w-100px">Kredit</th>
+                                                    </tr>
+                                                    <!--end::Table row-->
+                                                </thead>
+                                                <!--end::Table head-->
+                                                <!--begin::Table body-->
+                                                <tbody class="fw-semibold text-gray-600">
+                                                
+                                                </tbody>
+                                                <!--end::Table body-->
+                                            </table>
+                                        </div>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->

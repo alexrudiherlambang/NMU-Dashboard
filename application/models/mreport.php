@@ -295,46 +295,46 @@ class mreport extends ci_model {
    function mshow_hasil_query6($tglawal, $tglakhir, $lokasi) {
       if ($lokasi == "RSG"){
          return $this->load->database('db_rsg', TRUE)->query("
-            SELECT b.nmdokter, b.nmahli, COUNT(DISTINCT a.nomrm) AS jumlah FROM klnota2 a
-            LEFT JOIN mtdokter b
+            SELECT b.nmdokter, b.nmahli, COUNT(DISTINCT a.nomrm) AS jumlah FROM klnota2 AS a
+            LEFT JOIN mtdokter AS b
             ON a.kddokter = b.kddokter
-            LEFT JOIN tindakan1 c
+            LEFT JOIN tindakan1 AS c
             ON a.kode1 = c.kode1
             WHERE a.kode4 = 'h001'
-            WHERE a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
+            AND a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
             GROUP BY b.nmdokter DESC
          ")->result();
       }elseif ($lokasi == "RST") {
          return $this->load->database('db_rst', TRUE)->query("
-            SELECT b.nmdokter, b.nmahli, COUNT(DISTINCT a.nomrm) AS jumlah FROM klnota2 a
-            LEFT JOIN mtdokter b
+            SELECT b.nmdokter, b.nmahli, COUNT(DISTINCT a.nomrm) AS jumlah FROM klnota2 AS a
+            LEFT JOIN mtdokter AS b
             ON a.kddokter = b.kddokter
-            LEFT JOIN tindakan1 c
+            LEFT JOIN tindakan1 AS c
             ON a.kode1 = c.kode1
             WHERE a.kode4 = 'h001'
-            WHERE a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
+            AND a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
             GROUP BY b.nmdokter DESC
          ")->result();
       }elseif ($lokasi == "RSP") {
          return $this->load->database('db_rsp', TRUE)->query("
-            SELECT b.nmdokter, b.nmahli, COUNT(DISTINCT a.nomrm) AS jumlah FROM klnota2 a
-            LEFT JOIN mtdokter b
+            SELECT b.nmdokter, b.nmahli, COUNT(DISTINCT a.nomrm) AS jumlah FROM klnota2 AS a
+            LEFT JOIN mtdokter AS b
             ON a.kddokter = b.kddokter
-            LEFT JOIN tindakan1 c
+            LEFT JOIN tindakan1 AS c
             ON a.kode1 = c.kode1
             WHERE a.kode4 = 'h001'
-            WHERE a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
+            AND a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
             GROUP BY b.nmdokter DESC
          ")->result();
       }elseif ($lokasi == "RSMU") {
          return $this->load->database('db_rsmu', TRUE)->query("
-            SELECT b.nmdokter, b.nmahli, COUNT(DISTINCT a.nomrm) AS jumlah FROM klnota2 a
-            LEFT JOIN mtdokter b
+            SELECT b.nmdokter, b.nmahli, COUNT(DISTINCT a.nomrm) AS jumlah FROM klnota2 AS a
+            LEFT JOIN mtdokter AS b
             ON a.kddokter = b.kddokter
-            LEFT JOIN tindakan1 c
+            LEFT JOIN tindakan1 AS c
             ON a.kode1 = c.kode1
             WHERE a.kode4 = 'h001'
-            WHERE a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
+            AND a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
             GROUP BY b.nmdokter DESC
          ")->result();
       }
@@ -352,7 +352,7 @@ class mreport extends ci_model {
             LEFT JOIN konsumen d
             ON a.kdkons = d.kdkons
             WHERE a.kode4 = 'h001'
-            WHERE a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
+            AND a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
             GROUP BY b.nmdokter DESC
          ")->result();
       }elseif ($lokasi == "RST") {
@@ -365,7 +365,7 @@ class mreport extends ci_model {
             LEFT JOIN konsumen d
             ON a.kdkons = d.kdkons
             WHERE a.kode4 = 'h001'
-            WHERE a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
+            AND a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
             GROUP BY b.nmdokter DESC
          ")->result();
       }elseif ($lokasi == "RSP") {
@@ -378,7 +378,7 @@ class mreport extends ci_model {
             LEFT JOIN konsumen d
             ON a.kdkons = d.kdkons
             WHERE a.kode4 = 'h001'
-            WHERE a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
+            AND a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
             GROUP BY b.nmdokter DESC
          ")->result();
       }elseif ($lokasi == "RSMU") {
@@ -391,7 +391,7 @@ class mreport extends ci_model {
             LEFT JOIN konsumen d
             ON a.kdkons = d.kdkons
             WHERE a.kode4 = 'h001'
-            WHERE a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
+            AND a.tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
             GROUP BY b.nmdokter DESC
          ")->result();
       }

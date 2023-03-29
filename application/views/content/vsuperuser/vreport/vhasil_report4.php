@@ -86,14 +86,14 @@
                                                     <div class="col-xl-5 fv-row">
                                                         <select class="form-select form-select-solid select2" name="jenis" >
                                                             <option>--Pilih--</option>
-                                                            <option <?php if ($jenis == "NILAI HARI DOKTER BERDASARKAN PERIODE") echo "selected"; ?>>NILAI HARI DOKTER BERDASARKAN PERIODE</option>
+                                                            <option <?php if ($jenis == "NILAI HONOR DOKTER BERDASARKAN PERIODE") echo "selected"; ?>>NILAI HONOR DOKTER BERDASARKAN PERIODE</option>
                                                             <option <?php if ($jenis == "CEK KASBON PPN") echo "selected"; ?>>CEK KASBON PPN</option>
-                                                            <option <?php if ($jenis == "PERHITUNGAN  BIAYA INVENTORY") echo "selected"; ?>>PERHITUNGAN  BIAYA INVENTORY</option>
+                                                            <option <?php if ($jenis == "PERHITUNGAN BIAYA INVENTORY") echo "selected"; ?>>PERHITUNGAN BIAYA INVENTORY</option>
                                                             <option <?php if ($jenis == "TOTAL BILLING RAWAT INAP") echo "selected"; ?>>TOTAL BILLING RAWAT INAP</option>
                                                             <option <?php if ($jenis == "TOTAL BILLING RAWAT JALAN") echo "selected"; ?>>TOTAL BILLING RAWAT JALAN</option>
                                                             <option <?php if ($jenis == "REPORT RUJUKAN DOKTER KE LAB") echo "selected"; ?>>REPORT RUJUKAN DOKTER KE LAB</option>
                                                             <option <?php if ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT JALAN") echo "selected"; ?>>REPORT KUNJUNGAN KE LAB RAWAT JALAN</option>
-                                                            <option <?php if ($jenis == "KUNJUNGAN KE LAB RAWAT INAP") echo "selected"; ?>>KUNJUNGAN KE LAB RAWAT INAP</option>
+                                                            <option <?php if ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT INAP") echo "selected"; ?>>REPORT KUNJUNGAN KE LAB RAWAT INAP</option>
                                                             <option <?php if ($jenis == "MEMORIAL RAWAT INAP") echo "selected"; ?>>MEMORIAL RAWAT INAP</option>
                                                             <option <?php if ($jenis == "MEMORIAL RAWAT JALAN") echo "selected"; ?>>MEMORIAL RAWAT JALAN</option>
                                                             <option <?php if ($jenis == "KUNJUNGAN DOKTER SELAIN SHIFT PAGI") echo "selected"; ?>>KUNJUNGAN DOKTER SELAIN SHIFT PAGI</option>
@@ -191,26 +191,30 @@
                                     <!--begin::Card body-->
                                     <div class="card-body pt-0">
                                         <!--begin::Table-->
-                                        <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_sales_table">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                                                    <th class="w-10px pe-2">No</th>
-                                                    <th class="min-w-100px">No. RI</th>
-                                                    <th class="min-w-100px">No. RM</th>
-                                                    <th class="text-center min-w-70px">Tanggal</th>
-                                                    <th class="text-center min-w-100px">Nama Pasien</th>
-                                                    <th class="text-center min-w-100px">Jenis Konsumen</th>
-                                                    <th class="text-center min-w-100px">Total</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
+                                        <div class="table-responsive">
+                                            <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_sales_table">
+                                                <!--begin::Table head-->
+                                                <thead>
+                                                    <!--begin::Table row-->
+                                                    <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
+                                                        <th class="w-10px pe-2">No</th>
+                                                        <th class="text-center min-w-90px">No. RI</th>
+                                                        <th class="text-center min-w-70px">No. RM</th>
+                                                        <th class="text-center min-w-100px">Tanggal</th>
+                                                        <th class="text-center min-w-100px">Nama Pasien</th>
+                                                        <th class="text-center min-w-100px">Jenis Konsumen</th>
+                                                        <th class="text-end min-w-70px">Total</th>
+                                                    </tr>
+                                                    <!--end::Table row-->
+                                                </thead>
+                                                <!--end::Table head-->
+                                                <!--begin::Table body-->
+                                                <tbody class="fw-semibold text-gray-600">
 
-                                            <!--end::Table body-->
-                                        </table>
+                                                </tbody>
+                                                <!--end::Table body-->
+                                            </table>
+                                        </div>
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Card body-->
@@ -272,7 +276,39 @@
     <?php
         $this->load->view('partials/script');
     ?>
-    <script src="<?php echo base_url(); ?>assets/js/custom/apps/ecommerce/sales/listing.js"></script>
+    <!-- <script src="<?php echo base_url(); ?>assets/js/custom/apps/ecommerce/sales/listing.js"></script> -->
+    <script>
+		$(document).ready(function(){
+			$.ajax({
+            url: '<?php echo site_url("SuperUser/creport/get_data/".$lokasi."/".$jenis."/".urlencode($tglawal)."/".urlencode($tglakhir)) ?>',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				var tbody = $('#kt_ecommerce_sales_table tbody'); // ambil elemen tbody dari tabel
+                tbody.empty(); // kosongkan isi tbody
+                
+                // iterasi data dan buat baris baru untuk setiap data
+                $.each(data, function(index, item){
+                    var row = $('<tr>');
+                    row.append($('<td>').text(index + 1));
+                    row.append($('<td class="text-center">').text(item.nori)); 
+                    row.append($('<td class="text-center">').text(item.nomrm));
+                    row.append($('<td class="text-center">').text(item.tanggal));
+                    row.append($('<td class="text-center">').text(item.nmpasien));
+                    row.append($('<td class="text-center">').text(item.nmkons));
+                    row.append($('<td class="text-end">').text(item.total));
+                    tbody.append(row); 
+                });
+
+                console.log(data);
+			},
+			error: function(xhr, status, error) {
+				// Tangani kesalahan jika terjadi
+				console.log('Error: ' + error);
+			}
+			});
+		});
+    </script>
 	
 </body>
 <!--end::Body-->
