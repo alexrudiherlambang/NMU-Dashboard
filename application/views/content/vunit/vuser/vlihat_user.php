@@ -542,28 +542,35 @@
                                                                             <td class="text-left">Indikasi Mutu Nasional</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tmn" <?php
-                                                                                if ($role->tmn == '1') { echo 'checked';}?>>
+                                                                                if ($role->tmn == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Indikasi Mutu Prioritas</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tmp" <?php
-                                                                                if ($role->tmp == '1') { echo 'checked';}?>>
+                                                                                if ($role->tmp == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Indikasi Mutu Unit Kerja</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tmuk" <?php
-                                                                                if ($role->tmuk == '1') { echo 'checked';}?>>
+                                                                                if ($role->tmuk == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="text-left">Data Report</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tdr" <?php
-                                                                                if ($role->tdr == '1') { echo 'checked';}?>>
+                                                                                if ($role->tdr == '1') { echo 'checked';}?> disabled>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Master Query Data Report</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="mdr" <?php
+                                                                                if ($role->mdr == '1') { echo 'checked';}?> disabled>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>

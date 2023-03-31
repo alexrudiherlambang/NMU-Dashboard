@@ -180,22 +180,22 @@ class mreport extends ci_model {
    function mshow_hasil_query3($tglawal, $tglakhir, $lokasi) {
       if ($lokasi == "RSG"){
          return $this->load->database('db_rsg', TRUE)->query("
-            SELECT tanggal, noper, naper, debet, kredit, jmluang FROM ptnmusimrs.jurnalposting
+            SELECT tanggal, noper, naper, debet, kredit, jmluang FROM jurnalposting
             WHERE tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
          ")->result();
       }elseif ($lokasi == "RST") {
          return $this->load->database('db_rst', TRUE)->query("
-            SELECT tanggal, noper, naper, debet, kredit, jmluang FROM ptnmusimrs.jurnalposting
+            SELECT tanggal, noper, naper, debet, kredit, jmluang FROM jurnalposting
             WHERE tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
          ")->result();
       }elseif ($lokasi == "RSP") {
          return $this->load->database('db_rsp', TRUE)->query("
-            SELECT tanggal, noper, naper, debet, kredit, jmluang FROM ptnmusimrs.jurnalposting
+            SELECT tanggal, noper, naper, debet, kredit, jmluang FROM jurnalposting
             WHERE tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
          ")->result();
       }elseif ($lokasi == "RSMU") {
          return $this->load->database('db_rsmu', TRUE)->query("
-            SELECT tanggal, noper, naper, debet, kredit, jmluang FROM ptnmusimrs.jurnalposting
+            SELECT tanggal, noper, naper, debet, kredit, jmluang FROM jurnalposting
             WHERE tanggal BETWEEN '".$tglawal."' AND '".$tglakhir."'
          ")->result();
       }
@@ -552,90 +552,90 @@ class mreport extends ci_model {
       if ($lokasi == "RSG"){
          return $this->load->database('db_rsg', TRUE)->query("
             SELECT 
-               a.`tgltrans`,
-               b.nmpasien,
-               a.nori, 
-               a.`noposting`,
-               c.nmkons,
-               a.jnstrans,
-               (SELECT SUM(debet-kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '1%') AS piutang,
-               (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '2%') AS hrdr,
-               (SELECT SUM(debet) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '4%') AS debet,
-               (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '4%') AS kredit
+                     a.`tgltrans`,
+                     b.nmpasien,
+                     a.norj, 
+                     a.`noposting`,
+                     c.nmkons,
+                     a.jnstrans,
+                     (SELECT SUM(debet-kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '1%') AS piutang,
+                     (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '2%') AS hrdr,
+                     (SELECT SUM(debet) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '4%') AS debet,
+                     (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '4%') AS kredit
             FROM ptnmuakunbk.jurnaldtlfm a
-            LEFT JOIN ptnmusimrs_rsg.dafinap b ON (a.nori = b.`nori`)
+            LEFT JOIN ptnmusimrs_rsg.paslama b ON (a.norj = b.`norj`)
             LEFT JOIN ptnmusimrs_rsg.`konsumen` c ON (a.kdkons = c.kdkons)
             WHERE 
                      a.tgltrans BETWEEN '".$tglawal."' AND '".$tglakhir."'
                      AND a.jnstrans = 'RJ'
-            GROUP BY a.nori
-            ORDER BY a.tgltrans, a.nori
+            GROUP BY a.norj
+            ORDER BY a.tgltrans, a.norj
          ")->result();
       }elseif ($lokasi == "RST") {
          return $this->load->database('db_rst', TRUE)->query("
             SELECT 
-               a.`tgltrans`,
-               b.nmpasien,
-               a.nori, 
-               a.`noposting`,
-               c.nmkons,
-               a.jnstrans,
-               (SELECT SUM(debet-kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '1%') AS piutang,
-               (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '2%') AS hrdr,
-               (SELECT SUM(debet) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '4%') AS debet,
-               (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '4%') AS kredit
+                     a.`tgltrans`,
+                     b.nmpasien,
+                     a.norj, 
+                     a.`noposting`,
+                     c.nmkons,
+                     a.jnstrans,
+                     (SELECT SUM(debet-kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '1%') AS piutang,
+                     (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '2%') AS hrdr,
+                     (SELECT SUM(debet) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '4%') AS debet,
+                     (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '4%') AS kredit
             FROM ptnmuakunbk.jurnaldtlfm a
-            LEFT JOIN ptnmusimrs_rst.dafinap b ON (a.nori = b.`nori`)
+            LEFT JOIN ptnmusimrs_rst.paslama b ON (a.norj = b.`norj`)
             LEFT JOIN ptnmusimrs_rst.`konsumen` c ON (a.kdkons = c.kdkons)
             WHERE 
                      a.tgltrans BETWEEN '".$tglawal."' AND '".$tglakhir."'
                      AND a.jnstrans = 'RJ'
-            GROUP BY a.nori
-            ORDER BY a.tgltrans, a.nori
+            GROUP BY a.norj
+            ORDER BY a.tgltrans, a.norj
          ")->result();
       }elseif ($lokasi == "RSP") {
          return $this->load->database('db_rsp', TRUE)->query("
             SELECT 
-               a.`tgltrans`,
-               b.nmpasien,
-               a.nori, 
-               a.`noposting`,
-               c.nmkons,
-               a.jnstrans,
-               (SELECT SUM(debet-kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '1%') AS piutang,
-               (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '2%') AS hrdr,
-               (SELECT SUM(debet) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '4%') AS debet,
-               (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '4%') AS kredit
+                     a.`tgltrans`,
+                     b.nmpasien,
+                     a.norj, 
+                     a.`noposting`,
+                     c.nmkons,
+                     a.jnstrans,
+                     (SELECT SUM(debet-kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '1%') AS piutang,
+                     (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '2%') AS hrdr,
+                     (SELECT SUM(debet) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '4%') AS debet,
+                     (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '4%') AS kredit
             FROM ptnmuakunbk.jurnaldtlfm a
-            LEFT JOIN ptnmusimrs.dafinap b ON (a.nori = b.`nori`)
+            LEFT JOIN ptnmusimrs.paslama b ON (a.norj = b.`norj`)
             LEFT JOIN ptnmusimrs.`konsumen` c ON (a.kdkons = c.kdkons)
             WHERE 
                      a.tgltrans BETWEEN '".$tglawal."' AND '".$tglakhir."'
                      AND a.jnstrans = 'RJ'
-            GROUP BY a.nori
-            ORDER BY a.tgltrans, a.nori
+            GROUP BY a.norj
+            ORDER BY a.tgltrans, a.norj
          ")->result();
       }elseif ($lokasi == "RSMU") {
          return $this->load->database('db_rsmu', TRUE)->query("
             SELECT 
-               a.`tgltrans`,
-               b.nmpasien,
-               a.nori, 
-               a.`noposting`,
-               c.nmkons,
-               a.jnstrans,
-               (SELECT SUM(debet-kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '1%') AS piutang,
-               (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '2%') AS hrdr,
-               (SELECT SUM(debet) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '4%') AS debet,
-               (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE nori = a.nori AND noper LIKE '4%') AS kredit
+                     a.`tgltrans`,
+                     b.nmpasien,
+                     a.norj, 
+                     a.`noposting`,
+                     c.nmkons,
+                     a.jnstrans,
+                     (SELECT SUM(debet-kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '1%') AS piutang,
+                     (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '2%') AS hrdr,
+                     (SELECT SUM(debet) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '4%') AS debet,
+                     (SELECT SUM(kredit) FROM ptnmuakunbk.`jurnaldtlfm` WHERE norj = a.norj AND noper LIKE '4%') AS kredit
             FROM ptnmuakunbk.jurnaldtlfm a
-            LEFT JOIN ptnmusimrs_rsmu.dafinap b ON (a.nori = b.`nori`)
+            LEFT JOIN ptnmusimrs_rsmu.paslama b ON (a.norj = b.`norj`)
             LEFT JOIN ptnmusimrs_rsmu.`konsumen` c ON (a.kdkons = c.kdkons)
             WHERE 
                      a.tgltrans BETWEEN '".$tglawal."' AND '".$tglakhir."'
                      AND a.jnstrans = 'RJ'
-            GROUP BY a.nori
-            ORDER BY a.tgltrans, a.nori
+            GROUP BY a.norj
+            ORDER BY a.tgltrans, a.norj
          ")->result();
       }
    }

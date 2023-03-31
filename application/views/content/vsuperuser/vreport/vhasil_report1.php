@@ -214,7 +214,7 @@
                                                 <!--end::Table head-->
                                                 <!--begin::Table body-->
                                                 <tbody class="fw-semibold text-gray-600">
-
+                                                    <div class="spinner spinner-primary spinner-lg spinner-center" style="display:none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);" id="kt_table_spinner"></div>
                                                 </tbody>
                                                 <!--end::Table body-->
                                             </table>
@@ -299,6 +299,7 @@
                     row.append($('<td>').text(item.nomrm));
                     row.append($('<td>').text(item.tanggal));
                     row.append($('<td>').text(item.nmpasien));
+                    row.append($('<td>').text(item.nmkons));
                     row.append($('<td>').text(item.nm_unit));
                     row.append($('<td>').text(item.keterangan));
                     row.append($('<td class="text-center min-w-90px">').text(item.jmlharga)); 
@@ -316,6 +317,56 @@
 			});
 		});
     </script>
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        showSpinner();
+        $.ajax({
+            url: '<?php echo site_url("SuperUser/creport/get_data/".$lokasi."/".$jenis."/".urlencode($tglawal)."/".urlencode($tglakhir)) ?>',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var tbody = $('#kt_ecommerce_sales_table tbody'); // ambil elemen tbody dari tabel
+                tbody.empty(); // kosongkan isi tbody
+                    
+                // iterasi data dan buat baris baru untuk setiap data
+                $.each(data, function(index, item){
+                    var row = $('<tr>');
+                    row.append($('<td>').text(index + 1));
+                    row.append($('<td>').text(item.norj));
+                    row.append($('<td>').text(item.nomrm));
+                    row.append($('<td>').text(item.tanggal));
+                    row.append($('<td>').text(item.nmpasien));
+                    row.append($('<td>').text(item.nmkons));
+                    row.append($('<td>').text(item.nm_unit));
+                    row.append($('<td>').text(item.keterangan));
+                    row.append($('<td class="text-center min-w-90px">').text(item.jmlharga)); 
+                    row.append($('<td class="text-center min-w-90px">').text(item.hrdr));
+                    row.append($('<td class="text-center min-w-90px">').text(item.nmdokter));
+                    tbody.append(row); // tambahkan baris ke dalam tbody
+                });
+
+                console.log(data);
+            },
+            error: function(xhr, status, error) {
+                // Tangani kesalahan jika terjadi
+                console.log('Error: ' + error);
+            },
+            complete: function() {
+                hideSpinner();
+            }
+        });
+    });
+
+    function showSpinner() {
+        $('#kt_table_spinner').show();
+    }
+
+    function hideSpinner() {
+        $('#kt_table_spinner').hide();
+    }
+    </script> -->
 	
 </body>
 <!--end::Body-->

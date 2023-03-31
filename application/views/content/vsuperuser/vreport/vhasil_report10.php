@@ -200,7 +200,7 @@
                                                         <th class="w-10px pe-2">No</th>
                                                         <th class="text-center min-w-70px">Tanggal</th>
                                                         <th class="text-center min-w-100px">Nama Pasien</th>
-                                                        <th class="text-center min-w-100px">No RI</th>
+                                                        <th class="text-center min-w-100px">No RJ</th>
                                                         <th class="text-center min-w-100px">No. Posting</th>
                                                         <th class="text-center min-w-100px">Nama Konsumen</th>
                                                         <th class="text-center min-w-100px">Jenis Transaksi</th>
@@ -280,7 +280,43 @@
     <?php
         $this->load->view('partials/script');
     ?>
-    <script src="<?php echo base_url(); ?>assets/js/custom/apps/ecommerce/sales/listing.js"></script>
+    <!-- <script src="<?php echo base_url(); ?>assets/js/custom/apps/ecommerce/sales/listing.js"></script> -->
+    <script>
+		$(document).ready(function(){
+			$.ajax({
+            url: '<?php echo site_url("SuperUser/creport/get_data/".$lokasi."/".$jenis."/".urlencode($tglawal)."/".urlencode($tglakhir)) ?>',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				var tbody = $('#kt_ecommerce_sales_table tbody'); // ambil elemen tbody dari tabel
+                tbody.empty(); // kosongkan isi tbody
+                
+                // iterasi data dan buat baris baru untuk setiap data
+                $.each(data, function(index, item){
+                    var row = $('<tr>');
+                    row.append($('<td>').text(index + 1));
+                    row.append($('<td>').text(item.tgltrans)); 
+                    row.append($('<td>').text(item.nmpasien)); 
+                    row.append($('<td class="text-center">').text(item.norj));
+                    row.append($('<td class="text-center">').text(item.noposting));
+                    row.append($('<td class="text-center">').text(item.nmkons));
+                    row.append($('<td class="text-center">').text(item.jnstrans));
+                    row.append($('<td class="text-center">').text(item.piutang));
+                    row.append($('<td class="text-center">').text(item.hrdr));
+                    row.append($('<td class="text-center">').text(item.debet));
+                    row.append($('<td class="text-center">').text(item.kredit));
+                    tbody.append(row); 
+                });
+
+                console.log(data);
+			},
+			error: function(xhr, status, error) {
+				// Tangani kesalahan jika terjadi
+				console.log('Error: ' + error);
+			}
+			});
+		});
+    </script>
 	
 </body>
 <!--end::Body-->

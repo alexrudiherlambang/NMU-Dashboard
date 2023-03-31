@@ -14,19 +14,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		function cek_username($username)
 		{
-			$this->db->where('username', $username);
-			return $this->db->get('user');
+			$this->load->database('local', TRUE)->where('username', $username);
+			return $this->load->database('local', TRUE)->get('user');
 		}
 
 		function cek_password($username)
 		{
-			$this->db->where('username', $username);
-			return $this->db->get('user')->result();
+			$this->load->database('local', TRUE)->where('username', $username);
+			return $this->load->database('local', TRUE)->get('user')->result();
 		}
 
 		//Insert Log Login
 		function insert_log($log) {
-			$this->db->insert('log_login', $log);
+			$this->load->database('local', TRUE)->insert('log_login', $log);
 		 }
 	}
 ?>

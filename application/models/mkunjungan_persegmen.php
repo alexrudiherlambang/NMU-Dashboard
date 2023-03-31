@@ -141,6 +141,7 @@ class mkunjungan_persegmen extends ci_model {
 
    //Insert Log Login
    function insert_log($log) {
+      $this->db = $this->load->database('local', TRUE);
       $this->db->insert('log_aktifitas', $log);
    }
 }

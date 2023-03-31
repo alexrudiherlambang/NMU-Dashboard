@@ -284,7 +284,7 @@
 			type: 'GET',
 			dataType: 'json',
 			success: function(data) {
-				var tbody = $('#kt_ecommerce_sales_table tbody'); // ambil elemen tbody dari tabel
+                var tbody = $('#kt_ecommerce_sales_table tbody'); // ambil elemen tbody dari tabel
                 tbody.empty(); // kosongkan isi tbody
                 
                 // iterasi data dan buat baris baru untuk setiap data

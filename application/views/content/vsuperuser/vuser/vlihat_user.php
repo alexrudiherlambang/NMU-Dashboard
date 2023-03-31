@@ -566,6 +566,13 @@
                                                                                 if ($role->tdr == '1') { echo 'checked';}?>>
                                                                             </td>
                                                                         </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Master Query Data Report</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="mdr" <?php
+                                                                                if ($role->mdr == '1') { echo 'checked';}?>>
+                                                                            </td>
+                                                                        </tr>
                                                                     </tbody>
                                                                     <!--end::Table body-->
                                                                 </table>

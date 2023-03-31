@@ -220,7 +220,7 @@
                                                     <!--end::Order ID=-->
                                                     <!--begin::Customer=-->
                                                     <td>
-                                                        <div class="d-flex align-items-center">
+                                                        <div class="d-flex">
                                                             <div class="ms-5">
                                                                 <!--begin::Title-->
                                                                 <a class="text-gray-800 text-hover-primary fs-5 fw-bold">RS ABC</a>
