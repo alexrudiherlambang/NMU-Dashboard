@@ -82,22 +82,14 @@
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Jenis Report</div>
-                                                    </div>
+                                                    </div>                                                    
                                                     <div class="col-xl-5 fv-row">
-                                                        <select class="form-select form-select-solid select2" name="jenis" >
-                                                            <option>--Pilih--</option>
-                                                            <option <?php if ($jenis == "NILAI HONOR DOKTER BERDASARKAN PERIODE") echo "selected"; ?>>NILAI HONOR DOKTER BERDASARKAN PERIODE</option>
-                                                            <option <?php if ($jenis == "CEK KASBON PPN") echo "selected"; ?>>CEK KASBON PPN</option>
-                                                            <option <?php if ($jenis == "PERHITUNGAN BIAYA INVENTORY") echo "selected"; ?>>PERHITUNGAN BIAYA INVENTORY</option>
-                                                            <option <?php if ($jenis == "TOTAL BILLING RAWAT INAP") echo "selected"; ?>>TOTAL BILLING RAWAT INAP</option>
-                                                            <option <?php if ($jenis == "TOTAL BILLING RAWAT JALAN") echo "selected"; ?>>TOTAL BILLING RAWAT JALAN</option>
-                                                            <option <?php if ($jenis == "REPORT RUJUKAN DOKTER KE LAB") echo "selected"; ?>>REPORT RUJUKAN DOKTER KE LAB</option>
-                                                            <option <?php if ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT JALAN") echo "selected"; ?>>REPORT KUNJUNGAN KE LAB RAWAT JALAN</option>
-                                                            <option <?php if ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT INAP") echo "selected"; ?>>REPORT KUNJUNGAN KE LAB RAWAT INAP</option>
-                                                            <option <?php if ($jenis == "MEMORIAL RAWAT INAP") echo "selected"; ?>>MEMORIAL RAWAT INAP</option>
-                                                            <option <?php if ($jenis == "MEMORIAL RAWAT JALAN") echo "selected"; ?>>MEMORIAL RAWAT JALAN</option>
-                                                            <option <?php if ($jenis == "KUNJUNGAN DOKTER SELAIN SHIFT PAGI") echo "selected"; ?>>KUNJUNGAN DOKTER SELAIN SHIFT PAGI</option>
-                                                        </select>
+                                                        <input list="list_daftar" class="form-control form-control-solid" id="jenis" name="jenis" value="<?= $jenis ?>">
+                                                        <datalist id="list_daftar">
+                                                            <?php foreach ($jnsreport as $jns): ?>
+                                                                <option value="<?= $jns->jenis ?>"><?= $jns->kdjns.' | '.$jns->jenis ?></option>
+                                                            <?php endforeach ?>
+                                                        </datalist>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">

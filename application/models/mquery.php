@@ -16,7 +16,7 @@ class mquery extends ci_model {
       return $this->db->get()->result();
    }
 
-    // untuk menampilkan semua Mquery
+    // untuk menampilkan semua master query
     function mshow_all_masterquery() {
       $this->db = $this->load->database('local', TRUE);
       $this->db->select('kdjns,jenis,query');
