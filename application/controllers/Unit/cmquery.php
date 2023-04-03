@@ -9,21 +9,21 @@ class cmquery extends CI_Controller {
    }
 
    function index() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-         redirect("clogin");
-      }
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
+			redirect("clogin");
+		}
       
       $data['query'] = $this->mquery->mshow_all_query();
 
-      $this->load->view('content/vsuperuser/vquery/vquery', $data);
+      $this->load->view('content/vunit/vquery/vquery', $data);
    }
 
    function ctambah_query() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-         redirect("clogin");
-      }
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
+			redirect("clogin");
+		}
       $data['mquery'] = $this->mquery->mshow_all_masterquery();
-      $this->load->view('content/vsuperuser/vquery/vinput_query', $data);
+      $this->load->view('content/vunit/vquery/vinput_query', $data);
    }
 
    function cinsert_query() {
@@ -32,17 +32,17 @@ class cmquery extends CI_Controller {
          'kdjns'         => $this->input->post('kdjns'), 
       );
       $this->mquery->minsert_query($simpan);
-      redirect('SuperUser/cmquery');
+      redirect('Unit/cmquery');
    }
 
    function cedit_query() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-         redirect("clogin");
-      }
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
+			redirect("clogin");
+		}
       $id = $this->uri->segment(4);
       $data['query'] = $this->mquery->mselect_by_idquery($id);
       $data['mquery'] = $this->mquery->mshow_all_masterquery();
-      $this->load->view('content/vsuperuser/vquery/vedit_query', $data);
+      $this->load->view('content/vunit/vquery/vedit_query', $data);
    }
 
    function cupdate_query(){
@@ -53,12 +53,12 @@ class cmquery extends CI_Controller {
       );
       
       $this->mquery->mupdate_query($Update, $id);
-      redirect('SuperUser/cmquery');
+      redirect('Unit/cmquery');
    }
 
    function cdelete_query() {
       $id = $this->uri->segment(4);
       $this->mquery->mdelete_query($id);
-      redirect('SuperUser/cmquery');
+      redirect('Unit/cmquery');
    }
 }
