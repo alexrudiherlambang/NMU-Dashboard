@@ -16,8 +16,18 @@ class mquery extends ci_model {
       return $this->db->get()->result();
    }
 
-    // untuk menampilkan semua master query
-    function mshow_all_masterquery() {
+    // untuk menampilkan semua mquery
+    function mshow_all_mquery($unit) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('kdjns,unit,fx_nmquery(kdjns) as jenis');
+      $this->db->from('query');
+      $this->db->where('unit', $unit);
+      $this->db->order_by('kdjns', 'asc');
+      return $this->db->get()->result();
+   }
+
+   // untuk menampilkan semua master query
+   function mshow_all_masterquery() {
       $this->db = $this->load->database('local', TRUE);
       $this->db->select('kdjns,jenis,query');
       $this->db->from('mquery');

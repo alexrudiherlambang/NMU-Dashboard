@@ -13,8 +13,8 @@ class creport extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
-      $this->load->view('content/vsuperuser/vreport/vreport', $data);
+      // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+      $this->load->view('content/vsuperuser/vreport/vreport');
    }
 
    function report() {
@@ -48,7 +48,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report1',$data);
       }elseif ($jenis == "CEK KASBON PPN"){
          //eksekusi Query
@@ -57,7 +57,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report2',$data);
       }elseif ($jenis == "PERHITUNGAN BIAYA INVENTORY"){
          //eksekusi Query
@@ -66,7 +66,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report3',$data);
       }elseif ($jenis == "TOTAL BILLING RAWAT INAP"){
          //eksekusi Query
@@ -75,7 +75,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report4',$data);
       }elseif ($jenis == "TOTAL BILLING RAWAT JALAN"){
          //eksekusi Query
@@ -84,7 +84,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report5',$data);
       }elseif ($jenis == "REPORT RUJUKAN DOKTER KE LAB"){
          //eksekusi Query
@@ -93,7 +93,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report6',$data);
       }elseif ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT JALAN"){
          //eksekusi Query
@@ -102,7 +102,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report7',$data);
       }elseif ($jenis == "REPORT KUNJUNGAN KE LAB RAWAT INAP"){
          //eksekusi Query
@@ -111,7 +111,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report8',$data);
       }elseif ($jenis == "MEMORIAL RAWAT INAP"){
          //eksekusi Query
@@ -120,7 +120,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report9',$data);
       }elseif ($jenis == "MEMORIAL RAWAT JALAN"){
          //eksekusi Query
@@ -129,7 +129,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report10',$data);
       }elseif ($jenis == "KUNJUNGAN DOKTER SELAIN SHIFT PAGI"){
          //eksekusi Query
@@ -138,7 +138,7 @@ class creport extends CI_Controller {
          $data['jenis'] = $jenis;
          $data['tglawal'] = $tglawal;
          $data['tglakhir'] = $tglakhir;
-         $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
+         // $data['jnsreport'] = $this->mquery->mshow_all_masterquery();
          $this->load->view('content/vsuperuser/vreport/vhasil_report11',$data);
       }
    }
@@ -214,6 +214,12 @@ class creport extends CI_Controller {
             ->set_content_type('application/json')
             ->set_output(json_encode($data));
       }
+   }
+
+   function get_jenis(){
+      $optionSelected = $this->input->post('optionSelected');
+      $result = $this->mquery->mshow_all_mquery($optionSelected);
+      echo json_encode($result);
    }
 
    // function export_xlsx() {

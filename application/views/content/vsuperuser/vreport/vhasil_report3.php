@@ -69,7 +69,7 @@
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <select class="form-select form-select-solid select2" name="lokasi" >
+                                                        <select class="form-select form-select-solid select2" id="lokasi" name="lokasi" >
                                                             <option>--Pilih--</option>
                                                             <option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
                                                             <option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
@@ -79,7 +79,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <!--begin::Col-->
+                                                    <div class="col-xl-5">
+                                                        <div class="fs-6 fw-semibold mt-2 mb-3">Jenis Report</div>
+                                                    </div>
+                                                    <div class="col-xl-5 fv-row">
+                                                        <select class="form-control form-control-solid" id="jenis" name="jenis">
+                                                        <option value="<?= $jenis ?>"><?= $jenis ?></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="row mb-4">
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Jenis Report</div>
                                                     </div>                                                    
@@ -91,7 +100,7 @@
                                                             <?php endforeach ?>
                                                         </datalist>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
@@ -300,6 +309,28 @@
 			}
 			});
 		});
+    </script>
+    <script>
+        $(document).ready(function() {
+        $('#lokasi').on('change', function() {
+            var optionSelected = $(this).val();
+            $.ajax({
+            url: '<?php echo base_url(); ?>SuperUser/creport/get_jenis',
+            type: 'post',
+            data: { optionSelected : optionSelected },
+            dataType: 'json',
+            success: function(response) {
+                var len = response.length;
+                $("#jenis").empty();
+                $("#jenis").append('<option value="">Pilih jenis laporan</option>');
+                for(var i = 0; i < len; i++) {
+                    var value = ' [ ' + response[i]['kdjns'] + ' ] ' + response[i]['jenis'];
+                    $("#jenis").append('<option value="' + response[i]['jenis'] + '">' + value + '</option>');
+                }
+            }
+            });
+        });
+        });
     </script>
 </body>
 <!--end::Body-->
