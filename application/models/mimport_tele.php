@@ -40,6 +40,8 @@ class mimport_tele extends ci_model {
       $this->db->select('SUM(price) as jumlah');
       $this->db->from('trans_rsg');
       $this->db->where('year(jadwal_yang_dipilih)', date("Y"));
+      $this->db->where('status_emr', "CLOSED");
+      $this->db->where('nama_layanan', "TELEKONSULTASI");
       return $this->db->get()->row();
    }
 
@@ -49,6 +51,8 @@ class mimport_tele extends ci_model {
       $this->db->select('SUM(price) as jumlah');
       $this->db->from('trans_rst');
       $this->db->where('year(jadwal_yang_dipilih)', date("Y"));
+      $this->db->where('status_emr', "CLOSED");
+      $this->db->where('nama_layanan', "TELEKONSULTASI");
       return $this->db->get()->row();
    }
    //sum pendapatan RSp
@@ -57,6 +61,8 @@ class mimport_tele extends ci_model {
       $this->db->select('SUM(price) as jumlah');
       $this->db->from('trans_rsp');
       $this->db->where('year(jadwal_yang_dipilih)', date("Y"));
+      $this->db->where('status_emr', "CLOSED");
+      $this->db->where('nama_layanan', "TELEKONSULTASI");
       return $this->db->get()->row();
    }
    //sum pendapatan RSmu
@@ -65,6 +71,8 @@ class mimport_tele extends ci_model {
       $this->db->select('SUM(price) as jumlah');
       $this->db->from('trans_rsmu');
       $this->db->where('year(jadwal_yang_dipilih)', date("Y"));
+      $this->db->where('status_emr', "CLOSED");
+      $this->db->where('nama_layanan', "TELEKONSULTASI");
       return $this->db->get()->row();
    }
    //sum pendapatan URJ
@@ -73,6 +81,8 @@ class mimport_tele extends ci_model {
       $this->db->select('SUM(price) as jumlah');
       $this->db->from('trans_urj');
       $this->db->where('year(jadwal_yang_dipilih)', date("Y"));
+      $this->db->where('status_emr', "CLOSED");
+      $this->db->where('nama_layanan', "TELEKONSULTASI");
       return $this->db->get()->row();
    }
 
