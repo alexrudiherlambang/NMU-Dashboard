@@ -705,6 +705,148 @@
                 <div class="menu-item pt-5">
                     <!--begin:Menu content-->
                     <div class="menu-content">
+                        <span class="menu-heading fw-bold text-uppercase fs-7">Telemedicine</span>
+                    </div>
+                    <!--end:Menu content-->
+                </div>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
+                <?php if ($this->session->userdata("tid") == "1"): ?>
+                    <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="<?php echo site_url('Unit/cimport_tele') ?>">
+                                <span class="menu-icon">
+                                    <!--begin::Svg Icon | path: icons/duotune/abstract/abs014.svg-->
+                                    <span class="svg-icon svg-icon-primary"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Files/Selected-file.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <polygon points="0 0 24 0 24 24 0 24"/>
+                                            <path d="M4.85714286,1 L11.7364114,1 C12.0910962,1 12.4343066,1.12568431 12.7051108,1.35473959 L17.4686994,5.3839416 C17.8056532,5.66894833 18,6.08787823 18,6.52920201 L18,19.0833333 C18,20.8738751 17.9795521,21 16.1428571,21 L4.85714286,21 C3.02044787,21 3,20.8738751 3,19.0833333 L3,2.91666667 C3,1.12612489 3.02044787,1 4.85714286,1 Z M8,12 C7.44771525,12 7,12.4477153 7,13 C7,13.5522847 7.44771525,14 8,14 L15,14 C15.5522847,14 16,13.5522847 16,13 C16,12.4477153 15.5522847,12 15,12 L8,12 Z M8,16 C7.44771525,16 7,16.4477153 7,17 C7,17.5522847 7.44771525,18 8,18 L11,18 C11.5522847,18 12,17.5522847 12,17 C12,16.4477153 11.5522847,16 11,16 L8,16 Z" fill="currentcolor" fill-rule="nonzero" opacity="0.3"/>
+                                            <path d="M6.85714286,3 L14.7364114,3 C15.0910962,3 15.4343066,3.12568431 15.7051108,3.35473959 L20.4686994,7.3839416 C20.8056532,7.66894833 21,8.08787823 21,8.52920201 L21,21.0833333 C21,22.8738751 20.9795521,23 19.1428571,23 L6.85714286,23 C5.02044787,23 5,22.8738751 5,21.0833333 L5,4.91666667 C5,3.12612489 5.02044787,3 6.85714286,3 Z M8,12 C7.44771525,12 7,12.4477153 7,13 C7,13.5522847 7.44771525,14 8,14 L15,14 C15.5522847,14 16,13.5522847 16,13 C16,12.4477153 15.5522847,12 15,12 L8,12 Z M8,16 C7.44771525,16 7,16.4477153 7,17 C7,17.5522847 7.44771525,18 8,18 L11,18 C11.5522847,18 12,17.5522847 12,17 C12,16.4477153 11.5522847,16 11,16 L8,16 Z" fill="currentcolor" fill-rule="nonzero"/>
+                                        </g>
+                                    </svg><!--end::Svg Icon--></span>
+                                </span>
+                                <span class="menu-title">Input Data CSV</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                    </div>
+                <?php endif; ?>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu link-->
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/files/fil003.svg-->
+                            <span class="svg-icon svg-icon-primary"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Layout/Layout-top-panel-2.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <path d="M3,4 L20,4 C20.5522847,4 21,4.44771525 21,5 L21,7 C21,7.55228475 20.5522847,8 20,8 L3,8 C2.44771525,8 2,7.55228475 2,7 L2,5 C2,4.44771525 2.44771525,4 3,4 Z M10,10 L20,10 C20.5522847,10 21,10.4477153 21,11 L21,19 C21,19.5522847 20.5522847,20 20,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,11 C9,10.4477153 9.44771525,10 10,10 Z" fill="currentcolor"/>
+                                    <rect fill="currentcolor" opacity="0.3" x="2" y="10" width="5" height="10" rx="1"/>
+                                </g>
+                            </svg><!--end::Svg Icon--></span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Tabel Telemedicine</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("ttk") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/Blank') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Kunjungan</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("ttp") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/Blank') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Pendapatan</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                    </div>
+                    <!--end:Menu sub-->
+                </div>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu link-->
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/files/fil003.svg-->
+                            <span class="svg-icon svg-icon-primary"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/Shopping/Chart-bar1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <rect fill="currentColor" opacity="0.3" x="12" y="4" width="3" height="13" rx="1.5"/>
+                                    <rect fill="currentColor" opacity="0.3" x="7" y="9" width="3" height="8" rx="1.5"/>
+                                    <path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z" fill="currentColor" fill-rule="nonzero"/>
+                                    <rect fill="currentColor" opacity="0.3" x="17" y="11" width="3" height="6" rx="1.5"/>
+                                </g>
+                            </svg><!--end::Svg Icon--></span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Grafik Telemedicine</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("gtk") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/Blank') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Kunjungan</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("gtp") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('Unit/Blank') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Pendapatan</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                    </div>
+                    <!--end:Menu sub-->
+                </div>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
+                <div class="menu-item pt-5">
+                    <!--begin:Menu content-->
+                    <div class="menu-content">
                         <span class="menu-heading fw-bold text-uppercase fs-7">Akreditasi</span>
                     </div>
                     <!--end:Menu content-->

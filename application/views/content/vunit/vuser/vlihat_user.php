@@ -539,6 +539,41 @@
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
+                                                                            <td class="text-left">Input Data Telemedicine</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="tid" <?php
+                                                                                if ($role->tmn == '1') { echo 'checked';}?> disabled>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Tabel Kunjungan Telemedicine</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="ttk" <?php
+                                                                                if ($role->tmn == '1') { echo 'checked';}?> disabled>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Tabel Pendapatan Telemedicine</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="ttp" <?php
+                                                                                if ($role->tmn == '1') { echo 'checked';}?> disabled>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Grafik Kunjungan Telemedicine</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="gtk" <?php
+                                                                                if ($role->tmn == '1') { echo 'checked';}?> disabled>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Grafik Pendapatan Telemedicine</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="gtp" <?php
+                                                                                if ($role->tmn == '1') { echo 'checked';}?> disabled>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
                                                                             <td class="text-left">Indikasi Mutu Nasional</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="tmn" <?php
