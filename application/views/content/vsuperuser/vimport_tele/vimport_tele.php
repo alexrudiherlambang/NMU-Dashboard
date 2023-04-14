@@ -55,6 +55,114 @@
                         <div id="kt_app_content" class="app-content flex-column-fluid">
                             <!--begin::Content container-->
                             <div id="kt_app_content_container" class="app-container container-xxl">
+                            <div class="card card-custom bg-primary">
+                                <div class="card-header border-0">
+                                    <div class="card-title">
+                                        <span class="card-icon">
+                                            <i class="flaticon2-chat-1 text-white"></i>
+                                        </span>
+                                        <h1 class="text-white">
+                                            Total Pendapatan Tahun <?php echo date("Y")?>
+                                        </h1>
+                                    </div>
+                                    <div class="card-toolbar">
+                                        <!--begin::Statistics-->
+                                        <div class="d-flex align-items-senter">
+                                            <!--begin::Number-->
+                                            <span class="text-gray-900 fw-bolder fs-6"><h1>Rp <?php echo number_format($total_all, 0, ',', '.'); ?></h1></span>
+                                            <!--end::Number-->
+                                        </div>
+                                        <!--end::Statistics-->
+                                    </div>
+                                </div>
+                                <div class="separator separator-solid separator-white opacity-20"></div>
+                                <!--begin::Body-->
+                                <div class="card-body pt-5">
+                                    <!--begin::Item-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Section-->
+                                        <div class="text-white fw-semibold fs-6 me-2">Pendapatan RS Gatoel</div>
+                                        <!--end::Section-->
+                                        <!--begin::Statistics-->
+                                        <div class="d-flex align-items-senter">
+                                            <!--begin::Number-->
+                                            <span class="text-gray-900 fw-bolder fs-6">Rp <?php echo number_format($total_rsg->jumlah, 0, ',', '.'); ?></span>
+                                            <!--end::Number-->
+                                        </div>
+                                        <!--end::Statistics-->
+                                    </div>
+                                    <!--end::Item-->
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-dashed my-3"></div>
+                                    <!--end::Separator-->
+                                    <!--begin::Item-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Section-->
+                                        <div class="text-white fw-semibold fs-6 me-2">Pendapatan RS Perkebunan</div>
+                                        <!--end::Section-->
+                                        <!--begin::Statistics-->
+                                        <div class="d-flex align-items-senter">
+                                            <!--begin::Number-->
+                                            <span class="text-gray-900 fw-bolder fs-6">Rp <?php echo number_format($total_rsp->jumlah, 0, ',', '.'); ?></span>
+                                            <!--end::Number-->
+                                        </div>
+                                        <!--end::Statistics-->
+                                    </div>
+                                    <!--end::Item-->
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-dashed my-3"></div>
+                                    <!--end::Separator-->
+                                    <!--begin::Item-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Section-->
+                                        <div class="text-white fw-semibold fs-6 me-2">Pendapatan RS Toeloengredjo</div>
+                                        <!--end::Section-->
+                                        <!--begin::Statistics-->
+                                        <div class="d-flex align-items-senter">
+                                            <!--begin::Number-->
+                                            <span class="text-gray-900 fw-bolder fs-6">Rp <?php echo number_format($total_rst->jumlah, 0, ',', '.'); ?></span>
+                                            <!--end::Number-->
+                                        </div>
+                                        <!--end::Statistics-->
+                                    </div>
+                                    <!--end::Item-->
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-dashed my-3"></div>
+                                    <!--end::Separator-->
+                                    <!--begin::Item-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Section-->
+                                        <div class="text-white fw-semibold fs-6 me-2">Pendapatan RS Medika Utama</div>
+                                        <!--end::Section-->
+                                        <!--begin::Statistics-->
+                                        <div class="d-flex align-items-senter">
+                                            <!--begin::Number-->
+                                            <span class="text-gray-900 fw-bolder fs-6">Rp <?php echo number_format($total_rsmu->jumlah, 0, ',', '.'); ?></span>
+                                            <!--end::Number-->
+                                        </div>
+                                        <!--end::Statistics-->
+                                    </div>
+                                    <!--end::Item-->
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-dashed my-3"></div>
+                                    <!--end::Separator-->
+                                    <!--begin::Item-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Section-->
+                                        <div class="text-white fw-semibold fs-6 me-2">Pendapatan URJ</div>
+                                        <!--end::Section-->
+                                        <!--begin::Statistics-->
+                                        <div class="d-flex align-items-senter">
+                                            <!--begin::Number-->
+                                            <span class="text-gray-900 fw-bolder fs-6">Rp <?php echo number_format($total_urj->jumlah, 0, ',', '.'); ?></span>
+                                            <!--end::Number-->
+                                        </div>
+                                        <!--end::Statistics-->
+                                    </div>
+                                    <!--end::Item-->
+                                </div>
+                                <!--end::Body-->
+                            </div><br>
                                 <!--begin::Products-->
                                 <div class="card card-flush">
                                     <!--begin::Card header-->

@@ -15,6 +15,12 @@ class cimport_tele extends CI_Controller {
 		}
       $unit = $this->session->userdata("tlok");
       $data['import'] = $this->mimport_tele->mshow_all_riwayat_unit($unit);
+      $data['total_rsg'] = $this->mimport_tele->msum_rsg();
+      $data['total_rst'] = $this->mimport_tele->msum_rst();
+      $data['total_rsp'] = $this->mimport_tele->msum_rsp();
+      $data['total_rsmu'] = $this->mimport_tele->msum_rsmu();
+      $data['total_urj'] = $this->mimport_tele->msum_urj();
+      $data['total_all'] = array_sum(array($data['total_rsg']->jumlah, $data['total_rst']->jumlah, $data['total_rsp']->jumlah, $data['total_rsmu']->jumlah, $data['total_urj']->jumlah));
       $this->load->view('content/vunit/vimport_tele/vimport_tele', $data);
    }
 

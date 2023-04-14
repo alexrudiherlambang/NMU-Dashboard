@@ -34,6 +34,49 @@ class mimport_tele extends ci_model {
       return $this->db->get()->row();
    }
 
+   //sum pendapatan RSG
+   function msum_rsg() {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('SUM(price) as jumlah');
+      $this->db->from('trans_rsg');
+      $this->db->where('year(jadwal_yang_dipilih)', date("Y"));
+      return $this->db->get()->row();
+   }
+
+   //sum pendapatan RST
+   function msum_rst() {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('SUM(price) as jumlah');
+      $this->db->from('trans_rst');
+      $this->db->where('year(jadwal_yang_dipilih)', date("Y"));
+      return $this->db->get()->row();
+   }
+   //sum pendapatan RSp
+   function msum_rsp() {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('SUM(price) as jumlah');
+      $this->db->from('trans_rsp');
+      $this->db->where('year(jadwal_yang_dipilih)', date("Y"));
+      return $this->db->get()->row();
+   }
+   //sum pendapatan RSmu
+   function msum_rsmu() {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('SUM(price) as jumlah');
+      $this->db->from('trans_rsmu');
+      $this->db->where('year(jadwal_yang_dipilih)', date("Y"));
+      return $this->db->get()->row();
+   }
+   //sum pendapatan URJ
+   function msum_urj() {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('SUM(price) as jumlah');
+      $this->db->from('trans_urj');
+      $this->db->where('year(jadwal_yang_dipilih)', date("Y"));
+      return $this->db->get()->row();
+   }
+
+
    //INSERT DATA LOG_TELEMED
    function minsert_import($data) {
       $this->db = $this->load->database('local', TRUE);
