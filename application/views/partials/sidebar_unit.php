@@ -774,7 +774,7 @@
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
                                         <a class="menu-link"
-                                            href="<?php echo site_url('Unit/Blank') ?>">
+                                            href="<?php echo site_url('Unit/ctele_kunjung') ?>">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -789,7 +789,7 @@
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
                                         <a class="menu-link"
-                                            href="<?php echo site_url('Unit/Blank') ?>">
+                                            href="<?php echo site_url('Unit/ctele_target') ?>">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -807,7 +807,7 @@
                         <?php if ($this->session->userdata("ttp") == "1"): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="<?php echo site_url('Unit/Blank') ?>">
+                                <a class="menu-link" href="<?php echo site_url('Unit/ctele_dapat') ?>">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
