@@ -553,6 +553,13 @@
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
+                                                                            <td class="text-left">Target Kunjungan Telemedicine</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="ttt" <?php
+                                                                                if ($role->ttt == '1') { echo 'checked';}?>>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
                                                                             <td class="text-left">Tabel Pendapatan Telemedicine</td>
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="ttp" <?php
@@ -564,6 +571,13 @@
                                                                             <td class="text-center">
                                                                             <input type="checkbox" value="1" name="gtk" <?php
                                                                                 if ($role->gtk == '1') { echo 'checked';}?>>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-left">Grafik Target Kunjungan Telemedicine</td>
+                                                                            <td class="text-center">
+                                                                            <input type="checkbox" value="1" name="gtt" <?php
+                                                                                if ($role->gtt == '1') { echo 'checked';}?>>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>

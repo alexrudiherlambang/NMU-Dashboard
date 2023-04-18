@@ -69,7 +69,7 @@ class muser extends ci_model {
    // SELECT ROLE USER BY ID USER
    function mselect_role_user($id) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('fx_nmuser(id) as nama, tum, tkok1, tkok2, tkok3, tkok4, tkok5, tkoksk, tkoktt, tkokhp, tkokbor, tkkp1, tkkp2, tkkp3, tkkb, tkklr, tid, ttk, ttp, gtk, gtp, tmn, tmp, tmuk, tdr, mdr');
+      $this->db->select('fx_nmuser(id) as nama, tum, tkok1, tkok2, tkok3, tkok4, tkok5, tkoksk, tkoktt, tkokhp, tkokbor, tkkp1, tkkp2, tkkp3, tkkb, tkklr, tid, ttk, ttt, ttp, gtk, gtt, gtp, tmn, tmp, tmuk, tdr, mdr');
       $this->db->from('user_role');
       $this->db->where('id', $id);
       return $this->db->get()->row();

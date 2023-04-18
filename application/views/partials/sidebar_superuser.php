@@ -757,24 +757,57 @@
                     <!--begin:Menu sub-->
                     <div class="menu-sub menu-sub-accordion">
                         <!--begin:Menu item-->
-                        <?php if ($this->session->userdata("ttk") == "1"): ?>
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Kunjungan</span>
-                                </a>
-                                <!--end:Menu link-->
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Kunjungan</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <!--end:Menu link-->
+                            <!--begin:Menu sub-->
+                            <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("ttk") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('SuperUser/ctele_kunjung') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan Per-Poli</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("ttt") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('SuperUser/ctele_target') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Target Kunjungan</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
                             </div>
-                        <?php endif; ?>
+                            <!--end:Menu sub-->
+                        </div>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
                         <?php if ($this->session->userdata("ttp") == "1"): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/ctele_dapat') ?>">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -812,18 +845,51 @@
                     <!--begin:Menu sub-->
                     <div class="menu-sub menu-sub-accordion">
                         <!--begin:Menu item-->
-                        <?php if ($this->session->userdata("gtk") == "1"): ?>
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Kunjungan</span>
-                                </a>
-                                <!--end:Menu link-->
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Kunjungan</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <!--end:Menu link-->
+                            <!--begin:Menu sub-->
+                            <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("gtk") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('SuperUser/Blank') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan Per-Poli</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("gtt") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link"
+                                            href="<?php echo site_url('SuperUser/Blank') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Target Kunjungan</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
                             </div>
-                        <?php endif; ?>
+                            <!--end:Menu sub-->
+                        </div>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
                         <?php if ($this->session->userdata("gtp") == "1"): ?>

@@ -93,10 +93,10 @@ class cimport_tele extends CI_Controller {
                } else {
                   $this->mimport_tele->minsert_import_csv($data, $this->input->post('unit'));
                }
-               // Break loop if exceeds 10000 rows
-               if ($counter >= 10000) {
-                  break;
-               }
+               // // Break loop if exceeds 100000 rows
+               // if ($counter >= 100000) {
+               //    break;
+               // }
             }
             fclose($handle);
             $file = $this->_uploadcsv();
