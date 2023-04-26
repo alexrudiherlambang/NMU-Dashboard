@@ -895,7 +895,7 @@
                         <?php if ($this->session->userdata("gtp") == "1"): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/ctele_dapat/grafik_pendapatan') ?>">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>

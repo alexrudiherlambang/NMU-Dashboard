@@ -84,7 +84,7 @@
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
                                                         <select class="form-control form-control-solid" id="jenis" name="jenis">
-                                                        <option value="">Pilih jenis laporan</option>
+                                                            <option value="">Pilih jenis laporan</option>
                                                         </select>
                                                     </div>
                                                 </div>
