@@ -862,7 +862,7 @@
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
                                         <a class="menu-link"
-                                            href="<?php echo site_url('SuperUser/Blank') ?>">
+                                            href="<?php echo site_url('SuperUser/ctele_kunjung/grafik_kunjungan') ?>">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>

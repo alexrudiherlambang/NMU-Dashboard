@@ -130,5 +130,129 @@ class mtele_kunjung extends ci_model {
       $this->db = $this->load->database('local', TRUE);
       $this->db->insert('log_aktifitas', $log);
    }
+
+   //Show all jenis telemed grafik 
+   function mshow_all_jenis($lokasi){
+      $this->db = $this->load->database('local', TRUE);
+      if ($lokasi == "RSG"){
+         $this->db->select('unit_name');
+         $this->db->from('trans_rsg');
+         $this->db->group_by('unit_name');
+         $this->db->where('unit_name !=', "null");
+         return $this->db->get()->result();
+      }elseif ($lokasi == "RST") {
+         $this->db->select('unit_name');
+         $this->db->from('trans_rst');
+         $this->db->group_by('unit_name');
+         $this->db->where('unit_name !=', "null");
+         return $this->db->get()->result();
+      }elseif ($lokasi == "RSP") {
+         $this->db->select('unit_name');
+         $this->db->from('trans_rsp');
+         $this->db->group_by('unit_name');
+         $this->db->where('unit_name !=', "null");
+         return $this->db->get()->result();
+      }elseif ($lokasi == "RSMU") {
+         $this->db->select('unit_name');
+         $this->db->from('trans_rsmu');
+         $this->db->group_by('unit_name');
+         $this->db->where('unit_name !=', "null");
+         return $this->db->get()->result();
+      }elseif ($lokasi == "URJ") {
+         $this->db->select('unit_name');
+         $this->db->from('trans_urj');
+         $this->db->group_by('unit_name');
+         $this->db->where('unit_name !=', "null");
+         return $this->db->get()->result();
+      }
+   }
+
+   // untuk menampilkan grafik
+   function mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
+      $this->db = $this->load->database('local', TRUE);
+      if ($lokasi == "RSG"){
+         $this->db->select('unit_name');
+         $this->db->select('jadwal_yang_dipilih as tanggal,COUNT(invoice_no) as price,');
+         $this->db->from('trans_rsg');
+         $this->db->group_by('day(jadwal_yang_dipilih)');
+         $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
+         $this->db->where('unit_name', $jenis);
+         return $this->db->get();
+      }elseif ($lokasi == "RST") {
+         $this->db->select('jadwal_yang_dipilih as tanggal,COUNT(invoice_no) as price,');
+         $this->db->from('trans_rst');
+         $this->db->group_by('day(jadwal_yang_dipilih)');
+         $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
+         $this->db->where('unit_name', $jenis);
+         return $this->db->get();
+      }elseif ($lokasi == "RSP") {
+         $this->db->select('jadwal_yang_dipilih as tanggal,COUNT(invoice_no) as price,');
+         $this->db->from('trans_rsp');
+         $this->db->group_by('day(jadwal_yang_dipilih)');
+         $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
+         $this->db->where('unit_name', $jenis);
+         return $this->db->get();
+      }elseif ($lokasi == "RSMU") {
+         $this->db->select('jadwal_yang_dipilih as tanggal,COUNT(invoice_no) as price,');
+         $this->db->from('trans_rsmu');
+         $this->db->group_by('day(jadwal_yang_dipilih)');
+         $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
+         $this->db->where('unit_name', $jenis);
+         return $this->db->get();
+      }elseif ($lokasi == "URJ") {
+         $this->db->select('jadwal_yang_dipilih as tanggal,COUNT(invoice_no) as price,');
+         $this->db->from('trans_urj');
+         $this->db->group_by('day(jadwal_yang_dipilih)');
+         $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
+         $this->db->where('unit_name', $jenis);
+         return $this->db->get();
+      }
+   }
+
+   // untuk menampilkan pie
+   function mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$jenis,$nama) {
+      $this->db = $this->load->database('local', TRUE);
+      if ($lokasi == "RSG"){
+         $this->db->select('unit_name as tanggal,COUNT(invoice_no) as price,');
+         $this->db->from('trans_rsg');
+         $this->db->group_by('unit_name');
+         $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
+         return $this->db->get();
+      }elseif ($lokasi == "RST") {
+         $this->db->select('unit_name as tanggal,COUNT(invoice_no) as price,');
+         $this->db->from('trans_rst');
+         $this->db->group_by('unit_name');
+         $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
+         return $this->db->get();
+      }elseif ($lokasi == "RSP") {
+         $this->db->select('unit_name as tanggal,COUNT(invoice_no) as price,');
+         $this->db->from('trans_rsp');
+         $this->db->group_by('unit_name');
+         $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
+         return $this->db->get();
+      }elseif ($lokasi == "RSMU") {
+         $this->db->select('unit_name as tanggal,COUNT(invoice_no) as price,');
+         $this->db->from('trans_rsmu');
+         $this->db->group_by('unit_name');
+         $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
+         return $this->db->get();
+      }elseif ($lokasi == "URJ") {
+         $this->db->select('unit_name as tanggal,COUNT(invoice_no) as price,');
+         $this->db->from('trans_urj');
+         $this->db->group_by('unit_name');
+         $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
+         return $this->db->get();
+      }
+   }
 }
 ?>

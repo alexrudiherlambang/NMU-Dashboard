@@ -283,17 +283,6 @@
         responsive: true
         }
     });
-    // Menambahkan data baru
-    myChart.data.datasets[0].data.push(10);
-    myChart.update();
-    myChart.data.datasets.push({
-    label: 'Target Revenue',
-    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3
-    });
-    myChart.update();
     </script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

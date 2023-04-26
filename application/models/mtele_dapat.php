@@ -131,7 +131,7 @@ class mtele_dapat extends ci_model {
       $this->db->insert('log_aktifitas', $log);
    }
 
-   //Show all jenis trelemed grafik 
+   //Show all jenis telemed grafik 
    function mshow_all_jenis($lokasi){
       $this->db = $this->load->database('local', TRUE);
       if ($lokasi == "RSG"){

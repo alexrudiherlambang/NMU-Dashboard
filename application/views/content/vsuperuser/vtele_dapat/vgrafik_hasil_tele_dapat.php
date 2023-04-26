@@ -309,7 +309,7 @@
                     if (label) {
                         label += ': ';
                     }
-					label += 'Rp ' + (tooltipItem.yLabel).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' (Dalam Juta)';
+					label += 'Rp ' + (tooltipItem.yLabel).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
                     return label;
                 }
             }
