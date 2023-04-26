@@ -146,7 +146,9 @@
                                                     <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Unit</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Realisasi Kunjungan</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target PBM</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">GAP PBM</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target NMU</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">GAP NMU</th>
                                                 </tr>
                                                 <!--end::Table row-->
                                             </thead>
@@ -159,42 +161,54 @@
                                                         <td class="min-w-125px">RS Gatoel</td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($total_rsg->jumlah, 0, ',', '.'); ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsg->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($total_rsg->jumlah - $target_rsg->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsg->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($total_rsg->jumlah - $target_rsg->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="w-10px pe-5">2</td>
                                                         <td class="min-w-125px">RS Perkebunan</td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($total_rsp->jumlah, 0, ',', '.'); ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsp->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($total_rsp->jumlah - $target_rsp->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsp->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($total_rsp->jumlah - $target_rsp->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="w-10px pe-5">3</td>
                                                         <td class="min-w-125px">RS Toeloengredjo</td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($total_rst->jumlah, 0, ',', '.'); ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rst->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($total_rst->jumlah - $target_rst->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rst->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($total_rst->jumlah - $target_rst->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="w-10px pe-5">4</td>
                                                         <td class="min-w-125px">RS Medika Utama</td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($total_rsmu->jumlah, 0, ',', '.'); ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsmu->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($total_rsmu->jumlah - $target_rsmu->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsmu->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($total_rsmu->jumlah - $target_rsmu->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="w-10px pe-5">5</td>
                                                         <td class="min-w-125px">URJ</td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($total_urj->jumlah, 0, ',', '.'); ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_urj->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($total_urj->jumlah - $target_urj->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_urj->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($total_urj->jumlah - $target_urj->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></td>
                                                     </tr>
                                                     <tr style="background-color: #000080;">
                                                         <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL</b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_all, 0, ',', '.'); ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_all - $target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_all - $target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                     </tr>
                                                 <?php endif ?>
                                                 <?php if ($lokasi == "RSG") :?>
@@ -204,7 +218,9 @@
                                                         <td class="min-w-125px"><?php echo $a->jadwal_yang_dipilih?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($a->jumlah, 0, ',', '.'); ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsg->target_pbm/ 12, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($a->jumlah - $target_rsg->target_pbm/ 12, 0, ',', '.') ; ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsg->target_nmu/ 12, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($a->jumlah - $target_rsg->target_nmu/ 12, 0, ',', '.') ; ?></td>
                                                     </tr>
                                                     <?php endforeach; ?>
                                                     <tr style="background-color: #000080;">
@@ -212,7 +228,9 @@
                                                         <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL <?php echo $lokasi?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsg->jumlah, 0, ',', '.'); ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_rsg->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsg->jumlah - $target_rsg->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_rsg->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsg->jumlah - $target_rsg->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                     </tr>
                                                 <?php endif ?>
                                                 <?php if ($lokasi == "RST") :?>
@@ -222,7 +240,9 @@
                                                         <td class="min-w-125px"><?php echo $a->jadwal_yang_dipilih?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($a->jumlah, 0, ',', '.'); ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rst->target_pbm/ 12, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($a->jumlah - $target_rst->target_pbm/ 12, 0, ',', '.') ; ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rst->target_nmu/ 12, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($a->jumlah - $target_rst->target_nmu/ 12, 0, ',', '.') ; ?></td>
                                                     </tr>
                                                     <?php endforeach; ?>
                                                     <tr style="background-color: #000080;">
@@ -230,7 +250,9 @@
                                                         <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL <?php echo $lokasi?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rst->jumlah, 0, ',', '.'); ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_rst->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rst->jumlah - $target_rst->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_rst->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rst->jumlah - $target_rst->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                     </tr>
                                                 <?php endif ?>
                                                 <?php if ($lokasi == "RSP") :?>
@@ -240,7 +262,9 @@
                                                         <td class="min-w-125px"><?php echo $a->jadwal_yang_dipilih?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($a->jumlah, 0, ',', '.'); ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsp->target_pbm/ 12, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($a->jumlah - $target_rsp->target_pbm/ 12, 0, ',', '.') ; ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsp->target_nmu/ 12, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($a->jumlah - $target_rsp->target_nmu/ 12, 0, ',', '.') ; ?></td>
                                                     </tr>
                                                     <?php endforeach; ?>
                                                     <tr style="background-color: #000080;">
@@ -248,7 +272,9 @@
                                                         <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL <?php echo $lokasi?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsp->jumlah, 0, ',', '.'); ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_rsp->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsp->jumlah - $target_rsp->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_rsp->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsp->jumlah - $target_rsp->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                     </tr>
                                                 <?php endif ?>
                                                 <?php if ($lokasi == "RSMU") :?>
@@ -258,7 +284,9 @@
                                                         <td class="min-w-125px"><?php echo $a->jadwal_yang_dipilih?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($a->jumlah, 0, ',', '.'); ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsmu->target_pbm/ 12, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($a->jumlah - $target_rsmu->target_pbm/ 12, 0, ',', '.') ; ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_rsmu->target_nmu/ 12, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($a->jumlah - $target_rsmu->target_nmu/ 12, 0, ',', '.') ; ?></td>
                                                     </tr>
                                                     <?php endforeach; ?>
                                                     <tr style="background-color: #000080;">
@@ -266,7 +294,9 @@
                                                         <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL <?php echo $lokasi?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsmu->jumlah, 0, ',', '.'); ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_rsmu->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsmu->jumlah - $target_rsmu->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_rsmu->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsmu->jumlah - $target_rsmu->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                     </tr>
                                                 <?php endif ?>
                                                 <?php if ($lokasi == "URJ") :?>
@@ -276,7 +306,9 @@
                                                         <td class="min-w-125px"><?php echo $a->jadwal_yang_dipilih?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($a->jumlah, 0, ',', '.'); ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_urj->target_pbm/ 12, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($a->jumlah - $target_urj->target_pbm/ 12, 0, ',', '.') ; ?></td>
                                                         <td class="text-center min-w-100px"><?php echo number_format($target_urj->target_nmu/ 12, 0, ',', '.') ; ?></td>
+                                                        <td class="text-center min-w-100px"><?php echo number_format($a->jumlah - $target_urj->target_nmu/ 12, 0, ',', '.') ; ?></td>
                                                     </tr>
                                                     <?php endforeach; ?>
                                                     <tr style="background-color: #000080;">
@@ -284,7 +316,9 @@
                                                         <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL <?php echo $lokasi?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_urj->jumlah, 0, ',', '.'); ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_urj->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_urj->jumlah - $target_urj->target_pbm/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                         <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($target_urj->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_urj->jumlah - $target_urj->target_nmu/ 365 * $interval->days, 0, ',', '.') ; ?></b></td>
                                                     </tr>
                                                 <?php endif ?>
                                             </tbody>

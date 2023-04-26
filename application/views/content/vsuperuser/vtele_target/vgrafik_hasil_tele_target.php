@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Grafik Rekap Pendapatan BPJS / Non BPJS</h1>
+										Grafik Target Kunjungan Telemedicine</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -66,16 +66,14 @@
 												<div class="card card-md-stretch me-xl-3 mb-md-0 mb-6">
 													<!--begin::Body-->
 													<div class="card-body">
-															<form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/grafik_hasil_pendapatan" enctype="multipart/form-data">
+															<form method="post" action="<?php echo site_url(); ?>SuperUser/ctele_target/grafik_hasil_kunjungan" enctype="multipart/form-data">
 																<div class="row mb-5">
 																	<!--begin::Col-->
 																	<div class="col-xl-4">
 																		<div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
 																	</div>
 																	<div class="col-xl-8 fv-row">
-																		<select class="form-select form-select-solid select2" name="lokasi" >
-																			<option <?php if ($lokasi == "") echo "selected"; ?> value="">KONSOLIDASI</option>
-																			<option <?php if ($lokasi == "K.P") echo "selected"; ?>>K.P</option>
+																		<select class="form-select form-select-solid select2" id="lokasi" name="lokasi" >
 																			<option <?php if ($lokasi == "RSG") echo "selected"; ?>>RSG</option>
 																			<option <?php if ($lokasi == "RST") echo "selected"; ?>>RST</option>
 																			<option <?php if ($lokasi == "RSP") echo "selected"; ?>>RSP</option>
@@ -130,21 +128,6 @@
 																	</div>
 																	<!--begin::Col-->
 																</div>
-																<div class="row mb-5">
-																<!--begin::Col-->
-																<div class="col-xl-4">
-																	<div class="fs-6 fw-semibold mt-2 mb-3">Jenis Report</div>
-																</div>
-																	<div class="col-xl-8 fv-row">
-																		<select class="form-select form-select-solid select2" name="jenis" >
-																			<option><?php echo $jenis?></option>
-																			<option>SEMUA</option>
-																			<?php foreach ($jenis2 as $jenis):?>
-																				<option><?php echo $jenis->ket?></option>
-																			<?php endforeach ?>
-																		</select>
-																	</div>
-																</div>
 																<div class="row mb-1">
 																	<div class="col-xl-4">
 																		<button type="submit" name="submit" class="btn btn-sm btn-success">Tampilkan</button>
@@ -190,11 +173,10 @@
 														<tbody class="text-gray-600 fw-semibold">
 															<tr>
 																<td>
-																	<b>(Dalam Juta)</b><br><br>
 																	<canvas id="myChart" width="750" height="200"></canvas><br>
 																</td>
 															</tr>
-															<tr>
+															<!-- <tr>
 																<td style="text-align:center">
 																	<form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/export_xlsx">
 																		<div>
@@ -208,7 +190,7 @@
 																		<br><button type="submit" name="submit" class="btn btn-sm btn-primary">Export Excel</button>
 																	</form>
 																</td>
-															</tr>
+															</tr> -->
 														</tbody>
 													</table>
 												</div>
@@ -275,65 +257,72 @@
     <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: <?php echo json_encode($tanggal)?>,
             datasets: [{
-                label: 'Total Revenue',
-                data: [<?php echo implode(',', $revenue) ?>],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 3
-            }]
+                label: 'Total Kunjungan',
+                data: [<?php echo implode(',', $price) ?>],
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
+					borderWidth: 3
+            },{
+				label: 'Target NMU',
+				data: [<?php echo implode(',', $target_nmu) ?>],
+				type: 'line',  // tipe dataset menjadi line
+				fill: false,  // isi area di bawah garis target dinonaktifkan
+				backgroundColor: 'rgba(50, 205, 50, 0.2)',
+				borderColor: 'rgba(50, 205, 50, 1)',
+				borderWidth: 3,
+				tension: 0.4 // nilai kekencangan kurva pada titik data
+			},{
+				label: 'Target PBM',
+				data: [<?php echo implode(',', $target_pbm) ?>],
+				type: 'line',  // tipe dataset menjadi line
+				fill: false,  // isi area di bawah garis target dinonaktifkan
+				backgroundColor: 'rgba(255, 0, 0, 0.2)',
+				borderColor: 'rgba(255, 0, 0, 1)',
+				borderWidth: 3,
+				tension: 0.4 // nilai kekencangan kurva pada titik data
+			}]
         },
         options: {
-        scales: {
-            xAxes: [{
-            gridLines: {
-                display: false
-            }
-            }],
-            yAxes: [{
-            gridLines: {
-                display: false
-            },
-			ticks: {
-				// Menentukan format currency
-				callback: function(value, index, values) {
-					return (value / 1000000).toFixed(0);
+			scales: {
+				xAxes: [{
+				gridLines: {
+					display: false
+				}
+				}],
+				yAxes: [{
+				gridLines: {
+					display: false
+				},
+				ticks: {
+					// Menentukan format currency
+					callback: function(value, index, values) {
+						return value.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+					}
+				}
+				}]
+			},
+			legend: {
+				position: 'bottom'
+			},
+			responsive: true,
+			tooltips: {
+				callbacks: {
+					label: function(tooltipItem, data) {
+						var label = data.datasets[tooltipItem.datasetIndex].label || '';
+						if (label) {
+							label += ': ';
+						}
+						label += (tooltipItem.yLabel).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+						return label;
+					}
 				}
 			}
-            }]
-        },
-        legend: {
-            position: 'bottom'
-        },
-        responsive: true,
-		tooltips: {
-            callbacks: {
-                label: function(tooltipItem, data) {
-                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
-                    if (label) {
-                        label += ': ';
-                    }
-					label += (tooltipItem.yLabel / 1000000).toFixed(0).replace('.', ',') + ' (Dalam Juta)';
-                    return label;
-                }
-            }
-        }
         }
     });
-    // Menambahkan data baru
-    myChart.data.datasets[0].data.push(10);
-    myChart.update();
-    myChart.data.datasets.push({
-    label: 'Target Revenue',
-    data: [<?php echo implode(',', $target) ?>],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3
-    });
-    myChart.update();
     </script>
 
     <!-- script pie -->
@@ -344,43 +333,43 @@
 
 		function drawChart() {
 			var data = google.visualization.arrayToDataTable([
-			['Task', 'Hours per Day'],
-			<?php foreach ($pie as $pie) :?>
-			['<?php echo $pie->lokasi;?>',<?php echo $pie->total_rsaldosampai/1000000; ?>],
-			<?php endforeach;?>
+				['Task', 'Hours per Day'],
+				<?php foreach ($pie as $pie) :?>
+				['<?php echo $pie->tanggal;?>',<?php echo $pie->price; ?>],
+				<?php endforeach;?>
 			]);
 
 			var formatter = new google.visualization.NumberFormat({
-			suffix: ' jt',
-			fractionDigits: 0
+				fractionDigits: 0,
+				pattern: '#,###'
 			});
 
 			formatter.format(data, 1);
 
 			var options = {
-			width: 340,
-			height: 300,
-			is3D: true,
-			responsive: true,
-			// legend: { position: 'none' },
-			pieSliceText: 'value-and-label',
-			slices: {
-				0: { color: 'blue' },
-				1: { color: 'green' },
-				2: { color: 'red' },
-				3: { color: 'yellow' },
-				4: { color: 'gray' }
-			},
-			tooltip: { 
-				format: 'currency',
-				// Mengatur format currency
-				callback: function(tooltipItem, data) {
-				var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
-				var value = data.getValue(tooltipItem.row, 1);
-				return currency.format(value * 1000000);
-				}
-			},
-			chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
+				width: 340,
+				height: 300,
+				is3D: true,
+				responsive: true,
+				// legend: { position: 'none' },
+				pieSliceText: 'value-and-label',
+				slices: {
+					0: { color: 'blue' },
+					1: { color: 'green' },
+					2: { color: 'red' },
+					3: { color: 'yellow' },
+					4: { color: 'gray' }
+				},
+				tooltip: { 
+					format: 'currency',
+					// Mengatur format currency
+					callback: function(tooltipItem, data) {
+						var currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+						var value = data.getValue(tooltipItem.row, 1);
+						return currency.format(value);
+					}
+				},
+				chartArea: { left: '5%', top: '5%', width: '90%', height: '90%' }
 			};
 
 			var chart = new google.visualization.PieChart(document.getElementById('chart_pendapatan_bpjs'));
@@ -388,7 +377,7 @@
 
 			// Menyesuaikan ukuran grafik saat tampil di mobile
 			window.addEventListener('resize', function() {
-			chart.draw(data, options);
+				chart.draw(data, options);
 			});
 		}
 	</script>

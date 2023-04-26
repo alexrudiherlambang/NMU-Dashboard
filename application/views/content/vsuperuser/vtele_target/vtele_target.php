@@ -146,7 +146,9 @@
                                                     <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Unit</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Realisasi Kunjungan</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target PBM</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">GAP PBM</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target NMU</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">GAP NMU</th>
                                                 </tr>
                                                 <!--end::Table row-->
                                             </thead>
@@ -159,10 +161,14 @@
                                                     <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
+                                                    <td class="text-center min-w-100px">0</td>
+                                                    <td class="text-center min-w-100px">0</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="w-10px pe-5">2</td>
                                                     <td class="min-w-125px">RS Perkebunan</td>
+                                                    <td class="text-center min-w-100px">0</td>
+                                                    <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
@@ -173,10 +179,14 @@
                                                     <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
+                                                    <td class="text-center min-w-100px">0</td>
+                                                    <td class="text-center min-w-100px">0</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="w-10px pe-5">2</td>
                                                     <td class="min-w-125px">RS Medika Utama</td>
+                                                    <td class="text-center min-w-100px">0</td>
+                                                    <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
@@ -187,10 +197,14 @@
                                                     <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
                                                     <td class="text-center min-w-100px">0</td>
+                                                    <td class="text-center min-w-100px">0</td>
+                                                    <td class="text-center min-w-100px">0</td>
                                                 </tr>
                                                 <tr style="background-color: #000080;">
                                                     <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px"><b>TOTAL</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
                                                     <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>

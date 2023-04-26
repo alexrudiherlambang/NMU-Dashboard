@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Grafik Rekap Pendapatan BPJS / Non BPJS</h1>
+										Grafik Target Kunjungan Telemedicine</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -66,22 +66,21 @@
 											<div class="card card-md-stretch me-xl-3 mb-md-0 mb-6">
 												<!--begin::Body-->
 												<div class="card-body">
-														<form method="post" action="<?php echo site_url(); ?>SuperUser/crekap/grafik_hasil_pendapatan" enctype="multipart/form-data">
+														<form method="post" action="<?php echo site_url(); ?>SuperUser/ctele_target/grafik_hasil_kunjungan" enctype="multipart/form-data">
 															<div class="row mb-5">
 																<!--begin::Col-->
 																<div class="col-xl-4">
 																	<div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
 																</div>
 																<div class="col-xl-8 fv-row">
-																	<select class="form-select form-select-solid select2" name="lokasi" >
-																		<option value="">KONSOLIDASI</option>
-																		<option>K.P</option>
-																		<option>RSG</option>
-																		<option>RST</option>
-																		<option>RSP</option>
-																		<option>RSMU</option>
-																		<option>URJ</option>
-																	</select>
+																<select class="form-select form-select-solid select2" id="lokasi" name="lokasi" required>
+																	<option>--Pilih--</option>
+																	<option>RSG</option>
+																	<option>RST</option>
+																	<option>RSP</option>
+																	<option>RSMU</option>
+																	<option>URJ</option>
+																</select>
 																</div>
 															</div>
 															<div class="row mb-5">
@@ -130,20 +129,7 @@
 																</div>
 																<!--begin::Col-->
 															</div>
-															<div class="row mb-5">
 															<!--begin::Col-->
-															<div class="col-xl-4">
-																<div class="fs-6 fw-semibold mt-2 mb-3">Jenis Report</div>
-															</div>
-																<div class="col-xl-8 fv-row">
-																	<select class="form-select form-select-solid select2" name="jenis" >
-																		<option>SEMUA</option>
-																		<?php foreach ($jenis as $jenis):?>
-																			<option><?php echo $jenis->ket?></option>
-																		<?php endforeach ?>
-																	</select>
-																</div>
-															</div>
 															<div class="row mb-1">
 																<div class="col-xl-4">
 																	<button type="submit" name="submit" class="btn btn-sm btn-success">Tampilkan</button>
@@ -189,7 +175,6 @@
 													<tr>
 														<td>
 														<div class="card-body">
-															<b>(Dalam Juta)</b><br><br>
 															<canvas id="myChart" width="300" height="100"></canvas><br>
 														</div>
 													</tr>
@@ -262,11 +247,11 @@
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
             datasets: [{
-                label: 'Total Revenue',
+                label: 'Total Kunjungan',
                 data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 3
+					backgroundColor: 'rgba(0, 0, 128, 0.2)',
+					borderColor: 'rgba(0, 0, 128, 1)',
+					borderWidth: 3
             }]
         },
         options: {
@@ -288,17 +273,6 @@
         responsive: true
         }
     });
-    // Menambahkan data baru
-    myChart.data.datasets[0].data.push(10);
-    myChart.update();
-    myChart.data.datasets.push({
-    label: 'Target Revenue',
-    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3
-    });
-    myChart.update();
     </script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

@@ -176,6 +176,8 @@ class mtele_kunjung extends ci_model {
          $this->db->from('trans_rsg');
          $this->db->group_by('day(jadwal_yang_dipilih)');
          $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('status_emr', "CLOSED");
+         $this->db->where('nama_layanan', "TELEKONSULTASI");
          $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
          $this->db->where('unit_name', $jenis);
          return $this->db->get();
@@ -184,6 +186,8 @@ class mtele_kunjung extends ci_model {
          $this->db->from('trans_rst');
          $this->db->group_by('day(jadwal_yang_dipilih)');
          $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('status_emr', "CLOSED");
+         $this->db->where('nama_layanan', "TELEKONSULTASI");
          $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
          $this->db->where('unit_name', $jenis);
          return $this->db->get();
@@ -192,6 +196,8 @@ class mtele_kunjung extends ci_model {
          $this->db->from('trans_rsp');
          $this->db->group_by('day(jadwal_yang_dipilih)');
          $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('status_emr', "CLOSED");
+         $this->db->where('nama_layanan', "TELEKONSULTASI");
          $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
          $this->db->where('unit_name', $jenis);
          return $this->db->get();
@@ -200,6 +206,8 @@ class mtele_kunjung extends ci_model {
          $this->db->from('trans_rsmu');
          $this->db->group_by('day(jadwal_yang_dipilih)');
          $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('status_emr', "CLOSED");
+         $this->db->where('nama_layanan', "TELEKONSULTASI");
          $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
          $this->db->where('unit_name', $jenis);
          return $this->db->get();
@@ -208,6 +216,8 @@ class mtele_kunjung extends ci_model {
          $this->db->from('trans_urj');
          $this->db->group_by('day(jadwal_yang_dipilih)');
          $this->db->where('jadwal_yang_dipilih >=', $tglawal);
+         $this->db->where('status_emr', "CLOSED");
+         $this->db->where('nama_layanan', "TELEKONSULTASI");
          $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
          $this->db->where('unit_name', $jenis);
          return $this->db->get();
@@ -221,6 +231,8 @@ class mtele_kunjung extends ci_model {
          $this->db->select('unit_name as tanggal,COUNT(invoice_no) as price,');
          $this->db->from('trans_rsg');
          $this->db->group_by('unit_name');
+         $this->db->where('status_emr', "CLOSED");
+         $this->db->where('nama_layanan', "TELEKONSULTASI");
          $this->db->where('jadwal_yang_dipilih >=', $tglawal);
          $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
          return $this->db->get();
@@ -228,6 +240,8 @@ class mtele_kunjung extends ci_model {
          $this->db->select('unit_name as tanggal,COUNT(invoice_no) as price,');
          $this->db->from('trans_rst');
          $this->db->group_by('unit_name');
+         $this->db->where('status_emr', "CLOSED");
+         $this->db->where('nama_layanan', "TELEKONSULTASI");
          $this->db->where('jadwal_yang_dipilih >=', $tglawal);
          $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
          return $this->db->get();
@@ -235,6 +249,8 @@ class mtele_kunjung extends ci_model {
          $this->db->select('unit_name as tanggal,COUNT(invoice_no) as price,');
          $this->db->from('trans_rsp');
          $this->db->group_by('unit_name');
+         $this->db->where('status_emr', "CLOSED");
+         $this->db->where('nama_layanan', "TELEKONSULTASI");
          $this->db->where('jadwal_yang_dipilih >=', $tglawal);
          $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
          return $this->db->get();
@@ -242,6 +258,8 @@ class mtele_kunjung extends ci_model {
          $this->db->select('unit_name as tanggal,COUNT(invoice_no) as price,');
          $this->db->from('trans_rsmu');
          $this->db->group_by('unit_name');
+         $this->db->where('status_emr', "CLOSED");
+         $this->db->where('nama_layanan', "TELEKONSULTASI");
          $this->db->where('jadwal_yang_dipilih >=', $tglawal);
          $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
          return $this->db->get();
@@ -249,6 +267,8 @@ class mtele_kunjung extends ci_model {
          $this->db->select('unit_name as tanggal,COUNT(invoice_no) as price,');
          $this->db->from('trans_urj');
          $this->db->group_by('unit_name');
+         $this->db->where('status_emr', "CLOSED");
+         $this->db->where('nama_layanan', "TELEKONSULTASI");
          $this->db->where('jadwal_yang_dipilih >=', $tglawal);
          $this->db->where('jadwal_yang_dipilih <=', $tglakhir);
          return $this->db->get();

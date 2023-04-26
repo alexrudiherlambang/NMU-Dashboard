@@ -86,123 +86,58 @@ class ctele_target extends CI_Controller {
       $this->load->view('content/vsuperuser/vtele_target/vhasil_tele_target',$data);
    }
 
-   function grafik_pendapatan() {
+   function get_jenis(){
+      $optionSelected = $this->input->post('optionSelected');
+      $result = $this->mtele_target->mshow_all_jenis($optionSelected);
+      echo json_encode($result);
+   }
+
+   function grafik_kunjungan() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $nama = $this->session->userdata("nama");
-      $data['jenis'] = $this->mtele_dapat->mshow_all_jenis($nama);   
-      $this->load->view('content/vsuperuser/vrekap/vgrafik_rekap',$data);
+      $this->load->view('content/vsuperuser/vtele_target/vgrafik_tele_target');
    }
    
-   function grafik_hasil_pendapatan() {
+   function grafik_hasil_kunjungan() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
       $tglawal = $this->input->post('tglawal');
       $tglakhir = $this->input->post('tglakhir');
       $lokasi = $this->input->post('lokasi');
-      $jenis = $this->input->post('jenis');
       $nama = $this->session->userdata("nama");
       
-      if ($jenis == "SEMUA") {
-         $grafik = $this->mtele_dapat->mshow_all_grafik_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
-
-         foreach ($grafik->result() as $b) {
-            $hasiltanggal[] = date('d-M', strtotime($b->tanggal));
-            $hasilrevenue[$b->ket][] = $b->total_rsaldosampai;
-            $hasiltarget[$b->ket][] = $b->total_jmltarget;
-         }
-         // Buat array hasil tanggal dari kunci array asosiatif
-        
-         foreach ($hasilrevenue as $ket => $revenues) {
-            $hasilrevenue_data[] = array(
-              'name' => $ket,
-              'data' => $revenues
-            );
-         }
-          
-         foreach ($hasiltarget as $ket => $targets) {
-            $hasiltarget_data[] = array(
-              'name' => $ket,
-              'data' => $targets
-            );
-         }
-         $graf_pie = $this->mtele_dapat->mshow_all_pie_all_jenis($tglawal,$tglakhir,$lokasi,$jenis,$nama);
-         foreach ($graf_pie->result() as $b){
-            $pie[] = $b;
-         }
-         $jenis2 = $this->mtele_dapat->mshow_all_jenis($nama);   
-
-         $data =  array (
-            'tanggal'      => $hasiltanggal,
-            'revenue'      => $hasilrevenue,
-            'target'       => $hasiltarget,
-            'pie'          => $pie,
-            'tglawal'      => $tglawal,
-            'tglakhir'     => $tglakhir,
-            'lokasi'       => $lokasi,
-            'jenis'        => $jenis,
-            'jenis2'       => $jenis2,
+      $grafik = $this->mtele_target->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$nama);
+      $grafik_kp = $this->mtele_target->mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$nama);
+      $target = $this->mtele_target->mshow_target($lokasi);
+      
+      foreach ($grafik->result() as $b){
+         $hasiltanggal[] = array (
+            $tanggal_baru = date('d-M', strtotime($b->tanggal)),
          );
-
-         //insert into log_aktifitas table
-         if ($lokasi == ""){
-            $log = array(
-               'id'		   => $this->session->userdata("id"),
-               'tglawal'   => $tglawal,
-               'tglakhir'  => $tglakhir,
-               'unit'      => 'KONSOLIDASI',
-               'jenis'     => $jenis,
-               'platform'	=> $this->agent->platform(),
-               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-               'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Pendapatan BPJS/NON-BPJS',
-            );
-         }else{
-            $log = array(
-               'id'		   => $this->session->userdata("id"),
-               'tglawal'   => $tglawal,
-               'tglakhir'  => $tglakhir,
-               'unit'      => $lokasi,
-               'jenis'     => $jenis,
-               'platform'	=> $this->agent->platform(),
-               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-               'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Pendapatan BPJS/NON-BPJS',
-            );
-         }
-         $this->mtele_dapat->insert_log($log);
-         $this->load->view('content/vsuperuser/vrekap/vgrafik_hasil_rekap_all',$data);
-
+         $price[] = $b->price;
+         $target_pbm[] = number_format(($target->num_rows() > 0 ? $target->row()->target_pbm : 0)/365, 0);
+         $target_nmu[] = number_format(($target->num_rows() > 0 ? $target->row()->target_nmu : 0)/365, 0);
+      }
+      foreach ($grafik_kp->result() as $d){
+         $pie[] = $d;
+      }
+      $jenis2 = $this->mtele_target->mshow_all_jenis($nama);   
+      if (empty($hasiltanggal)) {
+         echo '<script language="javascript">alert("Data Tidak Tersedia !!!"); document.location="grafik_kunjungan";</script>';
       }else{
-         $grafik = $this->mtele_dapat->mshow_all_grafik($tglawal,$tglakhir,$lokasi,$jenis,$nama);
-         $grafik_kp = $this->mtele_dapat->mshow_all_grafik_kp($tglawal,$tglakhir,$lokasi,$jenis,$nama);
-
-         foreach ($grafik->result() as $b){
-            $hasiltanggal[] = array (
-               $tanggal_baru = date('d-M', strtotime($b->tanggal)),
-            );
-            $hasilrevenue[] = $b->total_rsaldosampai;
-            $hasiltarget[] = $b->total_jmltarget;
-         }
-         foreach ($grafik_kp->result() as $d){
-            $pie[] = $d;
-         }
-         $jenis2 = $this->mtele_dapat->mshow_all_jenis($nama);   
-         
          $data =  array (
             'tanggal'      => $hasiltanggal,
-            'revenue'      => $hasilrevenue,
-            'target'       => $hasiltarget,
+            'price'        => $price,
+            'target_pbm'   => $target_pbm,
+            'target_nmu'   => $target_nmu,
             'pie'          => $pie,
             'tglawal'      => $tglawal,
             'tglakhir'     => $tglakhir,
             'lokasi'       => $lokasi,
-            'jenis'        => $jenis,
             'jenis2'       => $jenis2,
          );
-
          //insert into log_aktifitas table
          if ($lokasi == ""){
             $log = array(
@@ -210,11 +145,10 @@ class ctele_target extends CI_Controller {
                'tglawal'   => $tglawal,
                'tglakhir'  => $tglakhir,
                'unit'      => 'KONSOLIDASI',
-               'jenis'     => $jenis,
                'platform'	=> $this->agent->platform(),
                'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
                'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Pendapatan BPJS/NON-BPJS',
+               'action'	   => 'Show Grafik Target Kunjungan Telemedicine',
             );
          }else{
             $log = array(
@@ -222,16 +156,15 @@ class ctele_target extends CI_Controller {
                'tglawal'   => $tglawal,
                'tglakhir'  => $tglakhir,
                'unit'      => $lokasi,
-               'jenis'     => $jenis,
                'platform'	=> $this->agent->platform(),
                'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
                'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Pendapatan BPJS/NON-BPJS',
+               'action'	   => 'Show Grafik Target Kunjungan Telemedicine',
             );
          }
-         $this->mtele_dapat->insert_log($log);
+         $this->mtele_target->insert_log($log);
          
-         $this->load->view('content/vsuperuser/vrekap/vgrafik_hasil_rekap',$data);
+         $this->load->view('content/vsuperuser/vtele_target/vgrafik_hasil_tele_target',$data);
       }
    }
 

@@ -38,7 +38,7 @@
 									<!--begin::Title-->
 									<h1
 										class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-										Grafik Rekap Kunjungan Telemedicine</h1>
+										Grafik Kunjungan Telemedicine</h1>
 									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<?php
@@ -132,7 +132,7 @@
 															<div class="row mb-5">
 															<!--begin::Col-->
 															<div class="col-xl-4">
-																<div class="fs-6 fw-semibold mt-2 mb-3">Jenis Report</div>
+																<div class="fs-6 fw-semibold mt-2 mb-3">Jenis Poli</div>
 															</div>
 																<div class="col-xl-8 fv-row">
 																<select class="form-control form-control-solid" id="jenis" name="jenis">
