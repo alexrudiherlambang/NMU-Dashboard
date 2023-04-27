@@ -261,12 +261,21 @@
         data: {
             labels: <?php echo json_encode($tanggal)?>,
             datasets: [{
-                label: 'Total Kunjungan',
-                data: [<?php echo implode(',', $price) ?>],
-					backgroundColor: 'rgba(0, 0, 128, 0.2)',
-					borderColor: 'rgba(0, 0, 128, 1)',
-					borderWidth: 3
+					label: 'Close Bill SIM RS',
+					data: [<?php echo implode(',', $jumlah) ?>],
+					backgroundColor: 'rgba(255, 192, 203, 0.2)',
+					borderColor: 'rgba(255, 192, 203, 1)',
+					borderWidth: 2
             },{
+				label: 'Kunjungan Telemedicine',
+				data: [<?php echo implode(',', $price) ?>],
+				type: 'bar',  // tipe dataset menjadi line
+				fill: false,  // isi area di bawah garis target dinonaktifkan
+				backgroundColor: 'rgba(135, 206, 250, 0.2)',
+				borderColor: 'rgba(135, 206, 250, 1)',
+				borderWidth: 2,
+				tension: 0.4 // nilai kekencangan kurva pada titik data
+			},{
 				label: 'Target NMU',
 				data: [<?php echo implode(',', $target_nmu) ?>],
 				type: 'line',  // tipe dataset menjadi line

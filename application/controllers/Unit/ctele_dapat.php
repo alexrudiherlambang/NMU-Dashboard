@@ -70,13 +70,19 @@ class ctele_dapat extends CI_Controller {
       $this->load->view('content/vunit/vtele_dapat/vhasil_tele_dapat',$data);
    }
 
+   function get_jenis(){
+      $optionSelected = $this->session->userdata("tlok");
+      $result = $this->mtele_dapat->mshow_all_jenis($optionSelected);
+      echo json_encode($result);
+   }
+
    function grafik_pendapatan() {
       if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
 			redirect("clogin");
 		}
-      $nama = $this->session->userdata("nama");
-      $data['jenis'] = $this->mtele_dapat->mshow_all_jenis($nama);   
-      $this->load->view('content/vunit/vrekap/vgrafik_rekap',$data);
+      $optionSelected = $this->session->userdata("tlok");
+      $data['jenis'] = $this->mtele_dapat->mshow_all_jenis($optionSelected);
+      $this->load->view('content/vunit/vtele_dapat/vgrafik_tele_dapat', $data);
    }
    
    function grafik_hasil_pendapatan() {
@@ -116,8 +122,7 @@ class ctele_dapat extends CI_Controller {
          foreach ($graf_pie->result() as $b){
             $pie[] = $b;
          }
-         $jenis2 = $this->mtele_dapat->mshow_all_jenis($nama);   
-
+         $jenis2 = $this->mtele_dapat->mshow_all_jenis($this->session->userdata("tlok"));  
          $data =  array (
             'tanggal'      => $hasiltanggal,
             'revenue'      => $hasilrevenue,
@@ -167,55 +172,57 @@ class ctele_dapat extends CI_Controller {
             $hasiltanggal[] = array (
                $tanggal_baru = date('d-M', strtotime($b->tanggal)),
             );
-            $hasilrevenue[] = $b->total_rsaldosampai;
-            $hasiltarget[] = $b->total_jmltarget;
+            $price[] = $b->price;
          }
          foreach ($grafik_kp->result() as $d){
             $pie[] = $d;
          }
-         $jenis2 = $this->mtele_dapat->mshow_all_jenis($nama);   
-         
-         $data =  array (
-            'tanggal'      => $hasiltanggal,
-            'revenue'      => $hasilrevenue,
-            'target'       => $hasiltarget,
-            'pie'          => $pie,
-            'tglawal'      => $tglawal,
-            'tglakhir'     => $tglakhir,
-            'lokasi'       => $lokasi,
-            'jenis'        => $jenis,
-            'jenis2'       => $jenis2,
-         );
-
-         //insert into log_aktifitas table
-         if ($lokasi == ""){
-            $log = array(
-               'id'		   => $this->session->userdata("id"),
-               'tglawal'   => $tglawal,
-               'tglakhir'  => $tglakhir,
-               'unit'      => 'KONSOLIDASI',
-               'jenis'     => $jenis,
-               'platform'	=> $this->agent->platform(),
-               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-               'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Pendapatan BPJS/NON-BPJS',
-            );
+         $jenis2 = $this->mtele_dapat->mshow_all_jenis($this->session->userdata("tlok"));
+          
+         if (empty($hasiltanggal)) {
+            echo '<script language="javascript">alert("Data Tidak Tersedia !!!"); document.location="grafik_pendapatan";</script>';
          }else{
-            $log = array(
-               'id'		   => $this->session->userdata("id"),
-               'tglawal'   => $tglawal,
-               'tglakhir'  => $tglakhir,
-               'unit'      => $lokasi,
-               'jenis'     => $jenis,
-               'platform'	=> $this->agent->platform(),
-               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-               'ip'		   => $this->input->ip_address(),
-               'action'	   => 'Show Grafik Pendapatan BPJS/NON-BPJS',
+            $data =  array (
+               'tanggal'      => $hasiltanggal,
+               'price'        => $price,
+               'pie'          => $pie,
+               'tglawal'      => $tglawal,
+               'tglakhir'     => $tglakhir,
+               'lokasi'       => $lokasi,
+               'jenis'        => $jenis,
+               'jenis2'       => $jenis2,
             );
+
+            //insert into log_aktifitas table
+            if ($lokasi == ""){
+               $log = array(
+                  'id'		   => $this->session->userdata("id"),
+                  'tglawal'   => $tglawal,
+                  'tglakhir'  => $tglakhir,
+                  'unit'      => 'KONSOLIDASI',
+                  'jenis'     => $jenis,
+                  'platform'	=> $this->agent->platform(),
+                  'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+                  'ip'		   => $this->input->ip_address(),
+                  'action'	   => 'Show Grafik Pendapatan Telemedicine',
+               );
+            }else{
+               $log = array(
+                  'id'		   => $this->session->userdata("id"),
+                  'tglawal'   => $tglawal,
+                  'tglakhir'  => $tglakhir,
+                  'unit'      => $lokasi,
+                  'jenis'     => $jenis,
+                  'platform'	=> $this->agent->platform(),
+                  'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+                  'ip'		   => $this->input->ip_address(),
+                  'action'	   => 'Show Grafik Pendapatan Telemedicine',
+               );
+            }
+            $this->mtele_dapat->insert_log($log);
+            
+            $this->load->view('content/vunit/vtele_dapat/vgrafik_hasil_tele_dapat',$data);
          }
-         $this->mtele_dapat->insert_log($log);
-         
-         $this->load->view('content/vunit/vrekap/vgrafik_hasil_rekap',$data);
       }
    }
 

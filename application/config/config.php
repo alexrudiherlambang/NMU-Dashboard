@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //lan
-// $config['base_url'] = 'http://10.88.10.19/NMU-Dashboard/';
+// $config['base_url'] = 'http://10.88.10.24/NMU-Dashboard/';
 //local
 $config['base_url'] = 'http://localhost/NMU-Dashboard/';
 //wifi

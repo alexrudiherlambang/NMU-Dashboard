@@ -116,9 +116,25 @@ class ctele_target extends CI_Controller {
          $hasiltanggal[] = array (
             $tanggal_baru = date('d-M', strtotime($b->tanggal)),
          );
+         if ($lokasi =="RSG"){
+            $tgl[] = date('Y-m-d', strtotime($b->tanggal . ' -2 day'));
+         }elseif ($lokasi =="RST"){
+            $tgl[] = date('Y-m-d', strtotime($b->tanggal . ' -2 day'));
+         }elseif ($lokasi =="RSP"){
+            $tgl[] = date('Y-m-d', strtotime($b->tanggal . ' -1 day'));
+         }elseif ($lokasi =="RSMU"){
+            $tgl[] = date('Y-m-d', strtotime($b->tanggal . ' -1 day'));
+         }
          $price[] = $b->price;
          $target_pbm[] = number_format(($target->num_rows() > 0 ? $target->row()->target_pbm : 0)/365, 0);
          $target_nmu[] = number_format(($target->num_rows() > 0 ? $target->row()->target_nmu : 0)/365, 0);
+      }
+      if ($lokasi == "URJ"){
+         echo '<script language="javascript">alert("Data Tidak Tersedia !!!"); document.location="grafik_kunjungan";</script>';
+      }
+      $closebill = $this->mtele_target->mshow_closebill($tgl,$lokasi,$nama);
+      foreach ($closebill->result() as $f){
+         $jumlah[] = $f->jumlah;
       }
       foreach ($grafik_kp->result() as $d){
          $pie[] = $d;
@@ -130,6 +146,7 @@ class ctele_target extends CI_Controller {
          $data =  array (
             'tanggal'      => $hasiltanggal,
             'price'        => $price,
+            'jumlah'       => $jumlah,
             'target_pbm'   => $target_pbm,
             'target_nmu'   => $target_nmu,
             'pie'          => $pie,

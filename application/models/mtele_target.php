@@ -377,5 +377,42 @@ class mtele_target extends ci_model {
       $this->db->where('unit', $lokasi);
       return $this->db->get();
    }
+
+   //untuk select jumlah kunjungan closebill
+   function mshow_closebill($hasiltanggal,$lokasi,$nama){
+      if ($lokasi == "RSG"){
+         $this->db = $this->load->database('db_rsg', TRUE);
+         $this->db->select('tglkeluar, COUNT(nori) as jumlah');
+         $this->db->from('dafinap');
+         $this->db->where_in('tglkeluar', $hasiltanggal);
+         $this->db->where('kdjnspas !=', "06");
+         $this->db->group_by('tglkeluar');
+         return $this->db->get();
+      }elseif ($lokasi == "RST"){
+         $this->db = $this->load->database('db_rst', TRUE);
+         $this->db->select('tglkeluar, COUNT(nori) as jumlah');
+         $this->db->from('dafinap');
+         $this->db->where_in('tglkeluar', $hasiltanggal);
+         $this->db->where('kdjnspas !=', "06");
+         $this->db->group_by('tglkeluar');
+         return $this->db->get();
+      }elseif ($lokasi == "RSP"){
+         $this->db = $this->load->database('db_rsp', TRUE);
+         $this->db->select('tglkeluar, COUNT(nori) as jumlah');
+         $this->db->from('dafinap');
+         $this->db->where_in('tglkeluar', $hasiltanggal);
+         $this->db->where('kdjnspas !=', "06");
+         $this->db->group_by('tglkeluar');
+         return $this->db->get();
+      }elseif ($lokasi == "RSMU"){
+         $this->db = $this->load->database('db_rsmu', TRUE);
+         $this->db->select('tglkeluar, COUNT(nori) as jumlah');
+         $this->db->from('dafinap');
+         $this->db->where_in('tglkeluar', $hasiltanggal);
+         $this->db->where('kdjnspas !=', "06");
+         $this->db->group_by('tglkeluar');
+         return $this->db->get();
+      }
+   }
 }
 ?>
