@@ -157,7 +157,7 @@
                                                         </th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Realisasi yang Lalu</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Realisasi Bulan Ini</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Realisasi Periode Saat Ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Realisasi s/d Saat Ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Realisasi</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Realisasi</th>

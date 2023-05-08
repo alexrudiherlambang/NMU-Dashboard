@@ -145,7 +145,7 @@
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">TT yang Lalu</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">TT Bulan Ini</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">TT Periode Saat Ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total TT s/d saat ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial TT</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total TT</th>

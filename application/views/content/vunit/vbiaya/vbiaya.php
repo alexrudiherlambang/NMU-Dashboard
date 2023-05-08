@@ -139,7 +139,7 @@
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center text-center w-10px pe-5">No</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban yang Lalu</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban Bulan Ini</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Beban Periode Saat Ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Beban</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Beban</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Beban</th>

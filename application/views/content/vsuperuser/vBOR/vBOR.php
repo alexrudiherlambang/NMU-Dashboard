@@ -145,7 +145,7 @@
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">BOR yang Lalu</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">BOR Bulan Ini</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">BOR Periode Saat Ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total BOR s/d saat ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial BOR</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total BOR</th>

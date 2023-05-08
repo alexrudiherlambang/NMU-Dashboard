@@ -138,7 +138,7 @@
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">HAPER yang Lalu</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">HAPER Bulan Ini</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">HAPER Periode Saat Ini</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total HAPER s/d saat ini</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial HAPER</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total HAPER</th>

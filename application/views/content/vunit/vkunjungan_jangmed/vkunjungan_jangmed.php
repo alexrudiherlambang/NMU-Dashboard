@@ -138,7 +138,7 @@
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center text-center w-10px pe-5">No</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kegiatan yang Lalu</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kegiatan Bulan Ini</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kegiatan Periode Saat Ini</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kegiatan s/d saat ini</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Kegiatan</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Kegiatan</th>

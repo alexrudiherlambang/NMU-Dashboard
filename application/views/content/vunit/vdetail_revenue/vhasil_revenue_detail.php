@@ -148,7 +148,7 @@
                                                         </th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue yang Lalu</th>
-                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue Bulan Ini</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Revenue Periode Saat Ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Revenue s/d Saat Ini</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Revenue</th>
                                                         <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Revenue</th>
