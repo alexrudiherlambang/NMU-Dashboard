@@ -133,6 +133,19 @@ class mrekap extends ci_model {
          return $this->db->get()->result();
    }
 
+   // untuk cetak potensi
+   function mshow_all_potensi($nama, $ket, $tglawal, $tglakhir) {
+      $this->db->select('lokasi,tanggal,kelspesimen,ket,sum(rsaldopotensi1) as rsaldopotensi1, statuse');
+      $this->db->from('test.ra_dashdb_'.$nama);
+      $this->db->where('ket', $ket);
+      // $this->db->where('tanggal>=', $tglawal);
+      $this->db->where('tanggal<=', $tglakhir);
+      $this->db->where('statuse!=', 'TUTUP (AKUN)');
+      $this->db->group_by('lokasi');
+      $this->db->group_by('tanggal');
+      return $this->db->get()->result();
+   }
+
    //Insert Log Login
    function insert_log($log) {
       $this->db = $this->load->database('local', TRUE);

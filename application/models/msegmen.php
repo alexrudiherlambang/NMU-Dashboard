@@ -138,6 +138,24 @@ class msegmen extends ci_model {
       return $this->db->get()->result();
    }
 
+   // untuk cetak potensi
+   function mshow_all_potensi($nama, $kelsegmen, $tglawal, $tglakhir) {
+      $this->db->select('lokasi,tanggal,kelspesimen,kelsegmen,kelsegmen_sub,ket,unitperiksa,sum(rsaldopotensi1) as rsaldopotensi1, statuse');
+      $this->db->from('test.ra_dashdb_s_'.$nama);
+      $this->db->where('kelsegmen', $kelsegmen);
+      // $this->db->where('tanggal>=', $tglawal);
+      $this->db->where('tanggal<=', $tglakhir);
+      $this->db->where('statuse!=', 'TUTUP (AKUN)');
+      $this->db->group_by('lokasi');
+      // $this->db->group_by('tanggal');
+      $this->db->group_by('kelspesimen');
+      $this->db->group_by('kelsegmen');
+      $this->db->group_by('kelsegmen_sub');
+      $this->db->group_by('ket');
+      $this->db->group_by('unitperiksa');
+      return $this->db->get()->result();
+   }
+
    //Insert Log Login
    function insert_log($log) {
       $this->db = $this->load->database('local', TRUE);

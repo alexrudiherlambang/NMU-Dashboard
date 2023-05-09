@@ -127,7 +127,7 @@
                                                     <!--begin::Col-->
                                                 </div>
                                                 <center>
-                                                    <button type="submit" name="submit" class="btn btn-success">Tampilkan</button>
+                                                    <button type="submit" name="submit" class="btn btn-sm btn-success">Tampilkan</button>
                                                 </center>
                                             </form>
                                             </center>
@@ -146,6 +146,7 @@
                                                 <input class="form-control form-control-solid ps-12" type="hidden" name="lokasi" required="required" value="<?php echo $lokasi;?>" readonly/>
                                                 <button type="submit" name="exportType" value="detail" class="btn btn-sm btn-primary">Export Detail</button>
                                                 <button type="submit" name="exportType" value="tabel" class="btn btn-sm btn-info">Export Tabel</button>
+                                                <button type="submit" name="exportType" value="potensi" class="btn btn-sm btn-light-success">Export Potensi</button>
                                                 <div style="text-align:right"></div><br>
                                                 <table class="table align-middle gs-0 gy-4">
                                                     <!--begin::Table head-->
@@ -227,6 +228,7 @@
                                             <i><b>Prosentase</b> = Total Kunjungan / Target Kunjungan</i><br>
                                             <i><b>Export Detail</b> digunakan untuk export data detail per uraian yang dipilih</i><br>
                                             <i><b>Export Tabel</b> digunakan untuk export data tabel yang tampil</i><br>
+                                            <i><b>Export Potensi</b> digunakan untuk export detail data potensi</i><br>
                                         </div>
                                         <!--end::Table-->
                                     </div>

@@ -331,7 +331,63 @@ class cbiaya extends CI_Controller {
       
             xlsEOF();
             exit();
-         } 
+         } else if ($exportType == 'potensi') {
+            $nama = $this->session->userdata("nama");
+            $pilihan = $this->input->post('pilihan');
+            $tglawal = $this->input->post('tglawal');
+            $tglakhir = $this->input->post('tglakhir');
+            
+            $this->load->helper('exportexcel');
+            $namaFile = "Detail Potensi Beban Biaya.xls";
+            $judul = "Detail Potensi Beban Biaya";
+            $tablehead = 0;
+            $tablebody = 1;
+            $nourut = 1;
+            //penulisan header
+            header("Pragma: public");
+            header("Expires: 0");
+            header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+            header("Content-Type: application/force-download");
+            header("Content-Type: application/octet-stream");
+            header("Content-Type: application/download");
+            header("Content-Disposition: attachment;filename=" . $namaFile . "");
+            header("Content-Transfer-Encoding: binary ");
+      
+            xlsBOF();
+      
+            $kolomhead = 0;
+            xlsWriteLabel($tablehead, $kolomhead++, "No");
+            xlsWriteLabel($tablehead, $kolomhead++, "Unit");
+            xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
+            xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Beban");
+            xlsWriteLabel($tablehead, $kolomhead++, "Keterangan Beban");
+            xlsWriteLabel($tablehead, $kolomhead++, "Potensial Beban");
+            xlsWriteLabel($tablehead, $kolomhead++, "Status");
+
+            foreach ($pilihan as $p) {
+               $ket = $p;
+               
+               foreach ($this->mbiaya->mshow_all_potensi($nama, $ket, $tglawal, $tglakhir) as $data) {
+                  
+                  $kolombody = 0;
+
+                  //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                  xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->kelspesimen);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->ket);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi1);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+               
+                     $tablebody++;
+                  $nourut++;
+               }
+            }
+      
+            xlsEOF();
+            exit();
+         }
       }
    }
 
