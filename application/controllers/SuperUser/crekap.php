@@ -19,6 +19,7 @@ class crekap extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
+      $periode = $this->input->post('periode');
       $tglawal = $this->input->post('tglawal');
       $tglakhir = $this->input->post('tglakhir');
       $nama = $this->session->userdata("nama");
@@ -56,6 +57,7 @@ class crekap extends CI_Controller {
       $this->mrekap->insert_log($log);
 
       $data['lokasi'] = $lokasi;
+      $data['periode'] = $periode;
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
       $this->load->view('content/vsuperuser/vrekap/vhasil_rekap',$data);

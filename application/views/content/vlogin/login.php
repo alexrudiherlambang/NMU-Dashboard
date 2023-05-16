@@ -21,12 +21,12 @@
             <h2>Login Dashboard </h2>
             <input type="username" name="username" placeholder="username">
             <input type="password" name="password"  placeholder="password">
-            <a class="txt2" href="<?= base_url('assets/media/books/ManualBookDashboardNMU_PDF_2023-05-09154003.622098.pdf')?>">
-							<h5>Download User Manual Book di sini</h5>
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-            <!-- <h2>&nbsp;</h2> -->
+            &nbsp;
             <button type="submit" name="submit" style="font-family: inherit; background-color: #1cc88a; color: white; padding: 7px 40px; border-radius: 5px;"><strong>LOGIN</strong></button>
+            <a class="txt2" href="<?= base_url('assets/media/books/ManualBookDashboardNMU_PDF_2023-05-09154003.622098.pdf')?>" target="_blank">
+              <h5>Download User Manual Book di sini</h5>
+              <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+            </a>
         </div>
     </form>
 </div>
