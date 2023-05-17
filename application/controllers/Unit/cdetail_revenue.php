@@ -54,6 +54,7 @@ class cdetail_revenue extends CI_Controller {
       $this->mdetail_revenue->insert_log($log);
       
       $data['lokasi'] = $lokasi;
+      $data['periode'] = $this->input->post('periode');
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
       $this->load->view('content/vunit/vdetail_revenue/vhasil_revenue_detail',$data);

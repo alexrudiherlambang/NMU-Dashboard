@@ -56,6 +56,7 @@ class claba_rugi extends CI_Controller {
       $this->mlaba_rugi->insert_log($log);
 
       $data['lokasi'] = $lokasi;
+      $data['periode'] = $this->input->post('periode');
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
       $this->load->view('content/vunit/vlaba_rugi/vhasil_laba_rugi',$data);

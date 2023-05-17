@@ -56,6 +56,7 @@ class crekap extends CI_Controller {
       $this->mrekap->insert_log($log);
 
       $data['lokasi'] = $lokasi;
+      $data['periode'] = $this->input->post('periode');
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
       $this->load->view('content/vunit/vrekap/vhasil_rekap',$data);

@@ -56,6 +56,7 @@ class ckunjungan_persegmen extends CI_Controller {
       $data = array(
          'kunjung' => $kunjung,
          'lokasi' => $lokasi,
+         'periode' => $this->input->post('periode'),
          'tglawal' => $tglawal,
          'tglakhir' => $tglakhir,
       );

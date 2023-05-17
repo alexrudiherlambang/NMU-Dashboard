@@ -54,6 +54,7 @@ class cbiaya extends CI_Controller {
       $this->mbiaya->insert_log($log);
       
       $data['lokasi'] = $lokasi;
+      $data['periode'] = $this->input->post('periode');
       $data['tglawal'] = $tglawal;
       $data['tglakhir'] = $tglakhir;
       $this->load->view('content/vunit/vbiaya/vhasil_biaya',$data);
