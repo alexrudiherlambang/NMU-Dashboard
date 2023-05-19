@@ -79,7 +79,9 @@
                                         <!--begin::Card toolbar-->
                                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                                             <!--begin::Add product-->
-                                            <?php echo anchor('Unit/cuser/ctambah_user', '+ Data User', array('class' => 'btn btn-sm btn-success', 'type' => 'button')) ?>
+                                            <?php if ($this->session->userdata("otoritas") == "admin"): ?>
+                                                <?php echo anchor('Unit/cuser/ctambah_user', '+ Data User', array('class' => 'btn btn-sm btn-success', 'type' => 'button')) ?>
+                                            <?php endif; ?>
                                             <!--end::Add product-->
                                         </div>
                                         <!--end::Card toolbar-->

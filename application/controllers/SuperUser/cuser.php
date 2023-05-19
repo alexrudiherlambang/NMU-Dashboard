@@ -12,10 +12,13 @@ class cuser extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      //untuk set notifikasi
-      // $data['notif'] = $this->mnotif->mshow_all_notif();
-
-      $data['user'] = $this->muser->mshow_all_user();
+      
+      if ($this->session->userdata('otoritas') == "admin"){
+         $data['user'] = $this->muser->mshow_all_user();
+      }elseif($this->session->userdata('otoritas') == "non"){
+         $id = $this->session->userdata('id');
+         $data['user'] = $this->muser->mshow_all_user_nonadmin($id);
+      }
       $this->load->view('content/vsuperuser/vuser/vuser', $data);
    }
 

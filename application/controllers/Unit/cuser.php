@@ -12,8 +12,13 @@ class cuser extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
 			redirect("clogin");
 		}
-      $lokasi = $this->session->userdata("tlok");
-      $data['user'] = $this->muser->mshow_all_user_by_lokasi($lokasi);
+      if ($this->session->userdata('otoritas') == "admin"){
+         $lokasi = $this->session->userdata("tlok");
+         $data['user'] = $this->muser->mshow_all_user_by_lokasi($lokasi);
+      }elseif($this->session->userdata('otoritas') == "non"){
+         $id = $this->session->userdata('id');
+         $data['user'] = $this->muser->mshow_all_user_nonadmin($id);
+      }
       $this->load->view('content/vunit/vuser/vuser', $data);
    }
 

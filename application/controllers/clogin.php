@@ -66,6 +66,7 @@ class clogin extends CI_Controller {
 						'tmuk'		=> $role->tmuk,
 						'tdr'		=> $role->tdr,
 						'mdr'		=> $role->mdr,
+						'otoritas'	=> $role->otoritas,
 					);
 					
 					$this->session->set_userdata($data_session);
@@ -121,6 +122,7 @@ class clogin extends CI_Controller {
 						'tmuk'		=> $role->tmuk,
 						'tdr'		=> $role->tdr,
 						'mdr'		=> $role->mdr,
+						'otoritas'	=> $role->otoritas,
 					);
 					$this->session->set_userdata($data_session);
 
@@ -174,6 +176,7 @@ class clogin extends CI_Controller {
 						'tmuk'		=> $role->tmuk,
 						'tdr'		=> $role->tdr,
 						'mdr'		=> $role->mdr,
+						'otoritas'	=> $role->otoritas,
 					);
 					// print_r($data_session);
 					$this->session->set_userdata($data_session);
@@ -228,6 +231,7 @@ class clogin extends CI_Controller {
 						'tmuk'		=> $role->tmuk,
 						'tdr'		=> $role->tdr,
 						'mdr'		=> $role->mdr,
+						'otoritas'	=> $role->otoritas,
 					);
 					$this->session->set_userdata($data_session);
 
@@ -281,6 +285,7 @@ class clogin extends CI_Controller {
 						'tmuk'		=> $role->tmuk,
 						'tdr'		=> $role->tdr,
 						'mdr'		=> $role->mdr,
+						'otoritas'	=> $role->otoritas,
 					);
 					$this->session->set_userdata($data_session);
 
@@ -334,6 +339,7 @@ class clogin extends CI_Controller {
 						'tmuk'		=> $role->tmuk,
 						'tdr'		=> $role->tdr,
 						'mdr'		=> $role->mdr,
+						'otoritas'	=> $role->otoritas,
 					);
 					$this->session->set_userdata($data_session);
 

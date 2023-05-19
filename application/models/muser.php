@@ -6,11 +6,21 @@ class muser extends ci_model {
       parent::__construct();
    }
 
-    // untuk menampilkan semua user
-    function mshow_all_user() {
+   // untuk menampilkan semua user
+   function mshow_all_user() {
       $this->db = $this->load->database('local', TRUE);
       $this->db->select('*');
       $this->db->from('user');
+      $this->db->order_by('id', 'asc');
+      return $this->db->get()->result();
+   }
+
+   // untuk menampilkan semua user non administrator
+   function mshow_all_user_nonadmin($id) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('*');
+      $this->db->from('user');
+      $this->db->where('id', $id);
       $this->db->order_by('id', 'asc');
       return $this->db->get()->result();
    }
@@ -69,7 +79,7 @@ class muser extends ci_model {
    // SELECT ROLE USER BY ID USER
    function mselect_role_user($id) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('fx_nmuser(id) as nama, tum, tkok1, tkok2, tkok3, tkok4, tkok5, tkoksk, tkoktt, tkokhp, tkokbor, tkkp1, tkkp2, tkkp3, tkkb, tkklr, tid, ttk, ttt, ttp, gtk, gtt, gtp, tmn, tmp, tmuk, tdr, mdr');
+      $this->db->select('fx_nmuser(id) as nama, tum, tkok1, tkok2, tkok3, tkok4, tkok5, tkoksk, tkoktt, tkokhp, tkokbor, tkkp1, tkkp2, tkkp3, tkkb, tkklr, tid, ttk, ttt, ttp, gtk, gtt, gtp, tmn, tmp, tmuk, tdr, mdr, otoritas');
       $this->db->from('user_role');
       $this->db->where('id', $id);
       return $this->db->get()->row();
