@@ -697,7 +697,7 @@
                                         </g>
                                     </svg><!--end::Svg Icon--></span>
                                 </span>
-                                <span class="menu-title">Input Data CSV</span>
+                                <span class="menu-title">Import File CSV</span>
                             </a>
                             <!--end:Menu link-->
                         </div>

@@ -191,7 +191,7 @@ class clogin extends CI_Controller {
 					);
 					$this->mlogin->insert_log($log);
 					redirect(site_url("Unit/Home"));
-				}else if ($key->username == $username && $key->password == $password && $key->tlok == "RSP") {
+				} else if ($key->username == $username && $key->password == $password && $key->tlok == "RSP") {
 					# code...
 					$role = $this->muser->mselect_role_user($key->id);
 					$data_session = array(
@@ -299,7 +299,7 @@ class clogin extends CI_Controller {
 					);
 					$this->mlogin->insert_log($log);
 					redirect(site_url("Unit/Home"));
-				}else if ($key->username == $username && $key->password == $password && $key->tlok == "URJ") {
+				} else if ($key->username == $username && $key->password == $password && $key->tlok == "URJ") {
 					# code...
 					$role = $this->muser->mselect_role_user($key->id);
 					$data_session = array(
@@ -353,7 +353,7 @@ class clogin extends CI_Controller {
 					);
 					$this->mlogin->insert_log($log);
 					redirect(site_url("Unit/Home"));
-				}else {
+				} else {
 					echo '<script language="javascript">alert("Password Anda Salah !!!"); window.location.href="./";</script>';
 					// redirect(site_url("clogin"));
 				}
