@@ -164,13 +164,13 @@
                                                             <td style="color: #ffffff; vertical-align: middle;"></td>
                                                             <td style="color: #ffffff; vertical-align: middle;"></td>
                                                             <td style="color: #ffffff; vertical-align: middle;"><b><?php echo $rekap->ket ?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php $total=$rekap->rsaldosampai+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></b></td>
-                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo $rekap->jmlprosen*100;?>%</b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo ($rekap->rsaldolalu == 0) ? "-" : number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo ($rekap->rsaldosaatini == 0) ? "-" : number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo ($rekap->rsaldosampai == 0) ? "-" : number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo ($rekap->rsaldopotensi == 0) ? "-" : number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php $total=$rekap->rsaldosampai+$rekap->rsaldopotensi; echo ($total == 0) ? "-" : number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo ($rekap->jmltarget == 0) ? "-" : number_format($rekap->jmltarget/1000000, 0, ',', '.')?></b></td>
+                                                            <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo ($rekap->jmlprosen*100 == 0) ? "-" : $rekap->jmlprosen*100;?>%</b></td>
                                                         <?php endif; ?>
                                                     </tr>
                                                     <tr>
@@ -180,13 +180,13 @@
                                                             </td>
                                                             <td class="text-center w-10px pe-5"><?php echo $no ?></td>
                                                             <td><?php echo $rekap->ket ?></td>
-                                                            <td class="text-center min-w-100px"><?php echo number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-center min-w-100px"><?php echo number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-center min-w-100px"><?php echo number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-center min-w-100px"><?php echo number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-center min-w-100px"><b><?php $total=$rekap->rsaldosampai+$rekap->rsaldopotensi; echo number_format($total/1000000, 0, ',', '.')?></b></td>
-                                                            <td class="text-center min-w-100px"><?php echo number_format($rekap->jmltarget/1000000, 0, ',', '.')?></td>
-                                                            <td class="text-center min-w-100px"><?php echo $rekap->jmlprosen*100;?>%</td>
+                                                            <td class="text-center min-w-100px"><?php echo ($rekap->rsaldolalu == 0) ? "-" : number_format($rekap->rsaldolalu/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo ($rekap->rsaldosaatini == 0) ? "-" : number_format($rekap->rsaldosaatini/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo ($rekap->rsaldosampai == 0) ? "-" : number_format($rekap->rsaldosampai/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo ($rekap->rsaldopotensi == 0) ? "-" : number_format($rekap->rsaldopotensi/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><b><?php $total=$rekap->rsaldosampai+$rekap->rsaldopotensi; echo ($total == 0) ? "-" : number_format($total/1000000, 0, ',', '.')?></b></td>
+                                                            <td class="text-center min-w-100px"><?php echo ($rekap->jmltarget == 0) ? "-" : number_format($rekap->jmltarget/1000000, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo ($rekap->jmlprosen*100 == 0) ? "-" : $rekap->jmlprosen*100;?>%</td>
                                                         <?php endif; ?>
                                                     </tr>
                                                     <?php
