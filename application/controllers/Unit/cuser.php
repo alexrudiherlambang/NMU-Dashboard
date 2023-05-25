@@ -54,9 +54,9 @@ class cuser extends CI_Controller {
       $foto = $this->_uploadgambar($id);
 
       $simpan = array(
-         'username'            => $this->input->post('username'),
+         'username'            => $this->input->post('email'),
          'password'            => $this->input->post('password'),
-         'nama'                => strtoupper($this->input->post('nama_user')),
+         'nama'                => str_replace(' ', '_', strtoupper($this->input->post('nama_user'))),
          'foto'                => $foto,
          'eemail'              => $this->input->post('email'),
          'tlok'                => $this->input->post('level'),        

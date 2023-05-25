@@ -53,7 +53,7 @@
                         <img src="<?php echo base_url(); ?>assets/media/images/<?php echo $this->session->userdata("foto");?>" alt="user" />
                     </div>
                     <div class="d-flex flex-column">
-                        <div class="fw-bold d-flex align-items-center fs-5"><?php echo $this->session->userdata("nama") ?></div>
+                        <div class="fw-bold d-flex align-items-center fs-5"><?php echo $this->session->userdata("eemail") ?></div>
                     </div>
                     <!--begin::User account menu-->
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"

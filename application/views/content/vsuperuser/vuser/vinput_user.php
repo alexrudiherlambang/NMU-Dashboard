@@ -99,12 +99,20 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="row mb-8">
+                                                        <!-- <div class="row mb-8">
                                                             <div class="col-xl-3">
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Username</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                                 <input type="text" class="form-control form-control-solid" name="username" placeholder="Input Username">
+                                                            </div>
+                                                        </div> -->
+                                                        <div class="row mb-8">
+                                                            <div class="col-xl-3">
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Email</div>
+                                                            </div>
+                                                            <div class="col-xl-9 fv-row">
+                                                                <input type="email" class="form-control form-control-solid" name="email" placeholder="Input Email">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-8">
@@ -113,14 +121,6 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                                 <input type="text" class="form-control form-control-solid" name="password" placeholder="Input Password">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-8">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Email</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <input type="email" class="form-control form-control-solid" name="email" placeholder="Input Email">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-8">
