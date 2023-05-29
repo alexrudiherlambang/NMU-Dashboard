@@ -56,6 +56,7 @@ class cuser extends CI_Controller {
       $simpan = array(
          'username'            => $this->input->post('email'),
          'password'            => $this->input->post('password'),
+         'password_hash'       => password_hash($this->input->post("password"), PASSWORD_DEFAULT),
          'nama'                => str_replace(' ', '_', strtoupper($this->input->post('nama_user'))),
          'foto'                => $foto,
          'eemail'              => $this->input->post('email'),
@@ -142,6 +143,7 @@ class cuser extends CI_Controller {
       $Update = array(
          'username'            => $this->input->post('username'),
          'password'            => $this->input->post('password'),
+         'password_hash'       => password_hash($this->input->post("password"), PASSWORD_DEFAULT),
       );
       
       $this->muser->mupdate_user($Update, $id);
