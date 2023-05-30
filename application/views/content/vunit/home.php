@@ -63,8 +63,8 @@
 										<div class="card-header pt-7">
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bold text-gray-800">Grafik Pedapatan</span>
-												<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
+												<span class="card-label fw-bold text-gray-800">Grafik Pedapatan <?php echo $this->session->userdata("tlok") ?></span>
+												<span class="text-gray-400 mt-1 fw-semibold fs-6">Total Pendapatan : <div class="badge badge-light-info" id="total-pendapatan"></div></span>
 											</h3>
 											<!--end::Title-->
 											<!--begin::Toolbar-->
@@ -119,8 +119,8 @@
 										<div class="card-header pt-7">
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bold text-gray-800">Grafik Beban</span>
-												<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
+												<span class="card-label fw-bold text-gray-800">Grafik Beban <?php echo $this->session->userdata("tlok") ?></span>
+												<span class="text-gray-400 mt-1 fw-semibold fs-6">Total Beban : <div class="badge badge-light-danger" id="total-beban"></div></span>
 											</h3>
 											<!--end::Title-->
 
@@ -176,8 +176,8 @@
 										<div class="card-header pt-7">
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bold text-gray-800">Grafik Laba - Rugi</span>
-												<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
+												<span class="card-label fw-bold text-gray-800">Grafik Laba - Rugi <?php echo $this->session->userdata("tlok") ?></span>
+												<span class="text-gray-400 mt-1 fw-semibold fs-6">Total Laba - Rugi : <div class="badge badge-light-success" id="total-labarugi"></div></span>
 											</h3>
 											<!--end::Title-->
 
@@ -233,8 +233,8 @@
 										<div class="card-header pt-7">
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bold text-gray-800">Grafik Kunjungan</span>
-												<span class="text-gray-400 mt-1 fw-semibold fs-6"><?php echo $this->session->userdata("tlok") ?></span>
+												<span class="card-label fw-bold text-gray-800">Grafik Kunjungan <?php echo $this->session->userdata("tlok") ?></span>
+												<span class="text-gray-400 mt-1 fw-semibold fs-6">Total Kunjungan : <div class="badge badge-light-warning" id="total-kunjungan"></div></span>
 											</h3>
 											<!--end::Title-->
 
@@ -482,6 +482,8 @@
 						responsive: true
 					}
 				});
+				var totalPendapatanBadge = document.getElementById('total-pendapatan');
+				totalPendapatanBadge.textContent = 'Rp. ' + data.total_realisasi.toLocaleString('id-ID');
 			},
 			error: function(xhr, status, error) {
 				// Tangani kesalahan jika terjadi
@@ -563,6 +565,9 @@
 						responsive: true
 					}
 				});
+				var totalLabarugiBadge = document.getElementById('total-labarugi');
+				var total_realisasi1 = Math.round(data.total_realisasi1); // Memperbarui script ini untuk membulatkan angka
+				totalLabarugiBadge.textContent = 'Rp. ' + total_realisasi1.toLocaleString('id-ID');
 			},
 			error: function(xhr, status, error) {
 				// Tangani kesalahan jika terjadi
@@ -644,6 +649,8 @@
 						responsive: true
 					}
 				});
+				var totalBebanBadge = document.getElementById('total-beban');
+				totalBebanBadge.textContent = 'Rp. ' + data.total_realisasi2.toLocaleString('id-ID');
 			},
 			error: function(xhr, status, error) {
 				// Tangani kesalahan jika terjadi
@@ -725,6 +732,8 @@
 						responsive: true
 					}
 				});
+				var totalKunjunganBadge = document.getElementById('total-kunjungan');
+				totalKunjunganBadge.textContent = data.total_realisasi3.toLocaleString('id-ID');
 			},
 			error: function(xhr, status, error) {
 				// Tangani kesalahan jika terjadi

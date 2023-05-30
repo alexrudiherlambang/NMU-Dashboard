@@ -73,6 +73,7 @@ class mhome extends ci_model {
          $this->db->from('test.ra_dash_db_lr0_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('kellabarugi', '6. LABA/RUGI SEBELUM PAJAK');
          $this->db->group_by('lokasi');
          return $this->db->get();
       }else{
@@ -83,6 +84,7 @@ class mhome extends ci_model {
          $this->db->where('lokasi', $lokasi);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('kellabarugi', '6. LABA/RUGI SEBELUM PAJAK');
          $this->db->group_by('lokasi');
          return $this->db->get();
       }
