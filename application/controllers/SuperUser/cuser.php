@@ -55,9 +55,13 @@ class cuser extends CI_Controller {
 
       $simpan = array(
          'username'            => $this->input->post('email'),
-         'password'            => $this->input->post('password'),
+         // 'password'            => $this->input->post('password'),
          'password_hash'       => password_hash($this->input->post("password"), PASSWORD_DEFAULT),
          'nama'                => str_replace(' ', '_', strtoupper($this->input->post('nama_user'))),
+         'gender'              => $this->input->post('gender'),
+         'job_title'           => $this->input->post('job_title'),
+         'phone'               => $this->input->post('phone'),
+         'alamat'              => $this->input->post('alamat'),
          'foto'                => $foto,
          'eemail'              => $this->input->post('email'),
          'tlok'                => $this->input->post('level'),        
@@ -142,12 +146,13 @@ class cuser extends CI_Controller {
       $id = $this->input->post('id');
       $Update = array(
          'username'            => $this->input->post('username'),
-         'password'            => $this->input->post('password'),
+         // 'password'            => $this->input->post('password'),
          'password_hash'       => password_hash($this->input->post("password"), PASSWORD_DEFAULT),
       );
       
       $this->muser->mupdate_user($Update, $id);
-      redirect('SuperUser/cuser/clihat_user/'.$id);
+      echo '<script language="javascript">alert("Berhasil Mengubah Data !!!"); document.location="./";</script>';
+      // redirect('SuperUser/cuser/clihat_user/'.$id);
    }
 
    

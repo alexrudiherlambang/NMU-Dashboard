@@ -82,7 +82,6 @@
                                                                 <input type="text" class="form-control form-control-solid" name="nama_user" placeholder="Input Nama">
                                                             </div>
                                                         </div>
-                                                        
                                                         <div class="row mb-8">
                                                             <div class="col-xl-3">
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Level</div>
@@ -90,11 +89,11 @@
                                                             <div class="col-xl-9 fv-row">
                                                                 <select class="form-control form-control-solid select2" name="level" >
                                                                     <option selected="selected">-</option>
-                                                                    <option value="">K.P</option>
-                                                                    <option value="RSG">RSG</option>
-                                                                    <option value="RSP">RSP</option>
-                                                                    <option value="RST">RST</option>
-                                                                    <option value="RSMU">RSMU</option>
+                                                                    <option value="">Kantor Pusat</option>
+                                                                    <option value="RSG">Rumah Sakit Gatoel</option>
+                                                                    <option value="RSP">Rumah Sakit Perkebunan</option>
+                                                                    <option value="RST">Rumah Sakit Toelongredjo</option>
+                                                                    <option value="RSMU">Rumah Sakit Medika Utama</option>
                                                                     <option value="URJ">URJ / KLINIK</option>
                                                                 </select>
                                                             </div>
@@ -121,6 +120,42 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                                 <input type="text" class="form-control form-control-solid" name="password" placeholder="Input Password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-8">
+                                                            <div class="col-xl-3">
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Jenis Kelamin</div>
+                                                            </div>
+                                                            <div class="col-xl-9 fv-row">
+                                                                <select class="form-control form-control-solid select2" name="gender" >
+                                                                    <option selected="selected">-</option>
+                                                                    <option value="L">Laki - Laki</option>
+                                                                    <option value="P">Perempuan</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-8">
+                                                            <div class="col-xl-3">
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Job Title</div>
+                                                            </div>
+                                                            <div class="col-xl-9 fv-row">
+                                                                <input type="text" class="form-control form-control-solid" name="job_title" placeholder="Input Job Title">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-8">
+                                                            <div class="col-xl-3">
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">No Phone</div>
+                                                            </div>
+                                                            <div class="col-xl-9 fv-row">
+                                                                <input type="number" class="form-control form-control-solid" name="phone" placeholder="Input No Phone">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-8">
+                                                            <div class="col-xl-3">
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Alamat</div>
+                                                            </div>
+                                                            <div class="col-xl-9 fv-row">
+                                                                <textarea class="form-control form-control-solid" rows="3" name="alamat" placeholder="Input Alamat"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-8">

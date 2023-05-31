@@ -128,13 +128,26 @@
                                                     <div class="pb-5 fs-6">
                                                         <!--begin::Details item-->
                                                         <div class="fw-bold mt-5">Email</div>
-                                                        <div class="text-gray-600"><?php echo $user->eemail;?></div>
+                                                        <div class="text-gray-600">
+                                                            <a href="#" class="text-gray-600 text-hover-primary"><?php echo $user->eemail;?></a>
+                                                        </div>
                                                         <!--begin::Details item-->
-                                                        <!--begin::Details item-->
-                                                            <!-- <div class="fw-bold mt-5">Email</div>
-                                                            <div class="text-gray-600">
-                                                                <a href="#" class="text-gray-600 text-hover-primary">info@keenthemes.com</a>
-                                                            </div> -->
+                                                        <div class="fw-bold mt-5">Job Title</div>
+                                                        <div class="text-gray-600">
+                                                            <a href="#" class="text-gray-600 text-hover-primary"><?php echo $user->job_title;?></a>
+                                                        </div>
+                                                        <div class="fw-bold mt-5">Phone</div>
+                                                        <div class="text-gray-600">
+                                                            <a href="#" class="text-gray-600 text-hover-primary"><?php echo $user->phone;?></a>
+                                                        </div>
+                                                        <div class="fw-bold mt-5">Gender</div>
+                                                        <div class="text-gray-600">
+                                                            <a href="#" class="text-gray-600 text-hover-primary"><?php if ($user->gender == "L"){echo "Laki - Laki";}else if ($user->gender == "P"){echo "Perempuan";} ?></a>
+                                                        </div>
+                                                        <div class="fw-bold mt-5">Alamat</div>
+                                                        <div class="text-gray-600">
+                                                            <a href="#" class="text-gray-600 text-hover-primary"><?php echo $user->alamat;?></a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <!--end::Details content-->
@@ -203,7 +216,7 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td>Password</td>
-                                                                            <td><input type="text" class="form-control" name="password" value="<?php echo $user->password;?>"></td>
+                                                                            <td><input type="text" class="form-control" name="password" Placeholder="Update Password Disini"></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>Level</td>

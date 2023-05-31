@@ -101,7 +101,7 @@
                                                     <th class="min-w-175px">Nama</th>
                                                     <th class="text-center min-w-70px">Level</th>
                                                     <th class="text-center min-w-100px">Username</th>
-                                                    <th class="text-center min-w-100px">Password</th>
+                                                    <th class="text-center min-w-100px">Gender</th>
                                                     <th class="text-center min-w-100px">Email</th>
                                                     <th class="text-center min-w-100px">Actions</th>
                                                 </tr>
@@ -168,7 +168,7 @@
                                                     <!--end::Total=-->
                                                     <!--begin::Date Added=-->
                                                     <td class="text-center" data-order="2022-11-21">
-                                                        <span class="fw-bold"><?php echo $user->password ?></span>
+                                                        <span class="fw-bold"><?php if ($user->gender == "L"){echo "Laki - Laki";}else if ($user->gender == "P"){echo "Perempuan";} ?></span>
                                                     </td>
                                                     <!--end::Date Added=-->
                                                     <!--begin::Date Modified=-->
