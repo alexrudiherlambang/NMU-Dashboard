@@ -8,7 +8,7 @@
         <!--begin::Logo image-->
         <a href="#">
             <img alt="Logo" src="<?php echo base_url(); ?>assets/media/logos/Dash.png"
-                class="h-95px text-center app-sidebar-logo-default"/>
+                class="h-80px text-center app-sidebar-logo-default"/>
         </a>
         <!--end::Logo image-->
         <!--begin::Sidebar toggle-->

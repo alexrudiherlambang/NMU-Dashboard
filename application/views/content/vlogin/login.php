@@ -18,7 +18,7 @@
     <form action="<?php echo base_url("clogin/process") ?>" method="post">
         <div class="center">
             <img src="<?php echo base_url(); ?>assets_login/img/logo.png" width="200px">
-            <h2>Login Dashboard </h2>
+            <h2>Login SIGMA </h2>
             <input type="username" name="username" placeholder="username">
             <input type="password" name="password"  placeholder="password">
             &nbsp;
