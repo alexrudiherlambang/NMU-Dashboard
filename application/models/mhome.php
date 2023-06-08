@@ -131,7 +131,7 @@ class mhome extends ci_model {
       }
    }
 
-   function mshow_all_grafik_kunjungan($lokasi,$nama) {
+   function mshow_all_grafik_kunjungan($lokasi, $nama, $kelspesimen) {
       $tglawal = date('Y') . '-01-01'; // tanggal 1 Januari tahun ini
       // $tglawal = date('Y-m-d', strtotime('-7 days')); // tanggal 7 hari yang lalu
       $tglakhir = date('Y-m-d'); // tanggal hari ini
@@ -142,6 +142,7 @@ class mhome extends ci_model {
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('kelspesimen', $kelspesimen);
          $this->db->group_by('lokasi');
          return $this->db->get();
       }else{
@@ -152,6 +153,7 @@ class mhome extends ci_model {
          $this->db->where('lokasi', $lokasi);
          $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
+         $this->db->where('kelspesimen', $kelspesimen);
          $this->db->group_by('lokasi');
          return $this->db->get();
       }

@@ -17,33 +17,6 @@ class Home extends CI_Controller {
 		if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
 			redirect("clogin");
 		}
-		// $tglawal = date('Y') . '-01-01';
-		// $tglakhir = date('Y-m-d');;
-		// $nama = $this->session->userdata("nama");
-		// $lokasi = $this->session->userdata("tlok");
-		
-		// //eksekusi prosedure & Call Tabel Container
-		// $rekap = $this->mrekap->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);
-		// foreach ($rekap as $r)
-		// if ($r->flag == 1){
-		// 	$total_pendapatan = $r->rsaldosampai;
-		// }
-		// $biaya = $this->mbiaya->mshow_all_biaya($tglawal,$tglakhir,$nama,$lokasi);
-		// foreach ($biaya as $b)
-		// if ($b->flag == 1){
-		// 	$total_biaya = $b->rsaldosampai;
-		// }
-		// $laba_rugi = $this->mlaba_rugi->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);
-		// foreach ($laba_rugi as $lr)
-		// if ($lr->flag == 1){
-		// 	$total_laba_rugi = ($lr->rsaldosampai) - ($lr->rsaldosampai*22/100);
-		// }
-		// $kunjung = $this->mkunjungan_BPJS->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);
-
-		// echo "<pre>";
-		// print_r ($laba_rugi);
-		// print_r ($total_laba_rugi);
-		// die;
 		$this->load->view('content/vsuperuser/home');
 	}
 
@@ -154,11 +127,81 @@ class Home extends CI_Controller {
 		
 	}
 
-	function kunjungan(){
-		
+	function kunjungan_rj(){
+		$kelspesimen = "1. RAWAT JALAN";
 		$nama = $this->session->userdata("nama");
 		$lokasi = $this->session->userdata("tlok");
-		$grafik_kunjungan = $this->mhome->mshow_all_grafik_kunjungan($lokasi,$nama);
+		$grafik_kunjungan = $this->mhome->mshow_all_grafik_kunjungan($lokasi, $nama, $kelspesimen);
+		
+		$realisasi3 = (object)[];
+		$potensi3 = (object)[];
+		$target3 = (object)[];
+		$total_realisasi3 = 0;
+		$total_potensi3 = 0;
+		$total_target3 = 0;
+		foreach ($grafik_kunjungan->result() as $e) {
+			$realisasi3->{$e->lokasi} = $e->total_rsaldosampai;
+			$potensi3->{$e->lokasi} = $e->total_rsaldopotensi1;
+			$target3->{$e->lokasi} = $e->total_jmltarget;
+			$total_realisasi3 += $e->total_rsaldosampai;
+			$total_potensi3 += $e->total_rsaldopotensi1;
+			$total_target3 += $e->total_jmltarget;
+		}
+		
+		$data =  array (
+			'realisasi3'     	=> $realisasi3,
+			'potensi3'      	=> $potensi3,
+			'target3'      		=> $target3,
+			'total_realisasi3' 	=> $total_realisasi3,
+			'total_potensi3' 	=> $total_potensi3,
+			'total_target3' 	=> $total_target3,
+		);
+		return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+		
+	}
+
+	function kunjungan_ri(){
+		$kelspesimen = "2. RAWAT INAP";
+		$nama = $this->session->userdata("nama");
+		$lokasi = $this->session->userdata("tlok");
+		$grafik_kunjungan = $this->mhome->mshow_all_grafik_kunjungan($lokasi, $nama, $kelspesimen);
+		
+		$realisasi3 = (object)[];
+		$potensi3 = (object)[];
+		$target3 = (object)[];
+		$total_realisasi3 = 0;
+		$total_potensi3 = 0;
+		$total_target3 = 0;
+		foreach ($grafik_kunjungan->result() as $e) {
+			$realisasi3->{$e->lokasi} = $e->total_rsaldosampai;
+			$potensi3->{$e->lokasi} = $e->total_rsaldopotensi1;
+			$target3->{$e->lokasi} = $e->total_jmltarget;
+			$total_realisasi3 += $e->total_rsaldosampai;
+			$total_potensi3 += $e->total_rsaldopotensi1;
+			$total_target3 += $e->total_jmltarget;
+		}
+		
+		$data =  array (
+			'realisasi3'     	=> $realisasi3,
+			'potensi3'      	=> $potensi3,
+			'target3'      		=> $target3,
+			'total_realisasi3' 	=> $total_realisasi3,
+			'total_potensi3' 	=> $total_potensi3,
+			'total_target3' 	=> $total_target3,
+		);
+		return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+		
+	}
+
+	function kunjungan_jm(){
+		$kelspesimen = "3. PENUNJANG";
+		$nama = $this->session->userdata("nama");
+		$lokasi = $this->session->userdata("tlok");
+		$grafik_kunjungan = $this->mhome->mshow_all_grafik_kunjungan($lokasi, $nama, $kelspesimen);
 		
 		$realisasi3 = (object)[];
 		$potensi3 = (object)[];
