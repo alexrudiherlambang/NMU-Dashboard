@@ -141,3 +141,13 @@
 			return year + "-" + month + "-" + day;
 		}
 	</script>
+
+	<script>
+		// Fungsi untuk mengatur zoom browser menjadi 80%
+		function setBrowserZoom() {
+			document.body.style.zoom = "85%"; // Mengatur zoom ke 80%
+		}
+
+		// Panggil fungsi setBrowserZoom setelah halaman selesai dimuat
+		window.onload = setBrowserZoom;
+	</script>
