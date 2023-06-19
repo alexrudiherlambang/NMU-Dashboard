@@ -142,6 +142,7 @@
 		}
 	</script>
 
+	<!-- sesuaikan halaman browser jadi zoom out 80% -->
 	<script>
 		// Fungsi untuk mengatur zoom browser menjadi 80%
 		function setBrowserZoom() {

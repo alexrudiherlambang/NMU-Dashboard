@@ -54,7 +54,7 @@
 						<!--begin::Content-->
 						<div id="kt_app_content" class="app-content flex-column-fluid">
 							<!--begin::Content container-->
-							<div><marquee><h1>Selamat Datang Di Dashboard NMU</h1></marquee></div>
+							<div><marquee><center><h1>Selamat Datang Di Dashboard NMU</h1><strong> { Last Update Data : <?php date_default_timezone_set('Asia/Jakarta'); echo date('d M Y H:i:s'); ?> } </strong></center></marquee></div>
 								<!--begin::Content container-->
 								<div id="kt_app_content_container" class="app-container container-xxl">
 									<!--begin::Products Documentations-->
@@ -1145,6 +1145,13 @@
 			}
 			});
 		});
+    </script>
+	
+	<!-- reload after 10 menit -->
+	<script>
+        setTimeout(function(){
+            location.reload();
+        }, 600000);
     </script>
 
 </body>

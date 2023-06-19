@@ -123,34 +123,6 @@
                             <!--begin:Menu sub-->
                             <div class="menu-sub menu-sub-accordion menu-active-bg">
                                 <!--begin:Menu item-->
-                                <?php if ($this->session->userdata("tkok1") == "1"): ?>
-                                    <div class="menu-item">
-                                        <!--begin:Menu link-->
-                                        <a class="menu-link" href="<?php echo site_url('SuperUser/ckunjungan_BPJS') ?>">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Kunjungan BPJS & NON BPJS</span>
-                                        </a>
-                                        <!--end:Menu link-->
-                                    </div>
-                                <?php endif; ?>
-                                <!--end:Menu item-->
-                                <!--begin:Menu item-->
-                                <?php if ($this->session->userdata("tkok2") == "1"): ?>
-                                    <div class="menu-item">
-                                        <!--begin:Menu link-->
-                                        <a class="menu-link" href="<?php echo site_url('SuperUser/ckunjungan_persegmen') ?>">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Kunjungan Per - Segmen</span>
-                                        </a>
-                                        <!--end:Menu link-->
-                                    </div>
-                                <?php endif; ?>
-                                <!--end:Menu item-->
-                                <!--begin:Menu item-->
                                 <?php if ($this->session->userdata("tkok3") == "1"): ?>
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
@@ -187,6 +159,34 @@
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
                                             <span class="menu-title">Kegiatan Penunjang Medis</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok1") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('SuperUser/ckunjungan_BPJS') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan BPJS & NON BPJS</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                <?php endif; ?>
+                                <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <?php if ($this->session->userdata("tkok2") == "1"): ?>
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link" href="<?php echo site_url('SuperUser/ckunjungan_persegmen') ?>">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">Kunjungan Per - Segmen</span>
                                         </a>
                                         <!--end:Menu link-->
                                     </div>

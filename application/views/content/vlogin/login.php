@@ -32,5 +32,14 @@
 </div>
 <!-- partial -->
   <script src='https://codepen.io/banik/pen/ReNNrO/3f837b2f0085b5125112fc455941ea94.js'></script>
+  <script>
+		// Fungsi untuk mengatur zoom browser menjadi 80%
+		function setBrowserZoom() {
+			document.body.style.zoom = "80%"; // Mengatur zoom ke 80%
+		}
+
+		// Panggil fungsi setBrowserZoom setelah halaman selesai dimuat
+		window.onload = setBrowserZoom;
+	</script>
 </body>
 </html>
