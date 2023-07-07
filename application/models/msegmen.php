@@ -139,22 +139,93 @@ class msegmen extends ci_model {
    }
 
    // untuk cetak potensi
-   function mshow_all_potensi($nama, $kelsegmen, $tglawal, $tglakhir) {
-      $this->db->select('lokasi,tanggal,kelspesimen,kelsegmen,kelsegmen_sub,ket,unitperiksa,sum(rsaldopotensi1) as rsaldopotensi1, statuse');
-      $this->db->from('test.ra_dashdb_s_'.$nama);
-      $this->db->where('kelsegmen', $kelsegmen);
-      // $this->db->where('tanggal>=', $tglawal);
-      $this->db->where('tanggal<=', $tglakhir);
-      $this->db->where('statuse!=', 'TUTUP (AKUN)');
-      $this->db->group_by('lokasi');
-      // $this->db->group_by('tanggal');
-      $this->db->group_by('kelspesimen');
-      $this->db->group_by('kelsegmen');
-      $this->db->group_by('kelsegmen_sub');
-      $this->db->group_by('ket');
-      $this->db->group_by('unitperiksa');
-      return $this->db->get()->result();
+   function mshow_all_potensi($kelsegmen, $tglakhir, $lokasi) {
+      if ($lokasi == "RSG"){
+         $this->db->select('lokasi, tanggal, nobilling, kellabarugi, kelspesimen, kelsegmen_sub, kelsegmen, nmkons, ket, SUM(totalsd) AS potensi, statuse');
+         $this->db->from('dashboardnmu_new.t02_rekap_dapat_biaya_segmen');
+         $this->db->where('kelsegmen', $kelsegmen);
+         $this->db->where('statuse !=', 'TUTUP (AKUN)');
+         $this->db->where('tanggal <=', $tglakhir);
+         $this->db->group_by('nobilling');     
+         return $this->db->get()->result();
+      }elseif ($lokasi == "RST"){
+         $this->db->select('lokasi, tanggal, nobilling, kellabarugi, kelspesimen, kelsegmen_sub, kelsegmen, nmkons, ket, SUM(totalsd) AS potensi, statuse');
+         $this->db->from('dashboardnmu_new.t03_rekap_dapat_biaya_segmen');
+         $this->db->where('kelsegmen', $kelsegmen);
+         $this->db->where('statuse !=', 'TUTUP (AKUN)');
+         $this->db->where('tanggal <=', $tglakhir);
+         $this->db->group_by('nobilling');     
+         return $this->db->get()->result();
+      }elseif ($lokasi == "RSP"){
+         $this->db->select('lokasi, tanggal, nobilling, kellabarugi, kelspesimen, kelsegmen_sub, kelsegmen, nmkons, ket, SUM(totalsd) AS potensi, statuse');
+         $this->db->from('dashboardnmu_new.t04_rekap_dapat_biaya_segmen');
+         $this->db->where('kelsegmen', $kelsegmen);
+         $this->db->where('statuse !=', 'TUTUP (AKUN)');
+         $this->db->where('tanggal <=', $tglakhir);
+         $this->db->group_by('nobilling');     
+         return $this->db->get()->result();
+      }elseif ($lokasi == "RSMU"){
+         $this->db->select('lokasi, tanggal, nobilling, kellabarugi, kelspesimen, kelsegmen_sub, kelsegmen, nmkons, ket, SUM(totalsd) AS potensi, statuse');
+         $this->db->from('dashboardnmu_new.t05_rekap_dapat_biaya_segmen');
+         $this->db->where('kelsegmen', $kelsegmen);
+         $this->db->where('statuse !=', 'TUTUP (AKUN)');
+         $this->db->where('tanggal <=', $tglakhir);
+         $this->db->group_by('nobilling');     
+         return $this->db->get()->result();
+      }elseif ($lokasi == "") {
+         $query = "SELECT lokasi, tanggal, nobilling, kellabarugi, kelspesimen, kelsegmen_sub, kelsegmen, nmkons, ket, totalsd AS potensi, statuse
+                   FROM dashboardnmu_new.t02_rekap_dapat_biaya_segmen
+                   WHERE kelsegmen = '".$kelsegmen."'
+                       AND statuse != 'TUTUP (AKUN)'
+                       AND tanggal <= '".$tglakhir."'
+                   GROUP BY nobilling
+                 
+                   UNION
+                 
+                   SELECT lokasi, tanggal, nobilling, kellabarugi, kelspesimen, kelsegmen_sub, kelsegmen, nmkons, ket, totalsd AS potensi, statuse
+                   FROM dashboardnmu_new.t03_rekap_dapat_biaya_segmen
+                   WHERE kelsegmen = '".$kelsegmen."'
+                       AND statuse != 'TUTUP (AKUN)'
+                       AND tanggal <= '".$tglakhir."'
+                   GROUP BY nobilling
+                 
+                   UNION
+                 
+                   SELECT lokasi, tanggal, nobilling, kellabarugi, kelspesimen, kelsegmen_sub, kelsegmen, nmkons, ket, totalsd AS potensi, statuse
+                   FROM dashboardnmu_new.t04_rekap_dapat_biaya_segmen
+                   WHERE kelsegmen = '".$kelsegmen."'
+                       AND statuse != 'TUTUP (AKUN)'
+                       AND tanggal <= '".$tglakhir."'
+                   GROUP BY nobilling
+                 
+                   UNION
+                 
+                   SELECT lokasi, tanggal, nobilling, kellabarugi, kelspesimen, kelsegmen_sub, kelsegmen, nmkons, ket, totalsd AS potensi, statuse
+                   FROM dashboardnmu_new.t05_rekap_dapat_biaya_segmen
+                   WHERE kelsegmen = '".$kelsegmen."'
+                       AND statuse != 'TUTUP (AKUN)'
+                       AND tanggal <= '".$tglakhir."'
+                   GROUP BY nobilling";
+     
+         return $this->db->query($query)->result();
+     }
    }
+   // function mshow_all_potensi($nama, $kelsegmen, $tglawal, $tglakhir) {
+   //    $this->db->select('lokasi,tanggal,kelspesimen,kelsegmen,kelsegmen_sub,ket,unitperiksa,sum(rsaldopotensi1) as rsaldopotensi1, statuse');
+   //    $this->db->from('test.ra_dashdb_s_'.$nama);
+   //    $this->db->where('kelsegmen', $kelsegmen);
+   //    // $this->db->where('tanggal>=', $tglawal);
+   //    $this->db->where('tanggal<=', $tglakhir);
+   //    $this->db->where('statuse!=', 'TUTUP (AKUN)');
+   //    $this->db->group_by('lokasi');
+   //    // $this->db->group_by('tanggal');
+   //    $this->db->group_by('kelspesimen');
+   //    $this->db->group_by('kelsegmen');
+   //    $this->db->group_by('kelsegmen_sub');
+   //    $this->db->group_by('ket');
+   //    $this->db->group_by('unitperiksa');
+   //    return $this->db->get()->result();
+   // }
 
    //Insert Log Login
    function insert_log($log) {

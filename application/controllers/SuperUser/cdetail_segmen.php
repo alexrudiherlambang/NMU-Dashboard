@@ -344,6 +344,7 @@ class cdetail_segmen extends CI_Controller {
             $pilihan = $this->input->post('pilihan');
             $tglawal = $this->input->post('tglawal');
             $tglakhir = $this->input->post('tglakhir');
+            $lokasi = $this->input->post('lokasi');
             
             $this->load->helper('exportexcel');
             $namaFile = "Detail Potensi Pendapatan Per-Segmen.xls";
@@ -367,29 +368,33 @@ class cdetail_segmen extends CI_Controller {
             xlsWriteLabel($tablehead, $kolomhead++, "No");
             xlsWriteLabel($tablehead, $kolomhead++, "Unit");
             xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
+            xlsWriteLabel($tablehead, $kolomhead++, "Nomor Billing");
+            xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Laba-Rugi");
             xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Spesimen");
             xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Segmen");
             xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Segmen");
             xlsWriteLabel($tablehead, $kolomhead++, "Kelompok BPJS/NON BPJS");
-            xlsWriteLabel($tablehead, $kolomhead++, "Unit Periksa");
+            xlsWriteLabel($tablehead, $kolomhead++, "Nama Konsumen");
             xlsWriteLabel($tablehead, $kolomhead++, "Potensial Revenue");
             xlsWriteLabel($tablehead, $kolomhead++, "Status");
 
             foreach ($pilihan as $p) {
                $kelsegmen = $p;
-               foreach ($this->msegmen->mshow_all_potensi($nama, $kelsegmen, $tglawal, $tglakhir) as $data) {
+               foreach ($this->msegmen->mshow_all_potensi($kelsegmen, $tglakhir, $lokasi) as $data) {
                   $kolombody = 0;
 
                   //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
                   xlsWriteNumber($tablebody, $kolombody++, $nourut);
                   xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
                   xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->kellabarugi);
                   xlsWriteLabel($tablebody, $kolombody++, $data->kelspesimen);
                   xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
                   xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
                   xlsWriteLabel($tablebody, $kolombody++, $data->ket);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->unitperiksa);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi1);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->nmkons);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->potensi);
                   xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
                
                      $tablebody++;
