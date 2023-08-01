@@ -133,6 +133,70 @@ class cform_HSSE extends CI_Controller {
       $this->load->view('content/vsuperuser/vform_HSSE/vinput_clasification');
    }
 
+   function personal_safety() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $jenis = "personal_safety";
+      $data['personal_safety'] = $this->mform_HSSE->mshow_all_other($jenis);
+      $this->load->view('content/vsuperuser/vform_HSSE/vpersonal_safety', $data);
+   }
+
+   function input_personal_safety() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $this->load->view('content/vsuperuser/vform_HSSE/vinput_personal_safety');
+   }
+
+   function property_database() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $jenis = "property_database";
+      $data['property_database'] = $this->mform_HSSE->mshow_all_other($jenis);
+      $this->load->view('content/vsuperuser/vform_HSSE/vproperty_database', $data);
+   }
+
+   function input_property_database() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $this->load->view('content/vsuperuser/vform_HSSE/vinput_property_database');
+   }
+   
+   function nearmiss() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $jenis = "nearmiss";
+      $data['nearmiss'] = $this->mform_HSSE->mshow_all_other($jenis);
+      $this->load->view('content/vsuperuser/vform_HSSE/vnearmiss', $data);
+   }
+
+   function input_nearmiss() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $this->load->view('content/vsuperuser/vform_HSSE/vinput_nearmiss');
+   }
+
+   function unsave() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $jenis = "unsave";
+      $data['unsave'] = $this->mform_HSSE->mshow_all_other($jenis);
+      $this->load->view('content/vsuperuser/vform_HSSE/vunsave', $data);
+   }
+
+   function input_unsave() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $this->load->view('content/vsuperuser/vform_HSSE/vinput_unsave');
+   }
+
    function insert_other() {
       // Unggah file KTP
       $ktp = $this->_upload_file('ktp', './assets/media/images/ktp/');
@@ -249,34 +313,6 @@ class cform_HSSE extends CI_Controller {
       redirect('SuperUser/cform_HSSE/'.$jenis);
    }
 
-   function input_personal_safety() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-         redirect("clogin");
-      }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_personal_safety');
-   }
-
-   function input_property_database() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-         redirect("clogin");
-      }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_property_database');
-   }
-
-   function input_nearmiss() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-         redirect("clogin");
-      }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_nearmiss');
-   }
-
-   function input_unsave() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-         redirect("clogin");
-      }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_unsave');
-   }
-
    //function upload ktp hasil pemeriksaan
    private function _upload_file($nama_input, $path_upload){
       $nama_file = "ktp_" . uniqid() . "_" . time(); // Gabungkan uniqid() dengan time() untuk nama unik
@@ -294,15 +330,5 @@ class cform_HSSE extends CI_Controller {
          return $this->upload->data("file_name");
       }
       return "default.png";
-   }
-  
-  
-
-    function ctambah_user() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
-         redirect("clogin");
-      }
-
-      $this->load->view('content/vsuperuser/vuser/vinput_user');
    }
 }

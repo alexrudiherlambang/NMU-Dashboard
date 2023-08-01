@@ -68,8 +68,8 @@
                                                 <div class="card-body pt-0">
                                                     <div class="d-flex flex-column mb-2 fv-row">
                                                         <!--begin::Label-->
-                                                        <div class="fs-5 fw-bold form-label mb-3">Input Data Clasification
-                                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Tambahkan data clasification dengan benar"></i></div>
+                                                        <div class="fs-5 fw-bold form-label mb-3">Input Data Nearmiss
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Tambahkan data nearmiss dengan benar"></i></div>
                                                         <!--end::Label-->
                                                     </div>
                                                     <input type="hidden" class="form-control form-control-solid" name="jenis" value="<?php echo $other->jenis; ?>">                                                   
@@ -149,10 +149,10 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Kategori</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="NOA" id="flexRadioLg" <?php echo ($other->sub_jenis === 'NOA') ? 'checked' : ''; ?>/>
+                                                            <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Nearmiss" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Nearmiss') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
-                                                                    NOA
+                                                                    Nearmiss
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -311,7 +311,7 @@
                                                     <div class="box-footer">
                                                         <center>
                                                             <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-                                                            <?php echo anchor('SuperUser/cform_HSSE/clasification', 'Batal', array('class' => 'btn btn-danger')) ?>
+                                                            <?php echo anchor('SuperUser/cform_HSSE/nearmiss', 'Batal', array('class' => 'btn btn-danger')) ?>
                                                         </center>
                                                     </div>
                                                     <!-- /.box-footer -->

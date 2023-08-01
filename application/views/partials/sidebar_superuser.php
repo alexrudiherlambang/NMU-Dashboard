@@ -1195,7 +1195,7 @@
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
                                         <a class="menu-link"
-                                            href="<?php echo site_url('SuperUser/cform_HSSE/input_personal_safety') ?>">
+                                            href="<?php echo site_url('SuperUser/cform_HSSE/personal_safety') ?>">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -1210,7 +1210,7 @@
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
                                         <a class="menu-link"
-                                            href="<?php echo site_url('SuperUser/cform_HSSE/input_property_database') ?>">
+                                            href="<?php echo site_url('SuperUser/cform_HSSE/property_database') ?>">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -1225,7 +1225,7 @@
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
                                         <a class="menu-link"
-                                            href="<?php echo site_url('SuperUser/cform_HSSE/input_nearmiss') ?>">
+                                            href="<?php echo site_url('SuperUser/cform_HSSE/nearmiss') ?>">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -1240,7 +1240,7 @@
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
                                         <a class="menu-link"
-                                            href="<?php echo site_url('SuperUser/cform_HSSE/input_unsave') ?>">
+                                            href="<?php echo site_url('SuperUser/cform_HSSE/unsave') ?>">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
