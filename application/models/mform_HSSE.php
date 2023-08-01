@@ -1,0 +1,91 @@
+<?php
+
+class mform_HSSE extends ci_model {
+
+   public function __construct() {
+      parent::__construct();
+   }
+   //SHOW DATA LIMBAH
+   function mshow_all_limbah() {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,suhu,bod,cod,tss,ph,nh3,po4,coliform,lastupdate');
+      $this->db->from('hsse_limbah');
+      $this->db->order_by('id_limbah', 'desc');
+      return $this->db->get()->result();
+   }
+
+   //INSERT DATA LIMBAH
+   function minsert_limbah($data) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->insert('hsse_limbah', $data);
+   }
+
+   //SHOW DATA LIMBAH
+   function mselect_by_id_limbah($id_limbah) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,suhu,bod,cod,tss,ph,nh3,po4,coliform,lastupdate');
+      $this->db->from('hsse_limbah');
+      $this->db->where('id_limbah', $id_limbah);
+      return $this->db->get()->row();
+   }
+
+   //UPDATE DATA LIMBAH BERDASARKAN ID
+   function mupdate_limbah($update, $id_limbah){
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->where('id_limbah', $id_limbah);
+      $this->db->update('hsse_limbah', $update);
+   }
+
+   //DELETE DATA LIMBAH
+   function mdelete_limbah($id_limbah){
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->where('id_limbah', $id_limbah);
+      $this->db->delete('hsse_limbah');
+   }
+
+   //SHOW DATA OTHER
+   function mshow_all_other($jenis) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_other,sub_jenis,email,unit,nip,napeg,status,fungsi,total_man_hour,nama_korban,status_korban,ktp,aktifitas,incident,tindakan,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->from('hsse_other');
+      $this->db->where('jenis', $jenis);
+      $this->db->order_by('id_other', 'desc');
+      return $this->db->get()->result();
+   }
+
+   //SHOW DATA OTHER
+   function mselect_by_id_other($id_other) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_other,jenis,sub_jenis,email,unit,nip,napeg,status,fungsi,total_man_hour,nama_korban,status_korban,ktp,aktifitas,incident,tindakan,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->from('hsse_other');
+      $this->db->where('id_other', $id_other);
+      return $this->db->get()->row();
+   }
+
+   //INSERT DATA OTHER
+   function minsert_other($simpan) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->insert('hsse_other', $simpan);
+   }
+
+   //UPDATE DATA OTHER BERDASARKAN ID
+   function mupdate_other($update, $id_other){
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->where('id_other', $id_other);
+      $this->db->update('hsse_other', $update);
+   }
+
+   //DELETE DATA OTHER
+   function mdelete_other($id_other){
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->where('id_other', $id_other);
+      $this->db->delete('hsse_other');
+   }
+
+   //Insert Log Login
+   function insert_log($log) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->insert('log_aktifitas', $log);
+   }
+}
+?>
