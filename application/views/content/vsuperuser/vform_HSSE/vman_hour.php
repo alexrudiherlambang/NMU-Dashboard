@@ -37,7 +37,7 @@
                                     <!--begin::Title-->
                                     <h1
                                         class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                                        Data Unsafe Action / Unsafe Condition</h1>
+                                        Data Man Hour</h1>
                                     <!--end::Title-->
                                     <!--begin::Breadcrumb-->
                                     <?php
@@ -71,7 +71,7 @@
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
-                                                <input type="text" data-kt-ecommerce-order-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Unsafe Action / Unsafe Condition" />
+                                                <input type="text" data-kt-ecommerce-order-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Man Hour" />
                                             </div>
                                             <!--end::Search-->
                                         </div>
@@ -79,7 +79,7 @@
                                         <!--begin::Card toolbar-->
                                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                                             <!--begin::Add product-->
-                                            <?php echo anchor('SuperUser/cform_HSSE/input_unsafe', '+ Form Unsafe Action / Unsafe Condition', array('class' => 'btn btn-sm btn-success', 'type' => 'button')) ?>
+                                            <?php echo anchor('SuperUser/cform_HSSE/input_man_hour', '+ Form Man Hour', array('class' => 'btn btn-sm btn-success', 'type' => 'button')) ?>
                                             <!--end::Add product-->
                                         </div>
                                         <!--end::Card toolbar-->
@@ -93,13 +93,14 @@
                                             <thead>
                                                 <!--begin::Table row-->
                                                 <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                                                    <th class="w-10px pe-2">No</th>
-                                                    <th class="text-center min-w-70px">NIP</th>
-                                                    <th class="text-center min-w-70px">Nama Pegawai</th>
+                                                    <th class="w-10px pe-2">No
+                                                    </th>
+                                                    <th class="text-center min-w-100px">Periode</th>
+                                                    <th class="text-center min-w-100px">Nama Pegawai</th>
                                                     <th class="text-center min-w-70px">Status Pegawai</th>
                                                     <th class="text-center min-w-100px">Unit | Fungsi</th>
-                                                    <th class="text-center min-w-200px">Kronologi Temuan</th>
-                                                    <th class="text-center min-w-200px">Tingkat Keparahan</th>
+                                                    <th class="text-center min-w-100px">Periode</th>
+                                                    <th class="text-center min-w-100px">Total Man Hour</th>
                                                     <th class="text-center min-w-100px">Actions</th>
                                                 </tr>
                                                 <!--end::Table row-->
@@ -110,7 +111,7 @@
                                                 <?php
                                                 $no = 1;
                                                 $status = "OK";
-                                                foreach ($unsafe as $unsafe) :
+                                                foreach ($man_hour as $man_hour) :
                                                 ?>
                                                 <!--begin::Table row-->
                                                 <tr>
@@ -123,43 +124,36 @@
                                                     <!--end::Checkbox-->
                                                     <!--begin::Order ID=-->
                                                     <td class="text-center pe-0" data-kt-ecommerce-order-filter="order_id">
-                                                        <a class="text-gray-800 text-hover-primary fw-bold"><?php echo $unsafe->nip ?></a>
+                                                        <a class="text-gray-800 text-hover-primary fw-bold"><?php echo $man_hour->nip ?></a>
                                                     </td>
                                                     <!--end::Order ID=-->
                                                     <!--end::Customer=-->
                                                     <!--begin::Status=-->
-                                                    <td class="text-center pe-0" data-order="<?php echo $unsafe->napeg ?>">
+                                                    <td class="text-center pe-0" data-order="<?php echo $man_hour->napeg ?>">
                                                         <div class="ms-5">
                                                             <!--begin::Title-->
-                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><?php echo $unsafe->napeg ?></a>
+                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><?php echo $man_hour->napeg ?></a>
                                                             <!--end::Title-->
                                                         </div>
                                                     </td>
                                                     <!--end::Status=-->
                                                     <!--begin::Total=-->
                                                     <td class="text-center pe-0">
-                                                        <span class="fw-bold"><?php echo $unsafe->status ?></span>
+                                                        <span class="fw-bold"><?php echo $man_hour->status ?></span>
                                                     </td>
                                                     <!--end::Total=-->
                                                     <!--begin::Date Added=-->
-                                                    <td class="text-center" data-order="<?php echo $unsafe->fungsi ?>">
-                                                        <div class="badge badge-light-success"><?php echo $unsafe->unit ?></div>
+                                                    <td class="text-center" data-order="<?php echo $man_hour->fungsi ?>">
+                                                        <div class="badge badge-light-success"><?php echo $man_hour->unit ?></div>
                                                         |
-                                                        <span class="fw-bold"><?php echo $unsafe->fungsi ?></span>
+                                                        <span class="fw-bold"><?php echo $man_hour->fungsi ?></span>
                                                     </td>
                                                     <!--end::Date Added=-->
                                                     <!--begin::Date Modified=-->
-                                                    <td class="text-center" data-order="<?php echo $unsafe->unit ?>">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="ms-5">
-                                                                <!--begin::Title-->
-                                                                <a><b>Deskripsi:</b> <?php echo $unsafe->deskripsi ?></a></br>
-                                                                <a><b>RTL:</b> <?php echo $unsafe->rtl ?></a></br>
-                                                                <a><b>PIC:</b> <?php echo $unsafe->pic ?></a></br>
-                                                                <a><b>Gambar:</b> <img src="<?= base_url('assets/media/images/ktp/'.$unsafe->bukti); ?>" alt="Gambar" height="100"></a></br>
-                                                                <!--end::Title-->
-                                                            </div>
-                                                        </div>
+                                                    <td class="text-center" data-order="<?php echo $man_hour->unit ?>">
+                                                    <span class="fw-bold">
+                                                        <?php echo strftime('%B %Y', strtotime($man_hour->tahun . '-' . str_pad($man_hour->bulan, 2, '0', STR_PAD_LEFT)));?>
+                                                    </span>
                                                     </td>
                                                     <!--end::Date Modified=-->
                                                     <!--begin::Customer=-->
@@ -167,50 +161,15 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="ms-5">
                                                                 <!--begin::Title-->
-                                                                <a><b>Lokasi: </b><?php echo $unsafe->lokasi ?></a></br>
-                                                                <a><b>Tanggal & Waktu: </b><?php echo $unsafe->tgl_waktu ?></a></br>
-                                                                <a><b>Status Validasi: </b>
-                                                                <?php if ($unsafe->validasi == "open"){
-                                                                    echo '<div class="badge badge-light-success">'.$unsafe->validasi.'</div>';
-                                                                }else{
-                                                                    echo '<div class="badge badge-light-danger">'.$unsafe->validasi.'</div>';
-                                                                }
-                                                                ?></br>
-                                                                <a>
-                                                                    <b>Evidence: </b> 
-                                                                    <?php if ($unsafe->evidence === "NULL") {
-                                                                        echo 'status masih open!!!';
-                                                                    } else {
-                                                                        echo '<img src="' . base_url('assets/media/images/ktp/' . $unsafe->evidence) . '" alt="Gambar" height="100">';
-                                                                    }
-                                                                    ?>
-                                                                </a></br>
+                                                                <a class="text-gray-800 text-hover-primary fw-bold"><?php echo $man_hour->man_hour ?></a>
                                                                 <!--end::Title-->
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <!--begin::Action=-->
                                                     <td class="text-center">
-                                                    <?php if ($unsafe->validasi === "open"): ?>
                                                         <div class="d-flex justify-content-center flex-shrink-0">
-                                                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1">
-                                                                <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
-                                                                <span class="svg-icon svg-icon-2x">
-                                                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/General/Visible.svg-->
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                                            <rect x="0" y="0" width="24" height="24"/>
-                                                                            <path d="M4.875,20.75 C4.63541667,20.75 4.39583333,20.6541667 4.20416667,20.4625 L2.2875,18.5458333 C1.90416667,18.1625 1.90416667,17.5875 2.2875,17.2041667 C2.67083333,16.8208333 3.29375,16.8208333 3.62916667,17.2041667 L4.875,18.45 L8.0375,15.2875 C8.42083333,14.9041667 8.99583333,14.9041667 9.37916667,15.2875 C9.7625,15.6708333 9.7625,16.2458333 9.37916667,16.6291667 L5.54583333,20.4625 C5.35416667,20.6541667 5.11458333,20.75 4.875,20.75 Z" fill="currentColor" fill-rule="nonzero" opacity="0.3"/>
-                                                                            <path d="M2,11.8650466 L2,6 C2,4.34314575 3.34314575,3 5,3 L19,3 C20.6568542,3 22,4.34314575 22,6 L22,15 C22,15.0032706 21.9999948,15.0065399 21.9999843,15.009808 L22.0249378,15 L22.0249378,19.5857864 C22.0249378,20.1380712 21.5772226,20.5857864 21.0249378,20.5857864 C20.7597213,20.5857864 20.5053674,20.4804296 20.317831,20.2928932 L18.0249378,18 L12.9835977,18 C12.7263047,14.0909841 9.47412135,11 5.5,11 C4.23590829,11 3.04485894,11.3127315 2,11.8650466 Z M6,7 C5.44771525,7 5,7.44771525 5,8 C5,8.55228475 5.44771525,9 6,9 L15,9 C15.5522847,9 16,8.55228475 16,8 C16,7.44771525 15.5522847,7 15,7 L6,7 Z" fill="currentColor"/>
-                                                                        </g>
-                                                                    </svg>
-                                                                </span>
-                                                                <!--end::Svg Icon-->
-                                                            </a>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                        <div class="d-flex justify-content-center flex-shrink-0">
-                                                            <a href="<?php echo site_url("SuperUser/cform_HSSE/edit_unsafe/" . $unsafe->id_unsafe."/unsafe") ?>" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                            <a href="<?php echo site_url("SuperUser/cform_HSSE/edit_man_hour/" . $man_hour->id_man_hour) ?>" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                                                                 <span class="svg-icon svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/General/Visible.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -223,7 +182,7 @@
                                                             </a>
                                                         </div>
                                                         <div class="d-flex justify-content-center flex-shrink-0">
-                                                            <a href="<?php echo site_url("SuperUser/cform_HSSE/delete_unsafe/" . $unsafe->id_unsafe."/unsafe") ?>" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1" onclick="return confirm('Anda yakin hapus pendaftaran ini?');">
+                                                            <a href="<?php echo site_url("SuperUser/cform_HSSE/delete_man_hour/" . $man_hour->id_man_hour) ?>" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1" onclick="return confirm('Anda yakin hapus pendaftaran ini?');">
                                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                                                                 <span class="svg-icon svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/General/Visible.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -237,42 +196,6 @@
                                                         </div>
                                                     </td>
                                                     <!--end::Action=-->
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Judul Popup</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form class="form" method="post" action="<?php echo site_url(); ?>SuperUser/cform_HSSE/validasi_unsafe" id="kt_subscriptions_create_new" enctype="multipart/form-data">
-                                                                        <div class="row mb-5">
-                                                                            <div class="col-xl-3">
-                                                                                <div class="fs-6 fw-semibold mt-2 mb-3">ID</div>
-                                                                            </div>
-                                                                            <div class="col-xl-9 fv-row">
-                                                                                <input type="text" class="form-control form-control-solid" name="id_unsafe" value="<?php echo $unsafe->id_unsafe ?>" readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-5">
-                                                                            <div class="col-xl-3">
-                                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Evidence</div>
-                                                                            </div>
-                                                                            <div class="col-xl-9 fv-row">
-                                                                                <input type="file" name="evidence" id="evidence">
-                                                                                <label for="evidence">Pilih File</label>
-                                                                            </div>
-                                                                        </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-                                                                </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--end::Modal-->	
                                                 </tr>
                                                 <!--end::Table row-->	
                                                 <?php

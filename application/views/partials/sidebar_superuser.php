@@ -1166,7 +1166,7 @@
                          <?php if ($this->session->userdata("tmh") == "1"): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="<?php echo site_url('SuperUser/cform_HSSE/Blank') ?>">
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/cform_HSSE/man_hour') ?>">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>

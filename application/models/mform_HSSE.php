@@ -43,6 +43,44 @@ class mform_HSSE extends ci_model {
       $this->db->delete('hsse_limbah');
    }
 
+   //SHOW DATA MAN HOUR
+   function mshow_all_man_hour() {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_man_hour,email,unit,nip,napeg,status,fungsi,bulan,tahun,man_hour,lastupdate');
+      $this->db->from('hsse_man_hour');
+      $this->db->order_by('id_man_hour', 'desc');
+      return $this->db->get()->result();
+   }
+
+   //INSERT DATA MAN HOUR
+   function minsert_man_hour($data) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->insert('hsse_man_hour', $data);
+   }
+
+   //SHOW DATA MAN HOUR
+   function mselect_by_id_man_hour($id_man_hour) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_man_hour,email,unit,nip,napeg,status,fungsi,bulan,tahun,man_hour,lastupdate');
+      $this->db->from('hsse_man_hour');
+      $this->db->where('id_man_hour', $id_man_hour);
+      return $this->db->get()->row();
+   }
+
+   //UPDATE DATA MAN HOUR BERDASARKAN ID
+   function mupdate_man_hour($update, $id_man_hour){
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->where('id_man_hour', $id_man_hour);
+      $this->db->update('hsse_man_hour', $update);
+   }
+
+   //DELETE DATA MAN HOUR
+   function mdelete_man_hour($id_man_hour){
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->where('id_man_hour', $id_man_hour);
+      $this->db->delete('hsse_man_hour');
+   }
+
    //SHOW DATA OTHER
    function mshow_all_other($jenis) {
       $this->db = $this->load->database('local', TRUE);
@@ -119,6 +157,45 @@ class mform_HSSE extends ci_model {
       $this->db = $this->load->database('local', TRUE);
       $this->db->where('id_property', $id_property);
       $this->db->delete('hsse_property');
+   }
+
+   //SHOW DATA UNSAFE ACTION UNSAFE CONDITION
+   function mshow_all_unsafe($jenis) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_unsafe,sub_jenis,email,unit,nip,napeg,status,fungsi,deskripsi,rtl,pic,lokasi,tgl_waktu,bukti,validasi,evidence,lastupdate');
+      $this->db->from('hsse_unsafe');
+      $this->db->where('jenis', $jenis);
+      $this->db->order_by('id_unsafe', 'desc');
+      return $this->db->get()->result();
+   }
+
+   //SHOW DATA UNSAFE ACTION UNSAFE CONDITION
+   function mselect_by_id_unsafe($id_unsafe) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_unsafe,jenis,sub_jenis,email,unit,nip,napeg,status,fungsi,deskripsi,rtl,pic,lokasi,tgl_waktu,bukti,validasi,evidence,lastupdate');
+      $this->db->from('hsse_unsafe');
+      $this->db->where('id_unsafe', $id_unsafe);
+      return $this->db->get()->row();
+   }
+
+   //INSERT DATA UNSAFE ACTION UNSAFE CONDITION
+   function minsert_unsafe($simpan) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->insert('hsse_unsafe', $simpan);
+   }
+
+   //UPDATE DATA UNSAFE ACTION UNSAFE CONDITION BERDASARKAN ID
+   function mupdate_unsafe($update, $id_unsafe){
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->where('id_unsafe', $id_unsafe);
+      $this->db->update('hsse_unsafe', $update);
+   }
+
+   //DELETE DATA UNSAFE ACTION UNSAFE CONDITION
+   function mdelete_unsafe($id_unsafe){
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->where('id_unsafe', $id_unsafe);
+      $this->db->delete('hsse_unsafe');
    }
 
    //Insert Log Login

@@ -69,7 +69,7 @@
                                                     <div class="d-flex flex-column mb-2 fv-row">
                                                         <!--begin::Label-->
                                                         <div class="fs-5 fw-bold form-label mb-3">Edit Data Limbah
-                                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Edit data user dengan benar"></i></div>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Edit data limbah dengan benar"></i></div>
                                                         <!--end::Label-->
                                                     </div>                                                        
                                                     <!--begin::Invoice footer-->

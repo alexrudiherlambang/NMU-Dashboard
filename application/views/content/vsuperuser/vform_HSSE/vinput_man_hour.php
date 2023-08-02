@@ -61,22 +61,21 @@
                                     <!--begin::Content-->
                                     <div class="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
                                         <!--begin::Form-->
-                                        <form class="form" method="post" action="<?php echo site_url(); ?>SuperUser/cform_HSSE/insert_unsafe" id="kt_subscriptions_create_new" enctype="multipart/form-data">
+                                        <form class="form" method="post" action="<?php echo site_url(); ?>SuperUser/cform_HSSE/insert_man_hour" id="kt_subscriptions_create_new" enctype="multipart/form-data">
                                             <!--begin::Card-->
                                             <div class="card card-flush pt-3 mb-5 mb-lg-10">
                                                 <!--begin::Card body-->
                                                 <div class="card-body pt-0">
                                                     <div class="d-flex flex-column mb-2 fv-row">
                                                         <!--begin::Label-->
-                                                        <div class="fs-5 fw-bold form-label mb-3">Input Data Unsafe Action / Unsafe Condition
-                                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Tambahkan data Input Data Unsafe Action / Unsafe Condition dengan benar"></i></div>
+                                                        <div class="fs-5 fw-bold form-label mb-3">Input Data Man Hour
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Tambahkan data Man Hour dengan benar"></i></div>
                                                         <!--end::Label-->
                                                     </div>
-                                                    <input type="hidden" class="form-control form-control-solid" name="jenis" value="unsafe">                                                   
                                                     <!--begin::Invoice footer-->
                                                     <div class="d-flex flex-column mb-10 fv-row">
                                                         <hr class="my-3">
-                                                        <div class="fs-5 fw-bold form-label mb-3">Data Diri Pelapor
+                                                        <div class="fs-5 fw-bold form-label mb-3">Data Diri Pegawai
                                                         <hr class="my-3"></div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
@@ -141,63 +140,12 @@
                                                             </div>
                                                         </div>
                                                         <hr class="my-3">
-                                                        <div class="fs-5 fw-bold form-label mb-3">Kronologi Temuan
+                                                        <div class="fs-5 fw-bold form-label mb-3">Total Man Hour
                                                         <hr class="my-3"></div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Kategori</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                            <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Unsafe Action" id="flexRadioLg"/>
-                                                                    <label class="form-check-label" for="flexRadioLg">
-                                                                    Unsafe Action
-                                                                    </label>
-                                                                </div><br>
-                                                                <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Unsafe Condition" id="flexRadioLg"/>
-                                                                    <label class="form-check-label" for="flexRadioLg">
-                                                                    Unsafe Condition
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Deskripsi Temuan</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <textarea class="form-control form-control-solid" rows="3" name="deskripsi" placeholder="Input Deskripsi Temuan"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Rencana Tindak lanjut</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <textarea class="form-control form-control-solid" rows="3" name="rtl" placeholder="Input Rencana Tindak lanjut"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">PIC</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <input type="text" class="form-control form-control-solid" name="pic" placeholder="Input PIC">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Lokasi Kejadian</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <input type="text" class="form-control form-control-solid" name="lokasi" placeholder="Input Lokasi Kejadian">
-                                                            </div>
-                                                        </div>
                                                         <div class="row mb-5">
                                                             <!--begin::Col-->
                                                             <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Tanggal & Waktu Kejadian</div>
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Periode</div>
                                                             </div>
                                                             <!--end::Col-->
                                                             <!--begin::Col-->
@@ -212,18 +160,17 @@
                                                                         </svg>
                                                                     </span>
                                                                     <!--end::Svg Icon-->
-                                                                    <input class="form-control form-control-solid ps-12" type="datetime-local" name="tgl_waktu" placeholder="Pick a date" id="tglawal" required="required"/>
+                                                                    <input class="form-control form-control-solid ps-12" type="month" name="periode" placeholder="Pick a date" id="periode" required="required"/>
                                                                 </div>
                                                             </div>
                                                             <!--begin::Col-->
                                                         </div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Gambar Kejadian</div>
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Man Hour</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="file" name="bukti" id="bukti">
-                                                                <label for="bukti">Pilih File</label>
+                                                                <input type="number" class="form-control form-control-solid" name="man_hour" placeholder="Input Number">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -232,7 +179,7 @@
                                                     <div class="box-footer">
                                                         <center>
                                                             <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-                                                            <?php echo anchor('SuperUser/cform_HSSE/unsafe', 'Batal', array('class' => 'btn btn-danger')) ?>
+                                                            <?php echo anchor('SuperUser/cform_HSSE/man_hour', 'Batal', array('class' => 'btn btn-danger')) ?>
                                                         </center>
                                                     </div>
                                                     <!-- /.box-footer -->

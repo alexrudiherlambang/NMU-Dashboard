@@ -61,7 +61,7 @@
                                     <!--begin::Content-->
                                     <div class="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
                                         <!--begin::Form-->
-                                        <form class="form" method="post" action="<?php echo site_url(); ?>SuperUser/cform_HSSE/update_other" id="kt_subscriptions_create_new" enctype="multipart/form-data">
+                                        <form class="form" method="post" action="<?php echo site_url(); ?>SuperUser/cform_HSSE/update_unsafe" id="kt_subscriptions_create_new" enctype="multipart/form-data">
                                             <!--begin::Card-->
                                             <div class="card card-flush pt-3 mb-5 mb-lg-10">
                                                 <!--begin::Card body-->
@@ -72,8 +72,8 @@
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Ubah data Unsafe Action / Unsafe Condition dengan benar"></i></div>
                                                         <!--end::Label-->
                                                     </div>
-                                                    <input type="hidden" class="form-control form-control-solid" name="jenis" value="<?php echo $other->jenis; ?>">                                                   
-                                                    <input type="hidden" class="form-control form-control-solid" name="id_other" value="<?php echo $other->id_other; ?>">
+                                                    <input type="hidden" class="form-control form-control-solid" name="jenis" value="<?php echo $unsafe->jenis; ?>">                                                   
+                                                    <input type="hidden" class="form-control form-control-solid" name="id_unsafe" value="<?php echo $unsafe->id_unsafe; ?>">
                                                     <!--begin::Invoice footer-->
                                                     <div class="d-flex flex-column mb-10 fv-row">
                                                         <hr class="my-3">
@@ -84,7 +84,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Email</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="email" class="form-control form-control-solid" name="email" value="<?php echo $other->email; ?>">
+                                                                <input type="email" class="form-control form-control-solid" name="email" value="<?php echo $unsafe->email; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -94,13 +94,13 @@
                                                             <div class="col-xl-9 fv-row">
                                                                 <select class="form-control form-control-solid select2" name="unit" >
                                                                     <option selected="selected">-</option>
-                                                                    <option <?php if ($other->unit == "KP") echo "selected"; ?> value="KP">Kantor Pusat</option>
-                                                                    <option <?php if ($other->unit == "RSG") echo "selected"; ?> value="RSG">Rumah Sakit Gatoel</option>
-                                                                    <option <?php if ($other->unit == "RSP") echo "selected"; ?> value="RSP">Rumah Sakit Perkebunan</option>
-                                                                    <option <?php if ($other->unit == "RST") echo "selected"; ?> value="RST">Rumah Sakit Toelongredjo</option>
-                                                                    <option <?php if ($other->unit == "RSMU") echo "selected"; ?> value="RSMU">Rumah Sakit Medika Utama</option>
-                                                                    <option <?php if ($other->unit == "URJ") echo "selected"; ?> value="URJ">URJ / KLINIK</option>
-                                                                    <option <?php if ($other->unit == "Other") echo "selected"; ?> value="Other">Other</option>
+                                                                    <option <?php if ($unsafe->unit == "KP") echo "selected"; ?> value="KP">Kantor Pusat</option>
+                                                                    <option <?php if ($unsafe->unit == "RSG") echo "selected"; ?> value="RSG">Rumah Sakit Gatoel</option>
+                                                                    <option <?php if ($unsafe->unit == "RSP") echo "selected"; ?> value="RSP">Rumah Sakit Perkebunan</option>
+                                                                    <option <?php if ($unsafe->unit == "RST") echo "selected"; ?> value="RST">Rumah Sakit Toelongredjo</option>
+                                                                    <option <?php if ($unsafe->unit == "RSMU") echo "selected"; ?> value="RSMU">Rumah Sakit Medika Utama</option>
+                                                                    <option <?php if ($unsafe->unit == "URJ") echo "selected"; ?> value="URJ">URJ / KLINIK</option>
+                                                                    <option <?php if ($unsafe->unit == "Other") echo "selected"; ?> value="Other">Other</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -109,7 +109,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">NIP</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="nip" value="<?php echo $other->nip; ?>">
+                                                                <input type="number" class="form-control form-control-solid" name="nip" value="<?php echo $unsafe->nip; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -117,7 +117,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Nama Pegawai</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="text" class="form-control form-control-solid" name="napeg" value="<?php echo $other->napeg; ?>">
+                                                                <input type="text" class="form-control form-control-solid" name="napeg" value="<?php echo $unsafe->napeg; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -127,9 +127,9 @@
                                                             <div class="col-xl-9 fv-row">
                                                                 <select class="form-control form-control-solid select2" name="status" >
                                                                     <option selected="selected">-</option>
-                                                                    <option <?php if ($other->status == "PWT") echo "selected"; ?>>PWT</option>
-                                                                    <option <?php if ($other->status == "PWTT") echo "selected"; ?>>PWTT</option>
-                                                                    <option <?php if ($other->status == "OS") echo "selected"; ?>>OS</option>
+                                                                    <option <?php if ($unsafe->status == "PWT") echo "selected"; ?>>PWT</option>
+                                                                    <option <?php if ($unsafe->status == "PWTT") echo "selected"; ?>>PWTT</option>
+                                                                    <option <?php if ($unsafe->status == "OS") echo "selected"; ?>>OS</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -138,11 +138,11 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Bagian/Fungsi/Nama Klinik</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="text" class="form-control form-control-solid" name="fungsi" value="<?php echo $other->fungsi; ?>">
+                                                                <input type="text" class="form-control form-control-solid" name="fungsi" value="<?php echo $unsafe->fungsi; ?>">
                                                             </div>
                                                         </div>
                                                         <hr class="my-3">
-                                                        <div class="fs-5 fw-bold form-label mb-3">Biodata Korban
+                                                        <div class="fs-5 fw-bold form-label mb-3">Kronologi Temuan
                                                         <hr class="my-3"></div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
@@ -150,13 +150,13 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                             <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Unsafe Action" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Unsafe Action') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Unsafe Action" id="flexRadioLg" <?php echo ($unsafe->sub_jenis === 'Unsafe Action') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Unsafe Action
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Unsafe Condition" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Unsafe Condition') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Unsafe Condition" id="flexRadioLg" <?php echo ($unsafe->sub_jenis === 'Unsafe Condition') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Unsafe Condition
                                                                     </label>
@@ -165,109 +165,34 @@
                                                         </div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Nama Korban</div>
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Deskripsi Temuan</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="text" class="form-control form-control-solid" name="nama_korban" value="<?php echo $other->nama_korban; ?>">
+                                                                <textarea class="form-control form-control-solid" rows="3" name="deskripsi" placeholder="Input Deskripsi Temuan"><?php echo $unsafe->deskripsi; ?></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Status Korban</div>
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Rencana Tindak lanjut</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <select class="form-control form-control-solid select2" name="status_korban" >
-                                                                    <option selected="selected">-</option>
-                                                                    <option <?php if ($other->status == "PWT") echo "selected"; ?>>PWT</option>
-                                                                    <option <?php if ($other->status == "PWTT") echo "selected"; ?>>PWTT</option>
-                                                                    <option <?php if ($other->status == "OS") echo "selected"; ?>>OS</option>
-                                                                </select>
+                                                                <textarea class="form-control form-control-solid" rows="3" name="rtl" placeholder="Input Rencana Tindak lanjut"><?php echo $unsafe->rtl; ?></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Foto KTP</div>
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">PIC</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                            <img  src='<?=base_url()?>assets/media/images/ktp/<?php echo $other->ktp;?>' height="100">
-                                                                <input type="file" name="ktp" id="ktp">
-                                                                <label for="ktp">Pilih File</label>
+                                                                <input type="text" class="form-control form-control-solid" name="pic" value="<?php echo $unsafe->pic; ?>">
                                                             </div>
                                                         </div>
-                                                        <hr class="my-3">
-                                                        <div class="fs-5 fw-bold form-label mb-3">Kronologi Kejadian
-                                                        <hr class="my-3"></div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Aktifitas</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <input type="text" class="form-control form-control-solid" name="aktifitas" value="<?php echo $other->aktifitas; ?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Incident/Event Categories</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <select class="form-control form-control-solid select2" name="incident" >
-                                                                    <option selected="selected">-</option>
-                                                                    <option <?php if ($other->incident == "Assault or Violent Act") echo "selected"; ?>>Assault or Violent Act</option>
-                                                                    <option <?php if ($other->incident == "Caught In, Under or Between") echo "selected"; ?>>Caught In, Under or Between</option>
-                                                                    <option <?php if ($other->incident == "Cut, Puncture, Scrape") echo "selected"; ?>>Cut, Puncture, Scrape</option>
-                                                                    <option <?php if ($other->incident == "Explosions or Burns") echo "selected"; ?>>Explosions or Burns</option>
-                                                                    <option <?php if ($other->incident == "Exposure: Electrical") echo "selected"; ?>>Exposure: Electrical</option>
-                                                                    <option <?php if ($other->incident == "Exposure: Noise, Chemical, Biological, Vibration") echo "selected"; ?>>Exposure: Noise, Chemical, Biological, Vibration</option>
-                                                                    <option <?php if ($other->incident == "Exposure: Needle, spuit, ampoule, dll") echo "selected"; ?>>Exposure: Needle, spuit, ampoule, dll</option>
-                                                                    <option <?php if ($other->incident == "Falls from height") echo "selected"; ?>>Falls from height</option>
-                                                                    <option <?php if ($other->incident == "Overexertion/Strain") echo "selected"; ?>>Overexertion/Strain</option>
-                                                                    <option <?php if ($other->incident == "Pressure release") echo "selected"; ?>>Pressure release</option>
-                                                                    <option <?php if ($other->incident == "Slips and Trips (at the same height)") echo "selected"; ?>>Slips and Trips (at the same height)</option>
-                                                                    <option <?php if ($other->incident == "Struck By") echo "selected"; ?>>Struck By</option>
-                                                                    <option <?php if ($other->incident == "Water related, drowning") echo "selected"; ?>>Water related, drowning</option>
-                                                                    <option <?php if ($other->incident == "Other") echo "selected"; ?>>Other</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Corporate Life Saving Rules</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <select class="form-control form-control-solid select2" name="tindakan" >
-                                                                    <option selected="selected">-</option>
-                                                                    <option <?php if ($other->tindakan == "Tools & Equipment") echo "selected"; ?>>Tools & Equipment</option>
-                                                                    <option <?php if ($other->tindakan == "Safe Zone Position") echo "selected"; ?>>Safe Zone Position</option>
-                                                                    <option <?php if ($other->tindakan == "Isolation") echo "selected"; ?>>Isolation</option>
-                                                                    <option <?php if ($other->tindakan == "Confined Space") echo "selected"; ?>>Confined Space</option>
-                                                                    <option <?php if ($other->tindakan == "Lifting Operation") echo "selected"; ?>>Lifting Operation</option>
-                                                                    <option <?php if ($other->tindakan == "Fit to Work") echo "selected"; ?>>Fit to Work</option>
-                                                                    <option <?php if ($other->tindakan == "Working at Height") echo "selected"; ?>>Working at Height</option>
-                                                                    <option <?php if ($other->tindakan == "Personal Floatation Device") echo "selected"; ?>>Personal Floatation Device</option>
-                                                                    <option <?php if ($other->tindakan == "System Override") echo "selected"; ?>>System Override</option>
-                                                                    <option <?php if ($other->tindakan == "Asset Integrity") echo "selected"; ?>>Asset Integrity</option>
-                                                                    <option <?php if ($other->tindakan == "Driving Safety") echo "selected"; ?>>Driving Safety</option>
-                                                                    <option <?php if ($other->tindakan == "Other") echo "selected"; ?>>Other</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Deskripsi Kejadian</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <textarea class="form-control form-control-solid" rows="3" name="deskripsi" placeholder="Input Deskripsi Kejadian"><?php echo $other->deskripsi; ?></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <hr class="my-3">
-                                                        <div class="fs-5 fw-bold form-label mb-3">Tingkat Keparahan
-                                                        <hr class="my-3"></div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Lokasi Kejadian</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="text" class="form-control form-control-solid" name="lokasi" value="<?php echo $other->lokasi; ?>">
+                                                                <input type="text" class="form-control form-control-solid" name="lokasi" value="<?php echo $unsafe->lokasi; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -288,7 +213,7 @@
                                                                         </svg>
                                                                     </span>
                                                                     <!--end::Svg Icon-->
-                                                                    <input class="form-control form-control-solid ps-12" type="datetime-local" name="tgl_waktu" value="<?php echo $other->tgl_waktu; ?>" id="tglawal" required="required"/>
+                                                                    <input class="form-control form-control-solid ps-12" type="datetime-local" name="tgl_waktu" value="<?php echo $unsafe->tgl_waktu; ?>" id="tglawal" required="required"/>
                                                                 </div>
                                                             </div>
                                                             <!--begin::Col-->
@@ -298,7 +223,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Gambar Kejadian</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                            <img  src='<?=base_url()?>assets/media/images/ktp/<?php echo $other->bukti;?>' height="100">
+                                                            <img  src='<?=base_url()?>assets/media/images/ktp/<?php echo $unsafe->bukti;?>' height="100">
                                                                 <input type="file" name="bukti" id="bukti">
                                                                 <label for="bukti">Pilih File</label>
                                                             </div>

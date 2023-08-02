@@ -102,23 +102,101 @@ class cform_HSSE extends CI_Controller {
       redirect('SuperUser/cform_HSSE/limbah');
    }
 
-   function delete_limbah() {
+   function man_hour() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $id_limbah = $this->uri->segment(4);
-      $this->mform_HSSE->mdelete_limbah($id_limbah);
+      $data['man_hour'] = $this->mform_HSSE->mshow_all_man_hour();
+      $this->load->view('content/vsuperuser/vform_HSSE/vman_hour', $data);
+   }
+
+   function input_man_hour() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $this->load->view('content/vsuperuser/vform_HSSE/vinput_man_hour');
+   }
+
+   function insert_man_hour() {
+      $simpan = array(        
+         'email'            => $this->input->post('email'),        
+         'unit'             => $this->input->post('unit'), 
+         'nip'              => $this->input->post('nip'),        
+         'napeg'            => $this->input->post('napeg'),        
+         'status'           => $this->input->post('status'),        
+         'fungsi'           => $this->input->post('fungsi'),        
+         'bulan'            => substr($this->input->post('periode'), 5, 2),
+         'tahun'            => substr($this->input->post('periode'), 0, 4),
+         'man_hour'             => $this->input->post('man_hour'),        
+      );
+      $this->mform_HSSE->minsert_man_hour($simpan);
       $log = array(
          'id'		   => $this->session->userdata("id"),  
-         'unit'      => $this->session->userdata("tlok"),
-         'jenis'     => 'Form HSSE Limbah',
+         'unit'      => $this->input->post('unit'),
+         'jenis'     => 'Form HSSE man hour',
          'platform'	=> $this->agent->platform(),
          'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
          'ip'		   => $this->input->ip_address(),
-         'action'	   => 'Hapus Data Limbah Dengan Kode : '.$id_limbah,
+         'action'	   => 'Tambah Data man hour',
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/limbah');
+
+      redirect('SuperUser/cform_HSSE/man_hour');
+   }
+
+   function edit_man_hour($id_man_hour) {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+         $id_man_hour = $this->uri->segment(4);
+         $data['man_hour'] = $this->mform_HSSE->mselect_by_id_man_hour($id_man_hour);
+      $this->load->view('content/vsuperuser/vform_HSSE/vedit_man_hour', $data);
+   }
+
+   function update_man_hour() {
+      $id_man_hour = $this->input->post('id_man_hour');
+      $update = array(
+         'email'            => $this->input->post('email'),        
+         'unit'             => $this->input->post('unit'), 
+         'nip'              => $this->input->post('nip'),        
+         'napeg'            => $this->input->post('napeg'),        
+         'status'           => $this->input->post('status'),        
+         'fungsi'           => $this->input->post('fungsi'),        
+         'bulan'            => substr($this->input->post('periode'), 5, 2),
+         'tahun'            => substr($this->input->post('periode'), 0, 4),
+         'man_hour'             => $this->input->post('man_hour'),
+      );
+      $this->mform_HSSE->mupdate_man_hour($update, $id_man_hour);
+      $log = array(
+         'id'		   => $this->session->userdata("id"),  
+         'unit'      => $this->input->post('unit'),
+         'jenis'     => 'Form HSSE Man Hour',
+         'platform'	=> $this->agent->platform(),
+         'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+         'ip'		   => $this->input->ip_address(),
+         'action'	   => 'Update Data Man Hour Dengan Kode : '.$id_man_hour,
+      );
+      $this->mform_HSSE->insert_log($log);
+      redirect('SuperUser/cform_HSSE/man_hour');
+   }
+
+   function delete_man_hour() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $id_man_hour = $this->uri->segment(4);
+      $this->mform_HSSE->mdelete_man_hour($id_man_hour);
+      $log = array(
+         'id'		   => $this->session->userdata("id"),  
+         'unit'      => $this->session->userdata("tlok"),
+         'jenis'     => 'Form HSSE Man Hour',
+         'platform'	=> $this->agent->platform(),
+         'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+         'ip'		   => $this->input->ip_address(),
+         'action'	   => 'Hapus Data Man Hour Dengan Kode : '.$id_man_hour,
+      );
+      $this->mform_HSSE->insert_log($log);
+      redirect('SuperUser/cform_HSSE/man_hour');
    }
 
    function clasification() {
@@ -190,7 +268,7 @@ class cform_HSSE extends CI_Controller {
          redirect("clogin");
       }
       $jenis = "unsafe";
-      $data['unsafe'] = $this->mform_HSSE->mshow_all_other($jenis);
+      $data['unsafe'] = $this->mform_HSSE->mshow_all_unsafe($jenis);
       $this->load->view('content/vsuperuser/vform_HSSE/vunsafe', $data);
    }
 
@@ -412,6 +490,128 @@ class cform_HSSE extends CI_Controller {
          'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
          'ip'		   => $this->input->ip_address(),
          'action'	   => 'Hapus Data Property Damage Dengan Kode : '.$id_property,
+      );
+      $this->mform_HSSE->insert_log($log);
+      redirect('SuperUser/cform_HSSE/'.$jenis);
+   }
+
+   function insert_unsafe() {
+      // Unggah file Bukti
+      $bukti = $this->_upload_file('bukti', './assets/media/images/ktp/');
+
+      $simpan = array(
+         'jenis'           => $this->input->post('jenis'),        
+         'sub_jenis'       => $this->input->post('sub_jenis'),        
+         'email'           => $this->input->post('email'),        
+         'unit'            => $this->input->post('unit'), 
+         'nip'             => $this->input->post('nip'),        
+         'napeg'           => $this->input->post('napeg'),        
+         'status'          => $this->input->post('status'),        
+         'fungsi'          => $this->input->post('fungsi'),                
+         'deskripsi'       => $this->input->post('deskripsi'),        
+         'rtl'             => $this->input->post('rtl'),        
+         'pic'             => $this->input->post('pic'),                
+         'lokasi'          => $this->input->post('lokasi'),        
+         'tgl_waktu'       => $this->input->post('tgl_waktu'),
+         'bukti'           => $bukti,
+      );
+      
+      $this->mform_HSSE->minsert_unsafe($simpan);
+      $log = array(
+         'id'		   => $this->session->userdata("id"),  
+         'unit'      => $this->input->post('unit'),
+         'jenis'     => 'Form HSSE '.$this->input->post('jenis'),
+         'platform'	=> $this->agent->platform(),
+         'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+         'ip'		   => $this->input->ip_address(),
+         'action'	   => 'Tambah Data '.$this->input->post('jenis'),
+      );
+      $this->mform_HSSE->insert_log($log);
+
+      redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+   }
+
+   function edit_unsafe($id_unsafe) {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+         $id_unsafe = $this->uri->segment(4);
+         $jenis = $this->uri->segment(5);
+         $data['unsafe'] = $this->mform_HSSE->mselect_by_id_unsafe($id_unsafe);
+         $this->load->view('content/vsuperuser/vform_HSSE/vedit_'.$jenis, $data);
+   }
+
+   function update_unsafe() {
+      // Unggah file Bukti
+      $bukti = $this->_upload_file('bukti', './assets/media/images/ktp/');
+      $id_unsafe = $this->input->post('id_unsafe');
+      $update = array(
+         'jenis'           => $this->input->post('jenis'),        
+         'sub_jenis'       => $this->input->post('sub_jenis'),        
+         'email'           => $this->input->post('email'),        
+         'unit'            => $this->input->post('unit'), 
+         'nip'             => $this->input->post('nip'),        
+         'napeg'           => $this->input->post('napeg'),        
+         'status'          => $this->input->post('status'),        
+         'fungsi'          => $this->input->post('fungsi'),                
+         'deskripsi'       => $this->input->post('deskripsi'),        
+         'rtl'             => $this->input->post('rtl'),        
+         'pic'             => $this->input->post('pic'),                
+         'lokasi'          => $this->input->post('lokasi'),        
+         'tgl_waktu'       => $this->input->post('tgl_waktu'),
+         'bukti'           => $bukti,
+      );
+      $this->mform_HSSE->mupdate_unsafe($update, $id_unsafe);
+      $log = array(
+         'id'		   => $this->session->userdata("id"),  
+         'unit'      => $this->input->post('unit'),
+         'jenis'     => 'Form HSSE unsafe',
+         'platform'	=> $this->agent->platform(),
+         'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+         'ip'		   => $this->input->ip_address(),
+         'action'	   => 'Update Data unsafe Dengan Kode : '.$id_unsafe,
+      );
+      $this->mform_HSSE->insert_log($log);
+      redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+   }
+
+   function validasi_unsafe() {
+      // Unggah file Bukti
+      $evidence = $this->_upload_file('evidence', './assets/media/images/ktp/');
+      $id_unsafe = $this->input->post('id_unsafe');
+      $update = array(
+         'validasi'        => "close",        
+         'evidence'        => $evidence,
+      );
+      $this->mform_HSSE->mupdate_unsafe($update, $id_unsafe);
+      $log = array(
+         'id'		   => $this->session->userdata("id"),  
+         'unit'      => $this->session->userdata("id"),
+         'jenis'     => 'Form HSSE unsafe',
+         'platform'	=> $this->agent->platform(),
+         'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+         'ip'		   => $this->input->ip_address(),
+         'action'	   => 'Validasi Unsafe dengan ID : '.$id_unsafe,
+      );
+      $this->mform_HSSE->insert_log($log);
+      redirect('SuperUser/cform_HSSE/unsafe');
+   }
+
+   function delete_unsafe() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $id_unsafe = $this->uri->segment(4);
+      $jenis = $this->uri->segment(5);
+      $this->mform_HSSE->mdelete_unsafe($id_unsafe);
+      $log = array(
+         'id'		   => $this->session->userdata("id"),  
+         'unit'      => $this->session->userdata("tlok"),
+         'jenis'     => 'Form HSSE unsafe',
+         'platform'	=> $this->agent->platform(),
+         'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+         'ip'		   => $this->input->ip_address(),
+         'action'	   => 'Hapus Data unsafe Dengan Kode : '.$id_unsafe,
       );
       $this->mform_HSSE->insert_log($log);
       redirect('SuperUser/cform_HSSE/'.$jenis);
