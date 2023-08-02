@@ -98,8 +98,8 @@
                                                     <th class="text-center min-w-100px">NIP</th>
                                                     <th class="text-center min-w-100px">Nama Pegawai</th>
                                                     <th class="text-center min-w-70px">Status Pegawai</th>
-                                                    <th class="text-center min-w-100px">Fungsi</th>
-                                                    <th class="text-center min-w-100px">Unit</th>
+                                                    <th class="text-center min-w-100px">Unit | Fungsi</th>
+                                                    <th class="text-center min-w-100px">Periode</th>
                                                     <th class="text-center min-w-100px">Deskripsi Limbah</th>
                                                     <th class="text-center min-w-100px">Actions</th>
                                                 </tr>
@@ -144,12 +144,16 @@
                                                     <!--end::Total=-->
                                                     <!--begin::Date Added=-->
                                                     <td class="text-center" data-order="<?php echo $limbah->fungsi ?>">
+                                                        <div class="badge badge-light-success"><?php echo $limbah->unit ?></div>
+                                                        |
                                                         <span class="fw-bold"><?php echo $limbah->fungsi ?></span>
                                                     </td>
                                                     <!--end::Date Added=-->
                                                     <!--begin::Date Modified=-->
                                                     <td class="text-center" data-order="<?php echo $limbah->unit ?>">
-                                                        <div class="badge badge-light-success"><?php echo $limbah->unit ?></div>
+                                                    <span class="fw-bold">
+                                                        <?php echo strftime('%B %Y', strtotime($limbah->tahun . '-' . str_pad($limbah->bulan, 2, '0', STR_PAD_LEFT)));?>
+                                                    </span>
                                                     </td>
                                                     <!--end::Date Modified=-->
                                                     <!--begin::Customer=-->

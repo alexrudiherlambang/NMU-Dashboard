@@ -153,7 +153,6 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="ms-5">
                                                                 <!--begin::Title-->
-                                                                <a><b>Total Man Hour:</b> <?php echo $personal_safety->total_man_hour ?></a></br>
                                                                 <a><b>Nama Korban:</b> <?php echo $personal_safety->nama_korban ?></a></br>
                                                                 <a><b>Status Korban:</b> <?php echo $personal_safety->status_korban ?></a></br>
                                                                 <a><b>Aktifitas:</b> <?php echo $personal_safety->aktifitas ?></a></br>

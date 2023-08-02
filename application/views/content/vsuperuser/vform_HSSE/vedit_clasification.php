@@ -68,8 +68,8 @@
                                                 <div class="card-body pt-0">
                                                     <div class="d-flex flex-column mb-2 fv-row">
                                                         <!--begin::Label-->
-                                                        <div class="fs-5 fw-bold form-label mb-3">Input Data Clasification
-                                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Tambahkan data clasification dengan benar"></i></div>
+                                                        <div class="fs-5 fw-bold form-label mb-3">Edit Data Clasification
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Ubah data clasification dengan benar"></i></div>
                                                         <!--end::Label-->
                                                     </div>
                                                     <input type="hidden" class="form-control form-control-solid" name="jenis" value="<?php echo $other->jenis; ?>">                                                   
@@ -155,14 +155,6 @@
                                                                     NOA
                                                                     </label>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Total Man Hour</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="total_man_hour" value="<?php echo $other->total_man_hour; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">

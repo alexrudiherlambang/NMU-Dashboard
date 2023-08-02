@@ -153,12 +153,10 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="ms-5">
                                                                 <!--begin::Title-->
-                                                                <a><b>Total Man Hour:</b> <?php echo $nearmiss->total_man_hour ?></a></br>
                                                                 <a><b>Nama Korban:</b> <?php echo $nearmiss->nama_korban ?></a></br>
                                                                 <a><b>Status Korban:</b> <?php echo $nearmiss->status_korban ?></a></br>
                                                                 <a><b>Aktifitas:</b> <?php echo $nearmiss->aktifitas ?></a></br>
-                                                                <a><b>Incident/Event Categories:</b> <?php echo $nearmiss->incident ?></a></br>
-                                                                <a><b>Corporate Life Saving Rules: </b> <?php echo $nearmiss->tindakan ?></a></br>
+                                                                <a><b>Potensial Kejadian yang Mungkin Terjadi:</b> <?php echo $nearmiss->incident ?></a></br>
                                                                 <a><b>Deskripsi Kejadian:</b> <?php echo $nearmiss->deskripsi ?></a></br>
                                                                 <!--end::Title-->
                                                             </div>

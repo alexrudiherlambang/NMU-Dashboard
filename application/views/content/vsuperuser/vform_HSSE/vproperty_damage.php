@@ -37,7 +37,7 @@
                                     <!--begin::Title-->
                                     <h1
                                         class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                                        Data Clasification</h1>
+                                        Data Property Damage</h1>
                                     <!--end::Title-->
                                     <!--begin::Breadcrumb-->
                                     <?php
@@ -71,7 +71,7 @@
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
-                                                <input type="text" data-kt-ecommerce-order-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Clasification" />
+                                                <input type="text" data-kt-ecommerce-order-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Property Damage" />
                                             </div>
                                             <!--end::Search-->
                                         </div>
@@ -79,7 +79,7 @@
                                         <!--begin::Card toolbar-->
                                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                                             <!--begin::Add product-->
-                                            <?php echo anchor('SuperUser/cform_HSSE/input_clasification', '+ Form Clasification', array('class' => 'btn btn-sm btn-success', 'type' => 'button')) ?>
+                                            <?php echo anchor('SuperUser/cform_HSSE/input_property_damage', '+ Form Property Damage', array('class' => 'btn btn-sm btn-success', 'type' => 'button')) ?>
                                             <!--end::Add product-->
                                         </div>
                                         <!--end::Card toolbar-->
@@ -110,7 +110,7 @@
                                                 <?php
                                                 $no = 1;
                                                 $status = "OK";
-                                                foreach ($clasification as $clasification) :
+                                                foreach ($property_damage as $property_damage) :
                                                 ?>
                                                 <!--begin::Table row-->
                                                 <tr>
@@ -123,42 +123,40 @@
                                                     <!--end::Checkbox-->
                                                     <!--begin::Order ID=-->
                                                     <td class="text-center pe-0" data-kt-ecommerce-order-filter="order_id">
-                                                        <a class="text-gray-800 text-hover-primary fw-bold"><?php echo $clasification->nip ?></a>
+                                                        <a class="text-gray-800 text-hover-primary fw-bold"><?php echo $property_damage->nip ?></a>
                                                     </td>
                                                     <!--end::Order ID=-->
                                                     <!--end::Customer=-->
                                                     <!--begin::Status=-->
-                                                    <td class="text-center pe-0" data-order="<?php echo $clasification->napeg ?>">
+                                                    <td class="text-center pe-0" data-order="<?php echo $property_damage->napeg ?>">
                                                         <div class="ms-5">
                                                             <!--begin::Title-->
-                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><?php echo $clasification->napeg ?></a>
+                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><?php echo $property_damage->napeg ?></a>
                                                             <!--end::Title-->
                                                         </div>
                                                     </td>
                                                     <!--end::Status=-->
                                                     <!--begin::Total=-->
                                                     <td class="text-center pe-0">
-                                                        <span class="fw-bold"><?php echo $clasification->status ?></span>
+                                                        <span class="fw-bold"><?php echo $property_damage->status ?></span>
                                                     </td>
                                                     <!--end::Total=-->
                                                     <!--begin::Date Added=-->
-                                                    <td class="text-center" data-order="<?php echo $clasification->fungsi ?>">
-                                                        <div class="badge badge-light-success"><?php echo $clasification->unit ?></div>
+                                                    <td class="text-center" data-order="<?php echo $property_damage->fungsi ?>">
+                                                        <div class="badge badge-light-success"><?php echo $property_damage->unit ?></div>
                                                         |
-                                                        <span class="fw-bold"><?php echo $clasification->fungsi ?></span>
+                                                        <span class="fw-bold"><?php echo $property_damage->fungsi ?></span>
                                                     </td>
                                                     <!--end::Date Added=-->
                                                     <!--begin::Date Modified=-->
-                                                    <td class="text-center" data-order="<?php echo $clasification->unit ?>">
+                                                    <td class="text-center" data-order="<?php echo $property_damage->unit ?>">
                                                         <div class="d-flex align-items-center">
                                                             <div class="ms-5">
                                                                 <!--begin::Title-->
-                                                                <a><b>Nama Korban:</b> <?php echo $clasification->nama_korban ?></a></br>
-                                                                <a><b>Status Korban:</b> <?php echo $clasification->status_korban ?></a></br>
-                                                                <a><b>Aktifitas:</b> <?php echo $clasification->aktifitas ?></a></br>
-                                                                <a><b>Incident/Event Categories:</b> <?php echo $clasification->incident ?></a></br>
-                                                                <a><b>Corporate Life Saving Rules: </b> <?php echo $clasification->tindakan ?></a></br>
-                                                                <a><b>Deskripsi Kejadian:</b> <?php echo $clasification->deskripsi ?></a></br>
+                                                                <a><b>Nama Alat / Ruangan:</b> <?php echo $property_damage->nama_alat ?></a></br>
+                                                                <a><b>Detail Item Kerusakan:</b> <?php echo $property_damage->detil_item ?></a></br>
+                                                                <a><b>Penyebab:</b> <?php echo $property_damage->penyebab ?></a></br>
+                                                                <a><b>Deskripsi Kejadian:</b> <?php echo $property_damage->deskripsi ?></a></br>
                                                                 <!--end::Title-->
                                                             </div>
                                                         </div>
@@ -169,9 +167,9 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="ms-5">
                                                                 <!--begin::Title-->
-                                                                <a><b>Lokasi: </b><?php echo $clasification->lokasi ?></a></br>
-                                                                <a><b>Tanggal & Waktu: </b><?php echo $clasification->tgl_waktu ?></a></br>
-                                                                <a><b>Gambar: </b><img src="<?= base_url('assets/media/images/ktp/'.$clasification->bukti); ?>" alt="Gambar" height="100"></a></br>
+                                                                <a><b>Lokasi: </b><?php echo $property_damage->lokasi ?></a></br>
+                                                                <a><b>Tanggal & Waktu: </b><?php echo $property_damage->tgl_waktu ?></a></br>
+                                                                <a><b>Gambar: </b><img src="<?= base_url('assets/media/images/ktp/'.$property_damage->bukti); ?>" alt="Gambar" height="100"></a></br>
                                                                 <!--end::Title-->
                                                             </div>
                                                         </div>
@@ -179,7 +177,7 @@
                                                     <!--begin::Action=-->
                                                     <td class="text-center">
                                                         <div class="d-flex justify-content-center flex-shrink-0">
-                                                            <a href="<?php echo site_url("SuperUser/cform_HSSE/edit_other/" . $clasification->id_other."/clasification") ?>" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                            <a href="<?php echo site_url("SuperUser/cform_HSSE/edit_property_damage/" . $property_damage->id_property."/property_damage") ?>" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                                                                 <span class="svg-icon svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/General/Visible.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -192,7 +190,7 @@
                                                             </a>
                                                         </div>
                                                         <div class="d-flex justify-content-center flex-shrink-0">
-                                                            <a href="<?php echo site_url("SuperUser/cform_HSSE/delete_other/" . $clasification->id_other."/clasification") ?>" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1" onclick="return confirm('Anda yakin hapus pendaftaran ini?');">
+                                                            <a href="<?php echo site_url("SuperUser/cform_HSSE/delete_property_damage/" . $property_damage->id_property."/property_damage") ?>" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1" onclick="return confirm('Anda yakin hapus pendaftaran ini?');">
                                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                                                                 <span class="svg-icon svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/General/Visible.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

@@ -158,14 +158,6 @@
                                                         </div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Total Man Hour</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="total_man_hour" placeholder="Input Number">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Nama Korban</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">

@@ -32,6 +32,8 @@ class cform_HSSE extends CI_Controller {
          'napeg'            => $this->input->post('napeg'),        
          'status'           => $this->input->post('status'),        
          'fungsi'           => $this->input->post('fungsi'),        
+         'bulan'            => substr($this->input->post('periode'), 5, 2),
+         'tahun'            => substr($this->input->post('periode'), 0, 4),
          'suhu'             => $this->input->post('suhu'),        
          'bod'              => $this->input->post('bod'),        
          'cod'              => $this->input->post('cod'),        
@@ -75,6 +77,8 @@ class cform_HSSE extends CI_Controller {
          'napeg'            => $this->input->post('napeg'),        
          'status'           => $this->input->post('status'),        
          'fungsi'           => $this->input->post('fungsi'),        
+         'bulan'            => substr($this->input->post('periode'), 5, 2),
+         'tahun'            => substr($this->input->post('periode'), 0, 4),
          'suhu'             => $this->input->post('suhu'),        
          'bod'              => $this->input->post('bod'),        
          'cod'              => $this->input->post('cod'),        
@@ -149,20 +153,20 @@ class cform_HSSE extends CI_Controller {
       $this->load->view('content/vsuperuser/vform_HSSE/vinput_personal_safety');
    }
 
-   function property_database() {
+   function property_damage() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $jenis = "property_database";
-      $data['property_database'] = $this->mform_HSSE->mshow_all_other($jenis);
-      $this->load->view('content/vsuperuser/vform_HSSE/vproperty_database', $data);
+      $jenis = "property_damage";
+      $data['property_damage'] = $this->mform_HSSE->mshow_all_property($jenis);
+      $this->load->view('content/vsuperuser/vform_HSSE/vproperty_damage', $data);
    }
 
-   function input_property_database() {
+   function input_property_damage() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_property_database');
+      $this->load->view('content/vsuperuser/vform_HSSE/vinput_property_damage');
    }
    
    function nearmiss() {
@@ -181,20 +185,20 @@ class cform_HSSE extends CI_Controller {
       $this->load->view('content/vsuperuser/vform_HSSE/vinput_nearmiss');
    }
 
-   function unsave() {
+   function unsafe() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $jenis = "unsave";
-      $data['unsave'] = $this->mform_HSSE->mshow_all_other($jenis);
-      $this->load->view('content/vsuperuser/vform_HSSE/vunsave', $data);
+      $jenis = "unsafe";
+      $data['unsafe'] = $this->mform_HSSE->mshow_all_other($jenis);
+      $this->load->view('content/vsuperuser/vform_HSSE/vunsafe', $data);
    }
 
-   function input_unsave() {
+   function input_unsafe() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_unsave');
+      $this->load->view('content/vsuperuser/vform_HSSE/vinput_unsafe');
    }
 
    function insert_other() {
@@ -212,8 +216,7 @@ class cform_HSSE extends CI_Controller {
          'nip'             => $this->input->post('nip'),        
          'napeg'           => $this->input->post('napeg'),        
          'status'          => $this->input->post('status'),        
-         'fungsi'          => $this->input->post('fungsi'),        
-         'total_man_hour'  => $this->input->post('total_man_hour'),        
+         'fungsi'          => $this->input->post('fungsi'),                
          'nama_korban'     => $this->input->post('nama_korban'),        
          'status_korban'   => $this->input->post('status_korban'),        
          'aktifitas'       => $this->input->post('aktifitas'),        
@@ -266,8 +269,7 @@ class cform_HSSE extends CI_Controller {
          'nip'             => $this->input->post('nip'),        
          'napeg'           => $this->input->post('napeg'),        
          'status'          => $this->input->post('status'),        
-         'fungsi'          => $this->input->post('fungsi'),        
-         'total_man_hour'  => $this->input->post('total_man_hour'),        
+         'fungsi'          => $this->input->post('fungsi'),                
          'nama_korban'     => $this->input->post('nama_korban'),        
          'status_korban'   => $this->input->post('status_korban'),        
          'aktifitas'       => $this->input->post('aktifitas'),        
@@ -308,6 +310,108 @@ class cform_HSSE extends CI_Controller {
          'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
          'ip'		   => $this->input->ip_address(),
          'action'	   => 'Hapus Data Other Dengan Kode : '.$id_other,
+      );
+      $this->mform_HSSE->insert_log($log);
+      redirect('SuperUser/cform_HSSE/'.$jenis);
+   }
+
+   function insert_property_damage() {
+      // Unggah file Bukti
+      $bukti = $this->_upload_file('bukti', './assets/media/images/ktp/');
+
+      $simpan = array(
+         'jenis'           => $this->input->post('jenis'),        
+         'sub_jenis'       => $this->input->post('sub_jenis'),        
+         'email'           => $this->input->post('email'),        
+         'unit'            => $this->input->post('unit'), 
+         'nip'             => $this->input->post('nip'),        
+         'napeg'           => $this->input->post('napeg'),        
+         'status'          => $this->input->post('status'),        
+         'fungsi'          => $this->input->post('fungsi'),                
+         'nama_alat'     => $this->input->post('nama_alat'),        
+         'detil_item'   => $this->input->post('detil_item'),        
+         'penyebab'       => $this->input->post('penyebab'),              
+         'deskripsi'       => $this->input->post('deskripsi'),        
+         'lokasi'          => $this->input->post('lokasi'),        
+         'tgl_waktu'       => $this->input->post('tgl_waktu'),
+         'bukti'           => $bukti,
+      );
+      
+      $this->mform_HSSE->minsert_property($simpan);
+      $log = array(
+         'id'		   => $this->session->userdata("id"),  
+         'unit'      => $this->input->post('unit'),
+         'jenis'     => 'Form HSSE Property Damage'.$this->input->post('jenis'),
+         'platform'	=> $this->agent->platform(),
+         'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+         'ip'		   => $this->input->ip_address(),
+         'action'	   => 'Tambah Data '.$this->input->post('jenis'),
+      );
+      $this->mform_HSSE->insert_log($log);
+
+      redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+   }
+
+   function edit_property_damage($id_property) {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+         $id_property_damage = $this->uri->segment(4);
+         $jenis = $this->uri->segment(5);
+         $data['property_damage'] = $this->mform_HSSE->mselect_by_id_property($id_property);
+         $this->load->view('content/vsuperuser/vform_HSSE/vedit_'.$jenis, $data);
+   }
+
+   function update_property_damage() {
+      // Unggah file Bukti
+      $bukti = $this->_upload_file('bukti', './assets/media/images/ktp/');
+      $id_property = $this->input->post('id_property');
+      $update = array(
+         'jenis'           => $this->input->post('jenis'),        
+         'sub_jenis'       => $this->input->post('sub_jenis'),        
+         'email'           => $this->input->post('email'),        
+         'unit'            => $this->input->post('unit'), 
+         'nip'             => $this->input->post('nip'),        
+         'napeg'           => $this->input->post('napeg'),        
+         'status'          => $this->input->post('status'),        
+         'fungsi'          => $this->input->post('fungsi'),                
+         'nama_alat'     => $this->input->post('nama_alat'),        
+         'detil_item'   => $this->input->post('detil_item'),        
+         'penyebab'       => $this->input->post('penyebab'),              
+         'deskripsi'       => $this->input->post('deskripsi'),        
+         'lokasi'          => $this->input->post('lokasi'),        
+         'tgl_waktu'       => $this->input->post('tgl_waktu'),
+         'bukti'           => $bukti,
+      );
+      $this->mform_HSSE->mupdate_property($update, $id_property);
+      $log = array(
+         'id'		   => $this->session->userdata("id"),  
+         'unit'      => $this->input->post('unit'),
+         'jenis'     => 'Form HSSE Property Damage',
+         'platform'	=> $this->agent->platform(),
+         'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+         'ip'		   => $this->input->ip_address(),
+         'action'	   => 'Update Data Property Damage Dengan Kode : '.$id_property,
+      );
+      $this->mform_HSSE->insert_log($log);
+      redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+   }
+
+   function delete_property_damage() {
+      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+         redirect("clogin");
+      }
+      $id_property = $this->uri->segment(4);
+      $jenis = $this->uri->segment(5);
+      $this->mform_HSSE->mdelete_property($id_property);
+      $log = array(
+         'id'		   => $this->session->userdata("id"),  
+         'unit'      => $this->session->userdata("tlok"),
+         'jenis'     => 'Form HSSE Property Damage',
+         'platform'	=> $this->agent->platform(),
+         'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+         'ip'		   => $this->input->ip_address(),
+         'action'	   => 'Hapus Data Property Damage Dengan Kode : '.$id_property,
       );
       $this->mform_HSSE->insert_log($log);
       redirect('SuperUser/cform_HSSE/'.$jenis);

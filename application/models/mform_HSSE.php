@@ -8,7 +8,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA LIMBAH
    function mshow_all_limbah() {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,suhu,bod,cod,tss,ph,nh3,po4,coliform,lastupdate');
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lastupdate');
       $this->db->from('hsse_limbah');
       $this->db->order_by('id_limbah', 'desc');
       return $this->db->get()->result();
@@ -23,7 +23,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA LIMBAH
    function mselect_by_id_limbah($id_limbah) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,suhu,bod,cod,tss,ph,nh3,po4,coliform,lastupdate');
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lastupdate');
       $this->db->from('hsse_limbah');
       $this->db->where('id_limbah', $id_limbah);
       return $this->db->get()->row();
@@ -46,7 +46,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA OTHER
    function mshow_all_other($jenis) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_other,sub_jenis,email,unit,nip,napeg,status,fungsi,total_man_hour,nama_korban,status_korban,ktp,aktifitas,incident,tindakan,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->select('id_other,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_korban,status_korban,ktp,aktifitas,incident,tindakan,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
       $this->db->from('hsse_other');
       $this->db->where('jenis', $jenis);
       $this->db->order_by('id_other', 'desc');
@@ -56,7 +56,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA OTHER
    function mselect_by_id_other($id_other) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_other,jenis,sub_jenis,email,unit,nip,napeg,status,fungsi,total_man_hour,nama_korban,status_korban,ktp,aktifitas,incident,tindakan,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->select('id_other,jenis,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_korban,status_korban,ktp,aktifitas,incident,tindakan,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
       $this->db->from('hsse_other');
       $this->db->where('id_other', $id_other);
       return $this->db->get()->row();
@@ -80,6 +80,45 @@ class mform_HSSE extends ci_model {
       $this->db = $this->load->database('local', TRUE);
       $this->db->where('id_other', $id_other);
       $this->db->delete('hsse_other');
+   }
+
+   //SHOW DATA PROPERTY DAMAGE
+   function mshow_all_property($jenis) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_property,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_alat,detil_item,penyebab,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->from('hsse_property');
+      $this->db->where('jenis', $jenis);
+      $this->db->order_by('id_property', 'desc');
+      return $this->db->get()->result();
+   }
+
+   //SHOW DATA PROPERTY DAMAGE
+   function mselect_by_id_property($id_property) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_property,jenis,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_alat,detil_item,penyebab,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->from('hsse_property');
+      $this->db->where('id_property', $id_property);
+      return $this->db->get()->row();
+   }
+
+   //INSERT DATA PROPERTY DAMAGE
+   function minsert_property($simpan) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->insert('hsse_property', $simpan);
+   }
+
+   //UPDATE DATA PROPERTY DAMAGE BERDASARKAN ID
+   function mupdate_property($update, $id_property){
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->where('id_property', $id_property);
+      $this->db->update('hsse_property', $update);
+   }
+
+   //DELETE DATA PROPERTY DAMAGE
+   function mdelete_property($id_property){
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->where('id_property', $id_property);
+      $this->db->delete('hsse_property');
    }
 
    //Insert Log Login

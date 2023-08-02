@@ -665,6 +665,13 @@
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
+                                                                                <td class="text-left">Total Man Hour</td>
+                                                                                <td class="text-center">
+                                                                                <input type="checkbox" value="1" name="tmh" <?php
+                                                                                    if ($role->tmh == '1') { echo 'checked';}?>>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
                                                                                 <td class="text-left">Form Other Clasification</td>
                                                                                 <td class="text-center">
                                                                                 <input type="checkbox" value="1" name="foc" <?php
@@ -676,13 +683,6 @@
                                                                                 <td class="text-center">
                                                                                 <input type="checkbox" value="1" name="fops" <?php
                                                                                     if ($role->fops == '1') { echo 'checked';}?>>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="text-left">Form Other Property Damage</td>
-                                                                                <td class="text-center">
-                                                                                <input type="checkbox" value="1" name="fopd" <?php
-                                                                                    if ($role->fopd == '1') { echo 'checked';}?>>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -700,6 +700,13 @@
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
+                                                                                <td class="text-left">Form Other Property Damage</td>
+                                                                                <td class="text-center">
+                                                                                <input type="checkbox" value="1" name="fopd" <?php
+                                                                                    if ($role->fopd == '1') { echo 'checked';}?>>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
                                                                                 <td class="text-left">Tabel Performance Limbah</td>
                                                                                 <td class="text-center">
                                                                                 <input type="checkbox" value="1" name="tpl" <?php
@@ -707,10 +714,17 @@
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td class="text-left">Tabel Performance Other</td>
+                                                                                <td class="text-left">Tabel Performance Kejadian Kecelakaan</td>
                                                                                 <td class="text-center">
-                                                                                <input type="checkbox" value="1" name="tpo" <?php
-                                                                                    if ($role->tpo == '1') { echo 'checked';}?>>
+                                                                                <input type="checkbox" value="1" name="tpkk" <?php
+                                                                                    if ($role->tpkk == '1') { echo 'checked';}?>>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-left">Tabel Performance Property Damage</td>
+                                                                                <td class="text-center">
+                                                                                <input type="checkbox" value="1" name="tppd" <?php
+                                                                                    if ($role->tppd == '1') { echo 'checked';}?>>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -721,10 +735,17 @@
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td class="text-left">Grafik Performance Other</td>
+                                                                                <td class="text-left">Grafik Performance Kejadian Kecelakaan</td>
                                                                                 <td class="text-center">
-                                                                                <input type="checkbox" value="1" name="gpo" <?php
-                                                                                    if ($role->gpo == '1') { echo 'checked';}?>>
+                                                                                <input type="checkbox" value="1" name="gpkk" <?php
+                                                                                    if ($role->gpkk == '1') { echo 'checked';}?>>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-left">Grafik Performance Property Damage</td>
+                                                                                <td class="text-center">
+                                                                                <input type="checkbox" value="1" name="gppd" <?php
+                                                                                    if ($role->gppd == '1') { echo 'checked';}?>>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>

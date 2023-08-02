@@ -158,14 +158,6 @@
                                                         </div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Total Man Hour</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="total_man_hour" placeholder="Input Number">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Nama Korban</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
@@ -207,50 +199,19 @@
                                                         </div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Incident/Event Categories</div>
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Potensi Kejadian</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                                 <select class="form-control form-control-solid select2" name="incident" >
                                                                     <option selected="selected">-</option>
-                                                                    <option>Assault or Violent Act</option>
-                                                                    <option>Caught In, Under or Between</option>
-                                                                    <option>Cut, Puncture, Scrape</option>
-                                                                    <option>Explosions or Burns</option>
-                                                                    <option>Exposure: Electrical</option>
-                                                                    <option>Exposure: Noise, Chemical, Biological, Vibration</option>
-                                                                    <option>Exposure: Needle, spuit, ampoule, dll</option>
-                                                                    <option>Falls from height</option>
-                                                                    <option>Overexertion/Strain</option>
-                                                                    <option>Pressure release</option>
-                                                                    <option>Slips and Trips (at the same height)</option>
-                                                                    <option>Struck By</option>
-                                                                    <option>Water related, drowning</option>
-                                                                    <option>Other</option>
+                                                                    <option>Fatality/ Kematian</option>
+                                                                    <option>P3K</option>
+                                                                    <option>Medical Treatment Case atau Tindakan lebih dari P3K</option>
+                                                                    <option>Kerusakan Property/ Lingkungan</option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="row mb-5">
-                                                            <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Corporate Life Saving Rules</div>
-                                                            </div>
-                                                            <div class="col-xl-9 fv-row">
-                                                                <select class="form-control form-control-solid select2" name="tindakan" >
-                                                                    <option selected="selected">-</option>
-                                                                    <option>Tools & Equipment</option>
-                                                                    <option>Safe Zone Position</option>
-                                                                    <option>Isolation</option>
-                                                                    <option>Confined Space</option>
-                                                                    <option>Lifting Operation</option>
-                                                                    <option>Fit to Work</option>
-                                                                    <option>Working at Height</option>
-                                                                    <option>Personal Floatation Device</option>
-                                                                    <option>System Override</option>
-                                                                    <option>Asset Integrity</option>
-                                                                    <option>Driving Safety</option>
-                                                                    <option>Other</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
+                                                        <input type="hidden" class="form-control form-control-solid" name="tindakan" value="-">
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Deskripsi Kejadian</div>

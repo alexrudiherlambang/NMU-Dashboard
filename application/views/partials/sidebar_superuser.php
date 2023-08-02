@@ -1162,6 +1162,20 @@
                             </div>
                         <?php endif; ?>
                         <!--end:Menu item-->
+                         <!--begin:Menu item-->
+                         <?php if ($this->session->userdata("tmh") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/cform_HSSE/Blank') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Total Man Hour</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
                         <!--begin:Menu item-->
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <!--begin:Menu link-->
@@ -1169,7 +1183,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Other's</span>
+                                <span class="menu-title">Kejadian Kecelakaan</span>
                                 <span class="menu-arrow"></span>
                             </span>
                             <!--end:Menu link-->
@@ -1206,21 +1220,6 @@
                                 <?php endif; ?>
                                 <!--end:Menu item-->
                                 <!--begin:Menu item-->
-                                <?php if ($this->session->userdata("fopd") == "1"): ?>
-                                    <div class="menu-item">
-                                        <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="<?php echo site_url('SuperUser/cform_HSSE/property_database') ?>">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Property Database</span>
-                                        </a>
-                                        <!--end:Menu link-->
-                                    </div>
-                                <?php endif; ?>
-                                <!--end:Menu item-->
-                                <!--begin:Menu item-->
                                 <?php if ($this->session->userdata("fon") == "1"): ?>
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
@@ -1240,11 +1239,11 @@
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
                                         <a class="menu-link"
-                                            href="<?php echo site_url('SuperUser/cform_HSSE/unsave') ?>">
+                                            href="<?php echo site_url('SuperUser/cform_HSSE/unsafe') ?>">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
-                                            <span class="menu-title">Unsave Action & Unsave Condition</span>
+                                            <span class="menu-title">Unsafe Action & Unsafe Condition</span>
                                         </a>
                                         <!--end:Menu link-->
                                     </div>
@@ -1254,6 +1253,18 @@
                             <!--end:Menu sub-->
                         </div>
                         <!--end:Menu item-->
+                        <?php if ($this->session->userdata("fopd") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/cform_HSSE/property_damage') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Property Damage</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <!--end:Menu sub-->
                 </div>
@@ -1294,14 +1305,28 @@
                         <?php endif; ?>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
-                        <?php if ($this->session->userdata("tpo") == "1"): ?>
+                        <?php if ($this->session->userdata("tpkk") == "1"): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
-                                    <span class="menu-title">Other's</span>
+                                    <span class="menu-title">Kejadian Kecelakaan</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("tppd") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Property Damage</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -1350,14 +1375,28 @@
                         <?php endif; ?>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
-                        <?php if ($this->session->userdata("gpo") == "1"): ?>
+                        <?php if ($this->session->userdata("gpkk") == "1"): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
-                                    <span class="menu-title">Other's</span>
+                                    <span class="menu-title">Kejadian Kecelakaan</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        <?php endif; ?>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <?php if ($this->session->userdata("gppd") == "1"): ?>
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Property Damage</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
