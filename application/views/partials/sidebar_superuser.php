@@ -1294,7 +1294,7 @@
                         <?php if ($this->session->userdata("tpl") == "1"): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/ctabel_HSSE/limbah') ?>">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -1308,7 +1308,7 @@
                         <?php if ($this->session->userdata("tpkk") == "1"): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/ctabel_HSSE/kejadian_kecelakaan') ?>">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -1322,7 +1322,7 @@
                         <?php if ($this->session->userdata("tppd") == "1"): ?>
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                <a class="menu-link" href="<?php echo site_url('SuperUser/ctabel_HSSE/property_damage') ?>">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>

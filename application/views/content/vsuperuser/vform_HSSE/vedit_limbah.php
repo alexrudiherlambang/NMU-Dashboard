@@ -171,7 +171,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Suhu (oC)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="suhu" value="<?php echo $limbah->suhu; ?>">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="suhu" value="<?php echo $limbah->suhu; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -179,7 +179,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">BOD(mg/L)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="bod" value="<?php echo $limbah->bod; ?>">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="bod" value="<?php echo $limbah->bod; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -187,7 +187,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">COD(mg/L)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="cod" value="<?php echo $limbah->cod; ?>">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="cod" value="<?php echo $limbah->cod; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -195,7 +195,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">TSS(mg/L)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="tss" value="<?php echo $limbah->tss; ?>">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="tss" value="<?php echo $limbah->tss; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -203,7 +203,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">PH</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="ph" value="<?php echo $limbah->ph; ?>">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="ph" value="<?php echo $limbah->ph; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -211,7 +211,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">NH3(mg/L)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="nh3" value="<?php echo $limbah->nh3; ?>">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="nh3" value="<?php echo $limbah->nh3; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -219,7 +219,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">PO4(mg/L)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="po4" value="<?php echo $limbah->po4; ?>">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="po4" value="<?php echo $limbah->po4; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -227,7 +227,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Coliform (MPN/100ml)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="coliform" value="<?php echo $limbah->coliform; ?>">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="coliform" value="<?php echo $limbah->coliform; ?>">
                                                             </div>
                                                         </div>
                                                     </div>

@@ -170,7 +170,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Suhu (oC)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="suhu" placeholder="Input Suhu">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="suhu" placeholder="Input Suhu">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -178,7 +178,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">BOD(mg/L)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="bod" placeholder="Input BOD">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="bod" placeholder="Input BOD">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -186,7 +186,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">COD(mg/L)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="cod" placeholder="Input COD">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="cod" placeholder="Input COD">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -194,7 +194,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">TSS(mg/L)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="tss" placeholder="Input TSS">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="tss" placeholder="Input TSS">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -202,7 +202,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">PH</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="ph" placeholder="Input PH">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="ph" placeholder="Input PH">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -210,7 +210,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">NH3(mg/L)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="nh3" placeholder="Input NH3">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="nh3" placeholder="Input NH3">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -218,7 +218,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">PO4(mg/L)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="po4" placeholder="Input po4">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="po4" placeholder="Input po4">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-5">
@@ -226,7 +226,7 @@
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Coliform (MPN/100ml)</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                                <input type="number" class="form-control form-control-solid" name="coliform" placeholder="Input Coliform">
+                                                                <input type="number" step="any" min="0" class="form-control form-control-solid" name="coliform" placeholder="Input Coliform">
                                                             </div>
                                                         </div>
                                                     </div>
