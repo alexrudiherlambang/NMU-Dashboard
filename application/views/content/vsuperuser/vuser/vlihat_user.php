@@ -630,13 +630,6 @@
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td class="text-left">Data Report</td>
-                                                                                <td class="text-center">
-                                                                                <input type="checkbox" value="1" name="tdr" <?php
-                                                                                    if ($role->tdr == '1') { echo 'checked';}?>>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
                                                                                 <td class="text-left">Input Master Pekerja</td>
                                                                                 <td class="text-center">
                                                                                 <input type="checkbox" value="1" name="imp" <?php
@@ -720,13 +713,13 @@
                                                                                     if ($role->tpkk == '1') { echo 'checked';}?>>
                                                                                 </td>
                                                                             </tr>
-                                                                            <tr>
+                                                                            <!-- <tr>
                                                                                 <td class="text-left">Tabel Performance Property Damage</td>
                                                                                 <td class="text-center">
                                                                                 <input type="checkbox" value="1" name="tppd" <?php
                                                                                     if ($role->tppd == '1') { echo 'checked';}?>>
                                                                                 </td>
-                                                                            </tr>
+                                                                            </tr> -->
                                                                             <tr>
                                                                                 <td class="text-left">Grafik Performance Limbah</td>
                                                                                 <td class="text-center">
