@@ -251,7 +251,7 @@ class cform_HSSE extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $jenis = "nearmiss";
+      $jenis = "other";
       $data['nearmiss'] = $this->mform_HSSE->mshow_all_other($jenis);
       $this->load->view('content/vsuperuser/vform_HSSE/vnearmiss', $data);
    }
@@ -267,7 +267,7 @@ class cform_HSSE extends CI_Controller {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
-      $jenis = "unsafe";
+      $jenis = "other";
       $data['unsafe'] = $this->mform_HSSE->mshow_all_unsafe($jenis);
       $this->load->view('content/vsuperuser/vform_HSSE/vunsafe', $data);
    }
@@ -318,8 +318,11 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Tambah Data '.$this->input->post('jenis'),
       );
       $this->mform_HSSE->insert_log($log);
-
-      redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+      if ($this->input->post('jenis') == "other"){
+         redirect('SuperUser/cform_HSSE/nearmiss');
+      }else{
+         redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+      }
    }
 
    function edit_other($id_other) {
@@ -370,7 +373,12 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Update Data other Dengan Kode : '.$id_other,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+      $this->mform_HSSE->insert_log($log);
+      if ($this->input->post('jenis') == "other"){
+         redirect('SuperUser/cform_HSSE/nearmiss');
+      }else{
+         redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+      }
    }
 
    function delete_other() {
@@ -528,7 +536,7 @@ class cform_HSSE extends CI_Controller {
       );
       $this->mform_HSSE->insert_log($log);
 
-      redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+      redirect('SuperUser/cform_HSSE/unsafe');
    }
 
    function edit_unsafe($id_unsafe) {
@@ -538,7 +546,7 @@ class cform_HSSE extends CI_Controller {
          $id_unsafe = $this->uri->segment(4);
          $jenis = $this->uri->segment(5);
          $data['unsafe'] = $this->mform_HSSE->mselect_by_id_unsafe($id_unsafe);
-         $this->load->view('content/vsuperuser/vform_HSSE/vedit_'.$jenis, $data);
+         $this->load->view('content/vsuperuser/vform_HSSE/vedit_unsafe', $data);
    }
 
    function update_unsafe() {
@@ -572,7 +580,7 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Update Data unsafe Dengan Kode : '.$id_unsafe,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+      redirect('SuperUser/cform_HSSE/unsafe');
    }
 
    function validasi_unsafe() {

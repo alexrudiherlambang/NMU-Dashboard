@@ -72,7 +72,7 @@
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Tambahkan data Input Data Unsafe Action / Unsafe Condition dengan benar"></i></div>
                                                         <!--end::Label-->
                                                     </div>
-                                                    <input type="hidden" class="form-control form-control-solid" name="jenis" value="unsafe">                                                   
+                                                    <input type="hidden" class="form-control form-control-solid" name="jenis" value="other">                                                   
                                                     <!--begin::Invoice footer-->
                                                     <div class="d-flex flex-column mb-10 fv-row">
                                                         <hr class="my-3">

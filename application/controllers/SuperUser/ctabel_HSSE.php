@@ -138,11 +138,11 @@ class ctabel_HSSE extends CI_Controller {
               xlsWriteLabel($tablehead, $kolomhead++, "Hasil Klinik");
               xlsWriteLabel($tablehead, $kolomhead++, "Total Konsolidasi");
 
-              $limbah_rsg = $this->mtabel_HSSE->mshow_all_limbah('RSG', $bulan, $tahun);
-              $limbah_rst = $this->mtabel_HSSE->mshow_all_limbah('RST', $bulan, $tahun);
-              $limbah_rsp = $this->mtabel_HSSE->mshow_all_limbah('RSP', $bulan, $tahun);
-              $limbah_rsmu = $this->mtabel_HSSE->mshow_all_limbah('RSMU', $bulan, $tahun);
-              $limbah_urj = $this->mtabel_HSSE->mshow_all_limbah('URJ', $bulan, $tahun);
+                $limbah_rsg = $this->mtabel_HSSE->mshow_all_limbah('RSG', $bulan, $tahun);
+                $limbah_rst = $this->mtabel_HSSE->mshow_all_limbah('RST', $bulan, $tahun);
+                $limbah_rsp = $this->mtabel_HSSE->mshow_all_limbah('RSP', $bulan, $tahun);
+                $limbah_rsmu = $this->mtabel_HSSE->mshow_all_limbah('RSMU', $bulan, $tahun);
+                $limbah_urj = $this->mtabel_HSSE->mshow_all_limbah('URJ', $bulan, $tahun);
                 $kolombody = 0;
   
                 //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
@@ -272,13 +272,256 @@ class ctabel_HSSE extends CI_Controller {
               exit();
            }
         }
-     }
+    }
 
     function kejadian_kecelakaan() {
         if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
         redirect("clogin");
         }
       $this->load->view('content/vsuperuser/vtabel_HSSE/vkejadian_kecelakaan');
+    }
+
+    function hasil_kejadian_kecelakaan() {
+        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        redirect("clogin");
+        }
+        $unit = $this->input->post('unit');
+        $tglawal = $this->input->post('tglawal');
+        $tglakhir = $this->input->post('tglakhir');
+        
+        $data['kejadian_kecelakaan'] = $this->mtabel_HSSE->mshow_all_kejadian_kecelakaan($unit, $tglawal, $tglakhir);
+        $data['unsafe'] = $this->mtabel_HSSE->mshow_all_unsafe($unit, $tglawal, $tglakhir);
+        
+        $totalJumlah_kejadian_kecelakaan = 0; // Membuat variabel untuk menyimpan jumlah total
+        foreach ($data['kejadian_kecelakaan'] as $kecelakaan) {
+            $totalJumlah_kejadian_kecelakaan += $kecelakaan->jumlah; // Menambahkan nilai 'jumlah' ke total
+        }
+        $total_kejadian_kecelakaan = $totalJumlah_kejadian_kecelakaan; // Menyimpan total jumlah dalam $data
+        $totalJumlah_unsafe = 0; // Membuat variabel untuk menyimpan jumlah total
+        foreach ($data['unsafe'] as $kecelakaan) {
+            $totalJumlah_unsafe += $kecelakaan->jumlah; // Menambahkan nilai 'jumlah' ke total
+        }
+        $total_unsafe = $totalJumlah_unsafe; // Menyimpan total jumlah dalam $data
+        
+        $bulan = intval(substr($this->input->post('period'), 5, 2));
+        $tahun = substr($this->input->post('period'), 0, 4);
+        $data['man_hour'] = $this->mtabel_HSSE->mshow_man_hour($bulan, $tahun);
+
+        $data['fatality'] = $this->mtabel_HSSE->mshow_all_kejadian_kecelakaan($unit, $tglawal, $tglakhir);
+        foreach ($data['fatality'] as $kecelakaan) {
+            if($kecelakaan->sub_jenis =="Fatality"){
+                $data['total_fatality'] = $kecelakaan->jumlah;
+            }elseif($kecelakaan->sub_jenis =="Days Away From Work/Lost Time Incident"){
+                $data['total_day'] = $kecelakaan->jumlah;
+            }elseif($kecelakaan->sub_jenis =="Restricted Work Day Case"){
+                $data['total_r'] = $kecelakaan->jumlah;
+            }elseif($kecelakaan->sub_jenis =="Medical Treatment Case"){
+                $data['total_m'] = $kecelakaan->jumlah;
+            }elseif($kecelakaan->sub_jenis =="First Aid"){
+                $data['total_f'] = $kecelakaan->jumlah;
+            }
+        }
+
+        $data['total_kejadian'] = $total_kejadian_kecelakaan + $total_unsafe;
+        $data['unit'] = $this->input->post('unit');
+        $data['period'] = $this->input->post('period');
+        $data['tglawal'] = $this->input->post('tglawal');
+        $data['tglakhir'] = $this->input->post('tglakhir');
+      $this->load->view('content/vsuperuser/vtabel_HSSE/vhasil_kejadian_kecelakaan', $data);
+    }
+
+    function export_kejadian_kecelakaan() {
+        // Mengecek jenis export yang diminta
+        if (isset($_POST['exportType'])) {
+           $exportType = $_POST['exportType'];
+           if ($exportType == 'detail') {
+              $unit = $this->input->post('unit');
+              $tglawal = $this->input->post('tglawal');
+              $tglakhir = $this->input->post('tglakhir');
+              
+              $this->load->helper('exportexcel');
+              $namaFile = "Detail Data Kejadian Kecelakaan.xls";
+              $judul = "Detail Data Kejadian Kecelakaan";
+              $tablehead = 0;
+              $tablebody = 1;
+              $nourut = 1;
+              //penulisan header
+              header("Pragma: public");
+              header("Expires: 0");
+              header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+              header("Content-Type: application/force-download");
+              header("Content-Type: application/octet-stream");
+              header("Content-Type: application/download");
+              header("Content-Disposition: attachment;filename=" . $namaFile . "");
+              header("Content-Transfer-Encoding: binary ");
+        
+              xlsBOF();
+        
+              $kolomhead = 0;
+              xlsWriteLabel($tablehead, $kolomhead++, "No");
+              xlsWriteLabel($tablehead, $kolomhead++, "Jenis");
+              xlsWriteLabel($tablehead, $kolomhead++, "Kategori");
+              xlsWriteLabel($tablehead, $kolomhead++, "Nama Pelapor");
+              xlsWriteLabel($tablehead, $kolomhead++, "Unit");
+              xlsWriteLabel($tablehead, $kolomhead++, "NIP");
+              xlsWriteLabel($tablehead, $kolomhead++, "Status Pelapor");
+              xlsWriteLabel($tablehead, $kolomhead++, "Bagian/Fungsi/Nama Klinik");
+              xlsWriteLabel($tablehead, $kolomhead++, "Nama Korban / PIC");
+              xlsWriteLabel($tablehead, $kolomhead++, "Status Korban / Status Laporan");
+              xlsWriteLabel($tablehead, $kolomhead++, "Aktifitas");
+              xlsWriteLabel($tablehead, $kolomhead++, "Incident/Event Categories");
+              xlsWriteLabel($tablehead, $kolomhead++, "Corporate Life Saving Rules");
+              xlsWriteLabel($tablehead, $kolomhead++, "Deskripsi Kejadian");
+              xlsWriteLabel($tablehead, $kolomhead++, "Lokasi");
+              xlsWriteLabel($tablehead, $kolomhead++, "Tanggal & Waktu");
+                
+                foreach ($this->mtabel_HSSE->mshow_detil_kejadian_kecelakaan($unit, $tglawal, $tglakhir) as $data) {
+                $kolombody = 0;
+
+                //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                xlsWriteLabel($tablebody, $kolombody++, $data->jenis);
+                xlsWriteLabel($tablebody, $kolombody++, $data->sub_jenis);
+                xlsWriteLabel($tablebody, $kolombody++, $data->napeg);
+                xlsWriteLabel($tablebody, $kolombody++, $data->unit);
+                xlsWriteLabel($tablebody, $kolombody++, $data->nip);
+                xlsWriteLabel($tablebody, $kolombody++, $data->status);
+                xlsWriteLabel($tablebody, $kolombody++, $data->fungsi);
+                xlsWriteLabel($tablebody, $kolombody++, $data->nama_korban);
+                xlsWriteLabel($tablebody, $kolombody++, $data->status_korban);
+                xlsWriteLabel($tablebody, $kolombody++, $data->aktifitas);
+                xlsWriteLabel($tablebody, $kolombody++, $data->incident);
+                xlsWriteLabel($tablebody, $kolombody++, $data->tindakan);
+                xlsWriteLabel($tablebody, $kolombody++, $data->deskripsi);
+                xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                xlsWriteLabel($tablebody, $kolombody++, $data->tgl_waktu);
+                $tablebody++;
+                $nourut++;
+                }
+
+                foreach ($this->mtabel_HSSE->mshow_detil_unsafe($unit, $tglawal, $tglakhir) as $data) {                      
+                    $kolombody = 0;
+
+                    //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                    xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->jenis);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->sub_jenis);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->napeg);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->unit);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->nip);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->status);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->fungsi);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->pic);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->validasi);
+                    xlsWriteLabel($tablebody, $kolombody++, "NULL");
+                    xlsWriteLabel($tablebody, $kolombody++, "NULL");
+                    xlsWriteLabel($tablebody, $kolombody++, $data->rtl);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->deskripsi);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->tgl_waktu);
+                    $tablebody++;
+                    $nourut++;
+                    }
+        
+              xlsEOF();
+              exit();
+           } else if ($exportType == 'tabel') {
+                $unit = $this->input->post('unit');
+                $tglawal = $this->input->post('tglawal');
+                $tglakhir = $this->input->post('tglakhir');
+                //untuk man hours
+                $bulan = intval(substr($this->input->post('period'), 5, 2));
+                $tahun = substr($this->input->post('period'), 0, 4);
+                $man_hour = $this->mtabel_HSSE->mshow_man_hour($bulan, $tahun);
+              
+                $this->load->helper('exportexcel');
+                $namaFile = "Tabel Data Kejadian kecelakaan.xls.xls";
+                $judul = "Tabel Data Kejadian kecelakaan.xls";
+                $tablehead = 0;
+                $tablebody = 1;
+                $nourut = 1;
+                //penulisan header
+                header("Pragma: public");
+                header("Expires: 0");
+                header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+                header("Content-Type: application/force-download");
+                header("Content-Type: application/octet-stream");
+                header("Content-Type: application/download");
+                header("Content-Disposition: attachment;filename=" . $namaFile . "");
+                header("Content-Transfer-Encoding: binary ");
+            
+                xlsBOF();
+            
+                $kolomhead = 0;
+                xlsWriteLabel($tablehead, $kolomhead++, "NO");
+                xlsWriteLabel($tablehead, $kolomhead++, "Unit");
+                xlsWriteLabel($tablehead, $kolomhead++, "Jenis");
+                xlsWriteLabel($tablehead, $kolomhead++, "Kategori");
+                xlsWriteLabel($tablehead, $kolomhead++, "Periode");
+                xlsWriteLabel($tablehead, $kolomhead++, "Status YTD");
+                
+                $totalJumlah_kejadian_kecelakaan = 0;
+                foreach($this->mtabel_HSSE->mshow_all_kejadian_kecelakaan($unit, $tglawal, $tglakhir) as $data){
+                    $kolombody = 0;
+                    
+                    //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                    xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->unit);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->jenis);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->sub_jenis);
+                    xlsWriteLabel($tablebody, $kolombody++, date("M Y", strtotime($data->tgl_waktu)));
+                    xlsWriteLabel($tablebody, $kolombody++, $data->jumlah);
+                    $tablebody++;
+                    $nourut++;
+                    $totalJumlah_kejadian_kecelakaan += $data->jumlah;
+                }
+                $total_kejadian_kecelakaan = $totalJumlah_kejadian_kecelakaan;
+                $totalJumlah_unsafe = 0;
+                foreach($this->mtabel_HSSE->mshow_all_unsafe($unit, $tglawal, $tglakhir) as $data){
+                    $kolombody = 0;
+                    
+                    //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                    xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->unit);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->jenis);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->sub_jenis);
+                    xlsWriteLabel($tablebody, $kolombody++, date("M Y", strtotime($data->tgl_waktu)));
+                    xlsWriteLabel($tablebody, $kolombody++, $data->jumlah);
+                    $tablebody++;
+                    $nourut++;
+                    $totalJumlah_unsafe += $data->jumlah;
+                }
+                $total_unsafe = $totalJumlah_unsafe;
+
+                $tablebody++;
+                $kolombody = 0;
+                    
+                //Total kejadian
+                xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                xlsWriteLabel($tablebody, $kolombody++, "");
+                xlsWriteLabel($tablebody, $kolombody++, "");
+                xlsWriteLabel($tablebody, $kolombody++, "");
+                xlsWriteLabel($tablebody, $kolombody++, "Total Kejadian");
+                xlsWriteLabel($tablebody, $kolombody++, $total_kejadian_kecelakaan + $total_unsafe);
+                $tablebody++;
+                $nourut++;
+
+                $kolombody = 0;
+                    
+                //Total Man Hours
+                xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                xlsWriteLabel($tablebody, $kolombody++, "");
+                xlsWriteLabel($tablebody, $kolombody++, "");
+                xlsWriteLabel($tablebody, $kolombody++, "");
+                xlsWriteLabel($tablebody, $kolombody++, "Total Man Hours");
+                xlsWriteLabel($tablebody, $kolombody++, $man_hour->man_hour);
+                $tablebody++;
+                $nourut++;
+
+                xlsEOF();
+                exit();
+            }
+        }
     }
 
     function property_damage() {
