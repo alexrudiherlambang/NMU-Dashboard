@@ -1399,7 +1399,7 @@
                             <?php if ($this->session->userdata("gpl") == "1"): ?>
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                    <a class="menu-link" href="<?php echo site_url('SuperUser/cgrafik_HSSE/limbah') ?>">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -1413,7 +1413,7 @@
                             <?php if ($this->session->userdata("gpkk") == "1"): ?>
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                    <a class="menu-link" href="<?php echo site_url('SuperUser/cgrafik_HSSE/kejadian_kecelakaan') ?>">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -1427,7 +1427,7 @@
                             <?php if ($this->session->userdata("gppd") == "1"): ?>
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                    <a class="menu-link" href="<?php echo site_url('SuperUser/cgrafik_HSSE/property_damage') ?>">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
