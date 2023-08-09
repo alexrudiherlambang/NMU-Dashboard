@@ -74,7 +74,7 @@
                                                             <option <?php if ($unit == "RST") echo "selected"; ?>>RST</option>
                                                             <option <?php if ($unit == "RSP") echo "selected"; ?>>RSP</option>
                                                             <option <?php if ($unit == "RSMU") echo "selected"; ?>>RSMU</option>
-                                                            <option <?php if ($unit == "URJ") echo "selected"; ?>>URJ</option>
+                                                            <option <?php if ($unit == "KLINIK") echo "selected"; ?>>KLINIK</option>
                                                             <option <?php if ($unit == "Other") echo "selected"; ?>>Other</option>
                                                         </select>
                                                     </div>
@@ -204,7 +204,7 @@
             chart.draw();
 
             // Customisasi warna grafik piramida
-            var palette = anychart.palettes.distinctColors().items(['#3399FF', '#FFCC00', '#00CC00', '#660099', '#003300', '#66FF33', '#FF0000']);
+            var palette = anychart.palettes.distinctColors().items(['#3399FF', '#FFCC00', '#00CC00', '#660099', '#003300', '#FFFF00', '#FF0000']);
             chart.palette(palette);
         });
     </script>

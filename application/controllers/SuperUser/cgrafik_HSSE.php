@@ -152,7 +152,7 @@ class cgrafik_HSSE extends CI_Controller {
                 $limbah_rst = $this->mgrafik_HSSE->mshow_all_limbah('RST', $bulan, $tahun);
                 $limbah_rsp = $this->mgrafik_HSSE->mshow_all_limbah('RSP', $bulan, $tahun);
                 $limbah_rsmu = $this->mgrafik_HSSE->mshow_all_limbah('RSMU', $bulan, $tahun);
-                $limbah_urj = $this->mgrafik_HSSE->mshow_all_limbah('URJ', $bulan, $tahun);
+                $limbah_urj = $this->mgrafik_HSSE->mshow_all_limbah('KLINIK', $bulan, $tahun);
                 $kolombody = 0;
   
                 //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric

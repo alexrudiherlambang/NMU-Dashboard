@@ -74,7 +74,7 @@
                                                             <option>RST</option>
                                                             <option>RSP</option>
                                                             <option>RSMU</option>
-                                                            <option>URJ</option>
+                                                            <option>KLINIK</option>
                                                             <option>Other</option>
                                                         </select>
                                                     </div>

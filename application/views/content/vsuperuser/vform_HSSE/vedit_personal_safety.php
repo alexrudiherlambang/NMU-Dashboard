@@ -99,7 +99,7 @@
                                                                     <option <?php if ($other->unit == "RSP") echo "selected"; ?> value="RSP">Rumah Sakit Perkebunan</option>
                                                                     <option <?php if ($other->unit == "RST") echo "selected"; ?> value="RST">Rumah Sakit Toelongredjo</option>
                                                                     <option <?php if ($other->unit == "RSMU") echo "selected"; ?> value="RSMU">Rumah Sakit Medika Utama</option>
-                                                                    <option <?php if ($other->unit == "URJ") echo "selected"; ?> value="URJ">URJ / KLINIK</option>
+                                                                    <option <?php if ($other->unit == "KLINIK") echo "selected"; ?> value="KLINIK">URJ / KLINIK</option>
                                                                     <option <?php if ($other->unit == "Other") echo "selected"; ?> value="Other">Other</option>
                                                                 </select>
                                                             </div>

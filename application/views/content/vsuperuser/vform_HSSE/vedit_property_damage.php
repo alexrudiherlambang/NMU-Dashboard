@@ -99,7 +99,7 @@
                                                                     <option <?php if ($property_damage->unit == "RSP") echo "selected"; ?> value="RSP">Rumah Sakit Perkebunan</option>
                                                                     <option <?php if ($property_damage->unit == "RST") echo "selected"; ?> value="RST">Rumah Sakit Toelongredjo</option>
                                                                     <option <?php if ($property_damage->unit == "RSMU") echo "selected"; ?> value="RSMU">Rumah Sakit Medika Utama</option>
-                                                                    <option <?php if ($property_damage->unit == "URJ") echo "selected"; ?> value="URJ">URJ / KLINIK</option>
+                                                                    <option <?php if ($property_damage->unit == "KLINIK") echo "selected"; ?> value="KLINIK">URJ / KLINIK</option>
                                                                     <option <?php if ($property_damage->unit == "Other") echo "selected"; ?> value="Other">Other</option>
                                                                 </select>
                                                             </div>

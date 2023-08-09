@@ -98,7 +98,7 @@
                                                                     <option <?php if ($limbah->unit == "RSP") echo "selected"; ?> value="RSP">Rumah Sakit Perkebunan</option>
                                                                     <option <?php if ($limbah->unit == "RST") echo "selected"; ?> value="RST">Rumah Sakit Toelongredjo</option>
                                                                     <option <?php if ($limbah->unit == "RSMU") echo "selected"; ?> value="RSMU">Rumah Sakit Medika Utama</option>
-                                                                    <option <?php if ($limbah->unit == "URJ") echo "selected"; ?> value="URJ">URJ / KLINIK</option>
+                                                                    <option <?php if ($limbah->unit == "KLINIK") echo "selected"; ?> value="KLINIK">URJ / KLINIK</option>
                                                                     <option <?php if ($limbah->unit == "Other") echo "selected"; ?> value="Other">Other</option>
                                                                 </select>
                                                             </div>

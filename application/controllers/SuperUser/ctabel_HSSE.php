@@ -25,7 +25,7 @@ class ctabel_HSSE extends CI_Controller {
         $data['limbah_rst'] = $this->mtabel_HSSE->mshow_all_limbah('RST', $bulan, $tahun);
         $data['limbah_rsp'] = $this->mtabel_HSSE->mshow_all_limbah('RSP', $bulan, $tahun);
         $data['limbah_rsmu'] = $this->mtabel_HSSE->mshow_all_limbah('RSMU', $bulan, $tahun);
-        $data['limbah_urj'] = $this->mtabel_HSSE->mshow_all_limbah('URJ', $bulan, $tahun);
+        $data['limbah_urj'] = $this->mtabel_HSSE->mshow_all_limbah('KLINIK', $bulan, $tahun);
         $data['periode'] = $this->input->post('periode');
       $this->load->view('content/vsuperuser/vtabel_HSSE/vhasil_limbah', $data);
     }
@@ -37,7 +37,7 @@ class ctabel_HSSE extends CI_Controller {
            if ($exportType == 'detail') {
               $bulan = $this->input->post('bulan');
               $tahun = $this->input->post('tahun');
-              
+
               $this->load->helper('exportexcel');
               $namaFile = "Detail Data Limbah.xls";
               $judul = "Detail Data Limbah";
@@ -142,7 +142,7 @@ class ctabel_HSSE extends CI_Controller {
                 $limbah_rst = $this->mtabel_HSSE->mshow_all_limbah('RST', $bulan, $tahun);
                 $limbah_rsp = $this->mtabel_HSSE->mshow_all_limbah('RSP', $bulan, $tahun);
                 $limbah_rsmu = $this->mtabel_HSSE->mshow_all_limbah('RSMU', $bulan, $tahun);
-                $limbah_urj = $this->mtabel_HSSE->mshow_all_limbah('URJ', $bulan, $tahun);
+                $limbah_urj = $this->mtabel_HSSE->mshow_all_limbah('KLINIK', $bulan, $tahun);
                 $kolombody = 0;
   
                 //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric

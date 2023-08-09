@@ -98,7 +98,7 @@
                                                                     <option <?php if ($man_hour->unit == "RSP") echo "selected"; ?> value="RSP">Rumah Sakit Perkebunan</option>
                                                                     <option <?php if ($man_hour->unit == "RST") echo "selected"; ?> value="RST">Rumah Sakit Toelongredjo</option>
                                                                     <option <?php if ($man_hour->unit == "RSMU") echo "selected"; ?> value="RSMU">Rumah Sakit Medika Utama</option>
-                                                                    <option <?php if ($man_hour->unit == "URJ") echo "selected"; ?> value="URJ">URJ / KLINIK</option>
+                                                                    <option <?php if ($man_hour->unit == "KLINIK") echo "selected"; ?> value="KLINIK">URJ / KLINIK</option>
                                                                     <option <?php if ($man_hour->unit == "Other") echo "selected"; ?> value="Other">Other</option>
                                                                 </select>
                                                             </div>

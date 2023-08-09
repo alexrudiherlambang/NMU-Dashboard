@@ -40,11 +40,12 @@ class mgrafik_HSSE extends ci_model {
     //export excel detail limbah
     function mshow_detil_limbah($bulan, $tahun) {
         $this->db = $this->load->database('local', TRUE);
-        $this->db->select('id_limbah, jenis, unit, bulan, tahun, sum(suhu) as suhu, sum(bod) as bod, , sum(cod) as cod, sum(tss) as tss, sum(ph) as ph, sum(nh3) as nh3, sum(po4) as po4, sum(coliform) as coliform');
+        $this->db->select('id_limbah, jenis, unit, napeg, nip, status, fungsi, bulan, tahun, sum(suhu) as suhu, sum(bod) as bod, , sum(cod) as cod, sum(tss) as tss, sum(ph) as ph, sum(nh3) as nh3, sum(po4) as po4, sum(coliform) as coliform, lastupdate');
         $this->db->from('hsse_limbah');
         $this->db->where('bulan', $bulan);
         $this->db->where('tahun', $tahun);
         $this->db->order_by('id_limbah', 'asc');
+        $this->db->group_by('id_limbah');    
         return $this->db->get()->result();
     }
     

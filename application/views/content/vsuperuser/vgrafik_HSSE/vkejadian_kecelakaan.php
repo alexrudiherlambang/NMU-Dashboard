@@ -74,7 +74,7 @@
                                                             <option>RST</option>
                                                             <option>RSP</option>
                                                             <option>RSMU</option>
-                                                            <option>URJ</option>
+                                                            <option>KLINIK</option>
                                                             <option>Other</option>
                                                         </select>
                                                     </div>
@@ -214,7 +214,7 @@
             chart.draw();
 
             // Customisasi warna grafik piramida
-            var palette = anychart.palettes.distinctColors().items(['#3399FF', '#FFCC00', '#00CC00', '#660099', '#003300', '#66FF33', '#FF0000']);
+            var palette = anychart.palettes.distinctColors().items(['#3399FF', '#FFCC00', '#00CC00', '#660099', '#003300', '#FFFF00', '#FF0000']);
             chart.palette(palette);
         });
     </script>

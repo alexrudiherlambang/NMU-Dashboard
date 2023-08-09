@@ -98,7 +98,7 @@
                                                                     <option value="RSP">Rumah Sakit Perkebunan</option>
                                                                     <option value="RST">Rumah Sakit Toelongredjo</option>
                                                                     <option value="RSMU">Rumah Sakit Medika Utama</option>
-                                                                    <option value="URJ">URJ / KLINIK</option>
+                                                                    <option value="KLINIK">URJ / KLINIK</option>
                                                                     <option value="Other">Other</option>
                                                                 </select>
                                                             </div>
