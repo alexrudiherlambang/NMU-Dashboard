@@ -212,6 +212,87 @@
                                                 endif;
                                                 endforeach;
                                                 ?>
+
+                                                <?php
+                                                foreach ($del_property_damage as $property_damage) :
+                                                ?>
+                                                <!--begin::Table row-->
+                                                <tr>
+                                                    <!--begin::Checkbox-->
+                                                    <td>
+                                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                                            
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Checkbox-->
+                                                    <!--begin::Order ID=-->
+                                                    <td class="text-center pe-0" data-kt-ecommerce-order-filter="order_id">
+                                                        <a class="text-gray-800 text-hover-primary fw-bold"><s><?php echo $property_damage->nip ?></s></a>
+                                                    </td>
+                                                    <!--end::Order ID=-->
+                                                    <!--end::Customer=-->
+                                                    <!--begin::Status=-->
+                                                    <td class="text-center pe-0" data-order="<?php echo $property_damage->napeg ?>">
+                                                        <div class="ms-5">
+                                                            <!--begin::Title-->
+                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><s><?php echo $property_damage->napeg ?></s></a>
+                                                            <!--end::Title-->
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Status=-->
+                                                    <!--begin::Total=-->
+                                                    <td class="text-center pe-0">
+                                                        <span class="fw-bold"><s><?php echo $property_damage->status ?></s></span>
+                                                    </td>
+                                                    <!--end::Total=-->
+                                                    <!--begin::Date Added=-->
+                                                    <td class="text-center" data-order="<?php echo $property_damage->fungsi ?>">
+                                                        <div class="badge badge-light-success"><s><?php echo $property_damage->unit ?></s></div>
+                                                        |
+                                                        <span class="fw-bold"><s><?php echo $property_damage->fungsi ?></s></span>
+                                                    </td>
+                                                    <!--end::Date Added=-->
+                                                    <!--begin::Date Modified=-->
+                                                    <td class="text-center" data-order="<?php echo $property_damage->unit ?>">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="ms-5">
+                                                                <!--begin::Title-->
+                                                                <a><s><b>Nama Alat / Ruangan:</b> <?php echo $property_damage->nama_alat ?></s></a></br>
+                                                                <a><s><b>Detail Item Kerusakan:</b> <?php echo $property_damage->detil_item ?></s></a></br>
+                                                                <a><s><b>Penyebab:</b> <?php echo $property_damage->penyebab ?></s></a></br>
+                                                                <a><s><b>Deskripsi Kejadian:</b> <?php echo $property_damage->deskripsi ?></s></a></br>
+                                                                <!--end::Title-->
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Date Modified=-->
+                                                    <!--begin::Customer=-->
+                                                    <td class="text-center">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="ms-5">
+                                                                <!--begin::Title-->
+                                                                <a><s><b>Lokasi: </b><?php echo $property_damage->lokasi ?></s></a></br>
+                                                                <a><s><b>Tanggal & Waktu: </b><?php echo $property_damage->tgl_waktu ?></s></a></br>
+                                                                <a><s><b>Gambar: </b><img src="<?= base_url('assets/media/images/ktp/'.$property_damage->bukti); ?>" alt="Gambar" height="100"></s></a></br>
+                                                                <!--end::Title-->
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <!--begin::Action=-->
+                                                    <td class="text-center">
+                                                        <div class="d-flex justify-content-center flex-shrink-0">
+                                                            
+                                                        </div>
+                                                        <div class="d-flex justify-content-center flex-shrink-0">
+                                                            
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Action=-->
+                                                </tr>
+                                                <!--end::Table row-->	
+                                                <?php
+                                                endforeach;
+                                                ?>  
                                             </tbody>
                                             <!--end::Table body-->
                                         </table>

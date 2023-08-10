@@ -214,6 +214,89 @@
                                                 endif;
                                                 endforeach;
                                                 ?>
+                                                
+                                                <?php
+                                                foreach ($del_clasification as $clasification) :
+                                                ?>
+                                                <!--begin::Table row-->
+                                                <tr>
+                                                    <!--begin::Checkbox-->
+                                                    <td>
+                                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Checkbox-->
+                                                    <!--begin::Order ID=-->
+                                                    <td class="text-center pe-0" data-kt-ecommerce-order-filter="order_id">
+                                                        <a class="text-gray-800 text-hover-primary fw-bold"><s><?php echo $clasification->nip ?></s></a>
+                                                    </td>
+                                                    <!--end::Order ID=-->
+                                                    <!--end::Customer=-->
+                                                    <!--begin::Status=-->
+                                                    <td class="text-center pe-0" data-order="<?php echo $clasification->napeg ?>">
+                                                        <div class="ms-5">
+                                                            <!--begin::Title-->
+                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><s><?php echo $clasification->napeg ?></s></a>
+                                                            <!--end::Title-->
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Status=-->
+                                                    <!--begin::Total=-->
+                                                    <td class="text-center pe-0">
+                                                        <span class="fw-bold"><s><?php echo $clasification->status ?></s></span>
+                                                    </td>
+                                                    <!--end::Total=-->
+                                                    <!--begin::Date Added=-->
+                                                    <td class="text-center" data-order="<?php echo $clasification->fungsi ?>">
+                                                        <div class="badge badge-light-success"><s><?php echo $clasification->unit ?></s></div>
+                                                        |
+                                                        <span class="fw-bold"><s><?php echo $clasification->fungsi ?></s></span>
+                                                    </td>
+                                                    <!--end::Date Added=-->
+                                                    <!--begin::Date Modified=-->
+                                                    <td class="text-center" data-order="<?php echo $clasification->unit ?>">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="ms-5">
+                                                                <!--begin::Title-->
+                                                                <a><s><b>Nama Korban:</b> <?php echo $clasification->nama_korban ?></a></s></br>
+                                                                <a><s><b>Status Korban:</b> <?php echo $clasification->status_korban ?></a></s></br>
+                                                                <a><s><b>Aktifitas:</b> <?php echo $clasification->aktifitas ?></a></s></br>
+                                                                <a><s><b>Incident/Event Categories:</b> <?php echo $clasification->incident ?></a></s></br>
+                                                                <a><s><b>Corporate Life Saving Rules: </b> <?php echo $clasification->tindakan ?></a></s></br>
+                                                                <a><s><b>Deskripsi Kejadian:</b> <?php echo $clasification->deskripsi ?></a></s></br>
+                                                                <!--end::Title-->
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Date Modified=-->
+                                                    <!--begin::Customer=-->
+                                                    <td class="text-center">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="ms-5">
+                                                                <!--begin::Title-->
+                                                                <a><s><b>Lokasi: </b><?php echo $clasification->lokasi ?></a></s></br>
+                                                                <a><s><b>Tanggal & Waktu: </b><?php echo $clasification->tgl_waktu ?></a></s></br>
+                                                                <a><s><b>Gambar: </b><img src="<?= base_url('assets/media/images/ktp/'.$clasification->bukti); ?>" alt="Gambar" height="100"></a></s></br>
+                                                                <!--end::Title-->
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <!--begin::Action=-->
+                                                    <td class="text-center">
+                                                        <div class="d-flex justify-content-center flex-shrink-0">
+                                                            
+                                                        </div>
+                                                        <div class="d-flex justify-content-center flex-shrink-0">
+                                                            
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Action=-->
+                                                </tr>
+                                                <!--end::Table row-->	
+                                                <?php
+                                                endforeach;
+                                                ?>
                                             </tbody>
                                             <!--end::Table body-->
                                         </table>

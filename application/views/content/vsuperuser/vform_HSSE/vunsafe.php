@@ -279,6 +279,103 @@
                                                 $no++;
                                                 endforeach;
                                                 ?>
+                                                <?php
+                                                foreach ($del_unsafe as $unsafe) :
+                                                ?>
+                                                <!--begin::Table row-->
+                                                <tr>
+                                                    <!--begin::Checkbox-->
+                                                    <td>
+                                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Checkbox-->
+                                                    <!--begin::Order ID=-->
+                                                    <td class="text-center pe-0" data-kt-ecommerce-order-filter="order_id">
+                                                        <a class="text-gray-800 text-hover-primary fw-bold"><s><?php echo $unsafe->nip ?></s></a>
+                                                    </td>
+                                                    <!--end::Order ID=-->
+                                                    <!--end::Customer=-->
+                                                    <!--begin::Status=-->
+                                                    <td class="text-center pe-0" data-order="<?php echo $unsafe->napeg ?>">
+                                                        <div class="ms-5">
+                                                            <!--begin::Title-->
+                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><s><?php echo $unsafe->napeg ?></s></a>
+                                                            <!--end::Title-->
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Status=-->
+                                                    <!--begin::Total=-->
+                                                    <td class="text-center pe-0">
+                                                        <span class="fw-bold"><s><?php echo $unsafe->status ?></s></span>
+                                                    </td>
+                                                    <!--end::Total=-->
+                                                    <!--begin::Date Added=-->
+                                                    <td class="text-center" data-order="<?php echo $unsafe->fungsi ?>">
+                                                        <div class="badge badge-light-success"><s><?php echo $unsafe->unit ?></s></div>
+                                                        |
+                                                        <span class="fw-bold"><s><?php echo $unsafe->fungsi ?></s></span>
+                                                    </td>
+                                                    <!--end::Date Added=-->
+                                                    <!--begin::Date Modified=-->
+                                                    <td class="text-center" data-order="<?php echo $unsafe->unit ?>">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="ms-5">
+                                                                <!--begin::Title-->
+                                                                <a><s><b>Deskripsi:</b> <?php echo $unsafe->deskripsi ?></s></a></br>
+                                                                <a><s><b>RTL:</b> <?php echo $unsafe->rtl ?></s></a></br>
+                                                                <a><s><b>PIC:</b> <?php echo $unsafe->pic ?></s></a></br>
+                                                                <a><s><b>Gambar:</b> <img src="<?= base_url('assets/media/images/ktp/'.$unsafe->bukti); ?>" alt="Gambar" height="100"></s></a></br>
+                                                                <!--end::Title-->
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Date Modified=-->
+                                                    <!--begin::Customer=-->
+                                                    <td class="text-center">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="ms-5">
+                                                                <!--begin::Title-->
+                                                                <a><s><b>Lokasi: </b><?php echo $unsafe->lokasi ?></s></a></br>
+                                                                <a><s><b>Tanggal & Waktu: </b><?php echo $unsafe->tgl_waktu ?></s></a></br>
+                                                                <a><s><b>Status Validasi: </b></s>
+                                                                <?php if ($unsafe->validasi == "open"){
+                                                                    echo '<div class="badge badge-light-success">'.$unsafe->validasi.'</div>';
+                                                                }else{
+                                                                    echo '<div class="badge badge-light-danger">'.$unsafe->validasi.'</div>';
+                                                                }
+                                                                ?></br>
+                                                                <a>
+                                                                    <b><s>Evidence: </s></b> 
+                                                                    <?php if ($unsafe->evidence === "NULL") {
+                                                                        echo '<s>status masih open!!!</s>';
+                                                                    } else {
+                                                                        echo '<img src="' . base_url('assets/media/images/ktp/' . $unsafe->evidence) . '" alt="Gambar" height="100">';
+                                                                    }
+                                                                    ?>
+                                                                </a></br>
+                                                                <!--end::Title-->
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <!--begin::Action=-->
+                                                    <td class="text-center">
+                                                    
+                                                        <div class="d-flex justify-content-center flex-shrink-0">
+                                                            
+                                                        </div>
+                                                        <div class="d-flex justify-content-center flex-shrink-0">
+                                                            
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Action=-->
+                                                    	
+                                                </tr>
+                                                <!--end::Table row-->	
+                                                <?php
+                                                endforeach;
+                                                ?>
                                             </tbody>
                                             <!--end::Table body-->
                                         </table>

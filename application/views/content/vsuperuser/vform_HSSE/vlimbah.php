@@ -221,6 +221,95 @@
                                                 $no++;
                                                 endforeach;
                                                 ?>
+                                                <?php
+                                                $status = "OK";
+                                                foreach ($del_limbah as $del_limbah) :
+                                                ?>
+                                                <!--begin::Table row-->
+                                                <tr>
+                                                    <!--begin::Checkbox-->
+                                                    <td>
+                                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                                            
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Checkbox-->
+                                                    <!--begin::Order ID=-->
+                                                    <td class="text-center pe-0" data-kt-ecommerce-order-filter="order_id">
+                                                        <a class="text-gray-800 text-hover-primary fw-bold"><s><?php echo $del_limbah->nip ?></s></a>
+                                                    </td>
+                                                    <!--end::Order ID=-->
+                                                    <!--end::Customer=-->
+                                                    <!--begin::Status=-->
+                                                    <td class="text-center pe-0" data-order="<?php echo $del_limbah->napeg ?>">
+                                                        <div class="ms-5">
+                                                            <!--begin::Title-->
+                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><s><?php echo $del_limbah->napeg ?></s></a>
+                                                            <!--end::Title-->
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Status=-->
+                                                    <!--begin::Total=-->
+                                                    <td class="text-center pe-0">
+                                                        <span class="fw-bold"><s><?php echo $del_limbah->status ?></s></span>
+                                                    </td>
+                                                    <!--end::Total=-->
+                                                    <!--begin::Date Added=-->
+                                                    <td class="text-center" data-order="<?php echo $del_limbah->fungsi ?>">
+                                                        <div class="badge badge-light-success"><s><?php echo $del_limbah->unit ?></s></div>
+                                                        |
+                                                        <span class="fw-bold"><s><?php echo $del_limbah->fungsi ?></s></span>
+                                                    </td>
+                                                    <!--end::Date Added=-->
+                                                    <!--begin::Date Modified=-->
+                                                    <td class="text-center" data-order="<?php echo $del_limbah->unit ?>">
+                                                    <span class="fw-bold">
+                                                        <s><?php echo strftime('%B %Y', strtotime($del_limbah->tahun . '-' . str_pad($del_limbah->bulan, 2, '0', STR_PAD_LEFT)));?></s>
+                                                    </span>
+                                                    </td>
+                                                    <!--end::Date Modified=-->
+                                                    <!--begin::Customer=-->
+                                                    <td class="text-center">
+                                                        <div class="d-flex align-items-center">
+                                                            <!--begin:: Avatar -->
+                                                            <div class="ms-5">
+                                                                <s><a class="text-gray-800">Suhu (oC) :</a></s></br>
+                                                                <s><a class="text-gray-800">BOD (mg/L) : </a></s></br>
+                                                                <s><a class="text-gray-800">COD (mg/L) : </a></s></br>
+                                                                <s><a class="text-gray-800">TSS (mg/L) : </a></s></br>
+                                                                <s><a class="text-gray-800">PH : </a></s></br>
+                                                                <s><a class="text-gray-800">NH3 (mg/L) : </a></s></br>
+                                                                <s><a class="text-gray-800">PO4 (mg/L) : </a></s></br>
+                                                                <s><a class="text-gray-800">Coliform  (MPN/100ml): </a></s></br>
+                                                            </div>
+                                                            <!--end::Avatar-->
+                                                            <div class="ms-5">
+                                                                <!--begin::Title-->
+                                                                <s><a class="text-gray-800 text-hover-primary fw-bold"><?php echo $del_limbah->suhu ?></a></s></br>
+                                                                <s><a class="text-gray-800 text-hover-primary fw-bold"><?php echo $del_limbah->bod ?></a></s></br>
+                                                                <s><a class="text-gray-800 text-hover-primary fw-bold"><?php echo $del_limbah->cod ?></a></s></br>
+                                                                <s><a class="text-gray-800 text-hover-primary fw-bold"><?php echo $del_limbah->tss ?></a></s></br>
+                                                                <s><a class="text-gray-800 text-hover-primary fw-bold"><?php echo $del_limbah->ph ?></a></s></br>
+                                                                <s><a class="text-gray-800 text-hover-primary fw-bold"><?php echo $del_limbah->nh3 ?></a></s></br>
+                                                                <s><a class="text-gray-800 text-hover-primary fw-bold"><?php echo $del_limbah->po4 ?></a></s></br>
+                                                                <s><a class="text-gray-800 text-hover-primary fw-bold"><?php echo $del_limbah->coliform ?></a></s></br>
+                                                                <!--end::Title-->
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <!--begin::Action=-->
+                                                    <td class="text-center">
+                                                        <div class="d-flex justify-content-center flex-shrink-0">
+                                                        </div>
+                                                        <div class="d-flex justify-content-center flex-shrink-0">
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Action=-->
+                                                </tr>
+                                                <!--end::Table row-->	
+                                                <?php
+                                                endforeach;
+                                                ?>
                                             </tbody>
                                             <!--end::Table body-->
                                         </table>

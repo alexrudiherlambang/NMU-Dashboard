@@ -14,6 +14,15 @@ class mform_HSSE extends ci_model {
       return $this->db->get()->result();
    }
 
+   //SHOW DATA LIMBAH YANG DIHAPUS
+   function mshow_all_del_limbah() {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lastupdate');
+      $this->db->from('x_after_del_hsse_limbah');
+      $this->db->order_by('id_limbah', 'desc');
+      return $this->db->get()->result();
+   }
+
    //INSERT DATA LIMBAH
    function minsert_limbah($data) {
       $this->db = $this->load->database('local', TRUE);
@@ -52,6 +61,15 @@ class mform_HSSE extends ci_model {
       return $this->db->get()->result();
    }
 
+   //SHOW DATA MAN HOUR YANG DIHAPUS
+   function mshow_all_del_man_hour() {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_man_hour,email,unit,nip,napeg,status,fungsi,bulan,tahun,man_hour,lastupdate');
+      $this->db->from('x_after_del_hsse_man_hour');
+      $this->db->order_by('id_man_hour', 'desc');
+      return $this->db->get()->result();
+   }
+
    //INSERT DATA MAN HOUR
    function minsert_man_hour($data) {
       $this->db = $this->load->database('local', TRUE);
@@ -86,6 +104,16 @@ class mform_HSSE extends ci_model {
       $this->db = $this->load->database('local', TRUE);
       $this->db->select('id_other,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_korban,status_korban,ktp,aktifitas,incident,tindakan,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
       $this->db->from('hsse_other');
+      $this->db->where('jenis', $jenis);
+      $this->db->order_by('id_other', 'desc');
+      return $this->db->get()->result();
+   }
+
+   //SHOW DATA OTHER YANG DIHAPUS
+   function mshow_all_del_other($jenis) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_other,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_korban,status_korban,ktp,aktifitas,incident,tindakan,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->from('x_after_del_hsse_other');
       $this->db->where('jenis', $jenis);
       $this->db->order_by('id_other', 'desc');
       return $this->db->get()->result();
@@ -130,6 +158,16 @@ class mform_HSSE extends ci_model {
       return $this->db->get()->result();
    }
 
+   //SHOW DATA PROPERTY DAMAGE YANG DIHAPUS
+   function mshow_all_del_property($jenis) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_property,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_alat,detil_item,penyebab,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->from('x_after_del_hsse_property');
+      $this->db->where('jenis', $jenis);
+      $this->db->order_by('id_property', 'desc');
+      return $this->db->get()->result();
+   }
+
    //SHOW DATA PROPERTY DAMAGE
    function mselect_by_id_property($id_property) {
       $this->db = $this->load->database('local', TRUE);
@@ -164,6 +202,16 @@ class mform_HSSE extends ci_model {
       $this->db = $this->load->database('local', TRUE);
       $this->db->select('id_unsafe,sub_jenis,email,unit,nip,napeg,status,fungsi,deskripsi,rtl,pic,lokasi,tgl_waktu,bukti,validasi,evidence,lastupdate');
       $this->db->from('hsse_unsafe');
+      $this->db->where('jenis', $jenis);
+      $this->db->order_by('id_unsafe', 'desc');
+      return $this->db->get()->result();
+   }
+
+   //SHOW DATA UNSAFE ACTION UNSAFE CONDITION YANG DIHAPUS
+   function mshow_all_del_unsafe($jenis) {
+      $this->db = $this->load->database('local', TRUE);
+      $this->db->select('id_unsafe,sub_jenis,email,unit,nip,napeg,status,fungsi,deskripsi,rtl,pic,lokasi,tgl_waktu,bukti,validasi,evidence,lastupdate');
+      $this->db->from('x_after_del_hsse_unsafe');
       $this->db->where('jenis', $jenis);
       $this->db->order_by('id_unsafe', 'desc');
       return $this->db->get()->result();

@@ -13,6 +13,7 @@ class cform_HSSE extends CI_Controller {
          redirect("clogin");
       }
       $data['limbah'] = $this->mform_HSSE->mshow_all_limbah();
+      $data['del_limbah'] = $this->mform_HSSE->mshow_all_del_limbah();
       $this->load->view('content/vsuperuser/vform_HSSE/vlimbah', $data);
    }
 
@@ -126,6 +127,7 @@ class cform_HSSE extends CI_Controller {
          redirect("clogin");
       }
       $data['man_hour'] = $this->mform_HSSE->mshow_all_man_hour();
+      $data['del_man_hour'] = $this->mform_HSSE->mshow_all_del_man_hour();
       $this->load->view('content/vsuperuser/vform_HSSE/vman_hour', $data);
    }
 
@@ -224,6 +226,7 @@ class cform_HSSE extends CI_Controller {
       }
       $jenis = "clasification";
       $data['clasification'] = $this->mform_HSSE->mshow_all_other($jenis);
+      $data['del_clasification'] = $this->mform_HSSE->mshow_all_del_other($jenis);
       $this->load->view('content/vsuperuser/vform_HSSE/vclasification', $data);
    }
 
@@ -240,6 +243,7 @@ class cform_HSSE extends CI_Controller {
       }
       $jenis = "personal_safety";
       $data['personal_safety'] = $this->mform_HSSE->mshow_all_other($jenis);
+      $data['del_personal_safety'] = $this->mform_HSSE->mshow_all_del_other($jenis);
       $this->load->view('content/vsuperuser/vform_HSSE/vpersonal_safety', $data);
    }
 
@@ -256,6 +260,7 @@ class cform_HSSE extends CI_Controller {
       }
       $jenis = "property_damage";
       $data['property_damage'] = $this->mform_HSSE->mshow_all_property($jenis);
+      $data['del_property_damage'] = $this->mform_HSSE->mshow_all_del_property($jenis);
       $this->load->view('content/vsuperuser/vform_HSSE/vproperty_damage', $data);
    }
 
@@ -272,6 +277,7 @@ class cform_HSSE extends CI_Controller {
       }
       $jenis = "other";
       $data['nearmiss'] = $this->mform_HSSE->mshow_all_other($jenis);
+      $data['del_nearmiss'] = $this->mform_HSSE->mshow_all_del_other($jenis);
       $this->load->view('content/vsuperuser/vform_HSSE/vnearmiss', $data);
    }
 
@@ -288,6 +294,7 @@ class cform_HSSE extends CI_Controller {
       }
       $jenis = "other";
       $data['unsafe'] = $this->mform_HSSE->mshow_all_unsafe($jenis);
+      $data['del_unsafe'] = $this->mform_HSSE->mshow_all_del_unsafe($jenis);
       $this->load->view('content/vsuperuser/vform_HSSE/vunsafe', $data);
    }
 

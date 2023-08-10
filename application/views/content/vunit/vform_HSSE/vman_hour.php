@@ -204,6 +204,77 @@
                                                 endif;
                                                 endforeach;
                                                 ?>
+
+                                                <?php
+                                                foreach ($del_man_hour as $man_hour) :
+                                                ?>
+                                                <!--begin::Table row-->
+                                                <tr>
+                                                    <!--begin::Checkbox-->
+                                                    <td>
+                                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Checkbox-->
+                                                    <!--begin::Order ID=-->
+                                                    <td class="text-center pe-0" data-kt-ecommerce-order-filter="order_id">
+                                                        <a class="text-gray-800 text-hover-primary fw-bold"><s><?php echo $man_hour->nip ?></s></a>
+                                                    </td>
+                                                    <!--end::Order ID=-->
+                                                    <!--end::Customer=-->
+                                                    <!--begin::Status=-->
+                                                    <td class="text-center pe-0" data-order="<?php echo $man_hour->napeg ?>">
+                                                        <div class="ms-5">
+                                                            <!--begin::Title-->
+                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><s><?php echo $man_hour->napeg ?></s></a>
+                                                            <!--end::Title-->
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Status=-->
+                                                    <!--begin::Total=-->
+                                                    <td class="text-center pe-0">
+                                                        <span class="fw-bold"><s><?php echo $man_hour->status ?></s></span>
+                                                    </td>
+                                                    <!--end::Total=-->
+                                                    <!--begin::Date Added=-->
+                                                    <td class="text-center" data-order="<?php echo $man_hour->fungsi ?>">
+                                                        <div class="badge badge-light-success"><s><?php echo $man_hour->unit ?></s></div>
+                                                        |
+                                                        <span class="fw-bold"><s><?php echo $man_hour->fungsi ?></s></span>
+                                                    </td>
+                                                    <!--end::Date Added=-->
+                                                    <!--begin::Date Modified=-->
+                                                    <td class="text-center" data-order="<?php echo $man_hour->unit ?>">
+                                                    <span class="fw-bold">
+                                                        <s><?php echo strftime('%B %Y', strtotime($man_hour->tahun . '-' . str_pad($man_hour->bulan, 2, '0', STR_PAD_LEFT)));?></s>
+                                                    </span>
+                                                    </td>
+                                                    <!--end::Date Modified=-->
+                                                    <!--begin::Customer=-->
+                                                    <td class="text-center">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="ms-5">
+                                                                <!--begin::Title-->
+                                                                <a class="text-gray-800 text-hover-primary fw-bold"><s><?php echo $man_hour->man_hour ?></s></a>
+                                                                <!--end::Title-->
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <!--begin::Action=-->
+                                                    <td class="text-center">
+                                                        <div class="d-flex justify-content-center flex-shrink-0">
+                                                            
+                                                        </div>
+                                                        <div class="d-flex justify-content-center flex-shrink-0">
+                                                            
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Action=-->
+                                                </tr>
+                                                <!--end::Table row-->	
+                                                <?php
+                                                endforeach;
+                                                ?>
                                             </tbody>
                                             <!--end::Table body-->
                                         </table>
