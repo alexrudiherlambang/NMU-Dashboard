@@ -212,8 +212,8 @@
                                                 $no++;
                                                 endforeach;
                                                 ?>
+
                                                 <?php
-                                                $status = "OK";
                                                 foreach ($del_clasification as $clasification) :
                                                 ?>
                                                 <!--begin::Table row-->

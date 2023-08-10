@@ -202,8 +202,8 @@
                                                 $no++;
                                                 endforeach;
                                                 ?>
+
                                                 <?php
-                                                $status = "OK";
                                                 foreach ($del_man_hour as $man_hour) :
                                                 ?>
                                                 <!--begin::Table row-->

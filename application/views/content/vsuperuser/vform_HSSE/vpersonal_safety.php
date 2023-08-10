@@ -212,6 +212,7 @@
                                                 $no++;
                                                 endforeach;
                                                 ?>
+                                                
                                                 <?php
                                                 foreach ($del_personal_safety as $personal_safety) :
                                                 ?>

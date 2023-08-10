@@ -221,8 +221,8 @@
                                                 $no++;
                                                 endforeach;
                                                 ?>
+                                                
                                                 <?php
-                                                $status = "OK";
                                                 foreach ($del_limbah as $del_limbah) :
                                                 ?>
                                                 <!--begin::Table row-->
