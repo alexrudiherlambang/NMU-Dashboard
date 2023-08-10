@@ -8,14 +8,14 @@ class cgrafik_HSSE extends CI_Controller {
     }
 
     function limbah() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
-      $this->load->view('content/vsuperuser/vgrafik_HSSE/vlimbah');
+      $this->load->view('content/vunit/vgrafik_HSSE/vlimbah');
     }
 
     function hasil_limbah() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
         // $unit = $this->input->post('unit');
@@ -47,7 +47,7 @@ class cgrafik_HSSE extends CI_Controller {
             'action'	    => 'Show Grafik HSSE Performance Data Limbah',
         );
         $this->mgrafik_HSSE->insert_log($log);
-      $this->load->view('content/vsuperuser/vgrafik_HSSE/vhasil_limbah', $data);
+      $this->load->view('content/vunit/vgrafik_HSSE/vhasil_limbah', $data);
     }
 
     // function export_limbah() {
@@ -295,14 +295,14 @@ class cgrafik_HSSE extends CI_Controller {
     // }
 
     function kejadian_kecelakaan() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
-      $this->load->view('content/vsuperuser/vgrafik_HSSE/vkejadian_kecelakaan');
+      $this->load->view('content/vunit/vgrafik_HSSE/vkejadian_kecelakaan');
     }
 
     function hasil_kejadian_kecelakaan() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
         $bulan = intval(substr($this->input->post('periode'), 5, 2));
@@ -340,7 +340,7 @@ class cgrafik_HSSE extends CI_Controller {
             'action'	    => 'Show Grafik HSSE Performance Data Kejadian Kecelakaan',
         );
         $this->mgrafik_HSSE->insert_log($log);
-      $this->load->view('content/vsuperuser/vgrafik_HSSE/vhasil_kejadian_kecelakaan', $data);
+      $this->load->view('content/vunit/vgrafik_HSSE/vhasil_kejadian_kecelakaan', $data);
     }
 
     // function export_kejadian_kecelakaan() {
@@ -538,14 +538,14 @@ class cgrafik_HSSE extends CI_Controller {
     // }
 
     function property_damage() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
-      $this->load->view('content/vsuperuser/vgrafik_HSSE/vproperty_damage');
+      $this->load->view('content/vunit/vgrafik_HSSE/vproperty_damage');
     }
 
     function hasil_property_damage() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
         // $unit = $this->input->post('unit');
@@ -618,7 +618,7 @@ class cgrafik_HSSE extends CI_Controller {
             'action'	    => 'Show Grafik HSSE Performance Data Property Damage',
         );
         $this->mgrafik_HSSE->insert_log($log);
-      $this->load->view('content/vsuperuser/vgrafik_HSSE/vhasil_property_damage', $data);
+      $this->load->view('content/vunit/vgrafik_HSSE/vhasil_property_damage', $data);
     }
 
 }

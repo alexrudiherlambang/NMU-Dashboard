@@ -9,18 +9,18 @@ class cform_HSSE extends CI_Controller {
    }
 
    function limbah() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $data['limbah'] = $this->mform_HSSE->mshow_all_limbah();
-      $this->load->view('content/vsuperuser/vform_HSSE/vlimbah', $data);
+      $this->load->view('content/vunit/vform_HSSE/vlimbah', $data);
    }
 
    function input_limbah() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_limbah');
+      $this->load->view('content/vunit/vform_HSSE/vinput_limbah');
    }
 
    function insert_limbah() {
@@ -55,16 +55,16 @@ class cform_HSSE extends CI_Controller {
       );
       $this->mform_HSSE->insert_log($log);
 
-      redirect('SuperUser/cform_HSSE/limbah');
+      redirect('Unit/cform_HSSE/limbah');
    }
 
    function edit_limbah($id_limbah) {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
          $id_limbah = $this->uri->segment(4);
          $data['limbah'] = $this->mform_HSSE->mselect_by_id_limbah($id_limbah);
-      $this->load->view('content/vsuperuser/vform_HSSE/vedit_limbah', $data);
+      $this->load->view('content/vunit/vform_HSSE/vedit_limbah', $data);
    }
 
    function update_limbah() {
@@ -99,11 +99,11 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Update Data Limbah Dengan Kode : '.$id_limbah,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/limbah');
+      redirect('Unit/cform_HSSE/limbah');
    }
 
    function delete_limbah() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $id_limbah = $this->uri->segment(4);
@@ -118,22 +118,22 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Hapus Data limbah Dengan Kode : '.$id_limbah,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/limbah');
+      redirect('Unit/cform_HSSE/limbah');
    }
 
    function man_hour() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $data['man_hour'] = $this->mform_HSSE->mshow_all_man_hour();
-      $this->load->view('content/vsuperuser/vform_HSSE/vman_hour', $data);
+      $this->load->view('content/vunit/vform_HSSE/vman_hour', $data);
    }
 
    function input_man_hour() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_man_hour');
+      $this->load->view('content/vunit/vform_HSSE/vinput_man_hour');
    }
 
    function insert_man_hour() {
@@ -160,16 +160,16 @@ class cform_HSSE extends CI_Controller {
       );
       $this->mform_HSSE->insert_log($log);
 
-      redirect('SuperUser/cform_HSSE/man_hour');
+      redirect('Unit/cform_HSSE/man_hour');
    }
 
    function edit_man_hour($id_man_hour) {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
          $id_man_hour = $this->uri->segment(4);
          $data['man_hour'] = $this->mform_HSSE->mselect_by_id_man_hour($id_man_hour);
-      $this->load->view('content/vsuperuser/vform_HSSE/vedit_man_hour', $data);
+      $this->load->view('content/vunit/vform_HSSE/vedit_man_hour', $data);
    }
 
    function update_man_hour() {
@@ -196,11 +196,11 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Update Data Man Hour Dengan Kode : '.$id_man_hour,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/man_hour');
+      redirect('Unit/cform_HSSE/man_hour');
    }
 
    function delete_man_hour() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $id_man_hour = $this->uri->segment(4);
@@ -215,87 +215,87 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Hapus Data Man Hour Dengan Kode : '.$id_man_hour,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/man_hour');
+      redirect('Unit/cform_HSSE/man_hour');
    }
 
    function clasification() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $jenis = "clasification";
       $data['clasification'] = $this->mform_HSSE->mshow_all_other($jenis);
-      $this->load->view('content/vsuperuser/vform_HSSE/vclasification', $data);
+      $this->load->view('content/vunit/vform_HSSE/vclasification', $data);
    }
 
    function input_clasification() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_clasification');
+      $this->load->view('content/vunit/vform_HSSE/vinput_clasification');
    }
 
    function personal_safety() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $jenis = "personal_safety";
       $data['personal_safety'] = $this->mform_HSSE->mshow_all_other($jenis);
-      $this->load->view('content/vsuperuser/vform_HSSE/vpersonal_safety', $data);
+      $this->load->view('content/vunit/vform_HSSE/vpersonal_safety', $data);
    }
 
    function input_personal_safety() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_personal_safety');
+      $this->load->view('content/vunit/vform_HSSE/vinput_personal_safety');
    }
 
    function property_damage() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $jenis = "property_damage";
       $data['property_damage'] = $this->mform_HSSE->mshow_all_property($jenis);
-      $this->load->view('content/vsuperuser/vform_HSSE/vproperty_damage', $data);
+      $this->load->view('content/vunit/vform_HSSE/vproperty_damage', $data);
    }
 
    function input_property_damage() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_property_damage');
+      $this->load->view('content/vunit/vform_HSSE/vinput_property_damage');
    }
    
    function nearmiss() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $jenis = "other";
       $data['nearmiss'] = $this->mform_HSSE->mshow_all_other($jenis);
-      $this->load->view('content/vsuperuser/vform_HSSE/vnearmiss', $data);
+      $this->load->view('content/vunit/vform_HSSE/vnearmiss', $data);
    }
 
    function input_nearmiss() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_nearmiss');
+      $this->load->view('content/vunit/vform_HSSE/vinput_nearmiss');
    }
 
    function unsafe() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $jenis = "other";
       $data['unsafe'] = $this->mform_HSSE->mshow_all_unsafe($jenis);
-      $this->load->view('content/vsuperuser/vform_HSSE/vunsafe', $data);
+      $this->load->view('content/vunit/vform_HSSE/vunsafe', $data);
    }
 
    function input_unsafe() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
-      $this->load->view('content/vsuperuser/vform_HSSE/vinput_unsafe');
+      $this->load->view('content/vunit/vform_HSSE/vinput_unsafe');
    }
 
    function insert_other() {
@@ -338,20 +338,20 @@ class cform_HSSE extends CI_Controller {
       );
       $this->mform_HSSE->insert_log($log);
       if ($this->input->post('jenis') == "other"){
-         redirect('SuperUser/cform_HSSE/nearmiss');
+         redirect('Unit/cform_HSSE/nearmiss');
       }else{
-         redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+         redirect('Unit/cform_HSSE/'.$this->input->post('jenis'));
       }
    }
 
    function edit_other($id_other) {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
          $id_other = $this->uri->segment(4);
          $jenis = $this->uri->segment(5);
          $data['other'] = $this->mform_HSSE->mselect_by_id_other($id_other);
-         $this->load->view('content/vsuperuser/vform_HSSE/vedit_'.$jenis, $data);
+         $this->load->view('content/vunit/vform_HSSE/vedit_'.$jenis, $data);
    }
 
    function update_other() {
@@ -394,14 +394,14 @@ class cform_HSSE extends CI_Controller {
       $this->mform_HSSE->insert_log($log);
       $this->mform_HSSE->insert_log($log);
       if ($this->input->post('jenis') == "other"){
-         redirect('SuperUser/cform_HSSE/nearmiss');
+         redirect('Unit/cform_HSSE/nearmiss');
       }else{
-         redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+         redirect('Unit/cform_HSSE/'.$this->input->post('jenis'));
       }
    }
 
    function delete_other() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $id_other = $this->uri->segment(4);
@@ -417,7 +417,7 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Hapus Data Other Dengan Kode : '.$id_other,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/'.$jenis);
+      redirect('Unit/cform_HSSE/'.$jenis);
    }
 
    function insert_property_damage() {
@@ -454,17 +454,17 @@ class cform_HSSE extends CI_Controller {
       );
       $this->mform_HSSE->insert_log($log);
 
-      redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+      redirect('Unit/cform_HSSE/'.$this->input->post('jenis'));
    }
 
    function edit_property_damage($id_property) {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
          $id_property_damage = $this->uri->segment(4);
          $jenis = $this->uri->segment(5);
          $data['property_damage'] = $this->mform_HSSE->mselect_by_id_property($id_property);
-         $this->load->view('content/vsuperuser/vform_HSSE/vedit_'.$jenis, $data);
+         $this->load->view('content/vunit/vform_HSSE/vedit_'.$jenis, $data);
    }
 
    function update_property_damage() {
@@ -499,11 +499,11 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Update Data Property Damage Dengan Kode : '.$id_property,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/'.$this->input->post('jenis'));
+      redirect('Unit/cform_HSSE/'.$this->input->post('jenis'));
    }
 
    function delete_property_damage() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $id_property = $this->uri->segment(4);
@@ -519,7 +519,7 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Hapus Data Property Damage Dengan Kode : '.$id_property,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/'.$jenis);
+      redirect('Unit/cform_HSSE/'.$jenis);
    }
 
    function insert_unsafe() {
@@ -555,17 +555,17 @@ class cform_HSSE extends CI_Controller {
       );
       $this->mform_HSSE->insert_log($log);
 
-      redirect('SuperUser/cform_HSSE/unsafe');
+      redirect('Unit/cform_HSSE/unsafe');
    }
 
    function edit_unsafe($id_unsafe) {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
          $id_unsafe = $this->uri->segment(4);
          $jenis = $this->uri->segment(5);
          $data['unsafe'] = $this->mform_HSSE->mselect_by_id_unsafe($id_unsafe);
-         $this->load->view('content/vsuperuser/vform_HSSE/vedit_unsafe', $data);
+         $this->load->view('content/vunit/vform_HSSE/vedit_unsafe', $data);
    }
 
    function update_unsafe() {
@@ -599,7 +599,7 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Update Data unsafe Dengan Kode : '.$id_unsafe,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/unsafe');
+      redirect('Unit/cform_HSSE/unsafe');
    }
 
    function validasi_unsafe() {
@@ -621,11 +621,11 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Validasi Unsafe dengan ID : '.$id_unsafe,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/unsafe');
+      redirect('Unit/cform_HSSE/unsafe');
    }
 
    function delete_unsafe() {
-      if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+      if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
          redirect("clogin");
       }
       $id_unsafe = $this->uri->segment(4);
@@ -641,7 +641,7 @@ class cform_HSSE extends CI_Controller {
          'action'	   => 'Hapus Data unsafe Dengan Kode : '.$id_unsafe,
       );
       $this->mform_HSSE->insert_log($log);
-      redirect('SuperUser/cform_HSSE/'.$jenis);
+      redirect('Unit/cform_HSSE/'.$jenis);
    }
 
    //function upload ktp hasil pemeriksaan

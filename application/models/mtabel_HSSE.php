@@ -100,5 +100,11 @@ class mtabel_HSSE extends ci_model {
         $this->db->order_by('id_unsafe', 'desc');
         return $this->db->get()->result();
     }
+
+    //Insert Log Login
+    function insert_log($log) {
+        $this->db = $this->load->database('local', TRUE);
+        $this->db->insert('log_aktifitas', $log);
+    }
 }
 ?>

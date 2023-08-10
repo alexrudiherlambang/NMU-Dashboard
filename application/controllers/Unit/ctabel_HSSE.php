@@ -8,14 +8,14 @@ class ctabel_HSSE extends CI_Controller {
     }
 
     function limbah() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
-      $this->load->view('content/vsuperuser/vtabel_HSSE/vlimbah');
+      $this->load->view('content/vunit/vtabel_HSSE/vlimbah');
     }
 
     function hasil_limbah() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
         // $unit = $this->input->post('unit');
@@ -37,7 +37,7 @@ class ctabel_HSSE extends CI_Controller {
             'action'	   => 'Show Tabel HSSE Performance Data Limbah',
         );
         $this->mtabel_HSSE->insert_log($log);
-      $this->load->view('content/vsuperuser/vtabel_HSSE/vhasil_limbah', $data);
+      $this->load->view('content/vunit/vtabel_HSSE/vhasil_limbah', $data);
     }
 
     function export_limbah() {
@@ -285,14 +285,14 @@ class ctabel_HSSE extends CI_Controller {
     }
 
     function kejadian_kecelakaan() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
-      $this->load->view('content/vsuperuser/vtabel_HSSE/vkejadian_kecelakaan');
+      $this->load->view('content/vunit/vtabel_HSSE/vkejadian_kecelakaan');
     }
 
     function hasil_kejadian_kecelakaan() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
         $unit = $this->input->post('unit');
@@ -349,7 +349,7 @@ class ctabel_HSSE extends CI_Controller {
             'action'	    => 'Show Tabel HSSE Performance Data Kejadian Kecelakaan',
         );
         $this->mtabel_HSSE->insert_log($log);
-      $this->load->view('content/vsuperuser/vtabel_HSSE/vhasil_kejadian_kecelakaan', $data);
+      $this->load->view('content/vunit/vtabel_HSSE/vhasil_kejadian_kecelakaan', $data);
     }
 
     function export_kejadian_kecelakaan() {
@@ -547,10 +547,10 @@ class ctabel_HSSE extends CI_Controller {
     }
 
     function property_damage() {
-        if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+        if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
-      $this->load->view('content/vsuperuser/vtabel_HSSE/vproperty_damage');
+      $this->load->view('content/vunit/vtabel_HSSE/vproperty_damage');
     }
 
 }
