@@ -65,12 +65,17 @@ class mtabel_HSSE extends ci_model {
     }
     
     //SHOW DATA MAN HOURS
-    function mshow_man_hour($bulan, $tahun) {
+    function mshow_man_hour($unit, $bulanAwal, $tahunAwal, $bulanAkhir, $tahunAkhir) {
         $this->db = $this->load->database('local', TRUE);
-        $this->db->select('man_hour, bulan, tahun');
+        $this->db->select('sum(man_hour) as man_hour, bulan, tahun');
         $this->db->from('hsse_man_hour');
-        $this->db->where('bulan', $bulan);
-        $this->db->where('tahun', $tahun);  
+        $this->db->where('bulan >=', $bulanAwal);
+        $this->db->where('tahun >=', $tahunAwal);
+        $this->db->where('bulan <=', $bulanAkhir);
+        $this->db->where('tahun <=', $tahunAkhir);
+        if($unit != "KONSOLIDASI"){
+            $this->db->where('unit', $unit);
+        }
         return $this->db->get()->row();
     }
 

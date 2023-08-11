@@ -313,9 +313,12 @@ class ctabel_HSSE extends CI_Controller {
         }
         $total_unsafe = $totalJumlah_unsafe; // Menyimpan total jumlah dalam $data
         
-        $bulan = intval(substr($this->input->post('period'), 5, 2));
-        $tahun = substr($this->input->post('period'), 0, 4);
-        $data['man_hour'] = $this->mtabel_HSSE->mshow_man_hour($bulan, $tahun);
+        $bulanAwal = date('m', strtotime($tglawal));
+        $tahunAwal = date('Y', strtotime($tglawal));
+        
+        $bulanAkhir = date('m', strtotime($tglakhir));
+        $tahunAkhir = date('Y', strtotime($tglakhir));
+        $data['man_hour'] = $this->mtabel_HSSE->mshow_man_hour($unit, $bulanAwal, $tahunAwal, $bulanAkhir, $tahunAkhir);
 
         $data['fatality'] = $this->mtabel_HSSE->mshow_all_kejadian_kecelakaan($unit, $tglawal, $tglakhir);
         foreach ($data['fatality'] as $kecelakaan) {
