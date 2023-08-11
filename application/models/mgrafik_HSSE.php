@@ -20,13 +20,13 @@ class mgrafik_HSSE extends ci_model {
     }
 
     //SHOW SUM DATA PROPERTY DAMAGE
-    function mshow_all_property_damage($unit, $bulan, $tahun) {
+    function mshow_all_property_damage($unit, $tglawal, $tglakhir) {
         $this->db = $this->load->database('local', TRUE);
         $this->db->select('jenis,sub_jenis,unit,COUNT(id_other) as jumlah ');
         $this->db->select("DATE_FORMAT(tgl_waktu, '%Y-%m') as periode");
         $this->db->from('hsse_other');
-        $this->db->where('MONTH(tgl_waktu)', $bulan);
-        $this->db->where('YEAR(tgl_waktu)', $tahun);
+        $this->db->where('DATE(tgl_waktu)>=', $tglawal);
+        $this->db->where('DATE(tgl_waktu)<=', $tglakhir);
         if($unit != "KONSOLIDASI"){
             $this->db->where('unit', $unit);
         }  
@@ -50,13 +50,13 @@ class mgrafik_HSSE extends ci_model {
     }
     
     //SHOW COUNT DATA KEJADIAN KECELAKAAN
-    function mshow_all_kejadian_kecelakaan($unit, $bulan, $tahun) {
+    function mshow_all_kejadian_kecelakaan($unit, $tglawal, $tglakhir) {
         $this->db = $this->load->database('local', TRUE);
         $this->db->select('jenis,sub_jenis,COUNT(id_other) as jumlah ');
         $this->db->select("DATE_FORMAT(tgl_waktu, '%Y-%m') as periode");
         $this->db->from('hsse_other');
-        $this->db->where('MONTH(tgl_waktu)', $bulan);
-        $this->db->where('YEAR(tgl_waktu)', $tahun);
+        $this->db->where('DATE(tgl_waktu)>=', $tglawal);
+        $this->db->where('DATE(tgl_waktu)<=', $tglakhir);
         if($unit != "KONSOLIDASI"){
             $this->db->where('unit', $unit);
         }
@@ -76,13 +76,13 @@ class mgrafik_HSSE extends ci_model {
     }
 
     //SHOW COUNT DATA KEJADIAN KECELAKAAN UNSAFE
-    function mshow_all_unsafe($unit, $bulan, $tahun) {
+    function mshow_all_unsafe($unit, $tglawal, $tglakhir) {
         $this->db = $this->load->database('local', TRUE);
         $this->db->select('jenis,sub_jenis,COUNT(id_unsafe) as jumlah ');
         $this->db->select("DATE_FORMAT(tgl_waktu, '%Y-%m') as periode");
         $this->db->from('hsse_unsafe');
-        $this->db->where('MONTH(tgl_waktu)', $bulan);
-        $this->db->where('YEAR(tgl_waktu)', $tahun);
+        $this->db->where('DATE(tgl_waktu)>=', $tglawal);
+        $this->db->where('DATE(tgl_waktu)<=', $tglakhir);
         if($unit != "KONSOLIDASI"){
             $this->db->where('unit', $unit);
         }

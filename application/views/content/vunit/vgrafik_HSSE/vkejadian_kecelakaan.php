@@ -98,7 +98,23 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="month" name="periode" placeholder="Pick a date" id="periode" required="required" value="<?php echo date('Y-m');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="month" name="period" placeholder="Pick a date" id="period" value="<?php echo date('Y-m');?>"/>
+                                                        </div>
+                                                    </div>
+                                                    <!--begin::Col-->
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <!--begin::Col-->
+                                                    <div class="col-xl-5">
+                                                        <div class="fs-6 fw-semibold mt-2 mb-3">Range Tanggal</div>
+                                                    </div>
+                                                    <!--end::Col-->
+                                                    <!--begin::Col-->
+                                                    <div class="col-xl-5 fv-row">
+                                                        <div class="position-relative d-flex align-items-center">
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"/>
+                                                            <div class="fs-60 fw-semibold mt-2 mb-3"> s.d </div>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->

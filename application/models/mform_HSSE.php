@@ -8,7 +8,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA LIMBAH
    function mshow_all_limbah() {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lastupdate');
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lab,lastupdate');
       $this->db->from('hsse_limbah');
       $this->db->order_by('id_limbah', 'desc');
       return $this->db->get()->result();
@@ -17,7 +17,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA LIMBAH YANG DIHAPUS
    function mshow_all_del_limbah() {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lastupdate');
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lab,lastupdate');
       $this->db->from('x_after_del_hsse_limbah');
       $this->db->order_by('id_limbah', 'desc');
       return $this->db->get()->result();
@@ -32,7 +32,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA LIMBAH
    function mselect_by_id_limbah($id_limbah) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lastupdate');
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lab,lastupdate');
       $this->db->from('hsse_limbah');
       $this->db->where('id_limbah', $id_limbah);
       return $this->db->get()->row();

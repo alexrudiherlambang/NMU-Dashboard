@@ -229,6 +229,15 @@
                                                                 <input type="number" step="any" min="0" class="form-control form-control-solid" name="coliform" placeholder="Input Coliform">
                                                             </div>
                                                         </div>
+                                                        <div class="row mb-5">
+                                                            <div class="col-xl-3">
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Foto Hasil Lab</div>
+                                                            </div>
+                                                            <div class="col-xl-9 fv-row">
+                                                                <input type="file" name="lab" id="lab">
+                                                                <label for="lab">Pilih File</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <!--end::Invoice footer-->
                                                     <!-- /.box-body -->

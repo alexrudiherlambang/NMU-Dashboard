@@ -97,7 +97,23 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="month" name="periode" placeholder="Pick a date" id="periode" required="required" value="<?php echo date('Y-m');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="month" name="period" placeholder="Pick a date" id="period" value="<?php echo date('Y-m');?>"/>
+                                                        </div>
+                                                    </div>
+                                                    <!--begin::Col-->
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <!--begin::Col-->
+                                                    <div class="col-xl-5">
+                                                        <div class="fs-6 fw-semibold mt-2 mb-3">Range Tanggal</div>
+                                                    </div>
+                                                    <!--end::Col-->
+                                                    <!--begin::Col-->
+                                                    <div class="col-xl-5 fv-row">
+                                                        <div class="position-relative d-flex align-items-center">
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglawal" placeholder="Pick a date" id="tglawal" required="required"/>
+                                                            <div class="fs-60 fw-semibold mt-2 mb-3"> s.d </div>
+                                                            <input class="form-control form-control-solid ps-12" type="date" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -248,6 +264,56 @@
     <?php
         $this->load->view('partials/script');
     ?>
+    
+    <script>
+        document.getElementById("period").addEventListener("change", function() {
+            var periodeValue = this.value;
+            var year = periodeValue.split("-")[0];
+            var month = periodeValue.split("-")[1];
+
+            var tglawalInput = document.getElementById("tglawal");
+            var tglakhirInput = document.getElementById("tglakhir");
+
+            var tglawal = new Date(year, month - 1, 1);
+            var lastDay = new Date(year, month, 0).getDate(); // Mengambil hari terakhir dari bulan
+            var tglakhir = new Date(year, month - 1, lastDay);
+
+            tglawalInput.value = formatDate(tglawal);
+            tglakhirInput.value = formatDate(tglakhir);
+
+            tglawalInput.setAttribute("min", formatDate(tglawal));
+            tglawalInput.setAttribute("max", formatDate(tglakhir));
+            tglakhirInput.setAttribute("min", formatDate(tglawal));
+            tglakhirInput.setAttribute("max", formatDate(tglakhir));
+
+            tglawalInput.addEventListener("change", function() {
+                var selectedDate = new Date(this.value);
+                var endDate = new Date(tglakhirInput.value);
+                
+                if (selectedDate > endDate) {
+                    alert("Tanggal awal tidak bisa melebihi tanggal akhir.");
+                    this.value = formatDate(tglawal);
+                }
+            });
+
+            tglakhirInput.addEventListener("change", function() {
+                var startDate = new Date(tglawalInput.value);
+                var selectedDate = new Date(this.value);
+                
+                if (selectedDate < startDate) {
+                    alert("Tanggal akhir tidak bisa sebelum tanggal awal.");
+                    this.value = formatDate(tglakhir);
+                }
+            });
+        });
+
+        function formatDate(date) {
+            var year = date.getFullYear();
+            var month = (date.getMonth() + 1).toString().padStart(2, "0");
+            var day = date.getDate().toString().padStart(2, "0");
+            return year + "-" + month + "-" + day;
+        }
+    </script>
 	
 </body>
 <!--end::Body-->

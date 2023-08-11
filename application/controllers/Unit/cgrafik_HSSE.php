@@ -305,12 +305,12 @@ class cgrafik_HSSE extends CI_Controller {
         if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
-        $bulan = intval(substr($this->input->post('periode'), 5, 2));
-        $tahun = substr($this->input->post('periode'), 0, 4);
         $unit = $this->input->post('unit');
+        $tglawal = $this->input->post('tglawal');
+        $tglakhir = $this->input->post('tglakhir');
         
-        $unsafe = $this->mgrafik_HSSE->mshow_all_unsafe($unit, $bulan, $tahun);
-        $kejadian_kecelakaan = $this->mgrafik_HSSE->mshow_all_kejadian_kecelakaan($unit, $bulan, $tahun);
+        $unsafe = $this->mgrafik_HSSE->mshow_all_unsafe($unit, $tglawal, $tglakhir);
+        $kejadian_kecelakaan = $this->mgrafik_HSSE->mshow_all_kejadian_kecelakaan($unit, $tglawal, $tglakhir);
         // Olah data menjadi format yang sesuai dengan AnyChart
         $chartData = array();
         foreach ($unsafe->result() as $item) {
@@ -329,7 +329,9 @@ class cgrafik_HSSE extends CI_Controller {
         // Load view dengan data yang diperlukan
         $data['chartDataJSON'] = json_encode($chartData);
         $data['unit'] = $this->input->post('unit');
-        $data['periode'] = $this->input->post('periode');
+        $data['period'] = $this->input->post('period');
+        $data['tglawal'] = $this->input->post('tglawal');
+        $data['tglakhir'] = $this->input->post('tglakhir');
         $log = array(
             'id'		    => $this->session->userdata("id"),  
             'unit'          => $this->input->post('unit'),
@@ -548,11 +550,11 @@ class cgrafik_HSSE extends CI_Controller {
         if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
         redirect("clogin");
         }
-        // $unit = $this->input->post('unit');
-        $bulan = intval(substr($this->input->post('periode'), 5, 2));
-        $tahun = substr($this->input->post('periode'), 0, 4);
         $unit = $this->input->post('unit');
-        $property_damage = $this->mgrafik_HSSE->mshow_all_property_damage($unit, $bulan, $tahun);
+        $tglawal = $this->input->post('tglawal');
+        $tglakhir = $this->input->post('tglakhir');
+
+        $property_damage = $this->mgrafik_HSSE->mshow_all_property_damage($unit, $tglawal, $tglakhir);
 
         // Process data
         $dataArray = array();
@@ -607,7 +609,9 @@ class cgrafik_HSSE extends CI_Controller {
 
         $data['chartConfigJSON'] = json_encode($chartConfig);
         $data['unit'] = $this->input->post('unit');
-        $data['periode'] = $this->input->post('periode');
+        $data['period'] = $this->input->post('period');
+        $data['tglawal'] = $this->input->post('tglawal');
+        $data['tglakhir'] = $this->input->post('tglakhir');
         $log = array(
             'id'		    => $this->session->userdata("id"),  
             'unit'          => $this->input->post('unit'),

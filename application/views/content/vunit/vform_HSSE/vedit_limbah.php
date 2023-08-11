@@ -231,6 +231,16 @@
                                                                 <input type="number" step="any" min="0" class="form-control form-control-solid" name="coliform" value="<?php echo $limbah->coliform; ?>">
                                                             </div>
                                                         </div>
+                                                        <div class="row mb-5">
+                                                            <div class="col-xl-3">
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Foto Hasil Lab</div>
+                                                            </div>
+                                                            <div class="col-xl-9 fv-row">
+                                                            <img  src='<?=base_url()?>assets/media/images/ktp/<?php echo $limbah->lab;?>' height="100">
+                                                                <input type="file" name="lab" id="lab">
+                                                                <label for="lab">Pilih File</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <!--end::Invoice footer-->
                                                     <!-- /.box-body -->

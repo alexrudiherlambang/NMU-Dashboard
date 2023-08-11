@@ -99,7 +99,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="month" name="period" placeholder="Pick a date" id="period" required="required" value="<?php echo $period;?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="month" name="period" placeholder="Pick a date" id="period" value="<?php echo $period;?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->

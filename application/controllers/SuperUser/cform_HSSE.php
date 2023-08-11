@@ -25,6 +25,7 @@ class cform_HSSE extends CI_Controller {
    }
 
    function insert_limbah() {
+      $lab = $this->_upload_file('lab', './assets/media/images/ktp/');
       $simpan = array(
          'jenis'            => "limbah",        
          'email'            => $this->input->post('email'),        
@@ -43,6 +44,7 @@ class cform_HSSE extends CI_Controller {
          'nh3'              => $this->input->post('nh3'),        
          'po4'              => $this->input->post('po4'),        
          'coliform'         => $this->input->post('coliform'),
+         'lab'            => $lab,
       );
       $this->mform_HSSE->minsert_limbah($simpan);
       $log = array(
@@ -69,6 +71,7 @@ class cform_HSSE extends CI_Controller {
    }
 
    function update_limbah() {
+      $lab = $this->_upload_file('lab', './assets/media/images/ktp/');
       $id_limbah = $this->input->post('id_limbah');
       $update = array(
          'jenis'            => "limbah",        
@@ -88,6 +91,7 @@ class cform_HSSE extends CI_Controller {
          'nh3'              => $this->input->post('nh3'),        
          'po4'              => $this->input->post('po4'),        
          'coliform'         => $this->input->post('coliform'),
+         'lab'              => $lab,
       );
       $this->mform_HSSE->mupdate_limbah($update, $id_limbah);
       $log = array(
