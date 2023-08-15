@@ -95,7 +95,7 @@ class mtabel_HSSE extends ci_model {
 
     function mshow_detil_unsafe($unit, $tglawal, $tglakhir) {
         $this->db = $this->load->database('local', TRUE);
-        $this->db->select('id_unsafe,jenis,sub_jenis,email,unit,nip,napeg,status,fungsi,pic,rtl,deskripsi,lokasi,tgl_waktu,validasi,lastupdate');
+        $this->db->select('id_unsafe,jenis,sub_jenis,email,unit,nip,napeg,status,fungsi,pic,rtl,jenis_temuan,deskripsi,lokasi,tgl_waktu,validasi,lastupdate');
         $this->db->from('hsse_unsafe');
         if($unit != "KONSOLIDASI"){
             $this->db->where('unit', $unit);

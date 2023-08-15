@@ -399,6 +399,9 @@ class ctabel_HSSE extends CI_Controller {
               xlsWriteLabel($tablehead, $kolomhead++, "Deskripsi Kejadian");
               xlsWriteLabel($tablehead, $kolomhead++, "Lokasi");
               xlsWriteLabel($tablehead, $kolomhead++, "Tanggal & Waktu");
+              xlsWriteLabel($tablehead, $kolomhead++, "Jenis temuan");
+              xlsWriteLabel($tablehead, $kolomhead++, "RTL");
+              xlsWriteLabel($tablehead, $kolomhead++, "Status Validasi");
                 
                 foreach ($this->mtabel_HSSE->mshow_detil_kejadian_kecelakaan($unit, $tglawal, $tglakhir) as $data) {
                 $kolombody = 0;
@@ -420,6 +423,9 @@ class ctabel_HSSE extends CI_Controller {
                 xlsWriteLabel($tablebody, $kolombody++, $data->deskripsi);
                 xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
                 xlsWriteLabel($tablebody, $kolombody++, $data->tgl_waktu);
+                xlsWriteLabel($tablebody, $kolombody++, "NULL");
+                xlsWriteLabel($tablebody, $kolombody++, "NULL");
+                xlsWriteLabel($tablebody, $kolombody++, "NULL");
                 $tablebody++;
                 $nourut++;
                 }
@@ -440,10 +446,13 @@ class ctabel_HSSE extends CI_Controller {
                     xlsWriteLabel($tablebody, $kolombody++, $data->validasi);
                     xlsWriteLabel($tablebody, $kolombody++, "NULL");
                     xlsWriteLabel($tablebody, $kolombody++, "NULL");
-                    xlsWriteLabel($tablebody, $kolombody++, $data->rtl);
+                    xlsWriteLabel($tablebody, $kolombody++, "NULL");
                     xlsWriteLabel($tablebody, $kolombody++, $data->deskripsi);
                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_waktu);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->jenis_temuan);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->rtl);
+                    xlsWriteLabel($tablebody, $kolombody++, $data->validasi);
                     $tablebody++;
                     $nourut++;
                     }

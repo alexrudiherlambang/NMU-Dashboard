@@ -154,6 +154,8 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="ms-5">
                                                                 <!--begin::Title-->
+                                                                <a><b>Kategori:</b> <?php echo $unsafe->sub_jenis ?></a></br>
+                                                                <a><b>Jenis temuan:</b> <?php echo $unsafe->jenis_temuan ?></a></br>
                                                                 <a><b>Deskripsi:</b> <?php echo $unsafe->deskripsi ?></a></br>
                                                                 <a><b>RTL:</b> <?php echo $unsafe->rtl ?></a></br>
                                                                 <a><b>PIC:</b> <?php echo $unsafe->pic ?></a></br>
@@ -326,6 +328,8 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="ms-5">
                                                                 <!--begin::Title-->
+                                                                <a><s><b>Kategori:</b> <?php echo $unsafe->sub_jenis ?></s></a></br>
+                                                                <a><s><b>Jenis temuan:</b> <?php echo $unsafe->jenis_temuan ?></s></a></br>
                                                                 <a><s><b>Deskripsi:</b> <?php echo $unsafe->deskripsi ?></s></a></br>
                                                                 <a><s><b>RTL:</b> <?php echo $unsafe->rtl ?></s></a></br>
                                                                 <a><s><b>PIC:</b> <?php echo $unsafe->pic ?></s></a></br>

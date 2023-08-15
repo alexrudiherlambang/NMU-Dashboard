@@ -165,6 +165,55 @@
                                                         </div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Jenis Temuan</div>
+                                                            </div>
+                                                            <div class="col-xl-9 fv-row">
+                                                                <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Kelistrikan" id="flexRadioLg" <?php echo ($unsafe->jenis_temuan === 'Sarpras Kelistrikan') ? 'checked' : ''; ?>/>
+                                                                    <label class="form-check-label" for="flexRadioLg">
+                                                                    Sarpras Kelistrikan
+                                                                    </label>
+                                                                </div><br>
+                                                                <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Bangunan" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Bangunan') ? 'checked' : ''; ?>/>
+                                                                    <label class="form-check-label" for="flexRadioLg">
+                                                                    Sarpras Bangunan
+                                                                    </label>
+                                                                </div><br>
+                                                                <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Air" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Air') ? 'checked' : ''; ?>/>
+                                                                    <label class="form-check-label" for="flexRadioLg">
+                                                                    Sarpras Air
+                                                                    </label>
+                                                                </div><br>
+                                                                <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Rumah Tangga" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Rumah Tangga') ? 'checked' : ''; ?>/>
+                                                                    <label class="form-check-label" for="flexRadioLg">
+                                                                    Sarpras Rumah Tangga
+                                                                    </label>
+                                                                </div><br>
+                                                                <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Alkes" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Alkes') ? 'checked' : ''; ?>/>
+                                                                    <label class="form-check-label" for="flexRadioLg">
+                                                                    Sarpras Alkes
+                                                                    </label>
+                                                                </div><br>
+                                                                <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Perilaku Pekerja" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Perilaku Pekerja') ? 'checked' : ''; ?>/>
+                                                                    <label class="form-check-label" for="flexRadioLg">
+                                                                    Perilaku Pekerja
+                                                                    </label>
+                                                                </div><br>
+                                                                <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Kejadian Alam" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Kejadian Alam') ? 'checked' : ''; ?>/>
+                                                                    <label class="form-check-label" for="flexRadioLg">
+                                                                    Kejadian Alam
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-5">
+                                                            <div class="col-xl-3">
                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Deskripsi Temuan</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
