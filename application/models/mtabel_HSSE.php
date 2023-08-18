@@ -60,7 +60,7 @@ class mtabel_HSSE extends ci_model {
         }
         $this->db->where('DATE(tgl_waktu)>=', $tglawal);
         $this->db->where('DATE(tgl_waktu)<=', $tglakhir); 
-        $this->db->group_by('sub_jenis');
+        // $this->db->group_by('sub_jenis');
         return $this->db->get()->result();
     }
     

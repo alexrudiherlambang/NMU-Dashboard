@@ -1063,7 +1063,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                            <a class="menu-link" href="<?php echo site_url('SuperUser/cHCIS/Master_Pekerja') ?>">
                                 <span class="menu-icon">
                                     <span class="svg-icon svg-icon-2">
                                         <!--begin::Svg Icon | path: icons/duotune/abstract/abs014.svg-->
@@ -1115,7 +1115,7 @@
                             <?php if ($this->session->userdata("tpp") == "1"): ?>
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link" href="<?php echo site_url('SuperUser/Blank') ?>">
+                                    <a class="menu-link" href="<?php echo site_url('SuperUser/cHCIS/tabel_populasi') ?>">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>

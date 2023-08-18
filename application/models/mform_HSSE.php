@@ -203,7 +203,8 @@ class mform_HSSE extends ci_model {
       $this->db->select('id_unsafe,sub_jenis,email,unit,nip,napeg,status,fungsi,jenis_temuan,deskripsi,rtl,pic,lokasi,tgl_waktu,bukti,validasi,evidence,lastupdate');
       $this->db->from('hsse_unsafe');
       $this->db->where('jenis', $jenis);
-      $this->db->order_by('id_unsafe', 'desc');
+      $this->db->order_by('validasi', 'desc');
+      $this->db->order_by('tgl_waktu', 'desc');
       return $this->db->get()->result();
    }
 
@@ -213,7 +214,8 @@ class mform_HSSE extends ci_model {
       $this->db->select('id_unsafe,sub_jenis,email,unit,nip,napeg,status,fungsi,jenis_temuan,deskripsi,rtl,pic,lokasi,tgl_waktu,bukti,validasi,evidence,lastupdate');
       $this->db->from('x_after_del_hsse_unsafe');
       $this->db->where('jenis', $jenis);
-      $this->db->order_by('id_unsafe', 'desc');
+      $this->db->order_by('validasi', 'desc');
+      $this->db->order_by('tgl_waktu', 'desc');
       return $this->db->get()->result();
    }
 
