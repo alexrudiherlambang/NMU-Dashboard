@@ -150,13 +150,13 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                             <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Unsafe Action" id="flexRadioLg"/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Unsafe Action" id="flexRadioLg"/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Unsafe Action
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Unsafe Condition" id="flexRadioLg"/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Unsafe Condition" id="flexRadioLg"/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Unsafe Condition
                                                                     </label>
@@ -169,43 +169,43 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Kelistrikan" id="flexRadioLg"/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Sarpras Kelistrikan" id="flexRadioLg"/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Sarpras Kelistrikan
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Bangunan" id="flexRadioLg"/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Sarpras Bangunan" id="flexRadioLg"/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Sarpras Bangunan
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Air" id="flexRadioLg"/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Sarpras Air" id="flexRadioLg"/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Sarpras Air
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Rumah Tangga" id="flexRadioLg"/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Sarpras Rumah Tangga" id="flexRadioLg"/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Sarpras Rumah Tangga
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Alkes" id="flexRadioLg"/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Sarpras Alkes" id="flexRadioLg"/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Sarpras Alkes
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Perilaku Pekerja" id="flexRadioLg"/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Perilaku Pekerja" id="flexRadioLg"/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Perilaku Pekerja
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Kejadian Alam" id="flexRadioLg"/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Kejadian Alam" id="flexRadioLg"/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Kejadian Alam
                                                                     </label>

@@ -233,10 +233,10 @@
                                                         </div>
                                                         <div class="row mb-5">
                                                             <div class="col-xl-3">
-                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Foto Hasil Lab</div>
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Bukti Hasil Lab</div>
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
-                                                            <img  src='<?=base_url()?>assets/media/images/ktp/<?php echo $limbah->lab;?>' height="100">
+                                                                <embed src='<?=base_url()?>assets/media/pdf/limbah/<?php echo $limbah->lab;?>' width="635px" height="700px" type="application/pdf">
                                                                 <input type="file" name="lab" id="lab">
                                                                 <label for="lab">Pilih File</label>
                                                             </div>

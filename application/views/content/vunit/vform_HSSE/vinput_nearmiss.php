@@ -150,7 +150,7 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Nearmiss" id="flexRadioLg"/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Nearmiss" id="flexRadioLg"/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Nearmiss
                                                                     </label>

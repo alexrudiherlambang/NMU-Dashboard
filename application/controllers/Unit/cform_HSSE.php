@@ -25,7 +25,7 @@ class cform_HSSE extends CI_Controller {
    }
 
    function insert_limbah() {
-      $lab = $this->_upload_file('lab', './assets/media/images/ktp/');
+      $lab = $this->_upload_pdf();
       $simpan = array(
          'jenis'            => "limbah",        
          'email'            => $this->input->post('email'),        
@@ -71,7 +71,7 @@ class cform_HSSE extends CI_Controller {
    }
 
    function update_limbah() {
-      $lab = $this->_upload_file('lab', './assets/media/images/ktp/');
+      $lab = $this->_upload_pdf();
       $id_limbah = $this->input->post('id_limbah');
       $update = array(
          'jenis'            => "limbah",        
@@ -674,5 +674,24 @@ class cform_HSSE extends CI_Controller {
          return $this->upload->data("file_name");
       }
       return "default.png";
+   }
+
+   //function upload pdf untuk limbah
+   private function _upload_pdf(){
+      $nama_file = "pdf-limbah_" . uniqid() . "_" . time(); // Gabungkan uniqid() dengan time() untuk nama unik
+      $config['upload_path']          = './assets/media/pdf/limbah/';
+      $config['allowed_types']        = 'pdf';
+      $config['file_name']            = $nama_file;
+      $config['overwrite']            = false; // Setel menjadi false agar tidak menimpa file dengan nama yang sama
+      $config['max_size']             = 2480; // 2MB
+      // $config['max_width']            = 1024;
+      // $config['max_height']           = 768;
+
+      $this->load->library('upload', $config);
+
+      if ($this->upload->do_upload('lab')) {
+         return $this->upload->data("file_name");
+      }
+      return "default.pdf";
    }
 }

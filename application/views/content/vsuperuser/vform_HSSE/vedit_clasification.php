@@ -150,7 +150,7 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="NOA" id="flexRadioLg" <?php echo ($other->sub_jenis === 'NOA') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="NOA" id="flexRadioLg" <?php echo ($other->sub_jenis === 'NOA') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     NOA
                                                                     </label>

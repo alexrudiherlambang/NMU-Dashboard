@@ -150,13 +150,13 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                             <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Unsafe Action" id="flexRadioLg" <?php echo ($unsafe->sub_jenis === 'Unsafe Action') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Unsafe Action" id="flexRadioLg" <?php echo ($unsafe->sub_jenis === 'Unsafe Action') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Unsafe Action
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Unsafe Condition" id="flexRadioLg" <?php echo ($unsafe->sub_jenis === 'Unsafe Condition') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Unsafe Condition" id="flexRadioLg" <?php echo ($unsafe->sub_jenis === 'Unsafe Condition') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Unsafe Condition
                                                                     </label>
@@ -169,43 +169,43 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Kelistrikan" id="flexRadioLg" <?php echo ($unsafe->jenis_temuan === 'Sarpras Kelistrikan') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Sarpras Kelistrikan" id="flexRadioLg" <?php echo ($unsafe->jenis_temuan === 'Sarpras Kelistrikan') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Sarpras Kelistrikan
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Bangunan" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Bangunan') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Sarpras Bangunan" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Bangunan') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Sarpras Bangunan
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Air" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Air') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Sarpras Air" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Air') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Sarpras Air
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Rumah Tangga" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Rumah Tangga') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Sarpras Rumah Tangga" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Rumah Tangga') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Sarpras Rumah Tangga
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Sarpras Alkes" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Alkes') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Sarpras Alkes" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Sarpras Alkes') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Sarpras Alkes
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Perilaku Pekerja" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Perilaku Pekerja') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Perilaku Pekerja" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Perilaku Pekerja') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Perilaku Pekerja
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="jenis_temuan" value="Kejadian Alam" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Kejadian Alam') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="jenis_temuan" value="Kejadian Alam" id="flexRadioLg"<?php echo ($unsafe->jenis_temuan === 'Kejadian Alam') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Kejadian Alam
                                                                     </label>

@@ -151,19 +151,19 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                             <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Property Damage >1 juta USD" id="flexRadioLg" <?php echo ($property_damage->sub_jenis === 'Property Damage >1 juta USD') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Property Damage >1 juta USD" id="flexRadioLg" <?php echo ($property_damage->sub_jenis === 'Property Damage >1 juta USD') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Property Damage >1 juta USD
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Property Damage 100 ribu - 1 juta USD" id="flexRadioLg" <?php echo ($property_damage->sub_jenis === 'Property Damage 100 ribu - 1 juta USD') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Property Damage 100 ribu - 1 juta USD" id="flexRadioLg" <?php echo ($property_damage->sub_jenis === 'Property Damage 100 ribu - 1 juta USD') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Property Damage 100 ribu - 1 juta USD
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Property Damage 10 ribu - 100 juta USD" id="flexRadioLg" <?php echo ($property_damage->sub_jenis === 'Property Damage 10 ribu - 100 juta USD') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Property Damage 10 ribu - 100 juta USD" id="flexRadioLg" <?php echo ($property_damage->sub_jenis === 'Property Damage 10 ribu - 100 juta USD') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Property Damage 10 ribu - 100 juta USD
                                                                     </label>

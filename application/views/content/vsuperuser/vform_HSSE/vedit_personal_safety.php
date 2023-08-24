@@ -150,31 +150,31 @@
                                                             </div>
                                                             <div class="col-xl-9 fv-row">
                                                             <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Fatality" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Fatality') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Fatality" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Fatality') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Fatality
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Days Away From Work/Lost Time Incident" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Days Away From Work/Lost Time Incident') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Days Away From Work/Lost Time Incident" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Days Away From Work/Lost Time Incident') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Days Away From Work/Lost Time Incident
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Restricted Work Day Case" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Restricted Work Day Case') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Restricted Work Day Case" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Restricted Work Day Case') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Restricted Work Day Case
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="Medical Treatment Case" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Medical Treatment Case') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="Medical Treatment Case" id="flexRadioLg" <?php echo ($other->sub_jenis === 'Medical Treatment Case') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     Medical Treatment Case
                                                                     </label>
                                                                 </div><br>
                                                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                                                    <input class="form-check-input" type="checkbox" name="sub_jenis" value="First Aid" id="flexRadioLg" <?php echo ($other->sub_jenis === 'First Aid') ? 'checked' : ''; ?>/>
+                                                                    <input class="form-check-input" type="radio" name="sub_jenis" value="First Aid" id="flexRadioLg" <?php echo ($other->sub_jenis === 'First Aid') ? 'checked' : ''; ?>/>
                                                                     <label class="form-check-label" for="flexRadioLg">
                                                                     First Aid
                                                                     </label>
