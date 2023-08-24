@@ -18,6 +18,119 @@ class cHCIS extends CI_Controller {
 		$this->load->view('content/vsuperuser/vHCIS/vmaster_pekerja', $data);
 	}
 
+	public function get_mtpeg()
+	{
+		if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+			redirect("clogin");
+		}
+		$data['mt_import'] = $this->mHCIS->mshow_all_import_mtpeg();
+		$this->load->view('content/vsuperuser/vHCIS/vimport_master_pekerja', $data);
+	}
+
+	public function insert_mtpeg()
+	{
+		if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
+			redirect("clogin");
+		}
+		$unit = $this->input->post('unit');
+		$bulan = intval(substr($this->input->post('periode'), 5, 2));
+        $tahun = substr($this->input->post('periode'), 0, 4);
+		$periode = $this->input->post('periode');
+		$validasi_get = $this->mHCIS->validasi_get($unit, $bulan, $tahun)->num_rows();
+		if ($validasi_get == 0) {
+			$mt_peg = $this->mHCIS->mget_mtpeg($unit, $bulan, $tahun);
+			if ($mt_peg) {
+				foreach ($mt_peg as $cd){
+					$simpan = array(
+						'unit'           	=> $unit,
+						'noidbio'           => $cd->noidbio,
+						'nik'           	=> $cd->nik,
+						'namabio'           => $cd->namabio,
+						'agama'          	=> $cd->agama,
+						'namabpk'           => $cd->namabpk,
+						'namaibu'           => $cd->namaibu,
+						'alamat_asli'       => $cd->alamat_asli,
+						'alamat'           	=> $cd->alamat,
+						'alamatpph'         => $cd->alamatpph,
+						'tptlahir'          => $cd->tptlahir,
+						'tgllahir'          => $cd->tgllahir,
+						'jk'           		=> $cd->jk,
+						'telepon'           => $cd->telepon,
+						'goldarah'          => $cd->goldarah,
+						'nonpwp'           	=> $cd->nonpwp,
+						'nobpjs'           	=> $cd->nobpjs,
+						'pegaktif'          => $cd->pegaktif,
+						'tgmasuk'           => $cd->tgmasuk,
+						'tgskkary'          => $cd->tgskkary,
+						'noskkary'          => $cd->noskkary,
+						'tglkary1'          => $cd->tglkary1,
+						'tglkary2'          => $cd->tglkary2,
+						'tgskmut1'          => $cd->tgskmut1,
+						'tgskmut2'          => $cd->tgskmut2,
+						'noskmut'           => $cd->noskmut,
+						'golkary'           => $cd->golkary,
+						'golgaji'           => $cd->golgaji,
+						'tgkeluar'          => $cd->tgkeluar,
+						'stspens'           => $cd->stspens,
+						'noskpens'          => $cd->noskpens,
+						'tgskpens'          => $cd->tgskpens,
+						'tgpensiun'         => $cd->tgpensiun,
+						'golpensiun'        => $cd->golpensiun,
+						'noper'           	=> $cd->noper,
+						'noreken'           => $cd->noreken,
+						'anreken'           => $cd->anreken,
+						'bkodeb'           	=> $cd->bkodeb,
+						'tggaji'           	=> $cd->tggaji,
+						'gaji'           	=> $cd->gaji,
+						'sankhus'           => $cd->sankhus,
+						'tunjjab'           => $cd->tunjjab,
+						'tunjtbh'           => $cd->tunjtbh,
+						'uplembur'          => $cd->uplembur,
+						'tunjsos'           => $cd->tunjsos,
+						'pendpphtt'         => $cd->pendpphtt,
+						'tottunj'           => $cd->tottunj,
+						'nmdidik'           => $cd->nmdidik,
+						'jurusan'           => $cd->jurusan,
+						'tahunlulus'        => $cd->tahunlulus,
+						'nmsekolah'         => $cd->nmsekolah,
+						'noidstsb'          => $cd->noidstsb,
+						'golkary_mutasi'    => $cd->golkary,
+						'statusk_mutasi'    => $cd->statusk,
+						'tgskmutasi'        => $cd->tgskmutasi,
+						'noskmutasi'        => $cd->noskmutasi,
+						'nkdunit'           => $cd->nkdunit,
+						'nmunit'           	=> $cd->nmunit,
+						'nmfungsi'          => $cd->nmfungsi,
+						'nmsub'           	=> $cd->nmsub,
+					);
+					$this->mHCIS->minsert_mtpeg($simpan);
+				}
+				$simpan2 = array(
+					'id'           	=> $this->session->userdata('id'),
+					'unit'          => $unit,
+					'bulan'         => $bulan,
+					'tahun'         => $tahun,
+				);
+				$this->mHCIS->minsert_import_mtpeg($simpan2);
+				$log = array(
+					'id'		=> $this->session->userdata("id"),  
+					'unit'      => $this->input->post('unit'),
+					'jenis'     => 'HCIS Get Master Pegawai',
+					'platform'	=> $this->agent->platform(),
+					'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+					'ip'		=> $this->input->ip_address(),
+					'action'	=> 'Import Data Pegawai Unit : '.$unit.', Periode : '.$periode,
+				 );
+				 $this->mHCIS->insert_log($log);
+				echo '<script language="javascript">alert("Berhasil Mengupdate Data Pekerja !!!"); window.location.href="get_mtpeg";</script>';
+			} else {
+				echo '<script language="javascript">alert("Data Pegawai Belum Tersedia !!!"); window.location.href="get_mtpeg";</script>';
+			}
+		}else {
+			echo '<script language="javascript">alert("Maaf Data Pekerja : '.$unit.', Periode : '.$periode.', Sudah Terupdate !!!"); window.location.href="get_mtpeg";</script>';
+		}
+	}
+
 	public function tabel_populasi()
 	{
 		if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
@@ -44,7 +157,16 @@ class cHCIS extends CI_Controller {
         $data['unit'] = $this->input->post('unit');
         $data['filter'] = $this->input->post('filter');
         $data['periode'] = $this->input->post('periode');
-		
+		$log = array(
+			'id'		=> $this->session->userdata("id"),  
+			'unit'      => $this->input->post('unit'),
+			'jenis'     => 'HCIS Tabel Populasi Pekerja',
+			'platform'	=> $this->agent->platform(),
+			'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+			'ip'		=> $this->input->ip_address(),
+			'action'	=> 'Show Tabel Populasi Pekerja Unit : '.$unit.', Periode : '.$this->input->post('periode').', Filter By  : '.$filter,
+		 );
+		 $this->mHCIS->insert_log($log);		
 		$this->load->view('content/vsuperuser/vHCIS/vhasil_tabel_populasi', $data);
 	}
 
@@ -187,70 +309,6 @@ class cHCIS extends CI_Controller {
             }
         }
     }
-
-	// public function test()
-	// {
-	// 	 $this->load->view('content/vsuperuser/vHCIS/save');
-	// }
-
-	// public function upload_excel()
-	// {
-	// 	// Pastikan library PHPExcel sudah dimuat
-	// 	$this->load->library('PHPExcel');
-
-	// 	// Konfigurasi upload
-	// 	$config['upload_path'] = './assets/temp/';
-	// 	$config['allowed_types'] = 'xlsx';
-	// 	$config['max_size'] = 100024; // Ukuran maksimal file (dalam KB)
-	// 	$this->load->library('upload', $config);
-
-	// 	if (!$this->upload->do_upload('excel_file')) {
-	// 		$error = array('error' => $this->upload->display_errors());
-	// 		// Tampilkan pesan error jika upload gagal
-	// 		print_r ($error);
-	// 		die;
-	// 	} else {
-	// 		$upload_data = $this->upload->data();
-	// 		$file_path = $upload_data['full_path'];
-
-	// 		// Load file Excel yang diupload
-	// 		$excel = PHPExcel_IOFactory::load($file_path);
-	// 		$sheet = $excel->getSheet(0);
-	// 		$totalRows = $sheet->getHighestRow();
-
-	// 		// Folder tujuan untuk menyimpan gambar dengan path relatif
-	// 		$outputFolder = './assets/hasil_unsafe/';
-
-	// 		// Inisialisasi nomor urut file
-	// 		$nomorUrut = 1;
-
-	// 		// Loop melalui setiap baris
-	// 		for ($row = 4; $row <= $totalRows; $row++) {
-	// 			$gambarData = $sheet->getCell('G' . $row)->getValue();
-
-	// 			// Jika ada data gambar, simpan dengan nama file urut
-	// 			if (!empty($gambarData)) {
-	// 				$imageExtension = 'jpg'; // Ganti dengan ekstensi gambar yang sesuai
-
-	// 				// Generate nama file dan path tujuan
-	// 				$namaFile = $nomorUrut . '.' . $imageExtension;
-	// 				$pathTujuan = $outputFolder . $namaFile;
-
-	// 				// Simpan gambar
-	// 				file_put_contents($pathTujuan, base64_decode($gambarData));
-
-	// 				// Tingkatkan nomor urut
-	// 				$nomorUrut++;
-	// 			}
-	// 		}
-
-	// 		// Hapus file sementara
-	// 		unlink($file_path);
-
-	// 		// Tampilkan pesan berhasil atau redirect ke halaman lain
-	// 		echo 'Proses upload dan pengolahan data berhasil.';
-	// 	}
-	// }
 
 }
 ?>

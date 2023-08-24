@@ -37,7 +37,7 @@
                                     <!--begin::Title-->
                                     <h1
                                         class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                                        Data Pekerja All</h1>
+                                        Data Log Get API Data Pegawai</h1>
                                     <!--end::Title-->
                                     <!--begin::Breadcrumb-->
                                     <?php
@@ -79,8 +79,54 @@
                                         <!--begin::Card toolbar-->
                                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                                             <!--begin::Add product-->
-                                            <?php echo anchor('SuperUser/cHCIS/get_mtpeg', 'Log Get Data Pegawai', array('class' => 'btn btn-sm btn-success', 'type' => 'button')) ?>
+                                            <?php echo anchor('SuperUser/cHCIS/Master_pekerja', 'Close', array('class' => 'btn btn-sm btn-danger', 'type' => 'button')) ?>
+                                            <?php if ($this->session->userdata("otoritas") == "admin"): ?>
+                                                <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success">Get All Data Pegawai</a>
+                                            <?php endif; ?>
                                             <!--end::Add product-->
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Pilih Range Data</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="form" method="post" action="<?php echo site_url(); ?>SuperUser/cHCIS/insert_mtpeg" id="kt_subscriptions_create_new" enctype="multipart/form-data">
+                                                                <div class="row mb-5">
+                                                                    <div class="col-xl-3">
+                                                                        <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
+                                                                    </div>
+                                                                    <div class="col-xl-9 fv-row">
+                                                                    <select class="form-control form-control-solid select2" name="unit" >
+                                                                        <option selected="selected">-</option>
+                                                                        <option value="KP">Kantor Pusat</option>
+                                                                        <option value="RSG">Rumah Sakit Gatoel</option>
+                                                                        <option value="RSP">Rumah Sakit Perkebunan</option>
+                                                                        <option value="RST">Rumah Sakit Toelongredjo</option>
+                                                                        <option value="RSMU">Rumah Sakit Medika Utama</option>
+                                                                        <option value="URJ">URJ / KLINIK</option>
+                                                                    </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-5">
+                                                                    <div class="col-xl-3">
+                                                                        <div class="fs-6 fw-semibold mt-2 mb-3">Periode</div>
+                                                                    </div>
+                                                                    <div class="col-xl-9 fv-row">
+                                                                        <input class="form-control form-control-solid ps-12" type="month" name="periode" placeholder="Pick a date" id="periode" required="required"/>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" name="submit" class="btn btn-success">Simpan</button>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end::Modal-->
                                         </div>
                                         <!--end::Card toolbar-->
                                     </div>
@@ -95,13 +141,13 @@
                                                 <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                                                     <th class="w-10px pe-2">No
                                                     </th>
-                                                    <th class="text-left min-w-100px">NIP</th>
-                                                    <th class="text-left min-w-130px">Nama Pegawai</th>
-                                                    <th class="text-left min-w-70px">Alamat</th>
-                                                    <th class="text-left min-w-100px">Jns. Kel | Agama</th>
-                                                    <th class="text-left min-w-100px">Unit | Status</th>
-                                                    <th class="text-left min-w-100px">Fungsi | Divisi</th>
-                                                    <th class="text-left min-w-100px">Status Pendidikan</th>
+                                                    <th class="text-left min-w-100px">ID User</th>
+                                                    <th class="text-left min-w-130px">Nama User</th>
+                                                    <th class="text-left min-w-70px">Unit Import</th>
+                                                    <th class="text-left min-w-100px">Periode</th>
+                                                    <th class="text-left min-w-100px">Jam Transaksi</th>
+                                                    <th class="text-left min-w-100px">Tanggal Transaksi</th>
+                                                    <th class="text-left min-w-100px">Status</th>
                                                 </tr>
                                                 <!--end::Table row-->
                                             </thead>
@@ -110,7 +156,7 @@
                                             <tbody class="fw-semibold text-gray-600">
                                                 <?php
                                                 $no = 1;
-                                                foreach ($mt_pekerja as $mt_pekerja) :
+                                                foreach ($mt_import as $mt_import) :
                                                 ?>
                                                 <!--begin::Table row-->
                                                 <tr>
@@ -123,16 +169,16 @@
                                                     <!--end::Checkbox-->
                                                     <!--begin::Order ID=-->
                                                     <td class="text-left pe-0" data-kt-ecommerce-order-filter="order_id">
-                                                        <a class="text-gray-800 text-hover-primary fw-bold"><?php echo $mt_pekerja->nik ?></a>
+                                                        <a class="text-gray-800 text-hover-primary fw-bold">USR<?php echo $mt_import->id ?></a>
                                                     </td>
                                                     <!--end::Order ID=-->
                                                     <!--end::Customer=-->
                                                     <!--begin::Status=-->
-                                                    <td class="text-left pe-0" data-order="<?php echo $mt_pekerja->namabio ?>">
+                                                    <td class="text-left pe-0" data-order="<?php echo $mt_import->nama ?>">
                                                         <!-- <div class="ms-5"> -->
                                                         <span class="d-flex align-items-left">
                                                             <!--begin::Title-->
-                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><?php echo $mt_pekerja->namabio ?></a>
+                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold"><?php echo $mt_import->nama ?></a>
                                                             <!--end::Title-->
                                                         </span>
                                                         <!-- </div> -->
@@ -141,32 +187,21 @@
                                                     <!--begin::Total=-->
                                                     <td class="text-left pe-0">
                                                         <span class="d-flex align-items-left">
-                                                            <?php echo $mt_pekerja->alamatpph ?> 
+                                                            <?php echo $mt_import->unit ?> 
                                                         </span>
                                                     </td>
                                                     <!--end::Total=-->
                                                     <!--begin::Date Added=-->
-                                                    <td class="text-left" data-order="<?php echo $mt_pekerja->jk ?>">
+                                                    <td class="text-left" data-order="<?php echo $mt_import->bulan ?>">
                                                         <span class="d-flex align-items-left">
-                                                            <?php if ($mt_pekerja->jk == "L"){
-                                                                echo '<div class="badge badge-light-primary">Laki - Laki</div>';
-                                                            }else{
-                                                                echo '<div class="badge badge-light-danger">Perempuan</div>';
-                                                            }
-                                                            ?>|<div class="badge badge-light-info"><?php echo $mt_pekerja->agama ?></div>
+                                                            <?php echo date('M Y', strtotime($mt_import->tahun . '-' . $mt_import->bulan . '-01')); ?>
                                                         </span>
                                                     </td>
                                                     <!--end::Date Added=-->
                                                     <!--begin::Date Modified=-->
-                                                    <td class="text-left" data-order="<?php echo $mt_pekerja->tptlahir ?>">
+                                                    <td class="text-left" data-order="<?php echo $mt_import->lastupdate ?>">
                                                         <span class="d-flex align-items-left">
-                                                            <div class="badge badge-light-success"><?php echo $mt_pekerja->unit ?></div>
-                                                            |
-                                                            <?php if ($mt_pekerja->golkary == ""){
-                                                                echo '<div class="badge badge-light-warning">PWTT</div>';
-                                                            }else{
-                                                                echo '<div class="badge badge-light-warning">'.$mt_pekerja->golkary.'</div>';
-                                                            }?>                                                            
+                                                            <?php echo (new DateTime($mt_import->lastupdate))->format('H:i:s'); ?>
                                                         </span>
                                                     </td>
                                                     <!--end::Date Modified=-->
@@ -175,16 +210,14 @@
                                                         <div class="d-flex align-items-left">
                                                             <!--begin:: Avatar -->
                                                             <!-- <div class="ms-5"> -->
-                                                                <div class="badge badge-light-success"><?php echo $mt_pekerja->nmfungsi ?></div>
-                                                                |
-                                                                <div class="badge badge-light-warning"><?php echo $mt_pekerja->nmsub ?></div>
+                                                            <?php echo (new DateTime($mt_import->lastupdate))->format('d M Y'); ?>                                              
                                                             <!-- </div> -->
                                                         </div>
                                                     </td>
                                                     <!--begin::Action=-->
                                                     <td class="text-left">
                                                         <div class="d-flex justify-content-left flex-shrink-0">
-                                                            <a class="text-gray-800 text-hover-primary fw-bold"><?php echo $mt_pekerja->nmdidik?> | <?php echo $mt_pekerja->jurusan?> | <?php echo $mt_pekerja->tahunlulus?> | <?php echo $mt_pekerja->nmsekolah?></a></br>
+                                                                <div class="badge badge-light-success">done</div>
                                                         </div>
                                                     </td>
                                                     <!--end::Action=-->

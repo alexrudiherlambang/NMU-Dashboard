@@ -99,6 +99,30 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
+//DB kpo 20.20
+$db['db_kp'] = array(
+	'dsn'	=> '',
+	'hostname' => '10.88.20.20',
+	'port'     => '3306',
+	'username' => 'itnmu',
+	'password' => 'itnmu',
+	'database' => 'ptnmusimrs_esme1',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
 //DB RSG
 $db['db_rsg'] = array(
 	'dsn'	=> '',
@@ -179,6 +203,30 @@ $db['db_rsmu'] = array(
 	'username' => 'itnmu',
 	'password' => 'itnmu',
 	'database' => 'ptnmusimrs_rsmu',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
+//DB MDM
+$db['db_urj'] = array(
+	'dsn'	=> '',
+	'hostname' => '10.88.20.30',
+	'port'     => '3306',
+	'username' => 'alex',
+	'password' => '1',
+	'database' => 'ptnmusimrs_mdm',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

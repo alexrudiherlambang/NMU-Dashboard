@@ -196,7 +196,7 @@
                                                     <td class="text-center">
                                                     <?php if ($unsafe->validasi === "open"): ?>
                                                         <div class="d-flex justify-content-center flex-shrink-0">
-                                                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1">
+                                                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $unsafe->id_unsafe; ?>" class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1">
                                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                                                                 <span class="svg-icon svg-icon-2x">
                                                                     <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/General/Visible.svg-->
@@ -241,7 +241,7 @@
                                                     </td>
                                                     <!--end::Action=-->
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModal<?php echo $unsafe->id_unsafe; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">

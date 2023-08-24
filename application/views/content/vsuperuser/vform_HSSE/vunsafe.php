@@ -193,9 +193,9 @@
                                                     </td>
                                                     <!--begin::Action=-->
                                                     <td class="text-center">
-                                                    <?php if ($unsafe->validasi === "open"): ?>
+                                                        <?php if ($unsafe->validasi === "open"): ?>
                                                         <div class="d-flex justify-content-center flex-shrink-0">
-                                                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1">
+                                                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $unsafe->id_unsafe; ?>" class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1">
                                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                                                                 <span class="svg-icon svg-icon-2x">
                                                                     <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/General/Visible.svg-->
@@ -210,7 +210,43 @@
                                                                 <!--end::Svg Icon-->
                                                             </a>
                                                         </div>
-                                                    <?php endif; ?>
+                                                        <?php endif; ?>
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="exampleModal<?php echo $unsafe->id_unsafe; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Validasi Status Kejadian</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form class="form" method="post" action="<?php echo site_url(); ?>SuperUser/cform_HSSE/validasi_unsafe" id="kt_subscriptions_create_new" enctype="multipart/form-data">
+                                                                            <div class="row mb-5">
+                                                                                <div class="col-xl-3">
+                                                                                    <div class="fs-6 fw-semibold mt-2 mb-3">ID</div>
+                                                                                </div>
+                                                                                <div class="col-xl-9 fv-row">
+                                                                                    <input type="text" class="form-control form-control-solid" name="id_unsafe" value="<?php echo $unsafe->id_unsafe ?>" readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mb-5">
+                                                                                <div class="col-xl-3">
+                                                                                    <div class="fs-6 fw-semibold mt-2 mb-3">Evidence</div>
+                                                                                </div>
+                                                                                <div class="col-xl-9 fv-row">
+                                                                                    <input type="file" name="evidence" id="evidence">
+                                                                                    <label for="evidence">Pilih File</label>
+                                                                                </div>
+                                                                            </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit" name="submit" class="btn btn-success">Simpan</button>
+                                                                    </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--end::Modal-->
                                                         <div class="d-flex justify-content-center flex-shrink-0">
                                                             <a href="<?php echo site_url("SuperUser/cform_HSSE/edit_unsafe/" . $unsafe->id_unsafe."/unsafe") ?>" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
@@ -238,43 +274,7 @@
                                                             </a>
                                                         </div>
                                                     </td>
-                                                    <!--end::Action=-->
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Judul Popup</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form class="form" method="post" action="<?php echo site_url(); ?>SuperUser/cform_HSSE/validasi_unsafe" id="kt_subscriptions_create_new" enctype="multipart/form-data">
-                                                                        <div class="row mb-5">
-                                                                            <div class="col-xl-3">
-                                                                                <div class="fs-6 fw-semibold mt-2 mb-3">ID</div>
-                                                                            </div>
-                                                                            <div class="col-xl-9 fv-row">
-                                                                                <input type="text" class="form-control form-control-solid" name="id_unsafe" value="<?php echo $unsafe->id_unsafe ?>" readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-5">
-                                                                            <div class="col-xl-3">
-                                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Evidence</div>
-                                                                            </div>
-                                                                            <div class="col-xl-9 fv-row">
-                                                                                <input type="file" name="evidence" id="evidence">
-                                                                                <label for="evidence">Pilih File</label>
-                                                                            </div>
-                                                                        </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-                                                                </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--end::Modal-->	
+                                                    <!--end::Action=-->	
                                                 </tr>
                                                 <!--end::Table row-->	
                                                 <?php
