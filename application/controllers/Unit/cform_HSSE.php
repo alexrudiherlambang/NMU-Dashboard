@@ -45,6 +45,7 @@ class cform_HSSE extends CI_Controller {
          'po4'              => $this->input->post('po4'),        
          'coliform'         => $this->input->post('coliform'),
          'lab'              => $lab,
+         'rtl'              => $this->input->post('rtl'),
       );
       $this->mform_HSSE->minsert_limbah($simpan);
       $log = array(
@@ -92,6 +93,7 @@ class cform_HSSE extends CI_Controller {
          'po4'              => $this->input->post('po4'),        
          'coliform'         => $this->input->post('coliform'),
          'lab'              => $lab,
+         'rtl'              => $this->input->post('rtl'),
       );
       $this->mform_HSSE->mupdate_limbah($update, $id_limbah);
       $log = array(
@@ -448,6 +450,7 @@ class cform_HSSE extends CI_Controller {
          'detil_item'   => $this->input->post('detil_item'),        
          'penyebab'       => $this->input->post('penyebab'),              
          'deskripsi'       => $this->input->post('deskripsi'),        
+         'rtl'              => $this->input->post('rtl'),
          'lokasi'          => $this->input->post('lokasi'),        
          'tgl_waktu'       => $this->input->post('tgl_waktu'),
          'bukti'           => $bukti,
@@ -495,6 +498,7 @@ class cform_HSSE extends CI_Controller {
          'detil_item'   => $this->input->post('detil_item'),        
          'penyebab'       => $this->input->post('penyebab'),              
          'deskripsi'       => $this->input->post('deskripsi'),        
+         'rtl'              => $this->input->post('rtl'),
          'lokasi'          => $this->input->post('lokasi'),        
          'tgl_waktu'       => $this->input->post('tgl_waktu'),
          'bukti'           => $bukti,

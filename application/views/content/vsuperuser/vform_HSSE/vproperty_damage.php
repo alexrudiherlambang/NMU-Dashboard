@@ -157,6 +157,7 @@
                                                                 <a><b>Detail Item Kerusakan:</b> <?php echo $property_damage->detil_item ?></a></br>
                                                                 <a><b>Penyebab:</b> <?php echo $property_damage->penyebab ?></a></br>
                                                                 <a><b>Deskripsi Kejadian:</b> <?php echo $property_damage->deskripsi ?></a></br>
+                                                                <a><b>RTL Kejadian:</b> <?php echo $property_damage->rtl ?></a></br>
                                                                 <!--end::Title-->
                                                             </div>
                                                         </div>
@@ -259,6 +260,7 @@
                                                                 <a><s><b>Detail Item Kerusakan:</b> <?php echo $property_damage->detil_item ?></s></a></br>
                                                                 <a><s><b>Penyebab:</b> <?php echo $property_damage->penyebab ?></s></a></br>
                                                                 <a><s><b>Deskripsi Kejadian:</b> <?php echo $property_damage->deskripsi ?></s></a></br>
+                                                                <a><s><b>RTL Kejadian:</b> <?php echo $property_damage->rtl ?></s></a></br>
                                                                 <!--end::Title-->
                                                             </div>
                                                         </div>

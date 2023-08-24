@@ -156,12 +156,49 @@
                                                                 <td class="text-center min-w-125px"><b>Limbah</b></td>
                                                                 <td class="text-center min-w-125px">Suhu </td>
                                                                 <td class="text-center min-w-100px">30</td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsg->suhu, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rst->suhu, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsp->suhu, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsmu->suhu, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_urj->suhu, 0); ?></td>
-                                                                <td style="background-color: #0099FF; color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format(($limbah_rsg->suhu+$limbah_rst->suhu+$limbah_rsp->suhu+$limbah_rsmu->suhu+$limbah_urj->suhu), 0); ?></td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsg->suhu > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsg->suhu, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsg->suhu, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rst->suhu > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rst->suhu, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rst->suhu, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsp->suhu > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsp->suhu, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsp->suhu, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsmu->suhu > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsmu->suhu, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsmu->suhu, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_urj->suhu > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_urj->suhu, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_urj->suhu, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td style="background-color: #0099FF; color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">
+                                                                    <?php echo number_format(($limbah_rsg->suhu+$limbah_rst->suhu+$limbah_rsp->suhu+$limbah_rsmu->suhu+$limbah_urj->suhu), 0); ?>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="background-color: #0F4ED8; color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5"><b></b></td>
@@ -169,11 +206,46 @@
                                                                 <td class="text-center min-w-125px">Limbah</td>
                                                                 <td class="text-center min-w-125px"><b>BOD (mg/L)</b></td>
                                                                 <td class="text-center min-w-100px">30</td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsg->bod, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rst->bod, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsp->bod, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsmu->bod, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_urj->bod, 0); ?></td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsg->bod > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsg->bod, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsg->bod, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rst->bod > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rst->bod, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rst->bod, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsp->bod > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsp->bod, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsp->bod, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsmu->bod > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsmu->bod, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsmu->bod, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_urj->bod > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_urj->bod, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_urj->bod, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
                                                                 <td style="background-color: #0099FF; color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format(($limbah_rsg->bod+$limbah_rst->bod+$limbah_rsp->bod+$limbah_rsmu->bod+$limbah_urj->bod), 0); ?></td>
                                                             </tr>
                                                             <tr>
@@ -182,11 +254,46 @@
                                                                 <td class="text-center min-w-125px">Limbah</td>
                                                                 <td class="text-center min-w-125px"><b>COD (mg/L)</b></td>
                                                                 <td class="text-center min-w-100px">80</td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsg->cod, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rst->cod, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsp->cod, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsmu->cod, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_urj->cod, 0); ?></td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsg->cod > "80"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsg->cod, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsg->cod, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rst->cod > "80"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rst->cod, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rst->cod, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsp->cod > "80"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsp->cod, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsp->cod, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsmu->cod > "80"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsmu->cod, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsmu->cod, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_urj->cod > "80"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_urj->cod, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_urj->cod, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
                                                                 <td style="background-color: #0099FF; color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format(($limbah_rsg->cod+$limbah_rst->cod+$limbah_rsp->cod+$limbah_rsmu->cod+$limbah_urj->cod), 0); ?></td>
                                                             </tr>
                                                             <tr>
@@ -195,11 +302,46 @@
                                                                 <td class="text-center min-w-125px">Limbah</td>
                                                                 <td class="text-center min-w-125px"><b>TSS (mg/L)</b></td>
                                                                 <td class="text-center min-w-100px">30</td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsg->tss, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rst->tss, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsp->tss, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsmu->tss, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_urj->tss, 0); ?></td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsg->tss > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsg->tss, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsg->tss, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rst->tss > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rst->tss, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rst->tss, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsp->tss > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsp->tss, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsp->tss, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsmu->tss > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsmu->tss, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsmu->tss, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_urj->tss > "30"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_urj->tss, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_urj->tss, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
                                                                 <td style="background-color: #0099FF; color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format(($limbah_rsg->tss+$limbah_rst->tss+$limbah_rsp->tss+$limbah_rsmu->tss+$limbah_urj->tss), 0); ?></td>
                                                             </tr>
                                                             <tr>
@@ -208,11 +350,46 @@
                                                                 <td class="text-center min-w-125px">Limbah</td>
                                                                 <td class="text-center min-w-125px"><b>PH</b></td>
                                                                 <td class="text-center min-w-100px">9</td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsg->ph, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rst->ph, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsp->ph, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsmu->ph, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_urj->ph, 0); ?></td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsg->ph > "9"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsg->ph, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsg->ph, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rst->ph > "9"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rst->ph, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rst->ph, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsp->ph > "9"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsp->ph, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsp->ph, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsmu->ph > "9"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsmu->ph, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsmu->ph, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_urj->ph > "9"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_urj->ph, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_urj->ph, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
                                                                 <td style="background-color: #0099FF; color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format(($limbah_rsg->ph+$limbah_rst->ph+$limbah_rsp->ph+$limbah_rsmu->ph+$limbah_urj->ph), 0); ?></td>
                                                             </tr>
                                                             <tr>
@@ -221,11 +398,46 @@
                                                                 <td class="text-center min-w-125px">Limbah</td>
                                                                 <td class="text-center min-w-125px"><b>NH3 (mg/L) </b></td>
                                                                 <td class="text-center min-w-100px">0.1</td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsg->nh3, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rst->nh3, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsp->nh3, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsmu->nh3, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_urj->nh3, 0); ?></td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsg->nh3 > "0.1"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsg->nh3, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsg->nh3, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rst->nh3 > "0.1"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rst->nh3, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rst->nh3, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsp->nh3 > "0.1"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsp->nh3, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsp->nh3, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsmu->nh3 > "0.1"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsmu->nh3, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsmu->nh3, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_urj->nh3 > "0.1"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_urj->nh3, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_urj->nh3, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
                                                                 <td style="background-color: #0099FF; color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format(($limbah_rsg->nh3+$limbah_rst->nh3+$limbah_rsp->nh3+$limbah_rsmu->nh3+$limbah_urj->nh3), 0); ?></td>
                                                             </tr>
                                                             <tr>
@@ -234,11 +446,46 @@
                                                                 <td class="text-center min-w-125px">Limbah</td>
                                                                 <td class="text-center min-w-125px"><b>PO4 (mg/L)</b></td>
                                                                 <td class="text-center min-w-100px">2</td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsg->po4, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rst->po4, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsp->po4, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsmu->po4, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_urj->po4, 0); ?></td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsg->po4 > "2"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsg->po4, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsg->po4, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rst->po4 > "2"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rst->po4, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rst->po4, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsp->po4 > "2"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsp->po4, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsp->po4, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsmu->po4 > "2"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsmu->po4, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsmu->po4, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_urj->po4 > "2"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_urj->po4, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_urj->po4, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
                                                                 <td style="background-color: #0099FF; color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format(($limbah_rsg->po4+$limbah_rst->po4+$limbah_rsp->po4+$limbah_rsmu->po4+$limbah_urj->po4), 0); ?></td>
                                                             </tr>
                                                             <tr>
@@ -247,11 +494,46 @@
                                                                 <td class="text-center min-w-125px">Limbah</td>
                                                                 <td class="text-center min-w-125px"><b>Coliform (MPN/100ml)</b></td>
                                                                 <td class="text-center min-w-100px">10000</td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsg->coliform, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rst->coliform, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsp->coliform, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_rsmu->coliform, 0); ?></td>
-                                                                <td class="text-center min-w-75px"><?php echo number_format($limbah_urj->coliform, 0); ?></td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsg->coliform > "100000"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsg->coliform, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsg->coliform, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rst->coliform > "100000"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rst->coliform, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rst->coliform, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsp->coliform > "100000"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsp->coliform, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsp->coliform, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_rsmu->coliform > "100000"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_rsmu->coliform, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_rsmu->coliform, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center min-w-75px">
+                                                                    <?php if ($limbah_urj->coliform > "100000"){
+                                                                        echo '<div class="badge badge-light-danger">'.number_format($limbah_urj->coliform, 0).'</div>';
+                                                                    }else{
+                                                                        echo '<div class="badge badge-light-success">'.number_format($limbah_urj->coliform, 0).'</div>';
+                                                                    }
+                                                                    ?>
+                                                                </td>
                                                                 <td style="background-color: #0099FF; color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format(($limbah_rsg->coliform+$limbah_rst->coliform+$limbah_rsp->coliform+$limbah_rsmu->coliform+$limbah_urj->coliform), 0); ?></td>
                                                             </tr>
                                                         <tr style="background-color: #0F4ED8;">

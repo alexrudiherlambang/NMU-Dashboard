@@ -8,7 +8,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA LIMBAH
    function mshow_all_limbah() {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lab,lastupdate');
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lab,rtl,lastupdate');
       $this->db->from('hsse_limbah');
       $this->db->order_by('id_limbah', 'desc');
       return $this->db->get()->result();
@@ -17,7 +17,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA LIMBAH YANG DIHAPUS
    function mshow_all_del_limbah() {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lab,lastupdate');
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lab,rtl,lastupdate');
       $this->db->from('x_after_del_hsse_limbah');
       $this->db->order_by('id_limbah', 'desc');
       return $this->db->get()->result();
@@ -32,7 +32,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA LIMBAH
    function mselect_by_id_limbah($id_limbah) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lab,lastupdate');
+      $this->db->select('id_limbah,email,unit,nip,napeg,status,fungsi,bulan,tahun,suhu,bod,cod,tss,ph,nh3,po4,coliform,lab,rtl,lastupdate');
       $this->db->from('hsse_limbah');
       $this->db->where('id_limbah', $id_limbah);
       return $this->db->get()->row();
@@ -151,7 +151,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA PROPERTY DAMAGE
    function mshow_all_property($jenis) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_property,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_alat,detil_item,penyebab,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->select('id_property,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_alat,detil_item,penyebab,deskripsi,rtl,lokasi,tgl_waktu,bukti,lastupdate');
       $this->db->from('hsse_property');
       $this->db->where('jenis', $jenis);
       $this->db->order_by('id_property', 'desc');
@@ -161,7 +161,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA PROPERTY DAMAGE YANG DIHAPUS
    function mshow_all_del_property($jenis) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_property,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_alat,detil_item,penyebab,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->select('id_property,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_alat,detil_item,penyebab,deskripsi,rtl,lokasi,tgl_waktu,bukti,lastupdate');
       $this->db->from('x_after_del_hsse_property');
       $this->db->where('jenis', $jenis);
       $this->db->order_by('id_property', 'desc');
@@ -171,7 +171,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA PROPERTY DAMAGE
    function mselect_by_id_property($id_property) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_property,jenis,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_alat,detil_item,penyebab,deskripsi,lokasi,tgl_waktu,bukti,lastupdate');
+      $this->db->select('id_property,jenis,sub_jenis,email,unit,nip,napeg,status,fungsi,nama_alat,detil_item,penyebab,deskripsi,rtl,lokasi,tgl_waktu,bukti,lastupdate');
       $this->db->from('hsse_property');
       $this->db->where('id_property', $id_property);
       return $this->db->get()->row();

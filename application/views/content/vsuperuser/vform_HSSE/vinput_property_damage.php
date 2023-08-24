@@ -203,6 +203,14 @@
                                                                 <textarea class="form-control form-control-solid" rows="3" name="deskripsi" placeholder="Input Deskripsi Kejadian"></textarea>
                                                             </div>
                                                         </div>
+                                                        <div class="row mb-5">
+                                                            <div class="col-xl-3">
+                                                                <div class="fs-6 fw-semibold mt-2 mb-3">Rencana Tindak Lanjut</div>
+                                                            </div>
+                                                            <div class="col-xl-9 fv-row">
+                                                                <textarea class="form-control form-control-solid" rows="3" name="rtl" placeholder="Input Rencana Tindak Lanjut Kejadian"></textarea>
+                                                            </div>
+                                                        </div>
                                                         <hr class="my-3">
                                                         <div class="fs-5 fw-bold form-label mb-3">Tingkat Keparahan
                                                         <hr class="my-3"></div>
