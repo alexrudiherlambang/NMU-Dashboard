@@ -200,7 +200,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA UNSAFE ACTION UNSAFE CONDITION
    function mshow_all_unsafe($jenis) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_unsafe,sub_jenis,email,unit,nip,napeg,status,fungsi,jenis_temuan,deskripsi,rtl,pic,lokasi,tgl_waktu,bukti,validasi,evidence,lastupdate');
+      $this->db->select('id_unsafe,sub_jenis,email,unit,nip,napeg,status,fungsi,jenis_temuan,deskripsi,rtl,pic,lokasi,tgl_waktu,bukti,validasi,tgl_validasi,evidence,lastupdate');
       $this->db->from('hsse_unsafe');
       $this->db->where('jenis', $jenis);
       $this->db->order_by('validasi', 'desc');
@@ -211,7 +211,7 @@ class mform_HSSE extends ci_model {
    //SHOW DATA UNSAFE ACTION UNSAFE CONDITION YANG DIHAPUS
    function mshow_all_del_unsafe($jenis) {
       $this->db = $this->load->database('local', TRUE);
-      $this->db->select('id_unsafe,sub_jenis,email,unit,nip,napeg,status,fungsi,jenis_temuan,deskripsi,rtl,pic,lokasi,tgl_waktu,bukti,validasi,evidence,lastupdate');
+      $this->db->select('id_unsafe,sub_jenis,email,unit,nip,napeg,status,fungsi,jenis_temuan,deskripsi,rtl,pic,lokasi,tgl_waktu,bukti,validasi,tgl_validasi,evidence,lastupdate');
       $this->db->from('x_after_del_hsse_unsafe');
       $this->db->where('jenis', $jenis);
       $this->db->order_by('validasi', 'desc');

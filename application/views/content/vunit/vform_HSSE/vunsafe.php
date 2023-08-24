@@ -171,7 +171,7 @@
                                                             <div class="ms-5">
                                                                 <!--begin::Title-->
                                                                 <a><b>Lokasi: </b><?php echo $unsafe->lokasi ?></a></br>
-                                                                <a><b>Tanggal & Waktu: </b><?php echo $unsafe->tgl_waktu ?></a></br>
+                                                                <a><b>Tanggal Kejadian: </b><?php echo $unsafe->tgl_waktu ?></a></br>
                                                                 <a><b>Status Validasi: </b>
                                                                 <?php if ($unsafe->validasi == "open"){
                                                                     echo '<div class="badge badge-light-success">'.$unsafe->validasi.'</div>';
@@ -179,6 +179,9 @@
                                                                     echo '<div class="badge badge-light-danger">'.$unsafe->validasi.'</div>';
                                                                 }
                                                                 ?></br>
+                                                                <?php if ($unsafe->validasi === "close"): ?>
+                                                                    <a><b>Tanggal Validasi: </b><?php echo $unsafe->tgl_validasi ?></a></br>
+                                                                <?php endif; ?>
                                                                 <a>
                                                                     <b>Evidence: </b> 
                                                                     <?php if ($unsafe->evidence === "NULL") {
@@ -258,6 +261,14 @@
                                                                                 <input type="text" class="form-control form-control-solid" name="id_unsafe" value="<?php echo $unsafe->id_unsafe ?>" readonly>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="row mb-5">
+                                                                                <div class="col-xl-3">
+                                                                                    <div class="fs-6 fw-semibold mt-2 mb-3">Tgl Validasi</div>
+                                                                                </div>
+                                                                                <div class="col-xl-9 fv-row">
+                                                                                    <input type="datetime-local" class="form-control form-control-solid" name="tgl_validasi">
+                                                                                </div>
+                                                                            </div>
                                                                         <div class="row mb-5">
                                                                             <div class="col-xl-3">
                                                                                 <div class="fs-6 fw-semibold mt-2 mb-3">Evidence</div>
@@ -345,7 +356,7 @@
                                                             <div class="ms-5">
                                                                 <!--begin::Title-->
                                                                 <a><s><b>Lokasi: </b><?php echo $unsafe->lokasi ?></s></a></br>
-                                                                <a><s><b>Tanggal & Waktu: </b><?php echo $unsafe->tgl_waktu ?></s></a></br>
+                                                                <a><s><b>Tanggal Kejadian: </b><?php echo $unsafe->tgl_waktu ?></s></a></br>
                                                                 <a><s><b>Status Validasi: </b></s>
                                                                 <?php if ($unsafe->validasi == "open"){
                                                                     echo '<div class="badge badge-light-success">'.$unsafe->validasi.'</div>';
@@ -353,6 +364,9 @@
                                                                     echo '<div class="badge badge-light-danger">'.$unsafe->validasi.'</div>';
                                                                 }
                                                                 ?></br>
+                                                                <?php if ($unsafe->validasi === "close"): ?>
+                                                                    <a><b>Tanggal Validasi: </b><?php echo $unsafe->tgl_validasi ?></a></br>
+                                                                <?php endif; ?>
                                                                 <a>
                                                                     <b><s>Evidence: </s></b> 
                                                                     <?php if ($unsafe->evidence === "NULL") {

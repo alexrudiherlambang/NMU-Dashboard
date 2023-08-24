@@ -621,6 +621,7 @@ class cform_HSSE extends CI_Controller {
       $id_unsafe = $this->input->post('id_unsafe');
       $update = array(
          'validasi'        => "close",        
+         'tgl_validasi'    => $this->input->post('tgl_validasi'),
          'evidence'        => $evidence,
       );
       $this->mform_HSSE->mupdate_unsafe($update, $id_unsafe);
