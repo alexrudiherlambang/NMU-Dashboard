@@ -110,7 +110,7 @@ class mgrafik_HSSE extends ci_model {
         });
     
         return $result;
-    }    
+    }   
 
     //SHOW COUNT DATA KEJADIAN KECELAKAAN UNSAFE
     function mshow_all_unsafe($unit, $tglawal, $tglakhir) {
