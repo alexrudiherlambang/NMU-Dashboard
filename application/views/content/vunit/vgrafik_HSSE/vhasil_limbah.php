@@ -193,10 +193,10 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Suhu (oC)', 'BOD (mg/L)', 'COD (mg/L)', 'TSS (mg/L)', 'PH', 'NH3 (mg/L)', 'PO4 (mg/L)', 'Coliform (MPN/100ml)'],
+            labels: ['Suhu (oC)', 'BOD (mg/L)', 'COD (mg/L)', 'TSS (mg/L)', 'PH', 'NH3 (mg/L)', 'PO4 (mg/L)', 'Coliform (MPN/100ml)[Dalam Ratusan]'],
             datasets: [{
                 label: 'Hasil',
-                data: [<?php echo $suhu ?>, <?php echo $bod ?>, <?php echo $cod ?>, <?php echo $tss ?>, <?php echo $ph ?>, <?php echo $nh3 ?>, <?php echo $po4 ?>, <?php echo $coliform ?>],
+                data: [<?php echo $suhu ?>, <?php echo $bod ?>, <?php echo $cod ?>, <?php echo $tss ?>, <?php echo $ph ?>, <?php echo $nh3 ?>, <?php echo $po4 ?>, <?php echo $coliform/100 ?>],
                 borderColor: 'rgba(15, 78, 216, 1)',
             backgroundColor: 'rgba(15, 78, 216, 0.2)',
                 borderWidth: 3
@@ -211,7 +211,7 @@
             }],
             yAxes: [{
             gridLines: {
-                display: false
+                display: true
             }
             }]
         },
@@ -239,7 +239,7 @@
     myChart.update();
     myChart.data.datasets.push({
     label: 'Baku Mutu',
-    data: [30, 30, 80, 30, 9, 0.1, 2, 10000],
+    data: [30, 30, 80, 30, 9, 0.1, 2, 100],
     borderColor: 'rgba(0, 168, 104, 1)',
 	backgroundColor: 'rgba(0, 168, 104, 0.2)',
     borderWidth: 3

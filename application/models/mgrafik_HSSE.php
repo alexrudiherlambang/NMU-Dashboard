@@ -49,31 +49,68 @@ class mgrafik_HSSE extends ci_model {
         return $this->db->get()->result();
     }
     
-    //SHOW COUNT DATA KEJADIAN KECELAKAAN
     function mshow_all_kejadian_kecelakaan($unit, $tglawal, $tglakhir) {
         $this->db = $this->load->database('local', TRUE);
-        $this->db->select('jenis,sub_jenis,COUNT(id_other) as jumlah ');
-        $this->db->select("DATE_FORMAT(tgl_waktu, '%Y-%m') as periode");
+        
+        // Get all distinct sub_jenis values from hcis_sub_jenis_table
+        $sub_jenis_values = array(
+            'Fatality',
+            'Days Away From Work/Lost Time Incident',
+            'Restricted Work Day Case',
+            'Medical Treatment Case',
+            'First Aid',
+            'Nearmiss'
+        );
+    
+        // Query to count data from hsse_other for each sub_jenis
+        $this->db->select('sub_jenis, COUNT(id_other) as jumlah');
         $this->db->from('hsse_other');
-        $this->db->where('DATE(tgl_waktu)>=', $tglawal);
-        $this->db->where('DATE(tgl_waktu)<=', $tglakhir);
+        $this->db->where('DATE(tgl_waktu) >=', $tglawal);
+        $this->db->where('DATE(tgl_waktu) <=', $tglakhir);
         if($unit != "KONSOLIDASI"){
             $this->db->where('unit', $unit);
         }
         $this->db->group_by('sub_jenis');
-        $this->db->where('jenis !=', 'property_damage');
-        $this->db->where('jenis !=', 'clasification');
-        $this->db->order_by("CASE 
-                                WHEN sub_jenis = 'Fatality' THEN 1
-                                WHEN sub_jenis = 'Days Away From Work/Lost Time Incident' THEN 2
-                                WHEN sub_jenis = 'Restricted Work Day Case' THEN 3
-                                WHEN sub_jenis = 'Medical Treatment Case' THEN 4
-                                WHEN sub_jenis = 'First Aid' THEN 5
-                                WHEN sub_jenis = 'Nearmiss' THEN 6
-                                ELSE 4
-                            END", 'desc');
-        return $this->db->get();
-    }
+        $sub_jenis_count_result = $this->db->get()->result_array();
+    
+        // Create a result array with all sub_jenis values and their counts
+        $result = array();
+        foreach ($sub_jenis_values as $sub_jenis) {
+            $found = false;
+            foreach ($sub_jenis_count_result as $row) {
+                if ($row['sub_jenis'] == $sub_jenis) {
+                    $result[] = array(
+                        'sub_jenis' => $row['sub_jenis'],
+                        'jumlah' => $row['jumlah']
+                    );
+                    $found = true;
+                    break;
+                }
+            }
+            if (!$found) {
+                // If sub_jenis not found in result, add it with jumlah 0
+                $result[] = array(
+                    'sub_jenis' => $sub_jenis,
+                    'jumlah' => 0
+                );
+            }
+        }
+    
+        // Sort the result array based on sub_jenis order
+        usort($result, function($a, $b) {
+            $order = array(
+                'Fatality' => 6,
+                'Days Away From Work/Lost Time Incident' =>5,
+                'Restricted Work Day Case' => 4,
+                'Medical Treatment Case' => 3,
+                'First Aid' => 2,
+                'Nearmiss' => 1
+            );
+            return $order[$a['sub_jenis']] - $order[$b['sub_jenis']];
+        });
+    
+        return $result;
+    }    
 
     //SHOW COUNT DATA KEJADIAN KECELAKAAN UNSAFE
     function mshow_all_unsafe($unit, $tglawal, $tglakhir) {

@@ -192,7 +192,7 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Suhu (oC)', 'BOD (mg/L)', 'COD (mg/L)', 'TSS (mg/L)', 'PH', 'NH3 (mg/L)', 'PO4 (mg/L)', 'Coliform (MPN/100ml)'],
+            labels: ['Suhu (oC)', 'BOD (mg/L)', 'COD (mg/L)', 'TSS (mg/L)', 'PH', 'NH3 (mg/L)', 'PO4 (mg/L)', 'Coliform (MPN/100ml)[Dalam Ratusan]'],
             datasets: [{
                 label: 'Hasil',
                 data: [0, 0, 0, 0, 0, 0, 0, 0],
@@ -210,7 +210,7 @@
             }],
             yAxes: [{
             gridLines: {
-                display: false
+                display: true
             }
             }]
         },

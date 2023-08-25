@@ -311,18 +311,19 @@ class cgrafik_HSSE extends CI_Controller {
         
         $unsafe = $this->mgrafik_HSSE->mshow_all_unsafe($unit, $tglawal, $tglakhir);
         $kejadian_kecelakaan = $this->mgrafik_HSSE->mshow_all_kejadian_kecelakaan($unit, $tglawal, $tglakhir);
+        
         // Olah data menjadi format yang sesuai dengan AnyChart
         $chartData = array();
         foreach ($unsafe->result() as $item) {
             $chartData[] = array(
-                'x' => "Unsafe Action/Unsafe Condition",
-                'value' => $item->jumlah
+                'x' => "Unsafe Action/Unsafe Condition[Dalam Ratusan]",
+                'value' => $item->jumlah/100
             );
         }
-        foreach ($kejadian_kecelakaan->result() as $item) {
+        foreach ($kejadian_kecelakaan as $item) {
             $chartData[] = array(
-                'x' => $item->sub_jenis,
-                'value' => $item->jumlah
+                'x' => $item['sub_jenis'],
+                'value' => $item['jumlah']
             );
         }
 
