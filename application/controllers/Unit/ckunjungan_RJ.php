@@ -250,7 +250,9 @@ class ckunjungan_RJ extends CI_Controller {
             xlsWriteLabel($tablehead, $kolomhead++, "Unit");
             xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
             xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Unit");
+            xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Unit");
             xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Segmen");
+            xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Segmen");
             // xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Layanan");
             xlsWriteLabel($tablehead, $kolomhead++, "Kelompok BPJS / NON BPJS");
             xlsWriteLabel($tablehead, $kolomhead++, "Kunjungan Yang Lalu");
@@ -270,7 +272,9 @@ class ckunjungan_RJ extends CI_Controller {
                   xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
                   xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
                   xlsWriteLabel($tablebody, $kolombody++, $data->kelunit);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
                   xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
                   // xlsWriteLabel($tablebody, $kolombody++, $data->kelompok);
                   xlsWriteLabel($tablebody, $kolombody++, $data->ket);
                   xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
@@ -400,7 +404,9 @@ class ckunjungan_RJ extends CI_Controller {
       xlsWriteLabel($tablehead, $kolomhead++, "Unit");
       xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Unit");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Unit");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Segmen");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Segmen");
       // xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Layanan");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok BPJS / NON BPJS");
       xlsWriteLabel($tablehead, $kolomhead++, "Kunjungan Yang Lalu");
@@ -420,22 +426,24 @@ class ckunjungan_RJ extends CI_Controller {
             xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
             xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
             xlsWriteLabel($tablebody, $kolombody++, $data->kelunit);
+            xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
             xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+            xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
             // xlsWriteLabel($tablebody, $kolombody++, $data->kelompok);
             xlsWriteLabel($tablebody, $kolombody++, $data->ket);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi1);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
+            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);
+            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi1);
+            xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
+            xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
                
-                     $tablebody++;
-                  $nourut++;
-               }
-            }
+            $tablebody++;
+            $nourut++;
+         }
+      }
       
-            xlsEOF();
-            exit();
+      xlsEOF();
+      exit();
    }
 }

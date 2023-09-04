@@ -15,15 +15,37 @@ class ckunjungan_RJ extends CI_Controller {
       $this->load->view('content/vsuperuser/vkunjungan_RJ/vkunjungan_RJ');
    }
 
+   function get_unit(){
+      $tglawal = (new DateTime())->modify('-7 days')->format('Y-m-d');
+      $tglakhir = date("Y-m-d");
+      $nama = $this->session->userdata("nama");
+      $lokasi = $this->session->userdata("tlok");
+      
+      $result = $this->mkunjungan_RJ->mshow_all_unit($tglawal,$tglakhir,$nama,$lokasi);
+      echo json_encode($result);
+   }
+
+   function get_subunit(){
+      $optionSelected = $this->input->post('optionSelected');
+      $nama = $this->session->userdata("nama");
+      $result = $this->mkunjungan_RJ->mshow_all_subunit($optionSelected,$nama);
+      echo json_encode($result);
+   }
+
    function kunjungan() {
       if ($this->session->userdata('status') != "Login" || $this->session->userdata("tlok") != "") {
          redirect("clogin");
       }
       $tglawal = $this->input->post('tglawal');
       $tglakhir = $this->input->post('tglakhir');
+      $unit = $this->input->post('unit');
+      $subunit = $this->input->post('subunit');
       $nama = $this->session->userdata("nama");
       $lokasi = $this->input->post('lokasi');
-      $kunjung = $this->mkunjungan_RJ->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);
+
+      $kunjung = $this->mkunjungan_RJ->mshow_all_call($unit,$tglawal,$tglakhir,$nama,$lokasi);
+      $detail_kunjung = $this->mkunjungan_RJ->mshow_all_detail_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi);
+      $rekap = $this->mkunjungan_RJ->mshow_all_rekap_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi);
 
       //insert into log_aktifitas table
       if ($lokasi == ""){
@@ -55,10 +77,14 @@ class ckunjungan_RJ extends CI_Controller {
 
       $data = array(
          'kunjung' => $kunjung,
+         'detail_kunjung' => $detail_kunjung,
+         'rekap' => $rekap,
          'lokasi' => $lokasi,
          'periode' => $this->input->post('periode'),
          'tglawal' => $tglawal,
          'tglakhir' => $tglakhir,
+         'unit' => $unit,
+         'subunit' => $subunit,
       );
       $this->load->view('content/vsuperuser/vkunjungan_RJ/vhasil_kunjungan_RJ',$data);
    }
@@ -251,7 +277,9 @@ class ckunjungan_RJ extends CI_Controller {
             xlsWriteLabel($tablehead, $kolomhead++, "Unit");
             xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
             xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Unit");
+            xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Unit");
             xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Segmen");
+            xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Segmen");
             // xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Layanan");
             xlsWriteLabel($tablehead, $kolomhead++, "Kelompok BPJS / NON BPJS");
             xlsWriteLabel($tablehead, $kolomhead++, "Kunjungan Yang Lalu");
@@ -271,7 +299,9 @@ class ckunjungan_RJ extends CI_Controller {
                   xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
                   xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
                   xlsWriteLabel($tablebody, $kolombody++, $data->kelunit);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
                   xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                  xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
                   // xlsWriteLabel($tablebody, $kolombody++, $data->kelompok);
                   xlsWriteLabel($tablebody, $kolombody++, $data->ket);
                   xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
@@ -290,6 +320,8 @@ class ckunjungan_RJ extends CI_Controller {
             exit();
          } else if ($exportType == 'tabel') {
             $nama = $this->session->userdata("nama");
+            $unit = $this->input->post('unit');
+            $subunit = $this->input->post('subunit');
             $lokasi = $this->input->post('lokasi');
             $tglawal = $this->input->post('tglawal');
             $tglakhir = $this->input->post('tglakhir');
@@ -329,7 +361,7 @@ class ckunjungan_RJ extends CI_Controller {
             $total_rsaldopotensi = 0;
             $total_jmltarget = 0;
             $total_jmlprosen = 0;
-            foreach ($this->mkunjungan_RJ->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi) as $data) {
+            foreach ($this->mkunjungan_RJ->mshow_all_call($unit,$tglawal,$tglakhir,$nama,$lokasi) as $data) {
                $total_rsaldolalu += $data->rsaldolalu;
                $total_rsaldosaatini += $data->rsaldosaatini;
                $total_rsaldosampai += $data->rsaldosampai;
@@ -347,23 +379,75 @@ class ckunjungan_RJ extends CI_Controller {
                xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi);
                xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai+$data->rsaldopotensi);
                xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
-               xlsWriteLabel($tablebody, $kolombody++, $data->jmlprosen*100);
+               xlsWriteLabel($tablebody, $kolombody++, $data->jmlprosen*100 ." %");
             
                $tablebody++;
                $nourut++;
+               foreach ($this->mkunjungan_RJ->mshow_all_detail_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi) as $data2) {
+                  if ($data2->ket == $data->ket){
+                     $kolombody = 0;
+                     xlsWriteLabel($tablebody, $kolombody++, "*");
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->sub_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->rsaldolalu);
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->rsaldosaatini);
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->rsaldosampai);
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->rsaldopotensi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->rsaldosampai+$data2->rsaldopotensi);
+                     xlsWriteLabel($tablebody, $kolombody++, "NULL");
+                     xlsWriteLabel($tablebody, $kolombody++, "NULL");
+                  
+                     $tablebody++;
+                  }
+               }
             }
             $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
-            xlsWriteLabel($tablebody, $kolombody++, "TOTAL");
+            xlsWriteLabel($tablebody, $kolombody++, "TOTAL KUNJ. RJ & UGD");
             xlsWriteLabel($tablebody, $kolombody++, $total_rsaldolalu);
             xlsWriteLabel($tablebody, $kolombody++, $total_rsaldosaatini);
             xlsWriteLabel($tablebody, $kolombody++, $total_rsaldosampai);
             xlsWriteLabel($tablebody, $kolombody++, $total_rsaldopotensi);
             xlsWriteLabel($tablebody, $kolombody++, $total_rsaldosampai+$total_rsaldopotensi);
             xlsWriteLabel($tablebody, $kolombody++, $total_jmltarget);
-            xlsWriteLabel($tablebody, $kolombody++, number_format($total_rsaldosampai/$total_jmltarget*100, 0, ',', '.'));
+            xlsWriteLabel($tablebody, $kolombody++, number_format($total_rsaldosampai/$total_jmltarget*100, 0, ',', '.')." %");
+
+            $tablebody++;
+            $nourut++;
+            foreach ($this->mkunjungan_RJ->mshow_all_rekap_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi) as $data3) {
+               if ($data3->kelsegmen_sub == "Total"){
+                  $kolombody = 0;
+                  xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                  xlsWriteLabel($tablebody, $kolombody++, "Rekap Kunj. Telemed, Homecare");
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldolalu);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosaatini);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosampai);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldopotensi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosampai+$data3->rsaldopotensi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->jmltarget);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->jmlprosen*100 ." %");
+               
+                  $tablebody++;
+                  $nourut++;
+               }
+            }
+            foreach ($this->mkunjungan_RJ->mshow_all_rekap_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi) as $data3) {
+               if ($data3->kelsegmen_sub != "Total"){
+                  $kolombody = 0;
+                  xlsWriteLabel($tablebody, $kolombody++, "*");
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->kelsegmen_sub);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldolalu);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosaatini);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosampai);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldopotensi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosampai+$data3->rsaldopotensi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->jmltarget);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->jmlprosen*100 ." %");
+
+                  $tablebody++;
+               }
+            }
       
             xlsEOF();
             exit();
@@ -401,7 +485,9 @@ class ckunjungan_RJ extends CI_Controller {
       xlsWriteLabel($tablehead, $kolomhead++, "Unit");
       xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Unit");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Unit");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Segmen");
+      xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Sub-Segmen");
       // xlsWriteLabel($tablehead, $kolomhead++, "Kelompok Layanan");
       xlsWriteLabel($tablehead, $kolomhead++, "Kelompok BPJS / NON BPJS");
       xlsWriteLabel($tablehead, $kolomhead++, "Kunjungan Yang Lalu");
@@ -421,15 +507,17 @@ class ckunjungan_RJ extends CI_Controller {
             xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
             xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
             xlsWriteLabel($tablebody, $kolombody++, $data->kelunit);
+            xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
             xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+            xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
             // xlsWriteLabel($tablebody, $kolombody++, $data->kelompok);
             xlsWriteLabel($tablebody, $kolombody++, $data->ket);
             xlsWriteLabel($tablebody, $kolombody++, $data->rsaldolalu);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi1);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
-                  xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosaatini);
+            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai);
+            xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi1);
+            xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
+            xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
                
                      $tablebody++;
                   $nourut++;

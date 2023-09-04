@@ -7,11 +7,132 @@ class mkunjungan_RJ extends ci_model {
    }
 
    // untuk menampilkan semua rekap
-   function mshow_all_call($tglawal,$tglakhir,$nama,$lokasi) {
+   function mshow_all_call($unit,$tglawal,$tglakhir,$nama,$lokasi) {
+      // $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi', 'kelunit')");
+      $this->db->select('kelunit as ket, sum(rsaldolalu) as rsaldolalu, sum(rsaldosaatini) as rsaldosaatini, sum(rsaldosampai) as rsaldosampai, sum(rsaldopotensi1) as rsaldopotensi, sum(jmltarget) as jmltarget, ROUND(sum(rsaldosampai)/sum(jmltarget), 2) as jmlprosen');
+      $this->db->from('test.ra_dashdb_k_'.$nama);
+      $this->db->where('kelspesimen', '1. RAWAT JALAN');
+      if($unit != "SEMUA"){
+         $this->db->where('kelunit', $unit);
+      }
+      $this->db->group_by('kelunit');
+      $this->db->order_by("CASE 
+                                 WHEN kelunit = 'POLI UMUM' THEN 1
+                                 WHEN kelunit = 'POLI SPESIALIS' THEN 2
+                                 WHEN kelunit = 'HAEMODIALISA' THEN 3
+                                 WHEN kelunit = 'POLI GIGI' THEN 4
+                                 WHEN kelunit = 'UGD' THEN 5
+                                 ELSE 6
+                           END", 'asc');
+      return $this->db->get()->result();
+   }
+
+   // untuk menampilkan semua detail rekap
+   function mshow_all_detail_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi) {
+      // $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi', 'kelunit')");
+      $this->db->select('kode1,
+      IF((kelsegmen_sub="Homecare" OR kelsegmen_sub="Telemedicine" OR kelsegmen_sub="MCU"), "900000",kode1) AS urut_kode1, 
+      IF((kelsegmen_sub="Homecare" OR kelsegmen_sub="Telemedicine" OR kelsegmen_sub="MCU"), kelsegmen_sub, nama_unit) AS sub_unit, 
+      kelunit AS ket, kelsegmen_sub, nama_unit , SUM(rsaldolalu) AS rsaldolalu, SUM(rsaldosaatini) AS rsaldosaatini, SUM(rsaldosampai) AS rsaldosampai, SUM(rsaldopotensi1) AS rsaldopotensi, SUM(jmltarget) AS jmltarget, ROUND(SUM(rsaldosampai)/SUM(jmltarget), 2) AS jmlprosen');
+      $this->db->from('test.ra_dashdb_k_'.$nama);
+      $this->db->where('kelspesimen', '1. RAWAT JALAN');
+      $this->db->where('jnstrans !=', 'TARGET');
+      if($unit != "SEMUA"){
+         $this->db->where('kelunit', $unit);
+      }
+      $this->db->group_by('kelunit');
+      $this->db->group_by('urut_kode1');
+      $this->db->group_by('sub_unit');
+      $this->db->order_by('urut_kode1', 'asc');
+      // Jalankan query dan ambil hasilnya
+      $query_result = $this->db->get()->result();
+
+      // Filter hasil query berdasarkan sub_unit secara manual
+      $filtered_result = [];
+      foreach ($query_result as $row) {
+         if ($subunit == "SEMUA" || $row->sub_unit == $subunit) {
+               $filtered_result[] = $row;
+         }
+      }
+
+      return $filtered_result;
+   }
+
+    // untuk menampilkan semua rekap Hamecare, MCU, Telemed dan Reguler
+    function mshow_all_rekap_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi) {
+      $this->db->select('kelsegmen_sub, SUM(rsaldolalu) AS rsaldolalu, SUM(rsaldosaatini) AS rsaldosaatini, SUM(rsaldosampai) AS rsaldosampai, SUM(rsaldopotensi1) AS rsaldopotensi,SUM(jmltarget) AS jmltarget, ROUND(SUM(rsaldosampai)/SUM(jmltarget), 2) AS jmlprosen');
+      $this->db->from('test.ra_dashdb_k_'.$nama);
+      $this->db->where('kelspesimen', '1. RAWAT JALAN');
+      if($unit != "SEMUA"){
+         $this->db->where('kelunit', $unit);
+         if ($subunit != "SEMUA") {
+            $this->db->where('nama_unit', $subunit);
+        }
+      }
+      $this->db->group_by('kelsegmen_sub');
+      $this->db->order_by("CASE 
+                                 WHEN kelunit = 'POLI UMUM' THEN 1
+                                 WHEN kelunit = 'POLI SPESIALIS' THEN 2
+                                 WHEN kelunit = 'HAEMODIALISA' THEN 3
+                                 WHEN kelunit = 'POLI GIGI' THEN 4
+                                 WHEN kelunit = 'UGD' THEN 5
+                                 ELSE 6
+                           END", 'asc');
+      $results =  $this->db->get()->result();
+
+      // Hitung total sum secara manual
+      $total_rsaldolalu = 0;
+      $total_rsaldosaatini = 0;
+      $total_rsaldosampai = 0;
+      $total_rsaldopotensi = 0;
+      $total_jmltarget = 0;
+      $total_jmlprosen = 0;
+
+      foreach ($results as $row) {
+         $total_rsaldolalu += $row->rsaldolalu;
+         $total_rsaldosaatini += $row->rsaldosaatini;
+         $total_rsaldosampai += $row->rsaldosampai;
+         $total_rsaldopotensi += $row->rsaldopotensi;
+         $total_jmltarget += $row->jmltarget;
+         $total_jmlprosen += $row->jmlprosen;
+      }
+
+      // Tambahkan baris total ke hasil query
+      $total_row = (object)array(
+         'kelsegmen_sub' => 'Total',
+         'rsaldolalu' => $total_rsaldolalu,
+         'rsaldosaatini' => $total_rsaldosaatini,
+         'rsaldosampai' => $total_rsaldosampai,
+         'rsaldopotensi' => $total_rsaldopotensi,
+         'jmltarget' => $total_jmltarget,
+         'jmlprosen' => $total_jmlprosen
+      );
+
+      // Tambahkan total row ke hasil query
+      $results[] = $total_row;
+
+      return $results;
+   }
+
+   function mshow_all_unit($tglawal,$tglakhir,$nama,$lokasi) {
       $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi', 'kelunit')");
-      $this->db->select('ket, rsaldolalu, rsaldosaatini, rsaldosampai, rsaldopotensi, jmltarget, jmlprosen');
-      $this->db->from('test.ra_dashdb1_k_'.$nama);
-      $this->db->where('nama_unit', '1. RAWAT JALAN');
+      $this->db->select('DISTINCT(kelunit)');
+      $this->db->from('test.ra_dashdb_k_'.$nama);
+      $this->db->where('kelspesimen', '1. RAWAT JALAN');
+      $this->db->where('jnstrans !=', 'TARGET');
+      $this->db->order_by('kode1', 'asc');
+      return $this->db->get()->result();
+   }
+   
+   function mshow_all_subunit($unit, $nama) {
+      $this->db->select('DISTINCT(nama_unit)');
+      $this->db->from('test.ra_dashdb_k_'.$nama);
+      $this->db->where('kelspesimen', '1. RAWAT JALAN');
+      if ($unit != "SEMUA"){
+         $this->db->where('kelunit', $unit);
+      }
+      $this->db->where('jnstrans !=', 'TARGET');
+      $this->db->order_by('kode1', 'asc');
       return $this->db->get()->result();
    }
    
@@ -133,12 +254,13 @@ class mkunjungan_RJ extends ci_model {
 
    // untuk cetak excel
    function mshow_all_detail($nama, $ket, $tglawal, $tglakhir) {
-         $this->db->select('lokasi, tanggal, kelunit, kelsegmen, kelompok, ket, sum(rsaldolalu) as rsaldolalu, sum(rsaldosaatini) as rsaldosaatini, sum(rsaldosampai) as rsaldosampai, sum(rsaldopotensi1) as rsaldopotensi1, sum(jmltarget) as jmltarget, statuse');
+         $this->db->select('lokasi, tanggal, kelunit, kelsegmen, kelompok, ket, nama_unit, kelsegmen_sub, sum(rsaldolalu) as rsaldolalu, sum(rsaldosaatini) as rsaldosaatini, sum(rsaldosampai) as rsaldosampai, sum(rsaldopotensi1) as rsaldopotensi1, sum(jmltarget) as jmltarget, statuse');
          $this->db->from('test.ra_dashdb_k_'.$nama);
          $this->db->where('kelunit', $ket);
          // $this->db->where('tanggal>=', $tglawal);
          $this->db->where('tanggal<=', $tglakhir);
          $this->db->where('kelspesimen', '1. RAWAT JALAN');
+         $this->db->where('jnstrans!=', 'TARGET');
          $this->db->group_by('lokasi');
          $this->db->group_by('tanggal');
          return $this->db->get()->result();
