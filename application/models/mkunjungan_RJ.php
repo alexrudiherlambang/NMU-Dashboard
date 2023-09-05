@@ -8,7 +8,7 @@ class mkunjungan_RJ extends ci_model {
 
    // untuk menampilkan semua rekap
    function mshow_all_call($unit,$tglawal,$tglakhir,$nama,$lokasi) {
-      // $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi', 'kelunit')");
+      $this->db->query("CALL dashboardnmu_new.proses_dashboard_ke1_k('$tglawal', '$tglakhir', '$nama', '$lokasi', 'kelunit')");
       $this->db->select('kelunit as ket, sum(rsaldolalu) as rsaldolalu, sum(rsaldosaatini) as rsaldosaatini, sum(rsaldosampai) as rsaldosampai, sum(rsaldopotensi1) as rsaldopotensi, sum(jmltarget) as jmltarget, ROUND(sum(rsaldosampai)/sum(jmltarget), 2) as jmlprosen');
       $this->db->from('test.ra_dashdb_k_'.$nama);
       $this->db->where('kelspesimen', '1. RAWAT JALAN');
@@ -265,6 +265,31 @@ class mkunjungan_RJ extends ci_model {
          $this->db->group_by('tanggal');
          return $this->db->get()->result();
    }
+
+   // untuk cetak potensi
+   function mshow_all_potensi($lokasi, $tglakhir) {
+      $this->db->select('lokasi, jnstrans, sts_tutup, tgl_reg, tgl_kunjung, nobilling, countt, nomrm, nmpasien, nik, noasuransi, notelp, stspulang, 
+      tgllahir, jk, alamat, nmkonsumen, Segmen, kelsegmen, kelsegmen_sub, nama_unit,tgl_masuk, tgl_pulang, tgl_kasir, norj, keterangan,
+      rpbilling, statuse');
+      
+      if ($lokasi == "RSG"){
+          $this->db->from('t02_rekap_tabel_kunjungan');
+      } elseif ($lokasi == "RST"){
+          $this->db->from('t03_rekap_tabel_kunjungan');
+      } elseif ($lokasi == "RSP"){
+          $this->db->from('t04_rekap_tabel_kunjungan');
+      } elseif ($lokasi == "RSMU"){
+          $this->db->from('t05_rekap_tabel_kunjungan');
+      }
+      
+      $this->db->where('tgl_kunjung <=', $tglakhir);
+      $this->db->where('Segmen', '1. RAWAT JALAN');
+      $this->db->where('statuse !=', 'TUTUP (AKUN)');
+      $this->db->order_by('tgl_kunjung', 'asc');
+      
+      return $this->db->get()->result();
+  }
+  
 
    //Insert Log Login
    function insert_log($log) {

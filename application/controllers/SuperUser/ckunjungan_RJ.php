@@ -451,7 +451,210 @@ class ckunjungan_RJ extends CI_Controller {
       
             xlsEOF();
             exit();
-         } 
+         } else if ($exportType == 'potensi'){
+            $pilihan = $this->input->post('pilihan');
+            $lokasi = $this->input->post('lokasi');
+            $tglakhir = $this->input->post('tglakhir');
+           
+            $this->load->helper('exportexcel');
+            $namaFile = "Detail Potensi Kunjungan Rawat Jalan.xls";
+            $judul = "Detail Potensi Kunjungan Rawat Jalan.xls";
+            $tablehead = 0;
+            $tablebody = 1;
+            $nourut = 1;
+            //penulisan header
+            header("Pragma: public");
+            header("Expires: 0");
+            header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+            header("Content-Type: application/force-download");
+            header("Content-Type: application/octet-stream");
+            header("Content-Type: application/download");
+            header("Content-Disposition: attachment;filename=" . $namaFile . "");
+            header("Content-Transfer-Encoding: binary ");
+      
+            xlsBOF();
+      
+            $kolomhead = 0;
+            xlsWriteLabel($tablehead, $kolomhead++, "NO");
+            xlsWriteLabel($tablehead, $kolomhead++, "LOKASI");
+            xlsWriteLabel($tablehead, $kolomhead++, "TANGGAL");
+            xlsWriteLabel($tablehead, $kolomhead++, "NO BILLING");
+            xlsWriteLabel($tablehead, $kolomhead++, "NO RM");
+            xlsWriteLabel($tablehead, $kolomhead++, "NAMA PASIEN");
+            xlsWriteLabel($tablehead, $kolomhead++, "NIK");
+            xlsWriteLabel($tablehead, $kolomhead++, "JENIS KELAMIN");
+            xlsWriteLabel($tablehead, $kolomhead++, "NO TELP");
+            xlsWriteLabel($tablehead, $kolomhead++, "TGL. LAHIR");
+            xlsWriteLabel($tablehead, $kolomhead++, "ALAMAT");
+            xlsWriteLabel($tablehead, $kolomhead++, "NAMA KONSUMEN");
+            xlsWriteLabel($tablehead, $kolomhead++, "UNIT");
+            xlsWriteLabel($tablehead, $kolomhead++, "SUB-UNIT");
+            xlsWriteLabel($tablehead, $kolomhead++, "KELOMPOK SEGMEN");
+            xlsWriteLabel($tablehead, $kolomhead++, "KELOMPOK SUB-SEGMEN");
+            xlsWriteLabel($tablehead, $kolomhead++, "KELOMPOK BPJS");
+            xlsWriteLabel($tablehead, $kolomhead++, "TGL. MASUK");
+            xlsWriteLabel($tablehead, $kolomhead++, "TGL. PULANG");
+            xlsWriteLabel($tablehead, $kolomhead++, "TGL. KASIR");
+            xlsWriteLabel($tablehead, $kolomhead++, "NOMINAL BILLING");
+            xlsWriteLabel($tablehead, $kolomhead++, "STATUS");
+
+               if ($lokasi==""){
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi("RSG", $tglakhir) as $data) {
+                     $kolombody = 0;
+      
+                     //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                     xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kunjung);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nomrm);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmpasien);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nik);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->jk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->notelp);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgllahir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmkonsumen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->Segmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_masuk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_pulang);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kasir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->rpbilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+                  
+                     $tablebody++;
+                     $nourut++;
+                  }
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi("RST", $tglakhir) as $data) {
+                     $kolombody = 0;
+      
+                     //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                     xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kunjung);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nomrm);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmpasien);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nik);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->jk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->notelp);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgllahir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmkonsumen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->Segmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_masuk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_pulang);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kasir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->rpbilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+                  
+                     $tablebody++;
+                     $nourut++;
+                  }
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi("RSP", $tglakhir) as $data) {
+                     $kolombody = 0;
+      
+                     //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                     xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kunjung);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nomrm);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmpasien);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nik);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->jk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->notelp);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgllahir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmkonsumen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->Segmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_masuk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_pulang);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kasir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->rpbilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+                  
+                     $tablebody++;
+                     $nourut++;
+                  }
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi("RSMU", $tglakhir) as $data) {
+                     $kolombody = 0;
+      
+                     //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                     xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kunjung);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nomrm);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmpasien);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nik);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->jk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->notelp);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgllahir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmkonsumen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->Segmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_masuk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_pulang);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kasir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->rpbilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+                  
+                     $tablebody++;
+                     $nourut++;
+                  }
+               }else{
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($lokasi, $tglakhir) as $data) {
+                     $kolombody = 0;
+      
+                     //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                     xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kunjung);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nomrm);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmpasien);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nik);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->jk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->notelp);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgllahir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmkonsumen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->Segmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_masuk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_pulang);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kasir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->rpbilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+                  
+                     $tablebody++;
+                     $nourut++;
+                  }
+               }
+
+            xlsEOF();
+            exit();
+         }
       }
    }
 
