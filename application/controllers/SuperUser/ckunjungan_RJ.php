@@ -46,47 +46,50 @@ class ckunjungan_RJ extends CI_Controller {
       $kunjung = $this->mkunjungan_RJ->mshow_all_call($unit,$tglawal,$tglakhir,$nama,$lokasi);
       $detail_kunjung = $this->mkunjungan_RJ->mshow_all_detail_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi);
       $rekap = $this->mkunjungan_RJ->mshow_all_rekap_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi);
-
-      //insert into log_aktifitas table
-      if ($lokasi == ""){
-         $log = array(
-            'id'		   => $this->session->userdata("id"),
-            'tglawal'   => $tglawal,
-            'tglakhir'  => $tglakhir,
-            'unit'      => 'KONSOLIDASI',
-            'jenis'     => 'SEMUA',
-            'platform'	=> $this->agent->platform(),
-            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-            'ip'		   => $this->input->ip_address(),
-            'action'	   => 'Show Tabel Kunjungan Rawat Jalan',
-         );
+      if (empty($kunjung)) {
+         echo '<script language="javascript">alert("Data Tidak Tersedia !!!"); document.location="./";</script>';
       }else{
-         $log = array(
-            'id'		   => $this->session->userdata("id"),
-            'tglawal'   => $tglawal,
-            'tglakhir'  => $tglakhir,
-            'unit'      => $lokasi,
-            'jenis'     => 'SEMUA',
-            'platform'	=> $this->agent->platform(),
-            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-            'ip'		   => $this->input->ip_address(),
-            'action'	   => 'Show Tabel Kunjungan Rawat Jalan',
-         );
-      }
-      $this->mkunjungan_RJ->insert_log($log);
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KONSOLIDASI',
+               'jenis'     => 'SEMUA',
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Tabel Kunjungan Rawat Jalan',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => 'SEMUA',
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Tabel Kunjungan Rawat Jalan',
+            );
+         }
+         $this->mkunjungan_RJ->insert_log($log);
 
-      $data = array(
-         'kunjung' => $kunjung,
-         'detail_kunjung' => $detail_kunjung,
-         'rekap' => $rekap,
-         'lokasi' => $lokasi,
-         'periode' => $this->input->post('periode'),
-         'tglawal' => $tglawal,
-         'tglakhir' => $tglakhir,
-         'unit' => $unit,
-         'subunit' => $subunit,
-      );
-      $this->load->view('content/vsuperuser/vkunjungan_RJ/vhasil_kunjungan_RJ',$data);
+         $data = array(
+            'kunjung' => $kunjung,
+            'detail_kunjung' => $detail_kunjung,
+            'rekap' => $rekap,
+            'lokasi' => $lokasi,
+            'periode' => $this->input->post('periode'),
+            'tglawal' => $tglawal,
+            'tglakhir' => $tglakhir,
+            'unit' => $unit,
+            'subunit' => $subunit,
+         );
+         $this->load->view('content/vsuperuser/vkunjungan_RJ/vhasil_kunjungan_RJ',$data);
+      }
    }
 
    function grafik_kunjungan_RJ() {
@@ -455,7 +458,7 @@ class ckunjungan_RJ extends CI_Controller {
             $pilihan = $this->input->post('pilihan');
             $lokasi = $this->input->post('lokasi');
             $tglakhir = $this->input->post('tglakhir');
-           
+          
             $this->load->helper('exportexcel');
             $namaFile = "Detail Potensi Kunjungan Rawat Jalan.xls";
             $judul = "Detail Potensi Kunjungan Rawat Jalan.xls";
@@ -498,8 +501,10 @@ class ckunjungan_RJ extends CI_Controller {
             xlsWriteLabel($tablehead, $kolomhead++, "NOMINAL BILLING");
             xlsWriteLabel($tablehead, $kolomhead++, "STATUS");
 
+            foreach ($pilihan as $p) {
+               $ket = $p;
                if ($lokasi==""){
-                  foreach ($this->mkunjungan_RJ->mshow_all_potensi("RSG", $tglakhir) as $data) {
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($ket, "RSG", $tglakhir) as $data) {
                      $kolombody = 0;
       
                      //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
@@ -529,7 +534,7 @@ class ckunjungan_RJ extends CI_Controller {
                      $tablebody++;
                      $nourut++;
                   }
-                  foreach ($this->mkunjungan_RJ->mshow_all_potensi("RST", $tglakhir) as $data) {
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($ket, "RST", $tglakhir) as $data) {
                      $kolombody = 0;
       
                      //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
@@ -559,7 +564,7 @@ class ckunjungan_RJ extends CI_Controller {
                      $tablebody++;
                      $nourut++;
                   }
-                  foreach ($this->mkunjungan_RJ->mshow_all_potensi("RSP", $tglakhir) as $data) {
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($ket, "RSP", $tglakhir) as $data) {
                      $kolombody = 0;
       
                      //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
@@ -589,7 +594,7 @@ class ckunjungan_RJ extends CI_Controller {
                      $tablebody++;
                      $nourut++;
                   }
-                  foreach ($this->mkunjungan_RJ->mshow_all_potensi("RSMU", $tglakhir) as $data) {
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($ket, "RSMU", $tglakhir) as $data) {
                      $kolombody = 0;
       
                      //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
@@ -620,7 +625,7 @@ class ckunjungan_RJ extends CI_Controller {
                      $nourut++;
                   }
                }else{
-                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($lokasi, $tglakhir) as $data) {
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($ket, $lokasi, $tglakhir) as $data) {
                      $kolombody = 0;
       
                      //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
@@ -651,6 +656,7 @@ class ckunjungan_RJ extends CI_Controller {
                      $nourut++;
                   }
                }
+            }
 
             xlsEOF();
             exit();

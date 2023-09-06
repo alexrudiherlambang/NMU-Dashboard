@@ -69,7 +69,27 @@
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Unit Kerja</div>
                                                     </div>
                                                     <div class="col-xl-5 fv-row">
-                                                        <input type="text" class="form-control form-control-solid" name="lokasi" value="<?php echo $lokasi;?>" readonly>
+                                                        <input type="text" class="form-control form-control-solid" name="lokasi" placeholder="level" value="<?php echo $this->session->userdata("tlok");?>" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-xl-5">
+                                                        <div class="fs-6 fw-semibold mt-2 mb-3">Filter By Unit</div>
+                                                    </div>
+                                                    <div class="col-xl-5 fv-row">
+                                                        <select class="form-control form-control-solid" id="unit" name="unit">
+                                                            <option><?php echo $unit;?></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-xl-5">
+                                                        <div class="fs-6 fw-semibold mt-2 mb-3">Filter By Sub-Unit</div>
+                                                    </div>
+                                                    <div class="col-xl-5 fv-row">
+                                                        <select class="form-control form-control-solid" id="subunit" name="subunit">
+                                                            <option><?php echo $subunit;?></option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -126,11 +146,13 @@
                                         <div class="table-responsive">
                                         <!--begin::Table-->
                                             <form method="post" action="<?php echo site_url(); ?>Unit/ckunjungan_RJ/export_xls">
+                                                <input class="form-control form-control-solid ps-12" type="hidden" name="unit" placeholder="Pick a date" id="unit" required="required" value="<?php echo $unit;?>" readonly/>
+                                                <input class="form-control form-control-solid ps-12" type="hidden" name="subunit" placeholder="Pick a date" id="subunit" required="required" value="<?php echo $subunit;?>" readonly/>
                                                 <input class="form-control form-control-solid ps-12" type="hidden" name="tglawal" placeholder="Pick a date" id="tglawal" required="required" value="<?php echo $tglawal;?>" readonly/>
                                                 <input class="form-control form-control-solid ps-12" type="hidden" name="tglakhir" placeholder="Pick a date" id="tglakhir" required="required" value="<?php echo $tglakhir;?>" readonly/>
                                                 <input class="form-control form-control-solid ps-12" type="hidden" name="lokasi" required="required" value="<?php echo $lokasi;?>" readonly/>
-                                                <button type="submit" name="exportType" value="detail" class="btn btn-sm btn-primary">Export Detail</button>
-                                                <button type="submit" name="exportType" value="tabel" class="btn btn-sm btn-info">Export Tabel</button>
+                                                <button type="submit" name="exportType" value="detail" class="btn btn-sm btn-light-primary">Export Detail</button>
+                                                <button type="submit" name="exportType" value="tabel" class="btn btn-sm btn-light-info">Export Tabel</button>
                                                 <button type="submit" name="exportType" value="potensi" class="btn btn-sm btn-light-success">Export Potensi</button>
                                                 <div style="text-align:right"></div><br>
                                                 <table class="table align-middle gs-0 gy-4">
@@ -138,11 +160,11 @@
                                                     <thead>
                                                         <!--begin::Table row-->
                                                         <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                            <th style="color: #ffffff; vertical-align: middle;">
-                                                                All<input type="checkbox" id="CheckAll">
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5"></th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">
+                                                                Export<br><input type="checkbox" id="CheckAll">
                                                             </th>
-                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
-                                                            <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px">Uraian</th>
+                                                            <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
                                                             <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
                                                             <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
                                                             <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
@@ -156,52 +178,231 @@
                                                     <!--end::Table head-->
                                                     <!--begin::Table body-->
                                                     <tbody class="text-gray-600 fw-semibold">
-                                                    <?php
-                                                    $no = 1;
-                                                    $total_rsaldolalu = 0;
-                                                    $total_rsaldosaatini = 0;
-                                                    $total_rsaldosampai = 0;
-                                                    $total_rsaldopotensi = 0;
-                                                    $total_jmltarget = 0;
-                                                    $total_jmlprosen = 0;
-                                                    foreach ($kunjung as $k) :
-                                                        $total_rsaldolalu += $k->rsaldolalu;
-                                                        $total_rsaldosaatini += $k->rsaldosaatini;
-                                                        $total_rsaldosampai += $k->rsaldosampai;
-                                                        $total_rsaldopotensi += $k->rsaldopotensi;
-                                                        $total_jmltarget += $k->jmltarget;
-                                                        $total_jmlprosen += $k->jmlprosen;
-                                                    ?>
-                                                    <tr>    
-                                                        <td>
-                                                            <input type="checkbox" id="Check" value="<?php echo $k->ket ?>" name="pilihan[]">
-                                                        </td>
-                                                        <td class="w-10px pe-5"><?php echo $no ?></td>
-                                                        <td class="text-center"><?php echo $k->ket ?></td>
-                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldolalu, 0, ',', '.')?></td>
-                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosaatini, 0, ',', '.')?></td>
-                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosampai, 0, ',', '.')?></td>
-                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldopotensi, 0, ',', '.')?></td>
-                                                        <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosampai+$k->rsaldopotensi, 0, ',', '.')?></td>
-                                                        <td class="text-center min-w-100px"><?php echo number_format($k->jmltarget, 0, ',', '.')?></td>
-                                                        <td class="text-center min-w-100px"><?php echo $k->jmlprosen*100;?>%</td>
-                                                    </tr>
-                                                    <?php
-                                                    $no++;
-                                                    endforeach;
-                                                    ?>
-                                                    <tr style="background-color: #000080;">
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="w-10px pe-5"><b></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px"><b>TOTAL</b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldolalu, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosaatini, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldopotensi, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai+$total_rsaldopotensi, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_jmltarget, 0, ',', '.')?></b></td>
-                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai/$total_jmltarget*100, 0, ',', '.');?>%</b></td>
-                                                    </tr>
+                                                        <?php
+                                                        $no = 1;
+                                                        $total_rsaldolalu = 0;
+                                                        $total_rsaldosaatini = 0;
+                                                        $total_rsaldosampai = 0;
+                                                        $total_rsaldopotensi = 0;
+                                                        $total_jmltarget = 0;
+                                                        $total_jmlprosen = 0;
+                                                        
+                                                        $rsaldolalu_ugd = 0;
+                                                        $rsaldosaatini_ugd = 0;
+                                                        $rsaldosampai_ugd = 0;
+                                                        $rsaldopotensi_ugd = 0;
+                                                        $jmltarget_ugd = 0;
+                                                        $jmlprosen_ugd = 0;
+                                                        foreach ($kunjung as $k) :
+                                                            $total_rsaldolalu += $k->rsaldolalu;
+                                                            $total_rsaldosaatini += $k->rsaldosaatini;
+                                                            $total_rsaldosampai += $k->rsaldosampai;
+                                                            $total_rsaldopotensi += $k->rsaldopotensi;
+                                                            $total_jmltarget += $k->jmltarget;
+                                                            $total_jmlprosen += $k->jmlprosen;
+
+                                                            if($k->ket == "UGD"):
+                                                                $rsaldolalu_ugd += $k->rsaldolalu;
+                                                                $rsaldosaatini_ugd += $k->rsaldosaatini;
+                                                                $rsaldosampai_ugd += $k->rsaldosampai;
+                                                                $rsaldopotensi_ugd += $k->rsaldopotensi;
+                                                                $jmltarget_ugd += $k->jmltarget;
+                                                                $jmlprosen_ugd += $k->jmlprosen;
+                                                            endif;
+                                                        ?>
+                                                        <tr>    
+                                                            <td class="text-center w-10px pe-5">
+                                                                <a class="btn btn-icon btn-light-warning btn-sm <?php echo str_replace(' ', '_', $k->ket) ?>" href="javascript:void(0)" onclick="toggleTable('<?php echo str_replace(' ', '_', $k->ket) ?>')">
+                                                                <span class="svg-icon svg-icon-primary svg-icon"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Navigation/Sign-in.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                                        <rect fill="#000000" opacity="0.3" transform="translate(9.000000, 12.000000) rotate(-270.000000) translate(-9.000000, -12.000000) " x="8" y="6" width="2" height="12" rx="1"/>
+                                                                        <path d="M20,7.00607258 C19.4477153,7.00607258 19,6.55855153 19,6.00650634 C19,5.45446114 19.4477153,5.00694009 20,5.00694009 L21,5.00694009 C23.209139,5.00694009 25,6.7970243 25,9.00520507 L25,15.001735 C25,17.2099158 23.209139,19 21,19 L9,19 C6.790861,19 5,17.2099158 5,15.001735 L5,8.99826498 C5,6.7900842 6.790861,5 9,5 L10.0000048,5 C10.5522896,5 11.0000048,5.44752105 11.0000048,5.99956624 C11.0000048,6.55161144 10.5522896,6.99913249 10.0000048,6.99913249 L9,6.99913249 C7.8954305,6.99913249 7,7.89417459 7,8.99826498 L7,15.001735 C7,16.1058254 7.8954305,17.0008675 9,17.0008675 L21,17.0008675 C22.1045695,17.0008675 23,16.1058254 23,15.001735 L23,9.00520507 C23,7.90111468 22.1045695,7.00607258 21,7.00607258 L20,7.00607258 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.000000, 12.000000) rotate(-90.000000) translate(-15.000000, -12.000000) "/>
+                                                                        <path d="M16.7928932,9.79289322 C17.1834175,9.40236893 17.8165825,9.40236893 18.2071068,9.79289322 C18.5976311,10.1834175 18.5976311,10.8165825 18.2071068,11.2071068 L15.2071068,14.2071068 C14.8165825,14.5976311 14.1834175,14.5976311 13.7928932,14.2071068 L10.7928932,11.2071068 C10.4023689,10.8165825 10.4023689,10.1834175 10.7928932,9.79289322 C11.1834175,9.40236893 11.8165825,9.40236893 12.2071068,9.79289322 L14.5,12.0857864 L16.7928932,9.79289322 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.500000, 12.000000) rotate(-90.000000) translate(-14.500000, -12.000000) "/>
+                                                                    </g>
+                                                                </svg><!--end::Svg Icon--></span>
+                                                                </a>                                                      
+                                                            </td>
+                                                            <td class="text-center w-10px pe-5"> <input type="checkbox" id="Check" value="<?php echo $k->ket ?>" name="pilihan[]"></td>
+                                                            <td class="min-w-125px"><?php echo $k->ket ?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($k->rsaldolalu, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosaatini, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosampai, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($k->rsaldopotensi, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($k->rsaldosampai+$k->rsaldopotensi, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo number_format($k->jmltarget, 0, ',', '.')?></td>
+                                                            <td class="text-center min-w-100px"><?php echo $k->jmlprosen*100;?>%</td>
+                                                        </tr>
+                                                        <tr class="detail-<?php echo str_replace(' ', '_', $k->ket) ?> d-none">
+                                                        <!-- <tr> -->
+                                                            <td colspan="2"></td>
+                                                            <td colspan="8">
+                                                                <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="min-w-125px">Sub Unit</th>
+                                                                            <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                            <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                            <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                            <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                            <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                            <th class="text-center min-w-100px"></th>
+                                                                            <th class="text-center min-w-100px"></th>
+                                                                        </tr>
+                                                                        <?php
+                                                                        foreach ($detail_kunjung as $dk) :
+                                                                        if ($dk->ket == $k->ket) :
+                                                                        ?>
+                                                                        <tr>
+                                                                            <td class=" min-w-125px"><?php echo $dk->sub_unit ?></td>
+                                                                            <td class="text-center min-w-100px"><?php echo number_format($dk->rsaldolalu, 0, ',', '.')?></td>
+                                                                            <td class="text-center min-w-100px"><?php echo number_format($dk->rsaldosaatini, 0, ',', '.')?></td>
+                                                                            <td class="text-center min-w-100px"><?php echo number_format($dk->rsaldosampai, 0, ',', '.')?></td>
+                                                                            <td class="text-center min-w-100px"><?php echo number_format($dk->rsaldopotensi, 0, ',', '.')?></td>
+                                                                            <td class="text-center min-w-100px"><?php echo number_format($dk->rsaldosampai+$k->rsaldopotensi, 0, ',', '.')?></td>
+                                                                            <td class="text-center min-w-100px"></td>
+                                                                            <td class="text-center min-w-100px"></td>
+                                                                        </tr>
+                                                                        <tr>
+
+                                                                        </tr>
+                                                                        <?php
+                                                                        endif;
+                                                                        endforeach;
+                                                                        ?>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <?php
+                                                        $no++;
+                                                        endforeach;
+                                                        ?>
+                                                        <?php
+                                                            if ($unit == "SEMUA") :
+                                                        ?>
+                                                            <tr style="background-color: #000080;">
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px" colspan="3"><b>TOTAL KUNJ. R. JALAN</b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldolalu-$rsaldolalu_ugd, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosaatini-$rsaldosaatini_ugd, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai-$rsaldosampai_ugd, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldopotensi-$rsaldopotensi_ugd, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format(($total_rsaldosampai-$rsaldosampai_ugd)+($total_rsaldopotensi-$rsaldopotensi_ugd), 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_jmltarget-$jmltarget_ugd, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format(($total_rsaldosampai-$rsaldosampai_ugd)/($total_jmltarget-$jmltarget_ugd)*100, 0, ',', '.');?>%</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center w-10px pe-5"></td>
+                                                                <td class="min-w-125px"><b></b></td>
+                                                                <td class="text-center min-w-100px"></td>
+                                                                <td class="text-center min-w-100px"></td>
+                                                                <td class="text-center min-w-100px"></td>
+                                                                <td class="text-center min-w-100px"></td>
+                                                                <td class="text-center min-w-100px"></td>
+                                                                <td class="text-center min-w-100px"></td>
+                                                                <td class="text-center min-w-100px"></td>
+                                                            </tr>
+                                                            <tr style="background-color: #000080;">
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-125px" colspan="3"><b>TOTAL KUNJ. RJ & UGD</b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldolalu, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosaatini, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldopotensi, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai+$total_rsaldopotensi, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_jmltarget, 0, ',', '.')?></b></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b><?php echo number_format($total_rsaldosampai/$total_jmltarget*100, 0, ',', '.');?>%</b></td>
+                                                            </tr>
+                                                        <?php
+                                                          endif
+                                                        ?>
+                                                        <tr>
+                                                            <td class="text-center w-10px pe-5"></td>
+                                                            <td class="min-w-125px"><b></b></td>
+                                                            <td class="text-center min-w-100px"></td>
+                                                            <td class="text-center min-w-100px"></td>
+                                                            <td class="text-center min-w-100px"></td>
+                                                            <td class="text-center min-w-100px"></td>
+                                                            <td class="text-center min-w-100px"></td>
+                                                            <td class="text-center min-w-100px"></td>
+                                                            <td class="text-center min-w-100px"></td>
+                                                        </tr>
+                                                        <?php
+                                                            foreach ($rekap as $r) :
+                                                            if ($r->kelsegmen_sub == "Total") :
+                                                        ?>
+                                                            <tr style="background-color: #000080;">
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">
+                                                                    <a class="btn btn-icon btn-light-info btn-sm rekap" href="javascript:void(0)" onclick="toggleTable2('rekap')">
+                                                                    <span class="svg-icon svg-icon-primary svg-icon"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Navigation/Sign-in.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                            <rect x="0" y="0" width="24" height="24"/>
+                                                                            <rect fill="#000000" opacity="0.3" transform="translate(9.000000, 12.000000) rotate(-270.000000) translate(-9.000000, -12.000000) " x="8" y="6" width="2" height="12" rx="1"/>
+                                                                            <path d="M20,7.00607258 C19.4477153,7.00607258 19,6.55855153 19,6.00650634 C19,5.45446114 19.4477153,5.00694009 20,5.00694009 L21,5.00694009 C23.209139,5.00694009 25,6.7970243 25,9.00520507 L25,15.001735 C25,17.2099158 23.209139,19 21,19 L9,19 C6.790861,19 5,17.2099158 5,15.001735 L5,8.99826498 C5,6.7900842 6.790861,5 9,5 L10.0000048,5 C10.5522896,5 11.0000048,5.44752105 11.0000048,5.99956624 C11.0000048,6.55161144 10.5522896,6.99913249 10.0000048,6.99913249 L9,6.99913249 C7.8954305,6.99913249 7,7.89417459 7,8.99826498 L7,15.001735 C7,16.1058254 7.8954305,17.0008675 9,17.0008675 L21,17.0008675 C22.1045695,17.0008675 23,16.1058254 23,15.001735 L23,9.00520507 C23,7.90111468 22.1045695,7.00607258 21,7.00607258 L20,7.00607258 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.000000, 12.000000) rotate(-90.000000) translate(-15.000000, -12.000000) "/>
+                                                                            <path d="M16.7928932,9.79289322 C17.1834175,9.40236893 17.8165825,9.40236893 18.2071068,9.79289322 C18.5976311,10.1834175 18.5976311,10.8165825 18.2071068,11.2071068 L15.2071068,14.2071068 C14.8165825,14.5976311 14.1834175,14.5976311 13.7928932,14.2071068 L10.7928932,11.2071068 C10.4023689,10.8165825 10.4023689,10.1834175 10.7928932,9.79289322 C11.1834175,9.40236893 11.8165825,9.40236893 12.2071068,9.79289322 L14.5,12.0857864 L16.7928932,9.79289322 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.500000, 12.000000) rotate(-90.000000) translate(-14.500000, -12.000000) "/>
+                                                                        </g>
+                                                                    </svg><!--end::Svg Icon--></span>
+                                                                    </a>                                                      
+                                                                </td>
+                                                                <!-- <td class="text-center w-10px pe-5"> <input type="checkbox" id="Check" value="<?php echo $k->ket ?>" name="pilihan[]"></td> -->
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="min-w-125px" colspan="2">Rekap Kunj. Telemed, Homecare</td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($r->rsaldolalu, 0, ',', '.')?></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($r->rsaldosaatini, 0, ',', '.')?></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($r->rsaldosampai, 0, ',', '.')?></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($r->rsaldopotensi, 0, ',', '.')?></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($r->rsaldosampai+$r->rsaldopotensi, 0, ',', '.')?></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo number_format($r->jmltarget, 0, ',', '.')?></td>
+                                                                <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><?php echo $r->jmlprosen*100;?> %</td>
+                                                            </tr>
+                                                        <?php
+                                                            endif;
+                                                            endforeach;
+                                                        ?>
+                                                        <tr class="detail-rekap d-none">
+                                                            <td colspan="2"></td>
+                                                            <td colspan="8">
+                                                                <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="min-w-125px">Uraian</th>
+                                                                            <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                            <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                            <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                            <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                            <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                            <th class="text-center min-w-100px">Target Kunjungan</th>
+                                                                            <th class="text-center min-w-100px">Prosentase</th>
+                                                                        </tr>
+                                                                        <?php
+                                                                            foreach ($rekap as $r) :
+                                                                            if ($r->kelsegmen_sub != "Total") :
+                                                                        ?>
+                                                                        <tr>
+                                                                            <td class="min-w-125px"><i><?php echo $r->kelsegmen_sub ?></i></td>
+                                                                            <td class="text-center min-w-100px"><i><?php echo number_format($r->rsaldolalu, 0, ',', '.')?></i></td>
+                                                                            <td class="text-center min-w-100px"><i><?php echo number_format($r->rsaldosaatini, 0, ',', '.')?></i></td>
+                                                                            <td class="text-center min-w-100px"><i><?php echo number_format($r->rsaldosampai, 0, ',', '.')?></i></td>
+                                                                            <td class="text-center min-w-100px"><i><?php echo number_format($r->rsaldopotensi, 0, ',', '.')?></i></td>
+                                                                            <td class="text-center min-w-100px"><i><?php echo number_format($r->rsaldosampai+$r->rsaldopotensi, 0, ',', '.')?></i></td>
+                                                                            <td class="text-center min-w-100px"><i><?php echo number_format($r->jmltarget, 0, ',', '.')?></i></td>
+                                                                            <td class="text-center min-w-100px"><i><?php echo $r->jmlprosen*100;?> %</i></td>
+                                                                        </tr>
+                                                                        <?php
+                                                                            endif;
+                                                                            endforeach;
+                                                                        ?>
+                                                                        <tr>
+                                                                            
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
                                                     </tbody>
                                                     <!--end::Table body-->
                                                 </table>
@@ -273,16 +474,98 @@
         </div>
     </div>
     <script>
-    document.querySelector("#CheckAll").addEventListener("change", function(){
-        let checkboxes = document.querySelectorAll("#Check");
-        checkboxes.forEach(function(checkbox){
-        checkbox.checked = this.checked;
-        }, this);
-    });
+       document.addEventListener("DOMContentLoaded", function() {
+            let checkboxes = document.querySelectorAll("#Check");
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = true; // Menandai kotak centang sebagai checked secara default
+            });
+            let checkAll = document.querySelector("#CheckAll");
+            checkAll.checked = true; // Menandai kotak centang "CheckAll" sebagai checked secara default
+            
+            document.querySelector("#CheckAll").addEventListener("change", function() {
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.checked = this.checked;
+                }, this);
+            });
+        });
     </script>
     <?php
         $this->load->view('partials/script');
     ?>
+    <script>
+        $(document).ready(function() {
+            var unitSelect = $("#unit");
+            // Inisialisasi elemen "unit" dengan data saat halaman dimuat
+            $.ajax({
+                url: '<?php echo base_url(); ?>Unit/ckunjungan_RJ/get_unit',
+                type: 'post',
+                dataType: 'json',
+                success: function(response) {
+                    var len = response.length;
+                    unitSelect.empty();
+                    unitSelect.append('<option><?php echo $unit;?></option>');
+                    unitSelect.append('<option>SEMUA</option>');
+                    for (var i = 0; i < len; i++) {
+                        var value = response[i]['kelunit'];
+                        unitSelect.append('<option value="' + response[i]['kelunit'] + '">' + value + '</option>');
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#unit').on('change', function() {
+                var optionSelected = $(this).val();
+                $.ajax({
+                    url: '<?php echo base_url(); ?>Unit/ckunjungan_RJ/get_subunit',
+                    type: 'post',
+                    data: { optionSelected: optionSelected },
+                    dataType: 'json',
+                    success: function(response) {
+                        var len = response.length;
+                        $("#subunit").empty();
+                        $("#subunit").append('<option><?php echo $subunit;?></option>');
+                        $("#subunit").append('<option>SEMUA</option>');
+                        for (var i = 0; i < len; i++) {
+                            var value = response[i]['nama_unit'];
+                            $("#subunit").append('<option value="' + response[i]['nama_unit'] + '">' + value + '</option>');
+                        }
+                        $("#subunit").append('<option>Homecare</option>');
+                        $("#subunit").append('<option>Telemedicine</option>');
+                        $("#subunit").append('<option>MCU</option>');
+                    }
+                });
+            });
+        });
+
+    </script>
+    <script>
+        function toggleTable(ket) {
+            // Ganti spasi dengan karakter garis bawah
+            ket = ket.replace(/\s/g, '_');
+            var tableRow = document.querySelector('.detail-' + ket);
+            if (tableRow) {
+                if (tableRow.classList.contains('d-none')) {
+                    tableRow.classList.remove('d-none');
+                } else {
+                    tableRow.classList.add('d-none');
+                }
+            }
+        }
+    </script>
+    <script>
+        function toggleTable2() {
+            var tableRow = document.querySelector('.detail-rekap');
+            if (tableRow) {
+                if (tableRow.classList.contains('d-none')) {
+                    tableRow.classList.remove('d-none');
+                } else {
+                    tableRow.classList.add('d-none');
+                }
+            }
+        }
+    </script>
 	
 </body>
 <!--end::Body-->

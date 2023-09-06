@@ -15,52 +15,81 @@ class ckunjungan_RJ extends CI_Controller {
       $this->load->view('content/vunit/vkunjungan_RJ/vkunjungan_RJ');
    }
 
+   function get_unit(){
+      $tglawal = (new DateTime())->modify('-7 days')->format('Y-m-d');
+      $tglakhir = date("Y-m-d");
+      $nama = $this->session->userdata("nama");
+      $lokasi = $this->session->userdata("tlok");
+      
+      $result = $this->mkunjungan_RJ->mshow_all_unit($tglawal,$tglakhir,$nama,$lokasi);
+      echo json_encode($result);
+   }
+
+   function get_subunit(){
+      $optionSelected = $this->input->post('optionSelected');
+      $nama = $this->session->userdata("nama");
+      $result = $this->mkunjungan_RJ->mshow_all_subunit($optionSelected,$nama);
+      echo json_encode($result);
+   }
+
    function kunjungan() {
       if ($this->session->userdata('status') != "Login" || !in_array($this->session->userdata("tlok"), array("RSG", "RSP", "RST", "RSMU", "URJ"))) {
 			redirect("clogin");
 		}
       $tglawal = $this->input->post('tglawal');
       $tglakhir = $this->input->post('tglakhir');
+      $unit = $this->input->post('unit');
+      $subunit = $this->input->post('subunit');
       $nama = $this->session->userdata("nama");
       $lokasi = $this->input->post('lokasi');
-      $kunjung = $this->mkunjungan_RJ->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi);
 
-      //insert into log_aktifitas table
-      if ($lokasi == ""){
-         $log = array(
-            'id'		   => $this->session->userdata("id"),
-            'tglawal'   => $tglawal,
-            'tglakhir'  => $tglakhir,
-            'unit'      => 'KONSOLIDASI',
-            'jenis'     => 'SEMUA',
-            'platform'	=> $this->agent->platform(),
-            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-            'ip'		   => $this->input->ip_address(),
-            'action'	   => 'Show Tabel Kunjungan Rawat Jalan',
-         );
+      $kunjung = $this->mkunjungan_RJ->mshow_all_call($unit,$tglawal,$tglakhir,$nama,$lokasi);
+      $detail_kunjung = $this->mkunjungan_RJ->mshow_all_detail_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi);
+      $rekap = $this->mkunjungan_RJ->mshow_all_rekap_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi);
+      if (empty($kunjung)) {
+         echo '<script language="javascript">alert("Data Tidak Tersedia !!!"); document.location="./";</script>';
       }else{
-         $log = array(
-            'id'		   => $this->session->userdata("id"),
-            'tglawal'   => $tglawal,
-            'tglakhir'  => $tglakhir,
-            'unit'      => $lokasi,
-            'jenis'     => 'SEMUA',
-            'platform'	=> $this->agent->platform(),
-            'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
-            'ip'		   => $this->input->ip_address(),
-            'action'	   => 'Show Tabel Kunjungan Rawat Jalan',
-         );
-      }
-      $this->mkunjungan_RJ->insert_log($log);
+         //insert into log_aktifitas table
+         if ($lokasi == ""){
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => 'KONSOLIDASI',
+               'jenis'     => 'SEMUA',
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Tabel Kunjungan Rawat Jalan',
+            );
+         }else{
+            $log = array(
+               'id'		   => $this->session->userdata("id"),
+               'tglawal'   => $tglawal,
+               'tglakhir'  => $tglakhir,
+               'unit'      => $lokasi,
+               'jenis'     => 'SEMUA',
+               'platform'	=> $this->agent->platform(),
+               'browser'	=> $this->agent->browser().' ('.$this->agent->version().')',
+               'ip'		   => $this->input->ip_address(),
+               'action'	   => 'Show Tabel Kunjungan Rawat Jalan',
+            );
+         }
+         $this->mkunjungan_RJ->insert_log($log);
 
-      $data = array(
-         'kunjung' => $kunjung,
-         'lokasi' => $lokasi,
-         'periode' => $this->input->post('periode'),
-         'tglawal' => $tglawal,
-         'tglakhir' => $tglakhir,
-      );
-      $this->load->view('content/vunit/vkunjungan_RJ/vhasil_kunjungan_RJ',$data);
+         $data = array(
+            'kunjung' => $kunjung,
+            'detail_kunjung' => $detail_kunjung,
+            'rekap' => $rekap,
+            'lokasi' => $lokasi,
+            'periode' => $this->input->post('periode'),
+            'tglawal' => $tglawal,
+            'tglakhir' => $tglakhir,
+            'unit' => $unit,
+            'subunit' => $subunit,
+         );
+         $this->load->view('content/vunit/vkunjungan_RJ/vhasil_kunjungan_RJ',$data);
+      }
    }
 
    function grafik_kunjungan_RJ() {
@@ -293,6 +322,8 @@ class ckunjungan_RJ extends CI_Controller {
             exit();
          } else if ($exportType == 'tabel') {
             $nama = $this->session->userdata("nama");
+            $unit = $this->input->post('unit');
+            $subunit = $this->input->post('subunit');
             $lokasi = $this->input->post('lokasi');
             $tglawal = $this->input->post('tglawal');
             $tglakhir = $this->input->post('tglakhir');
@@ -332,7 +363,7 @@ class ckunjungan_RJ extends CI_Controller {
             $total_rsaldopotensi = 0;
             $total_jmltarget = 0;
             $total_jmlprosen = 0;
-            foreach ($this->mkunjungan_RJ->mshow_all_call($tglawal,$tglakhir,$nama,$lokasi) as $data) {
+            foreach ($this->mkunjungan_RJ->mshow_all_call($unit,$tglawal,$tglakhir,$nama,$lokasi) as $data) {
                $total_rsaldolalu += $data->rsaldolalu;
                $total_rsaldosaatini += $data->rsaldosaatini;
                $total_rsaldosampai += $data->rsaldosampai;
@@ -350,27 +381,286 @@ class ckunjungan_RJ extends CI_Controller {
                xlsWriteLabel($tablebody, $kolombody++, $data->rsaldopotensi);
                xlsWriteLabel($tablebody, $kolombody++, $data->rsaldosampai+$data->rsaldopotensi);
                xlsWriteLabel($tablebody, $kolombody++, $data->jmltarget);
-               xlsWriteLabel($tablebody, $kolombody++, $data->jmlprosen*100);
+               xlsWriteLabel($tablebody, $kolombody++, $data->jmlprosen*100 ." %");
             
                $tablebody++;
                $nourut++;
+               foreach ($this->mkunjungan_RJ->mshow_all_detail_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi) as $data2) {
+                  if ($data2->ket == $data->ket){
+                     $kolombody = 0;
+                     xlsWriteLabel($tablebody, $kolombody++, "*");
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->sub_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->rsaldolalu);
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->rsaldosaatini);
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->rsaldosampai);
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->rsaldopotensi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data2->rsaldosampai+$data2->rsaldopotensi);
+                     xlsWriteLabel($tablebody, $kolombody++, "NULL");
+                     xlsWriteLabel($tablebody, $kolombody++, "NULL");
+                  
+                     $tablebody++;
+                  }
+               }
             }
             $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
-            xlsWriteLabel($tablebody, $kolombody++, "TOTAL");
+            xlsWriteLabel($tablebody, $kolombody++, "TOTAL KUNJ. RJ & UGD");
             xlsWriteLabel($tablebody, $kolombody++, $total_rsaldolalu);
             xlsWriteLabel($tablebody, $kolombody++, $total_rsaldosaatini);
             xlsWriteLabel($tablebody, $kolombody++, $total_rsaldosampai);
             xlsWriteLabel($tablebody, $kolombody++, $total_rsaldopotensi);
             xlsWriteLabel($tablebody, $kolombody++, $total_rsaldosampai+$total_rsaldopotensi);
             xlsWriteLabel($tablebody, $kolombody++, $total_jmltarget);
-            xlsWriteLabel($tablebody, $kolombody++, number_format($total_rsaldosampai/$total_jmltarget*100, 0, ',', '.'));
+            xlsWriteLabel($tablebody, $kolombody++, number_format($total_rsaldosampai/$total_jmltarget*100, 0, ',', '.')." %");
+
+            $tablebody++;
+            $nourut++;
+            foreach ($this->mkunjungan_RJ->mshow_all_rekap_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi) as $data3) {
+               if ($data3->kelsegmen_sub == "Total"){
+                  $kolombody = 0;
+                  xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                  xlsWriteLabel($tablebody, $kolombody++, "Rekap Kunj. Telemed, Homecare");
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldolalu);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosaatini);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosampai);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldopotensi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosampai+$data3->rsaldopotensi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->jmltarget);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->jmlprosen*100 ." %");
+               
+                  $tablebody++;
+                  $nourut++;
+               }
+            }
+            foreach ($this->mkunjungan_RJ->mshow_all_rekap_call($unit,$subunit,$tglawal,$tglakhir,$nama,$lokasi) as $data3) {
+               if ($data3->kelsegmen_sub != "Total"){
+                  $kolombody = 0;
+                  xlsWriteLabel($tablebody, $kolombody++, "*");
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->kelsegmen_sub);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldolalu);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosaatini);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosampai);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldopotensi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->rsaldosampai+$data3->rsaldopotensi);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->jmltarget);
+                  xlsWriteLabel($tablebody, $kolombody++, $data3->jmlprosen*100 ." %");
+
+                  $tablebody++;
+               }
+            }
       
             xlsEOF();
             exit();
-         } 
+         } else if ($exportType == 'potensi'){
+            $pilihan = $this->input->post('pilihan');
+            $lokasi = $this->input->post('lokasi');
+            $tglakhir = $this->input->post('tglakhir');
+            $pilihan = $this->input->post('pilihan');
+           
+            $this->load->helper('exportexcel');
+            $namaFile = "Detail Potensi Kunjungan Rawat Jalan.xls";
+            $judul = "Detail Potensi Kunjungan Rawat Jalan.xls";
+            $tablehead = 0;
+            $tablebody = 1;
+            $nourut = 1;
+            //penulisan header
+            header("Pragma: public");
+            header("Expires: 0");
+            header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+            header("Content-Type: application/force-download");
+            header("Content-Type: application/octet-stream");
+            header("Content-Type: application/download");
+            header("Content-Disposition: attachment;filename=" . $namaFile . "");
+            header("Content-Transfer-Encoding: binary ");
+      
+            xlsBOF();
+      
+            $kolomhead = 0;
+            xlsWriteLabel($tablehead, $kolomhead++, "NO");
+            xlsWriteLabel($tablehead, $kolomhead++, "LOKASI");
+            xlsWriteLabel($tablehead, $kolomhead++, "TANGGAL");
+            xlsWriteLabel($tablehead, $kolomhead++, "NO BILLING");
+            xlsWriteLabel($tablehead, $kolomhead++, "NO RM");
+            xlsWriteLabel($tablehead, $kolomhead++, "NAMA PASIEN");
+            xlsWriteLabel($tablehead, $kolomhead++, "NIK");
+            xlsWriteLabel($tablehead, $kolomhead++, "JENIS KELAMIN");
+            xlsWriteLabel($tablehead, $kolomhead++, "NO TELP");
+            xlsWriteLabel($tablehead, $kolomhead++, "TGL. LAHIR");
+            xlsWriteLabel($tablehead, $kolomhead++, "ALAMAT");
+            xlsWriteLabel($tablehead, $kolomhead++, "NAMA KONSUMEN");
+            xlsWriteLabel($tablehead, $kolomhead++, "UNIT");
+            xlsWriteLabel($tablehead, $kolomhead++, "SUB-UNIT");
+            xlsWriteLabel($tablehead, $kolomhead++, "KELOMPOK SEGMEN");
+            xlsWriteLabel($tablehead, $kolomhead++, "KELOMPOK SUB-SEGMEN");
+            xlsWriteLabel($tablehead, $kolomhead++, "KELOMPOK BPJS");
+            xlsWriteLabel($tablehead, $kolomhead++, "TGL. MASUK");
+            xlsWriteLabel($tablehead, $kolomhead++, "TGL. PULANG");
+            xlsWriteLabel($tablehead, $kolomhead++, "TGL. KASIR");
+            xlsWriteLabel($tablehead, $kolomhead++, "NOMINAL BILLING");
+            xlsWriteLabel($tablehead, $kolomhead++, "STATUS");
+            
+            foreach ($pilihan as $p) {
+               $ket = $p;
+               if ($lokasi==""){
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($ket, "RSG", $tglakhir) as $data) {
+                     $kolombody = 0;
+      
+                     //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                     xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kunjung);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nomrm);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmpasien);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nik);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->jk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->notelp);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgllahir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmkonsumen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->Segmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_masuk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_pulang);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kasir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->rpbilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+                  
+                     $tablebody++;
+                     $nourut++;
+                  }
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($ket, "RST", $tglakhir) as $data) {
+                     $kolombody = 0;
+      
+                     //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                     xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kunjung);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nomrm);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmpasien);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nik);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->jk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->notelp);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgllahir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmkonsumen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->Segmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_masuk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_pulang);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kasir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->rpbilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+                  
+                     $tablebody++;
+                     $nourut++;
+                  }
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($ket, "RSP", $tglakhir) as $data) {
+                     $kolombody = 0;
+      
+                     //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                     xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kunjung);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nomrm);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmpasien);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nik);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->jk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->notelp);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgllahir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmkonsumen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->Segmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_masuk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_pulang);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kasir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->rpbilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+                  
+                     $tablebody++;
+                     $nourut++;
+                  }
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($ket, "RSMU", $tglakhir) as $data) {
+                     $kolombody = 0;
+      
+                     //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                     xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kunjung);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nomrm);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmpasien);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nik);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->jk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->notelp);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgllahir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmkonsumen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->Segmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_masuk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_pulang);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kasir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->rpbilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+                  
+                     $tablebody++;
+                     $nourut++;
+                  }
+               }else{
+                  foreach ($this->mkunjungan_RJ->mshow_all_potensi($ket, $lokasi, $tglakhir) as $data) {
+                     $kolombody = 0;
+      
+                     //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+                     xlsWriteNumber($tablebody, $kolombody++, $nourut);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->lokasi);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kunjung);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nobilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nomrm);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmpasien);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nik);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->jk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->notelp);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgllahir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nmkonsumen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->Segmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->nama_unit);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->kelsegmen_sub);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_masuk);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_pulang);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->tgl_kasir);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->rpbilling);
+                     xlsWriteLabel($tablebody, $kolombody++, $data->statuse);
+                  
+                     $tablebody++;
+                     $nourut++;
+                  }
+               }
+            }
+
+            xlsEOF();
+            exit();
+         }
       }
    }
 

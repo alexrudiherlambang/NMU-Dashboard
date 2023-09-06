@@ -73,6 +73,26 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
+                                                    <div class="col-xl-5">
+                                                        <div class="fs-6 fw-semibold mt-2 mb-3">Filter By Unit</div>
+                                                    </div>
+                                                    <div class="col-xl-5 fv-row">
+                                                        <select class="form-control form-control-solid" id="unit" name="unit">
+                                                            <option value="">Pilih Unit</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-xl-5">
+                                                        <div class="fs-6 fw-semibold mt-2 mb-3">Filter By Sub-Unit</div>
+                                                    </div>
+                                                    <div class="col-xl-5 fv-row">
+                                                        <select class="form-control form-control-solid" id="subunit" name="subunit">
+                                                            <option value="">Pilih Sub-Unit</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
                                                     <!--begin::Col-->
                                                     <div class="col-xl-5">
                                                         <div class="fs-6 fw-semibold mt-2 mb-3">Periode</div>
@@ -90,7 +110,7 @@
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
-                                                            <input class="form-control form-control-solid ps-12" type="month" name="periode" placeholder="Pick a date" id="periode" required="required" value="<?php echo date('Y-m');?>"/>
+                                                            <input class="form-control form-control-solid ps-12" type="month" name="periode" placeholder="Pick a date" id="periode" value="<?php echo date('Y-m');?>"/>
                                                         </div>
                                                     </div>
                                                     <!--begin::Col-->
@@ -124,165 +144,679 @@
                                         <!--begin::Table-->
                                         <div class="table-responsive">
                                             <table class="table align-middle gs-0 gy-4">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                                <!--begin::Table row-->
-                                                <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center text-center w-10px pe-5">No</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Kunjungan</th>
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody class="text-gray-600 fw-semibold">
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><b>1</b></td>
-                                                    <td class="min-w-125px"><b>POLIKLINIK</b></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>POLI UMUM</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>POLI GIGI</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><b>2</b></td>
-                                                    <td class="min-w-125px"><b>POLI SPESIALIS</b></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>POLI SPESIALIS OBSGYN</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>POLI SPESIALIS BEDAH</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>POLI SPESIALIS ANAK</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>POLI SPESIALIS INTERNIS</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><i>-</i></td>
-                                                    <td class="min-w-125px"><i>POLI SPESIALIS LAINNYA</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><b>3</b></td>
-                                                    <td class="min-w-125px"><b>HEMODIALISIS</b></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                </tr>
-                                                <tr style="background-color: #000080;">
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="min-w-150px" colspan="2"><b>TOTAL KUNJ. R. JALAN</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center w-10px pe-5"><b>4</b></td>
-                                                    <td class="min-w-125px"><b>IGD</b></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                </tr>
-                                                <tr style="background-color: #000080;">
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="min-w-150px" colspan="2"><b>TOTAL KUNJ. RJ & IGD</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                    <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
-                                                </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
+                                                <!--begin::Table head-->
+                                                <thead>
+                                                    <!--begin::Table row-->
+                                                    <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5"></th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Target Kunjungan</th>
+                                                        <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Prosentase</th>
+                                                    </tr>
+                                                    <!--end::Table row-->
+                                                </thead>
+                                                <!--end::Table head-->
+                                                <!--begin::Table body-->
+                                                <tbody class="text-gray-600 fw-semibold">
+                                                    <tr>
+                                                        <td class="text-center w-10px pe-5"><button class="poliumum" style="border-radius: 30%; background-color:#00FFFF">+</button></td>
+                                                        <td class="min-w-125px"><b>POLI UMUM</b></td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                    </tr>
+                                                    <tr class="detail-poliumum d-none">
+                                                        <td></td>
+                                                        <td colspan="8">
+                                                            <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th class="text-center w-10px pe-5"></th>
+                                                                        <th class="min-w-125px">Uraian</th>
+                                                                        <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                        <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                        <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                        <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                        <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                        <th class="text-center min-w-100px">Prosentase</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>POLI KIA</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>POLI Fertilitas</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>POLI Vaksin</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Telemedicine Dokter Umum</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Homecare</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>MCU</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center w-10px pe-5"><button class="polisps" style="border-radius: 30%; background-color:#00FFFF">+</button></td>
+                                                        <td class="min-w-125px"><b>POLI SPESIALIS</b></td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                        <td class="text-center min-w-100px">0</td>
+                                                    </tr>
+                                                    <tr class="detail-polisps d-none">
+                                                        <td></td>
+                                                        <td colspan="8">
+                                                            <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th class="text-center w-10px pe-5"></th>
+                                                                        <th class="min-w-125px">Uraian</th>
+                                                                        <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                        <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                        <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                        <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                        <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                        <th class="text-center min-w-100px">Prosentase</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Umum</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Orthopedi</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Plastik</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Saraf</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Gigi & Mulut</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Thoraks & Kardiovaskuler</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Urologi</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Onkologi</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Digestif</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Anak</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Bedah Tulang Belakang</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Jantung</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Kebidanan & Kandungan</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Anak</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Kulit & Kelamin</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Mata</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Paru</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Penyakit Dalam</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Psikiatri & Psikologi</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Rehab Medik</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Saraf</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli THT</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Anaesthesi</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Konservasi Gigi</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Gigi Anak</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Poli Okupasi</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Telemedicine Dokter Spesialis</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>MCU</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center w-10px pe-5"><button class="hemodialisa" style="border-radius: 30%; background-color:#00FFFF">+</button></td>
+                                                        <td class="min-w-125px"><b>HEMODIALISA</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                    <tr class="detail-hemodialisa d-none">
+                                                        <td></td>
+                                                        <td colspan="8">
+                                                            <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center w-10px pe-5"><button class="poligigi" style="border-radius: 30%; background-color:#00FFFF">+</button></td>
+                                                        <td class="min-w-125px"><b>POLI GIGI</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                    <tr class="detail-poligigi d-none">
+                                                        <td></td>
+                                                        <td colspan="8">
+                                                            <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center w-10px pe-5"><button class="ugd" style="border-radius: 30%; background-color:#00FFFF">+</button></td>
+                                                        <td class="min-w-125px"><b>UGD</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                    </tr>
+
+                                                    <tr class="detail-ugd d-none">
+                                                        <td></td>
+                                                        <td colspan="8">
+                                                            <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th class="text-center w-10px pe-5"></th>
+                                                                        <th class="min-w-125px">Uraian</th>
+                                                                        <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                        <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                        <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                        <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                        <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                        <th class="text-center min-w-100px">Prosentase</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>UGD</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Ambulance</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Kendaraan Jenazah</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="background-color: #000080;">
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-150px" colspan="2"><b>TOTAL KUNJ. R. JALAN</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center w-10px pe-5"></td>
+                                                        <td class="min-w-125px"><b></b></td>
+                                                        <td class="text-center min-w-100px"></td>
+                                                        <td class="text-center min-w-100px"></td>
+                                                        <td class="text-center min-w-100px"></td>
+                                                        <td class="text-center min-w-100px"></td>
+                                                        <td class="text-center min-w-100px"></td>
+                                                        <td class="text-center min-w-100px"></td>
+                                                        <td class="text-center min-w-100px"></td>
+                                                    </tr>
+                                                    <tr style="background-color: #000080;">
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-150px" colspan="2"><b>TOTAL KUNJ. RJ & UGD</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center w-10px pe-5"><button class="rekap" style="border-radius: 30%; background-color:#00FFFF">+</button></td>
+                                                        <td class="min-w-125px"><b>Rekap Kunj. Telemed, Homecare</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                        <td class="text-center min-w-100px"><b>0</b></td>
+                                                    </tr>
+                                                    <tr class="detail-rekap d-none">
+                                                        <td></td>
+                                                        <td colspan="8">
+                                                            <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th class="text-center w-10px pe-5"></th>
+                                                                        <th class="min-w-125px">Uraian</th>
+                                                                        <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                        <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                        <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                        <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                        <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                        <th class="text-center min-w-100px">Prosentase</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Telemedicine</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>HomeCare</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>MCU</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>Pertamina</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center w-10px pe-5"><i>*</i></td>
+                                                                        <td class="min-w-125px"><i>BUMN Lain</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                        <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="background-color: #000080;">
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-150px" colspan="2"></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"></td>
+                                                        <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px"></td>
+                                                    </tr>
+                                                </tbody>
+                                                <!--end::Table body-->
                                             </table>
                                         </div>
                                         <div style="text-align:left"><b>Ket :</b><br>
@@ -352,6 +886,101 @@
     <?php
         $this->load->view('partials/script');
     ?>
+    <script>
+        $(document).ready(function() {
+            var unitSelect = $("#unit");
+            // Inisialisasi elemen "unit" dengan data saat halaman dimuat
+            $.ajax({
+                url: '<?php echo base_url(); ?>Unit/ckunjungan_RJ/get_unit',
+                type: 'post',
+                dataType: 'json',
+                success: function(response) {
+                    var len = response.length;
+                    unitSelect.empty();
+                    unitSelect.append('<option value="">Pilih Unit</option>');
+                    unitSelect.append('<option>SEMUA</option>');
+                    for (var i = 0; i < len; i++) {
+                        var value = response[i]['kelunit'];
+                        unitSelect.append('<option value="' + response[i]['kelunit'] + '">' + value + '</option>');
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#unit').on('change', function() {
+                var optionSelected = $(this).val();
+                $.ajax({
+                    url: '<?php echo base_url(); ?>Unit/ckunjungan_RJ/get_subunit',
+                    type: 'post',
+                    data: { optionSelected: optionSelected },
+                    dataType: 'json',
+                    success: function(response) {
+                        var len = response.length;
+                        $("#subunit").empty();
+                        $("#subunit").append('<option value="">Pilih Sub-Unit</option>');
+                        $("#subunit").append('<option>SEMUA</option>');
+                        for (var i = 0; i < len; i++) {
+                            var value = response[i]['nama_unit'];
+                            $("#subunit").append('<option value="' + response[i]['nama_unit'] + '">' + value + '</option>');
+                        }
+                        $("#subunit").append('<option>Homecare</option>');
+                        $("#subunit").append('<option>Telemedicine</option>');
+                        $("#subunit").append('<option>MCU</option>');
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.poliumum').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-poliumum');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.polisps').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-polisps');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.ugd').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-ugd');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.hemodialisa').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-hemodialisa');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.poligigi').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-poligigi');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.rekap').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-rekap');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
 	
 </body>
 <!--end::Body-->

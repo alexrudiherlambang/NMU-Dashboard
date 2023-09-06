@@ -267,7 +267,7 @@ class mkunjungan_RJ extends ci_model {
    }
 
    // untuk cetak potensi
-   function mshow_all_potensi($lokasi, $tglakhir) {
+   function mshow_all_potensi($ket, $lokasi, $tglakhir) {
       $this->db->select('lokasi, jnstrans, sts_tutup, tgl_reg, tgl_kunjung, nobilling, countt, nomrm, nmpasien, nik, noasuransi, notelp, stspulang, 
       tgllahir, jk, alamat, nmkonsumen, Segmen, kelsegmen, kelsegmen_sub, nama_unit,tgl_masuk, tgl_pulang, tgl_kasir, norj, keterangan,
       rpbilling, statuse');
@@ -282,13 +282,25 @@ class mkunjungan_RJ extends ci_model {
           $this->db->from('t05_rekap_tabel_kunjungan');
       }
       
+      if ($ket == "POLI UMUM"){
+         $this->db->where_in('nama_unit', array('POLI UMUM', 'POLI VAKSIN', 'POLI KIA'));
+      }elseif ($ket == "POLI SPESIALIS"){
+         $this->db->like('nama_unit', 'SPS', 'after');
+      }elseif ($ket == "HAEMODIALISA"){
+         $this->db->where('nama_unit', "HEMODIALISA");
+      }elseif ($ket == "POLI GIGI"){
+         $this->db->where('nama_unit', "POLI GIGI TETAP");
+      }elseif ($ket == "UGD"){
+         $this->db->where_in('nama_unit', array('UGD', 'AMBULANCE', 'KENDARAAN JENAZAH'));
+      }
+
       $this->db->where('tgl_kunjung <=', $tglakhir);
       $this->db->where('Segmen', '1. RAWAT JALAN');
       $this->db->where('statuse !=', 'TUTUP (AKUN)');
       $this->db->order_by('tgl_kunjung', 'asc');
       
       return $this->db->get()->result();
-  }
+   }
   
 
    //Insert Log Login
