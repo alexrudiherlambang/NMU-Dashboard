@@ -136,7 +136,7 @@
                                             <thead>
                                                 <!--begin::Table row-->
                                                 <tr style="background-color: #000080;" class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5">No</th>
+                                                    <th style="color: #ffffff; vertical-align: middle;" class="text-center w-10px pe-5"></th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="min-w-125px">Uraian</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kegiatan yang Lalu</th>
                                                     <th style="color: #ffffff; vertical-align: middle;" class="text-center min-w-100px">Kegiatan Periode Saat Ini</th>
@@ -152,144 +152,646 @@
                                             <!--begin::Table body-->
                                             <tbody class="text-gray-600 fw-semibold">
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>1</b></td>
-                                                    <td class="text-center min-w-125px"><b>INSTALASI FARMASI</b></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="text-center min-w-125px"><i>INS. FARMASI RAWAT JALAN</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="text-center min-w-125px"><i>INS. FARMASI RAWAT INAP</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><b>2</b></td>
-                                                    <td class="text-center min-w-125px"><b>LABORATORIUM</b></td>
+                                                    <td class="w-10px pe-5"><b><button class="farmasi_rj" style="border-radius: 30%; background-color:#00FFFF">+</button></b></td>
+                                                    <td class="min-w-125px"><b>INSTALASI FARMASI RAJAL</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><b>0</b></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><b>3</b></td>
-                                                    <td class="text-center min-w-125px"><b>RADIOLOGI</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr class="detail-farmasi_rj d-none">
+                                                    <td></td>
+                                                    <td colspan="9">
+                                                        <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="min-w-125px">Sub Unit</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                    <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                    <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Prosentase</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Own use / Karyawan PT NMU</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Langganan RS / Jaminan Perusahaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Cash</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Assuransi</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Civic Mision</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Kemenkes</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Kesehatan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Ketenagakerjaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-10px pe-5"><b><button class="farmasi_ri" style="border-radius: 30%; background-color:#00FFFF">+</button></b></td>
+                                                    <td class="min-w-125px"><b>INSTALASI FARMASI RANAP</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                     <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><b>4</b></td>
-                                                    <td class="text-center min-w-125px"><b>REHABILITASI MEDIS</b></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
+                                                <tr class="detail-farmasi_ri d-none">
+                                                    <td></td>
+                                                    <td colspan="9">
+                                                        <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="min-w-125px">Sub Unit</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                    <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                    <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Prosentase</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Own use / Karyawan PT NMU</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Langganan RS / Jaminan Perusahaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Cash</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Assuransi</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Civic Mision</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Kemenkes</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Kesehatan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Ketenagakerjaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="text-center min-w-125px"><i>REHABILITASI MEDIS</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="w-10px pe-5"><b><button class="laborat" style="border-radius: 30%; background-color:#00FFFF">+</button></b></td>
+                                                    <td class="min-w-125px"><b>LABORATORIUM</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr class="detail-laborat d-none">
+                                                    <td></td>
+                                                    <td colspan="9">
+                                                        <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="min-w-125px">Sub Unit</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                    <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                    <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Prosentase</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Own use / Karyawan PT NMU</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Langganan RS / Jaminan Perusahaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Cash</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Assuransi</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Civic Mision</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Kemenkes</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Kesehatan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Ketenagakerjaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="text-center min-w-125px"><i>KLINIK ESTETIKA</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="w-10px pe-5"><b><button class="rad" style="border-radius: 30%; background-color:#00FFFF">+</button></b></td>
+                                                    <td class="min-w-125px"><b>RADIOLOGI</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr class="detail-rad d-none">
+                                                    <td></td>
+                                                    <td colspan="9">
+                                                        <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="min-w-125px">Sub Unit</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                    <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                    <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Prosentase</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Own use / Karyawan PT NMU</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Langganan RS / Jaminan Perusahaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Cash</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Assuransi</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Civic Mision</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Kemenkes</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Kesehatan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Ketenagakerjaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><b>5</b></td>
-                                                    <td class="text-center min-w-125px"><b>KAMAR OPERASI</b></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
-                                                    <td class="text-center min-w-100px"></td>
+                                                    <td class="w-10px pe-5"><b><button class="fisioterapi" style="border-radius: 30%; background-color:#00FFFF">+</button></b></td>
+                                                    <td class="min-w-125px"><b>FISIOTERAPI</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                </tr>
+                                                <tr class="detail-fisioterapi d-none">
+                                                    <td></td>
+                                                    <td colspan="9">
+                                                        <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="min-w-125px">Sub Unit</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                    <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                    <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Prosentase</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Own use / Karyawan PT NMU</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Langganan RS / Jaminan Perusahaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Cash</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Assuransi</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Civic Mision</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Kemenkes</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Kesehatan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Ketenagakerjaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="text-center min-w-125px"><i>OPERASI BESAR</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                    <td class="w-10px pe-5"><b><button class="operasi" style="border-radius: 30%; background-color:#00FFFF">+</button></b></td>
+                                                    <td class="min-w-125px"><b>KAMAR OPERASI</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
+                                                    <td class="text-center min-w-100px"><b>0</b></td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="text-center min-w-125px"><i>OPERASI SEDANG</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="text-center min-w-125px"><i>OPERASI KECIL</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="w-10px pe-5"><i>-</i></td>
-                                                    <td class="text-center min-w-125px"><i>OPERASI KHUSUS</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
-                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                <tr class="detail-operasi d-none">
+                                                    <td></td>
+                                                    <td colspan="9">
+                                                        <table class="table table-row-dashed table-row-gray-500 gy-5 gs-5 mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="min-w-125px">Sub Unit</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan yang Lalu</th>
+                                                                    <th class="text-center min-w-100px">Kunjungan Periode Saat Ini</th>
+                                                                    <th class="text-center min-w-100px">Total Kunjungan s/d saat ini</th>
+                                                                    <th class="text-center min-w-100px">Potensial Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Estimasi Total Kunjungan</th>
+                                                                    <th class="text-center min-w-100px">Prosentase</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Own use / Karyawan PT NMU</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Langganan RS / Jaminan Perusahaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Cash</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Assuransi</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Civic Mision</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>Kemenkes</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Kesehatan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="min-w-125px"><i>BPJS Ketenagakerjaan</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                    <td class="text-center min-w-100px"><i>0</i></td>
+                                                                </tr>
+                                                                <tr>
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
                                                 </tr>
                                                 <tr style="background-color: #000080;">
                                                     <td style="color: #ffffff; vertical-align: middle;" class="text-center min-w-150px" colspan="2"><b>TOTAL KEG. JANGMED</b></td>
@@ -372,7 +874,56 @@
     <?php
         $this->load->view('partials/script');
     ?>
-	
+
+    <script>
+        $(document).ready(function () {
+            $('.farmasi_rj').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-farmasi_rj');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.farmasi_ri').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-farmasi_ri');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+	<script>
+        $(document).ready(function () {
+            $('.laborat').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-laborat');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.rad').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-rad');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.fisioterapi').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-fisioterapi');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.operasi').on('click', function () {
+                var detailRow = $(this).closest('tr').next('.detail-operasi');
+                detailRow.toggleClass('d-none');
+            });
+        });
+    </script>
+
 </body>
 <!--end::Body-->
 
